@@ -65,57 +65,69 @@ class MyCart extends StatelessWidget {
 
                     /// cart item list
                     child: Obx(
-                        () => Container(
-                            padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) {
-                                return Dismissible(
-                                  key: Key(cartDatabaseController.cartList[index].id.toString()),
-                                  onDismissed: (direction) {
-                                    cartDatabaseController.deleteCartItem(cartDatabaseController.cartList[index].id!);
-                                  },
-                                  background: Container(
-                                    color: Colors.red,
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                                        child: const Icon(
-                                          Icons.delete,
-                                          color: Colors.white,
-                                        ),
-                                      ),
+                      () => Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Dimension.width(20)),
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return Dismissible(
+                              key: Key(cartDatabaseController.cartList[index].id
+                                  .toString()),
+                              onDismissed: (direction) {
+                                cartDatabaseController.deleteCartItem(
+                                    cartDatabaseController.cartList[index].id!);
+                              },
+                              background: Container(
+                                color: Colors.red,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: Dimension.width(20)),
+                                    child: const Icon(
+                                      Icons.delete,
+                                      color: Colors.white,
                                     ),
                                   ),
-                                  child: CartListItem(
-                                  item: cartDatabaseController.cartList[index],
-                                  onAdd: () {
-                                    cartDatabaseController.increaseQuantityFromCart(cartDatabaseController.cartList[index]);
-                                  },
-                                  onRemove: () {
-                                    cartDatabaseController.decreaseQuantityFromCart(cartDatabaseController.cartList[index]);
-                                  },
-                                  ),
-                                );
-                              },
-                              itemCount: cartDatabaseController.cartList.length,
-                            ),
-                          ),
-
+                                ),
+                              ),
+                              child: CartListItem(
+                                item: cartDatabaseController.cartList[index],
+                                onAdd: () {
+                                  cartDatabaseController
+                                      .increaseQuantityFromCart(
+                                          cartDatabaseController
+                                              .cartList[index]);
+                                },
+                                onRemove: () {
+                                  cartDatabaseController
+                                      .decreaseQuantityFromCart(
+                                          cartDatabaseController
+                                              .cartList[index]);
+                                },
+                              ),
+                            );
+                          },
+                          itemCount: cartDatabaseController.cartList.length,
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: Dimension.height(10),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.toNamed(RouteHelper.getApplyCoupon());
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: Dimension.width(20), vertical: Dimension.height(20)),
-                      margin: EdgeInsets.symmetric(horizontal: Dimension.height(20)),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: Dimension.width(20),
+                          vertical: Dimension.height(20)),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: Dimension.height(20)),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(
@@ -129,7 +141,9 @@ class MyCart extends StatelessWidget {
                             color: greenColor,
                             size: 20,
                           ),
-                          SizedBox(width: Dimension.width(20) ,),
+                          SizedBox(
+                            width: Dimension.width(20),
+                          ),
                           Text(
                             'Add coupon code',
                             style: TextStyle(
@@ -139,7 +153,11 @@ class MyCart extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
-                          Icon(Icons.arrow_forward_ios, color: greenColor,size: 18,),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: greenColor,
+                            size: 18,
+                          ),
                         ],
                       ),
                     ),
@@ -148,16 +166,19 @@ class MyCart extends StatelessWidget {
                     height: Dimension.height(10),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: Dimension.height(20)),
+                    padding:
+                        EdgeInsets.symmetric(vertical: Dimension.height(20)),
                     decoration: BoxDecoration(
                         color: backgroundColor,
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(Dimension.height(30)), topRight: Radius.circular(Dimension.height(30)))),
+                            topLeft: Radius.circular(Dimension.height(30)),
+                            topRight: Radius.circular(Dimension.height(30)))),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Dimension.width(20)),
                           child: const Text(
                             'Frequently Bought Together',
                             style: TextStyle(
@@ -169,15 +190,15 @@ class MyCart extends StatelessWidget {
                         SizedBox(
                           height: Dimension.height(20),
                         ),
-
                         Query(
                           options: QueryOptions(
-                            document: gql(Queries.getAllProducts()), // this is the query string you just created
+                            document: gql(Queries.getAllProducts()),
+                            // this is the query string you just created
                             fetchPolicy: FetchPolicy.cacheAndNetwork,
                             // pollInterval: const Duration(seconds: 10),
                           ),
-                          builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}) {
-
+                          builder: (QueryResult result,
+                              {VoidCallback? refetch, FetchMore? fetchMore}) {
                             if (result.hasException) {
                               return Text(result.exception.toString());
                             }
@@ -192,7 +213,9 @@ class MyCart extends StatelessWidget {
                               return const Text('No repositories');
                             }
 
-                            List<Product> productList = productJson.map((e) => Product.fromJson(e)).toList();
+                            List<Product> productList = productJson
+                                .map((e) => Product.fromJson(e))
+                                .toList();
 
                             return SizedBox(
                               height: Dimension.height(210),
@@ -202,8 +225,13 @@ class MyCart extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   final productItem = productList[index];
                                   return Padding(
-                                    padding: EdgeInsets.only(left: Dimension.width(20)),
-                                    child: ProductItem(product: productItem, cartDatabaseController: cartDatabaseController,),
+                                    padding: EdgeInsets.only(
+                                        left: Dimension.width(20)),
+                                    child: ProductItem(
+                                      product: productItem,
+                                      // cartDatabaseController:
+                                      //     cartDatabaseController,
+                                    ),
                                   );
                                 },
                               ),
@@ -240,11 +268,18 @@ class MyCart extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Row(
                     children: [
-                      const Icon(Icons.location_on, color: Colors.redAccent,),
-                      SizedBox(width: Dimension.width(10),),
+                      const Icon(
+                        Icons.location_on,
+                        color: Colors.redAccent,
+                      ),
+                      SizedBox(
+                        width: Dimension.width(10),
+                      ),
                       Text(
                         'Home - Uttar 18 - Dhaka',
                         style: TextStyle(
@@ -271,13 +306,13 @@ class MyCart extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Obx(() => Text('\$${cartDatabaseController.totalPrice.toStringAsFixed(2)}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ))
-                          ),
+                          Obx(() => Text(
+                              '\$${cartDatabaseController.totalPrice.toStringAsFixed(2)}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                color: Colors.white,
+                              ))),
                           SizedBox(
                             height: Dimension.height(5),
                           ),
@@ -294,12 +329,16 @@ class MyCart extends StatelessWidget {
 
                       /// Continue to pay button
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Get.toNamed(RouteHelper.getPaymentMethod());
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: Dimension.width(40), vertical: Dimension.height(15)),
-                          decoration: BoxDecoration(color: greenColor, borderRadius: BorderRadius.circular(5)),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Dimension.width(40),
+                              vertical: Dimension.height(15)),
+                          decoration: BoxDecoration(
+                              color: greenColor,
+                              borderRadius: BorderRadius.circular(5)),
                           child: const Text(
                             'Continue to pay',
                             style: TextStyle(

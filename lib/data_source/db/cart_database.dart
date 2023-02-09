@@ -1,9 +1,12 @@
-import 'package:instant_grrocery_delivery/model/cart_item.dart';
-import 'package:instant_grrocery_delivery/model/coupon.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../model/cart.dart';
+import '../../model/cart_coupon.dart';
+import '../../model/cart_item.dart';
 
 class CartDatabase {
   static final CartDatabase instance = CartDatabase._init();
+
 
   static Database? _database;
 
@@ -31,12 +34,21 @@ class CartDatabase {
     const stringType = 'TEXT NOT NULL';
 
     await db.execute('''
-      CREATE TABLE 
+      CREATE TABLE $cartTable (
+        ${CartFields.id} $idType,
+        ${CartFields.isActive} $integerType,
+        ${CartFields.totalQuantity} $integerType,
+        ${CartFields.totalPrice} $doubleType,
+        ${CartFields.count} $integerType,
+        ${CartFields.firstItemDate} $stringType,
+        ${CartFields.lastItemDate} $stringType
+      )
     ''');
 
     await db.execute('''
       CREATE TABLE $cartItemTable (
         ${CartItemFields.id} $idType,
+        ${CartItemFields.cartId} $integerType,
         ${CartItemFields.productId} $integerType,
         ${CartItemFields.quantity} $integerType,
         ${CartItemFields.addedTime} $stringType,
@@ -48,78 +60,18 @@ class CartDatabase {
     ''');
 
     await db.execute('''
-      CREATE TABLE $couponTable (
-        ${CouponFields.id} $idType,
-        ${CouponFields.title} $stringType,
-        ${CouponFields.description} $stringType,
-        ${CouponFields.code} $stringType,
-        ${CouponFields.discount} $doubleType,
-        ${CouponFields.fixed} $doubleNullType,
-        ${CouponFields.status} $stringType
+      CREATE TABLE $cartCouponTable (
+        ${CartCouponFields.id} $idType,
+        ${CartCouponFields.couponId} $integerType,
+        ${CartCouponFields.cartId} $integerType,
+        ${CartCouponFields.title} $stringType,
+        ${CartCouponFields.description} $stringType,
+        ${CartCouponFields.code} $stringType,
+        ${CartCouponFields.discount} $doubleType,
+        ${CartCouponFields.fixed} $doubleNullType,
+        ${CartCouponFields.status} $stringType
       )
     ''');
-  }
-
-  Future<CartItem> insert(CartItem item) async {
-    final db = await database;
-    final id = await db.insert(cartItemTable, item.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
-    // final id = await db.query(table)
-    return item.copyWith(id: id);
-  }
-
-  Future<CartItem?> getById(int? id) async {
-    final db = await database;
-    final item = await db.query(
-      cartItemTable,
-      columns: CartItemFields.values,
-      where: '${CartItemFields.id} = ?',
-      whereArgs: [id],
-    );
-    return item.isNotEmpty ? CartItem.fromJson(item.first) : null;
-  }
-
-  Future<CartItem?> getByProductId(int productId) async {
-    final db = await database;
-    final item = await db.query(
-      cartItemTable,
-      columns: CartItemFields.values,
-      where: '${CartItemFields.productId} = ?',
-      whereArgs: [productId],
-    );
-    return item.isNotEmpty ? CartItem.fromJson(item.first) : null;
-  }
-
-  Future<List<CartItem>> getAll() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query(cartItemTable);
-    return List.generate(maps.length, (i) {
-      return CartItem.fromJson(maps[i]);
-    });
-  }
-
-  Future<void> update(CartItem item) async {
-    final db = await database;
-    await db.update(
-      cartItemTable,
-      item.toJson(),
-      where: '${CartItemFields.id} = ?',
-      whereArgs: [item.id],
-    );
-  }
-
-  Future<void> delete(int id) async {
-    final db = await database;
-    await db.delete(cartItemTable, where: '${CartItemFields.id} = ?', whereArgs: [id]);
-  }
-
-  Future<void> deleteByProductId(int productId) async {
-    final db = await database;
-    await db.delete(cartItemTable, where: '${CartItemFields.productId} = ?', whereArgs: [productId]);
-  }
-
-  Future<void> deleteAll() async {
-    final db = await database;
-    await db.delete(cartItemTable);
   }
 
   Future close() async {

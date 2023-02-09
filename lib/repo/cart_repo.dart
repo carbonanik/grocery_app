@@ -1,30 +1,59 @@
-import 'dart:convert';
-import 'package:instant_grrocery_delivery/model/cart_item.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite/sqflite.dart';
+
+import '../data_source/db/cart_database.dart';
+import '../model/cart.dart';
 
 class CartRepo{
-  final SharedPreferences sharedPreferences;
-  final CART_KEY = "cart";
+  final CartDatabase cartDatabase;
+  CartRepo({
+    required this.cartDatabase,
+  });
 
-  CartRepo({required this.sharedPreferences}){
-    cart = sharedPreferences.getStringList(CART_KEY) ?? [];
+  insert(Cart cart) async {
+    final db = await cartDatabase.database;
+    final id = await db.insert(cartTable, cart.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
+    return cart.copyWith(id: id);
   }
 
-  /// current cart list // before checkout
-  List<String> cart=[];
-
-  /// store cart list to shared preference
-  void addToItemToCart(CartItem item){
-    cart.add(jsonEncode(item.toJson()));
-    sharedPreferences.setStringList(CART_KEY, cart);
+  Future<Cart?> getById(int? id) async {
+    final db = await cartDatabase.database;
+    final item = await db.query(
+      cartTable,
+      columns: CartFields.values,
+      where: '${CartFields.id} = ?',
+      whereArgs: [id],
+    );
+    return item.isNotEmpty ? Cart.fromJson(item.first) : null;
   }
 
-  /// get cart list from shared preference
-  List<CartItem> getCartList(){
-    List<CartItem> cartList = [];
-    for (var item in cart) {
-      cartList.add(CartItem.fromJson(jsonDecode(item)));
-    }
-    return cartList;
+  Future<Cart?> getActive() async {
+    final db = await cartDatabase.database;
+    final item = await db.query(
+      cartTable,
+      columns: CartFields.values,
+      where: '${CartFields.isActive} = ?',
+      whereArgs: [true],
+    );
+    return item.isNotEmpty ? Cart.fromJson(item.first) : null;
+  }
+
+  Future<Cart?> update(Cart cart) async {
+    final db = await cartDatabase.database;
+    await db.update(
+      cartTable,
+      cart.toJson(),
+      where: '${CartFields.id} = ?',
+      whereArgs: [cart.id],
+    );
+    return cart;
+  }
+
+  delete(int id) async {
+    final db = await cartDatabase.database;
+    await db.delete(
+      cartTable,
+      where: '${CartFields.id} = ?',
+      whereArgs: [id],
+    );
   }
 }

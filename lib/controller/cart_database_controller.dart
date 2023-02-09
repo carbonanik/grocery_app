@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
+import 'package:instant_grrocery_delivery/repo/cart_item_repo.dart';
 import 'package:instant_grrocery_delivery/model/product.dart';
 
-import '../data_source/db/cart_database.dart';
 import '../model/cart_item.dart';
 
 class CartDatabaseController extends GetxController {
-  final CartDatabase cartDatabase;
+  final CartItemRepo cartItemRepo;
 
-  CartDatabaseController({required this.cartDatabase});
+  CartDatabaseController({required this.cartItemRepo});
 
   final cartList = <CartItem>[].obs;
   final currentProductQuantity = 0.obs;
@@ -16,7 +16,7 @@ class CartDatabaseController extends GetxController {
 
 
   void addItemToCart(CartItem item) async {
-    await cartDatabase.insert(item);
+    await cartItemRepo.insert(item);
     getCartList();
   }
 
@@ -29,15 +29,15 @@ class CartDatabaseController extends GetxController {
   }
 
   Future<CartItem?> getById(int? id) async {
-    return await cartDatabase.getById(id);
+    return await cartItemRepo.getById(id);
   }
 
   Future<CartItem?> getByProductId(int productId) async {
-    return await cartDatabase.getByProductId(productId);
+    return await cartItemRepo.getByProductId(productId);
   }
 
   getCartList() async {
-    cartDatabase.getAll().then((value) {
+    cartItemRepo.getAll().then((value) {
       cartList.value = value;
       calculateTotalPrice();
       calculateTotalQuantity();
@@ -45,32 +45,32 @@ class CartDatabaseController extends GetxController {
   }
 
   updateCartItem(CartItem item) async {
-    await cartDatabase.update(item);
+    await cartItemRepo.update(item);
     getCartList();
   }
 
   deleteCartItem(int itemId) async {
-    await cartDatabase.delete(itemId);
+    await cartItemRepo.delete(itemId);
     getCartList();
   }
 
   deleteCartItemByProductId(int productId) async {
-    await cartDatabase.deleteByProductId(productId);
+    await cartItemRepo.deleteByProductId(productId);
     getCartList();
   }
 
   deleteAllCartItems() async {
-    await cartDatabase.deleteAll();
+    await cartItemRepo.deleteAll();
     getCartList();
   }
 
-  increaseQuantity(Product product) async {
+  increaseQuantity(Product product, int cartId) async {
     currentProductQuantity.value = currentProductQuantity.value + 1;
     currentProductQuantity.value = currentProductQuantity.value > 20 ? 20 : currentProductQuantity.value;
 
     CartItem? item = await getByProductId(product.id);
     if (item == null) {
-      addItemToCart(product.toCartItem(1));
+      addItemToCart(product.toCartItem(1, cartId));
     } else {
       item = item.copyWith(quantity: currentProductQuantity.value);
       updateCartItem(item);
@@ -89,10 +89,10 @@ class CartDatabaseController extends GetxController {
     updateCartItem(item);
   }
 
-  addOrIncreaseProductCard(Product product) async {
+  addOrIncreaseProductCard(Product product, int cartId) async {
     CartItem? item = await getByProductId(product.id);
     if (item == null) {
-      addItemToCart(product.toCartItem(1));
+      addItemToCart(product.toCartItem(1, cartId));
     } else {
       int newQuantity = item.quantity + 1;
       newQuantity = newQuantity > 20 ? 20 : newQuantity;
@@ -135,7 +135,7 @@ class CartDatabaseController extends GetxController {
   }
 
   getInitialQuantity(int productId) async {
-    CartItem? item = await cartDatabase.getByProductId(productId);
+    CartItem? item = await cartItemRepo.getByProductId(productId);
     currentProductQuantity.value = item?.quantity ?? 0;
   }
 }

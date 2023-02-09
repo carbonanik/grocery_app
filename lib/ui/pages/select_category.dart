@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/provider/product_provider.dart';
 
 import '../../core/queries.dart';
 import '../../model/category.dart';
@@ -34,39 +36,21 @@ class SelectCategory extends StatelessWidget {
               ],
             ),
           ),
-          Query(
-            options: QueryOptions(
-              document: gql(Queries.getAllCategories()), // this is the query string you just created
-              fetchPolicy: FetchPolicy.cacheAndNetwork,
-              // pollInterval: const Duration(seconds: 10),
-            ),
+          Consumer(builder: (context, ref, child) {
+            final asyncValue = ref.watch(getCategoriesProvider);
 
-            builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}) {
-              if (result.hasException) {
-                return Text(result.exception.toString());
-              }
-
-              if (result.isLoading) {
-                return const Text('Loading');
-              }
-
-              List? categoryJson = result.data?['category'];
-
-              if (categoryJson == null || categoryJson.isEmpty) {
-                return const Text('No repositories');
-              }
-
-              List<Category> categoryList = categoryJson.map((e) => Category.fromJson(e)).toList();
-
-              return  Expanded(
+            return asyncValue.map(
+              data: (data) => Expanded(
                   child: ListView.builder(
-                      itemCount: categoryList.length,
+                      itemCount: data.value.length,
                       itemBuilder: (context, index) {
-                        final category = categoryList[index];
+                        final category = data.value[index];
                         return CategoryItem(category: category);
-                      }));
-            },
-          )
+                      })),
+              error: (error) => Container(),
+              loading: (loading) => const CircularProgressIndicator(),
+            );
+          })
         ],
       ),
     );

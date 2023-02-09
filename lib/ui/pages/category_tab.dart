@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/provider/product_provider.dart';
 
-import '../../core/queries.dart';
 import '../../main.dart';
-import '../../model/category.dart';
 import '../../util/dimension.dart';
 import '../widget/side_tab.dart';
 import 'category_product_list.dart';
@@ -33,46 +32,24 @@ class CategoryTab extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: SafeArea(
-        child: Container(
-          child: Query(
-            options: QueryOptions(
-              document: gql(Queries.getAllCategories()), // this is the query string you just created
-              fetchPolicy: FetchPolicy.cacheAndNetwork,
+      body: SafeArea(child: Consumer(builder: (context, ref, child) {
+        final asyncValue = ref.watch(getCategoriesProvider);
+
+        return asyncValue.map(
+          data: (data) => SideTab(
+            backgroundColor: backgroundColor,
+            tabList: data.value.map((e) => Tab(text: e.name)).toList(),
+            tabViewList: data.value.map((e) => //Container()
+                CategoryProductList(selectedCategoryId: e.id)).toList(),
+            preSelectedTab: 0,
+            leading: CircleAvatar(
+              backgroundColor: greenColor,
             ),
-            builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}) {
-              if (result.hasException) {
-                return Text(result.exception.toString());
-              }
-
-              if (result.isLoading) {
-                return const Text('Loading');
-              }
-
-              List? categoryJson = result.data?['category'];
-
-              if (categoryJson == null || categoryJson.isEmpty) {
-                return const Text('No repositories');
-              }
-
-              List<Category> categoryList = categoryJson.map((e) => Category.fromJson(e)).toList();
-
-              return SideTab(
-                backgroundColor: backgroundColor,
-                tabList: categoryList.map((e) => Tab(text: e.name)).toList(),
-                tabViewList: categoryList.map((e) => CategoryProductList(selectedCategoryId: e.id)).toList(),
-                preSelectedTab: preSelectedTab,
-                leading: Container(
-                  height: Dimension.height(40),
-                  width: Dimension.width(40),
-                  margin: EdgeInsets.only(top: Dimension.height(40), bottom: Dimension.height(10)),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimension.width(25)), color: greenColor),
-                ),
-              );
-            },
           ),
-        ),
-      ),
+          error: (error) => Text(error.error.toString()),
+          loading: (loading) => const CircularProgressIndicator(),
+        );
+      })),
     );
   }
 }

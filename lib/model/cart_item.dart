@@ -1,6 +1,7 @@
 
 class CartItem {
   final int? id;
+  final int cartId;
   final int quantity;
   final String addedTime;
   final int productId;
@@ -11,6 +12,7 @@ class CartItem {
 
   CartItem({
     this.id,
+    required this.cartId,
     required this.quantity,
     required this.addedTime,
     required this.productId,
@@ -22,6 +24,7 @@ class CartItem {
 
   CartItem copyWith({
     int? id,
+    int? cartId,
     int? quantity,
     String? addedTime,
     int? productId,
@@ -32,6 +35,7 @@ class CartItem {
   }) {
     return CartItem(
       id: id ?? this.id,
+      cartId: cartId ?? this.cartId,
       quantity: quantity ?? this.quantity,
       addedTime: addedTime ?? this.addedTime,
       productId: productId ?? this.productId,
@@ -44,27 +48,29 @@ class CartItem {
 
   factory CartItem.fromJson(Map<String, dynamic> json) {
     return CartItem(
-      id: json['_id'],
-      quantity: json['quantity'],
-      addedTime: json['addedTime'],
-      productId: json['productId'],
-      price: json['price'].toDouble(),
-      name: json['name'],
-      image: json['image'],
-      weight: json['weight'],
+      id: json[CartItemFields.id],
+      cartId: json[CartItemFields.cartId],
+      quantity: json[CartItemFields.quantity],
+      addedTime: json[CartItemFields.addedTime],
+      productId: json[CartItemFields.productId],
+      price: json[CartItemFields.price],
+      name: json[CartItemFields.name],
+      image: json[CartItemFields.image],
+      weight: json[CartItemFields.weight],
     );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['_id'] = id;
-    data['quantity'] = quantity;
-    data['addedTime'] = addedTime;
-    data['productId'] = productId;
-    data['price'] = price;
-    data['name'] = name;
-    data['image'] = image;
-    data['weight'] = weight;
+    data[CartItemFields.id] = id;
+    data[CartItemFields.cartId] = cartId;
+    data[CartItemFields.quantity] = quantity;
+    data[CartItemFields.addedTime] = addedTime;
+    data[CartItemFields.productId] = productId;
+    data[CartItemFields.price] = price;
+    data[CartItemFields.name] = name;
+    data[CartItemFields.image] = image;
+    data[CartItemFields.weight] = weight;
 
     return data;
   }
@@ -75,17 +81,19 @@ const String cartItemTable = 'cart_item';
 class CartItemFields {
 
   static const values = [
-    CartItemFields.id,
-    CartItemFields.quantity,
-    CartItemFields.productId,
-    CartItemFields.addedTime,
-    CartItemFields.price,
-    CartItemFields.name,
-    CartItemFields.image,
-    CartItemFields.weight,
+    id,
+    cartId, 
+    quantity,
+    productId,
+    addedTime,
+    price,
+    name,
+    image,
+    weight,
   ];
 
   static const String id = '_id';
+  static const String cartId = 'cart_id';
   static const String quantity = 'quantity';
   static const String productId = 'productId';
   static const String addedTime = 'addedTime';

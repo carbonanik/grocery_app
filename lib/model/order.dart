@@ -1,4 +1,4 @@
-import 'package:instant_grrocery_delivery/model/order_item.dart';
+import 'order_item.dart';
 
 import 'coupon.dart';
 

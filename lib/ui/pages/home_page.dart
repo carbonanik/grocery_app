@@ -1,17 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
-import 'package:instant_grrocery_delivery/model/category.dart';
-import 'package:instant_grrocery_delivery/model/product.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
+import 'package:instant_grrocery_delivery/ui/pages/home_category.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-import '../../controller/cart_database_controller.dart';
-import '../../core/queries.dart';
-import '../../di/locator.dart';
+import '../../model/product.dart';
+import '../../provider/product_provider.dart';
 import '../widget/product_item.dart';
 import 'my_action_button.dart';
 
@@ -19,7 +15,9 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     List<String> featuredImages = [
       'https://res.cloudinary.com/carbon-dev/image/upload/v1658207526/samples/food/spices.jpg',
       'https://res.cloudinary.com/carbon-dev/image/upload/v1658207539/cld-sample-4.jpg',
@@ -27,339 +25,247 @@ class HomePage extends StatelessWidget {
       'https://res.cloudinary.com/carbon-dev/image/upload/v1658207518/samples/food/pot-mussels.jpg',
     ];
 
-    final CartDatabaseController cartDatabaseController = locator.get();
-
     return Scaffold(
-      floatingActionButton: Obx(() {
-        return MyActionButton(count: cartDatabaseController.totalQuantity.value);
-      }),
+      floatingActionButton: MyActionButton(
+        // count: cartDatabaseController.totalQuantity.value,
+        count: 0,
+      ),
       body: Container(
         color: backgroundColor,
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            /// basic sliver app bar
-            // SliverAppBar(
-            //   pinned: true,
-            //   expandedHeight: 300,
-            //   flexibleSpace: FlexibleSpaceBar(
-            //     title: Text('Amazon sparklers'),
-            //     background: Image.asset('assets/images/77-775114_delivery-man-clipart-png-moto-delivery-png-vector.png',
-            //     width: double.maxFinite,
-            //     fit: BoxFit.cover,),
-            //   ),
-            // ),
-
-            /// custom sliver app bar
-            // SliverPersistentHeader(
-            //   pinned: true,
-            //   floating: false,
-            //   delegate: CustomSilverHeaderDelegate(100, 250),
-            // ),
-
             /// top selector
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.only(left: Dimension.width(20), right: Dimension.width(20), top: Dimension.height(30)),
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Amazon sparklers',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: Dimension.width(20), color: Colors.black),
-                            ),
-                            const Icon(Icons.arrow_drop_down)
-                          ],
-                        ),
-                        SizedBox(height: Dimension.height(8)),
-                        Text('Terminal 3 potter road new york', style: TextStyle(fontSize: Dimension.width(16), color: Colors.grey)),
-                      ],
-                    ),
-                    const Spacer(),
-                    Icon(
-                      Icons.wallet,
-                      size: Dimension.width(45),
-                      color: greenColor,
-                    )
-                  ],
-                ),
-              ),
-            ),
-
-            SliverToBoxAdapter(
-              child: SizedBox(height: Dimension.height(30)),
-            ),
+            _buildHeader(),
+            _space(),
 
             /// image gallery
-            SliverToBoxAdapter(
-              child: Container(
-                // padding: EdgeInsets.symmetric(horizontal: Dimension.height(20)),
-                height: Dimension.height(150),
-                width: Dimension.width(300),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimension.height(12)),
-                ),
-                child: PageView.builder(
-                    itemCount: featuredImages.length,
-                    // controller: PageController(viewportFraction: .85),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        padding: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
-                        margin: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: index.isOdd ? Colors.lightGreen.shade200 : Colors.green.shade200,
-                          image: DecorationImage(
-                            image: NetworkImage(featuredImages[index]),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      );
-                    }),
-              ),
-            ),
-
-            SliverToBoxAdapter(
-              child: SizedBox(height: Dimension.height(40)),
-            ),
+            _buildImageGallery(featuredImages),
+            _space(height: 40),
 
             /// search box
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimension.height(12)),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintText: 'Search',
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: greenColor,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimension.height(10)),
-                          borderSide: const BorderSide(width: 1.0, color: Colors.green)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimension.height(10)),
-                          borderSide: const BorderSide(width: 1.0, color: Colors.white)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(Dimension.height(20)),
-                      )),
-                ),
-              ),
-            ),
+            _buildSearchBox(),
+            _space(),
 
-            SliverToBoxAdapter(
-              child: SizedBox(height: Dimension.height(30)),
-            ),
+            /// Category Text
+            _buildSectionHeader('Category'),
 
             /// category list
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                height: 180,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimension.height(12)),
-                  // color: Colors.green,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Category',
-                      style: TextStyle(
-                        fontSize: Dimension.height(20),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: Dimension.height(20)),
-                    Query(
-                      options: QueryOptions(
-                        document: gql(Queries.getAllCategories()), // this is the query string you just created
-                        fetchPolicy: FetchPolicy.cacheAndNetwork,
-                        // pollInterval: const Duration(seconds: 10),
-                      ),
-                      builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}) {
-                        if (result.hasException) {
-                          return Text(result.exception.toString());
-                        }
-
-                        if (result.isLoading) {
-                          return const Text('Loading');
-                        }
-
-                        var categoryJson = result.data?['category'];
-
-                        if (categoryJson == null) {
-                          return const Center(
-                              child: Text(
-                            'No Product Found',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.redAccent,
-                            ),
-                          ));
-                        }
-
-                        List<Category> categoryList = categoryJson.map<Category>((json) => Category.fromJson(json)).toList();
-
-                        return Expanded(
-                          child: GridView.count(
-                            crossAxisCount: 2,
-                            scrollDirection: Axis.horizontal,
-                            mainAxisSpacing: Dimension.width(10),
-                            crossAxisSpacing: Dimension.height(10),
-                            childAspectRatio: .4,
-                            children: List.generate(categoryList.length, (index) {
-                              final category = categoryList[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(RouteHelper.getCategoryTab());
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.only(left: 2, right: 10, top: 3, bottom: 3),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(6),
-                                    color: Colors.white,
-                                  ),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                          padding: EdgeInsets.all(Dimension.width(4)),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(Dimension.height(5)),
-                                            child: Image.network(
-                                              category.image,
-                                              fit: BoxFit.cover,
-                                              height: Dimension.width(50),
-                                              width: Dimension.width(50),
-                                            ),
-                                          )),
-                                      SizedBox(
-                                        width: Dimension.width(5),
-                                      ),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            category.name.split(' ').first,
-                                            style: TextStyle(
-                                                fontWeight: index.isOdd ? FontWeight.w800 : FontWeight.w400,
-                                                fontSize: index.isOdd ? 13 : 14),
-                                          ),
-                                          const SizedBox(
-                                            height: 3,
-                                          ),
-                                          Text(
-                                            category.name.split(' ').last,
-                                            style: TextStyle(
-                                                fontWeight: index.isEven ? FontWeight.w800 : FontWeight.w400,
-                                                fontSize: index.isEven ? 13 : 14),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
-                        );
-                      },
-                    )
-                  ],
-                ),
-              ),
-            ),
-
-            SliverToBoxAdapter(
-              child: SizedBox(height: Dimension.height(30)),
-            ),
+            _buildCategoryList(),
+            _space(),
 
             /// popular text
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimension.height(12)),
-                  // color: Colors.green,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Popular',
-                      style: TextStyle(
-                        fontSize: Dimension.height(20),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: Dimension.height(20),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            _buildSectionHeader('Popular'),
 
             /// popular list
-            Query(
-                options: QueryOptions(
-                  document: gql(Queries.getAllProducts()), // this is the query string you just created
-                  fetchPolicy: FetchPolicy.cacheAndNetwork,
-                  // pollInterval: const Duration(seconds: 10),
-                ),
-                builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}) {
-                  if (result.hasException) {
-                    return SliverToBoxAdapter(child: Text(result.exception.toString()));
-                  }
+            _buildProductGrid(),
+            _space()
+          ],
+        ),
+      ),
+    );
+  }
 
-                  if (result.isLoading) {
-                    return const SliverToBoxAdapter(child: Text('Loading'));
-                  }
+  SliverToBoxAdapter _buildCategoryList() {
+    return SliverToBoxAdapter(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+        height: 140,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimension.height(12)),
+          // color: Colors.green,
+        ),
+        child: Consumer(builder: (context, ref, child) {
+          final responseAsyncValue = ref.watch(getCategoriesProvider);
+          return responseAsyncValue.map(
+              data: (_) => GridView.count(
+                    crossAxisCount: 2,
+                    scrollDirection: Axis.horizontal,
+                    mainAxisSpacing: Dimension.width(10),
+                    crossAxisSpacing: Dimension.height(10),
+                    childAspectRatio: .4,
+                    children: List.generate(_.value.length, (index) {
+                      final category = _.value[index];
+                      return HomeCategory(
+                        category: category,
+                        index: index,
+                      );
+                    }),
+                  ),
+              error: (_) => Text(_.error.toString()),
+              loading: (_) => const Center(child: CircularProgressIndicator()));
+        }),
+      ),
+    );
+  }
 
-                  List? productJson = result.data?['product'];
-
-                  if (productJson == null || productJson.isEmpty) {
-                    return const SliverToBoxAdapter(child: Text('No repositories'));
-                  }
-
-                  List<Product> productList = productJson.map((e) => Product.fromJson(e)).toList();
-
-                  return SliverPadding(
-                    padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                    sliver: SliverGrid.count(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: Dimension.width(20),
-                      crossAxisSpacing: Dimension.width(20),
-                      childAspectRatio: .699,
-                      children: List.generate(productList.length, (index) {
-                        final item = productList[index];
-                        return ProductItem(
-                          cartDatabaseController: cartDatabaseController,
-                          product: item,
-                        );
-                      }),
-                    ),
-                  );
-                }),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: Dimension.height(30),
+  SliverToBoxAdapter _buildSearchBox() {
+    return SliverToBoxAdapter(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimension.height(12)),
+        ),
+        child: TextField(
+          decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              hintText: 'Search',
+              prefixIcon: Icon(
+                Icons.search,
+                color: greenColor,
               ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(Dimension.height(10)),
+                  borderSide:
+                      const BorderSide(width: 1.0, color: Colors.green)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(Dimension.height(10)),
+                  borderSide:
+                      const BorderSide(width: 1.0, color: Colors.white)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Dimension.height(20)),
+              )),
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildImageGallery(List<String> featuredImages) {
+    return SliverToBoxAdapter(
+      child: Container(
+        // padding: EdgeInsets.symmetric(horizontal: Dimension.height(20)),
+        height: Dimension.height(150),
+        width: Dimension.width(300),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimension.height(12)),
+        ),
+        child: PageView.builder(
+            itemCount: featuredImages.length,
+            // controller: PageController(viewportFraction: .85),
+            itemBuilder: (context, index) {
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
+                margin: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: index.isOdd
+                      ? Colors.lightGreen.shade200
+                      : Colors.green.shade200,
+                  image: DecorationImage(
+                    image: NetworkImage(featuredImages[index]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              );
+            }),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildHeader() {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.only(
+            left: Dimension.width(20),
+            right: Dimension.width(20),
+            top: Dimension.height(30)),
+        child: Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Amazon sparklers',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: Dimension.width(20),
+                          color: Colors.black),
+                    ),
+                    const Icon(Icons.arrow_drop_down)
+                  ],
+                ),
+                SizedBox(height: Dimension.height(8)),
+                Text('Terminal 3 potter road new york',
+                    style: TextStyle(
+                        fontSize: Dimension.width(16), color: Colors.grey)),
+              ],
+            ),
+            const Spacer(),
+            Icon(
+              Icons.wallet,
+              size: Dimension.width(45),
+              color: greenColor,
             )
           ],
         ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _space({double height = 30}) {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: Dimension.height(height),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildSectionHeader(String text) {
+    return SliverToBoxAdapter(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimension.height(12)),
+          // color: Colors.green,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: Dimension.height(20),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: Dimension.height(20),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  SliverPadding _buildProductGrid() {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+      sliver: Consumer(
+        builder: (context, ref, child) {
+          final responseAsyncValue = ref.watch(getProductsProvider);
+          return responseAsyncValue.map(
+            data: (_) => SliverGrid.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: Dimension.width(20),
+              crossAxisSpacing: Dimension.width(20),
+              childAspectRatio: .699,
+              children: List.generate(_.value.length, (index) {
+                final Product item = _.value[index];
+                return ProductItem(
+                  // cartDatabaseController: cartDatabaseController,
+                  product: item,
+                );
+              }),
+            ),
+            error: (_) => SliverToBoxAdapter(child: Text(_.error.toString())),
+            loading: (_) => const SliverToBoxAdapter(
+              child: Center(child: CircularProgressIndicator()),
+            ),
+          );
+        },
       ),
     );
   }
@@ -374,7 +280,8 @@ class CustomSilverHeaderDelegate extends SliverPersistentHeaderDelegate {
   CustomSilverHeaderDelegate(this.minExtent, this.maxExtent);
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Stack(
       fit: StackFit.expand,
       children: [

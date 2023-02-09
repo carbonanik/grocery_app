@@ -6,9 +6,9 @@ import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 import 'side_tab_item.dart';
 
-
 class SideTab extends StatefulWidget {
-  const SideTab({Key? key,
+  const SideTab({
+    Key? key,
     required this.backgroundColor,
     required this.tabList,
     required this.tabViewList,
@@ -26,11 +26,30 @@ class SideTab extends StatefulWidget {
   State<SideTab> createState() => _SideTabState();
 }
 
-class _SideTabState extends State<SideTab> with TickerProviderStateMixin{
+class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
+  late List<GlobalKey> _tabKeys;
+  late List<Widget> _tabs;
+
+  @override
+  void initState() {
+    _tabKeys = widget.tabList.map((Widget tab) => GlobalKey()).toList();
+    _tabs = widget.tabList.asMap().entries.map((entity) {
+      int ind = entity.key;
+      Widget tab = entity.value;
+      return RotatedBox(
+        key: _tabKeys[ind],
+        quarterTurns: 2,
+        child: tab,
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(length: widget.tabList.length, vsync: this, initialIndex: widget.preSelectedTab);
+    TabController tabController = TabController(
+        length: widget.tabList.length,
+        vsync: this,
+        initialIndex: widget.preSelectedTab);
 
     return Row(
       children: [
@@ -39,31 +58,40 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin{
           child: Column(
             children: [
               Container(
-                height: Dimension.height(40),
-                width: Dimension.width(40),
-                margin: EdgeInsets.only(top: Dimension.height(40), bottom: Dimension.height(10)),
+                margin: EdgeInsets.only(
+                    top: Dimension.height(40), bottom: Dimension.height(10)),
                 child: widget.leading,
               ),
               Container(
-                height: Dimension.screenHeight - Dimension.height(130),
-                width: Dimension.width(60),
+                // height: Dimension.screenHeight - Dimension.height(130),
+                // width: Dimension.width(60),
                 color: Colors.white,
-                child: RotatedBox(
-                  quarterTurns: 1,
-                  child: TabBar(
-                    labelStyle: TextStyle(fontSize: Dimension.width(14), fontWeight: FontWeight.bold),
-                    labelColor: greenColor,
-                    controller: tabController,
-                    unselectedLabelColor: Colors.black,
-                    padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-                    isScrollable: true,
-                    indicator: TriangleTabIndicator(color: widget.backgroundColor),
-                    tabs: widget.tabList.map((e) {
-                      return RotatedBox(
-                        quarterTurns: 2,
-                        child: e,
-                      );
-                    }).toList()
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 140,
+                  child: RotatedBox(
+                    quarterTurns: 1,
+                    child: TabBar(
+                      physics: BouncingScrollPhysics(),
+                      labelStyle: TextStyle(
+                          fontSize: Dimension.width(14),
+                          fontWeight: FontWeight.bold),
+                      labelColor: greenColor,
+                      controller: tabController,
+                      unselectedLabelColor: Colors.black54,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                      isScrollable: true,
+                      indicator:
+                          TriangleTabIndicator(color: widget.backgroundColor),
+                      // indicatorSize: TabBarIndicatorSize.label,
+                      tabs: _tabs,
+                      // widget.tabList.map((tab) {
+                      //   return RotatedBox(
+                      //     quarterTurns: 2,
+                      //     child: tab,
+                      //   );
+                      // }).toList()
+                    ),
                   ),
                 ),
               ),
@@ -72,9 +100,7 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin{
         ),
         Expanded(
           child: TabBarView(
-            controller: tabController,
-            children: widget.tabViewList
-          ),
+              controller: tabController, children: widget.tabViewList),
         )
       ],
     );

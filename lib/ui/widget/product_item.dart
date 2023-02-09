@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controller/cart_database_controller.dart';
 import '../../main.dart';
 import '../../model/product.dart';
 import '../../route/route_helper.dart';
@@ -11,30 +10,38 @@ class ProductItem extends StatelessWidget {
   const ProductItem({
     Key? key,
     required this.product,
-    required this.cartDatabaseController,
+    // required this.cartDatabaseController,
     this.heroPrefix = 0,
     this.onReturn,
   }) : super(key: key);
 
   final Product product;
-  final CartDatabaseController cartDatabaseController;
+
+  // final CartDatabaseController cartDatabaseController;
   final int heroPrefix;
   final VoidCallback? onReturn;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(RouteHelper.getProductDetail(product.id, heroPrefix))?.then((value) => onReturn?.call()),
+      onTap: () =>
+          Get.toNamed(RouteHelper.getProductDetail(product.id, heroPrefix))
+              ?.then((value) => onReturn?.call()),
       child: Container(
         width: Dimension.width(150),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(Dimension.width(13))),
-        padding: EdgeInsets.symmetric(horizontal: Dimension.width(15), vertical: Dimension.width(15)),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(Dimension.width(13))),
+        padding: EdgeInsets.symmetric(
+            horizontal: Dimension.width(15), vertical: Dimension.width(15)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               product.name,
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimension.width(15)), // height
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: Dimension.width(15)), // height
             ),
             Center(
                 child: Padding(
@@ -42,7 +49,7 @@ class ProductItem extends StatelessWidget {
               child: Hero(
                 tag: '${heroPrefix}product_image${product.id}',
                 child: Image.network(
-                  product.image,
+                  "$basePhotoUrl${product.image}",
                   height: Dimension.width(110),
                 ),
               ),
@@ -54,14 +61,17 @@ class ProductItem extends StatelessWidget {
                   children: [
                     Text(
                       product.weight,
-                      style: const TextStyle(fontWeight: FontWeight.w300, color: Colors.grey),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w300, color: Colors.grey),
                     ),
                     SizedBox(
                       height: Dimension.width(2),
                     ),
                     Text(
                       "\$${product.price}",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: Dimension.width(18)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: Dimension.width(18)),
                     )
                   ],
                 ),
@@ -75,10 +85,12 @@ class ProductItem extends StatelessWidget {
                         width: Dimension.width(40),
                         decoration: BoxDecoration(
                           color: greenColor,
-                          borderRadius: BorderRadius.circular(Dimension.width(10)),
+                          borderRadius:
+                              BorderRadius.circular(Dimension.width(10)),
                         ),
                         child: IconButton(
-                            onPressed: () => cartDatabaseController.addOrIncreaseProductCard(product),
+                            onPressed: () => {},
+                            //cartDatabaseController.addOrIncreaseProductCard(product, 1), // todo add real cart id
                             icon: Icon(
                               // quantity == 0 ? Icons.add : Icons.remove,
                               Icons.add,

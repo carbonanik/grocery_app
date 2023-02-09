@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
@@ -16,7 +17,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Get.toNamed(RouteHelper.getCategoryTab());
         print('category tab');
       },
@@ -35,7 +36,7 @@ class CategoryItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(Dimension.width(8)),
                 child: Image.network(
-                  category.image,
+                  basePhotoUrl + category.image,
                   fit: BoxFit.cover,
                   height: Dimension.width(40),
                   width: Dimension.width(40),

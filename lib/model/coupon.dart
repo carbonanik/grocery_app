@@ -19,7 +19,7 @@ class Coupon {
 
   factory Coupon.fromJson(Map<String, dynamic> json) {
     return Coupon(
-      id: json['_id'],
+      id: json['id'],
       title: json['title'],
       description: json['description'],
       code: json['code'],
@@ -31,7 +31,7 @@ class Coupon {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['_id'] = id;
+    data['id'] = id;
     data['title'] = title;
     data['description'] = description;
     data['code'] = code;
@@ -40,16 +40,4 @@ class Coupon {
     data['status'] = status;
     return data;
   }
-}
-
-const String couponTable = "coupon";
-
-class CouponFields {
-  static const id = "_id";
-  static const title = "title";
-  static const description = "description";
-  static const code = "code";
-  static const discount = "discount";
-  static const fixed = "fixed";
-  static const status = "status";
 }

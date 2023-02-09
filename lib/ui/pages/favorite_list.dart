@@ -15,7 +15,6 @@ class FavoriteList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final favouriteController = locator.get<FavouriteController>();
     final cartDatabaseController = locator.get<CartDatabaseController>();
 
@@ -33,14 +32,16 @@ class FavoriteList extends StatelessWidget {
             /// popular list
             Query(
               options: QueryOptions(
-                document: gql(Queries.getProductByIds(favouriteController.getFavouriteList())),
+                document: gql(Queries.getProductByIds(
+                    favouriteController.getFavouriteList())),
                 fetchPolicy: FetchPolicy.cacheAndNetwork,
                 // pollInterval: const Duration(seconds: 10),
               ),
-              builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}){
-
+              builder: (QueryResult result,
+                  {VoidCallback? refetch, FetchMore? fetchMore}) {
                 if (result.hasException) {
-                  return SliverToBoxAdapter(child: Text(result.exception.toString()));
+                  return SliverToBoxAdapter(
+                      child: Text(result.exception.toString()));
                 }
 
                 if (result.isLoading) {
@@ -50,13 +51,16 @@ class FavoriteList extends StatelessWidget {
                 List? productJson = result.data?['product'];
 
                 if (productJson == null || productJson.isEmpty) {
-                  return const SliverToBoxAdapter(child: Text('No repositories'));
+                  return const SliverToBoxAdapter(
+                      child: Text('No repositories'));
                 }
 
-                List<Product> productList = productJson.map((e) => Product.fromJson(e)).toList();
+                List<Product> productList =
+                    productJson.map((e) => Product.fromJson(e)).toList();
 
                 return SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: Dimension.width(20)),
                   sliver: SliverGrid.count(
                     crossAxisCount: 2,
                     mainAxisSpacing: Dimension.height(10),
@@ -64,7 +68,10 @@ class FavoriteList extends StatelessWidget {
                     childAspectRatio: .70,
                     children: List.generate(productList.length, (index) {
                       final item = productList[index];
-                      return ProductItem(product: item, cartDatabaseController: cartDatabaseController,);
+                      return ProductItem(
+                        product: item,
+                        // cartDatabaseController: cartDatabaseController,
+                      );
                     }),
                   ),
                 );

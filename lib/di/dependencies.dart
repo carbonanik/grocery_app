@@ -7,13 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data_source/db/cart_database.dart';
 import '../core/graph_api_client.dart';
 
-Future<void> init() async {
-  final sharedPreference = await SharedPreferences.getInstance();
-  Get.lazyPut(() => sharedPreference);
-
-  Get.lazyPut(() => GraphQLService());
-  Get.lazyPut(() => FavouritePreference(sharedPreferences: Get.find()));
-
-  Get.lazyPut(() => CartDatabaseController(cartDatabase: CartDatabase.instance));
-  Get.lazyPut(() => FavouriteController(favouritePreference: Get.find()));
-}
+// Future<void> init() async {
+//   final sharedPreference = await SharedPreferences.getInstance();
+//   Get.lazyPut(() => sharedPreference);
+//
+//   Get.lazyPut(() => GraphQLService());
+//   Get.lazyPut(() => FavouritePreference(sharedPreferences: Get.find()));
+//
+//   Get.lazyPut(() => CartDatabaseController(cartItemRepo: CartDatabase.instance));
+//   Get.lazyPut(() => FavouriteController(favouritePreference: Get.find()));
+// }
