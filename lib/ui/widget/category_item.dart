@@ -18,7 +18,8 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(RouteHelper.getCategoryTab());
+        Get.toNamed(
+            RouteHelper.getCategoryTab(selectedCategoryId: category.id));
         print('category tab');
       },
       child: Container(
@@ -36,10 +37,12 @@ class CategoryItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(Dimension.width(8)),
                 child: Image.network(
-                  basePhotoUrl + category.image,
+                  baseImageUrl + category.image,
                   fit: BoxFit.cover,
                   height: Dimension.width(40),
                   width: Dimension.width(40),
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.image),
                 ),
               ),
             ),

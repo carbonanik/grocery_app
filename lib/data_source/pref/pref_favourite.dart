@@ -1,53 +1,51 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-const String FAVOURITE_KEY = "favourite";
+const String FAVORITE_KEY = "favorite";
 
-class FavouritePreference {
+class FavoritePreference {
   final SharedPreferences sharedPreferences;
 
-  FavouritePreference({required this.sharedPreferences});
+  FavoritePreference({required this.sharedPreferences});
 
-
-  void addToFavourite(int item){
-    List<String> favourites = [];
-    if(sharedPreferences.containsKey(FAVOURITE_KEY)){
-      favourites = sharedPreferences.getStringList(FAVOURITE_KEY)!;
+  void addToFavorite(int item) {
+    List<String> favorites = [];
+    if (sharedPreferences.containsKey(FAVORITE_KEY)) {
+      favorites = sharedPreferences.getStringList(FAVORITE_KEY)!;
     }
-    favourites.add(item.toString());
-    sharedPreferences.setStringList(FAVOURITE_KEY, favourites);
+    favorites.add(item.toString());
+    sharedPreferences.setStringList(FAVORITE_KEY, favorites);
   }
 
-  void removeFromFavourite(int item){
-    List<String> favourites = [];
-    if(sharedPreferences.containsKey(FAVOURITE_KEY)){
-      favourites = sharedPreferences.getStringList(FAVOURITE_KEY)!;
+  void removeFromFavorite(int item) {
+    List<String> favorites = [];
+    if (sharedPreferences.containsKey(FAVORITE_KEY)) {
+      favorites = sharedPreferences.getStringList(FAVORITE_KEY)!;
     }
-    favourites.remove(item.toString());
-    sharedPreferences.setStringList(FAVOURITE_KEY, favourites);
+    favorites.remove(item.toString());
+    sharedPreferences.setStringList(FAVORITE_KEY, favorites);
   }
 
-  void toggleFavourite(int item){
-    if(isFavourite(item)){
-      removeFromFavourite(item);
-    }else{
-      addToFavourite(item);
+  void toggleFavorite(int item) {
+    if (isFavorite(item)) {
+      removeFromFavorite(item);
+    } else {
+      addToFavorite(item);
     }
   }
 
-  List<int> getFavouriteList(){
-    List<String> favourites = [];
-    if(sharedPreferences.containsKey(FAVOURITE_KEY)){
-      favourites = sharedPreferences.getStringList(FAVOURITE_KEY)!;
+  List<int> getFavoriteList() {
+    List<String> favorites = [];
+    if (sharedPreferences.containsKey(FAVORITE_KEY)) {
+      favorites = sharedPreferences.getStringList(FAVORITE_KEY)!;
     }
-    return favourites.map((e) => int.parse(e)).toList();
+    return favorites.map((e) => int.parse(e)).toList();
   }
 
-  bool isFavourite(int item){
-    List<String> favourites = [];
-    if(sharedPreferences.containsKey(FAVOURITE_KEY)){
-      favourites = sharedPreferences.getStringList(FAVOURITE_KEY)!;
+  bool isFavorite(int item) {
+    List<String> favorites = [];
+    if (sharedPreferences.containsKey(FAVORITE_KEY)) {
+      favorites = sharedPreferences.getStringList(FAVORITE_KEY)!;
     }
-    return favourites.contains(item.toString());
+    return favorites.contains(item.toString());
   }
-
 }

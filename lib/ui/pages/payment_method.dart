@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/di/locator.dart';
 
+import '../../provider/cart_provider.dart';
 import '../../util/dimension.dart';
 import '../../controller/cart_database_controller.dart';
 import '../../main.dart';
@@ -11,7 +13,7 @@ import '../widget/payment_method_item.dart';
 class PaymentMethod extends StatelessWidget {
   PaymentMethod({Key? key}) : super(key: key);
 
-  final CartDatabaseController cartDatabaseController = locator.get();
+  // final CartDatabaseController cartDatabaseController = locator.get();
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +36,17 @@ class PaymentMethod extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       )),
                   const Spacer(),
-                  Obx(
-                     () {
-                      return Text('\$${cartDatabaseController.totalPrice}',
-                          style: TextStyle(
-                            fontSize: Dimension.width(16),
-                            fontWeight: FontWeight.w600,
-                            color: greenColor,
-                          ));
-                    }
-                  ),
+                  Consumer(builder: (context, ref, child) {
+                    final cartDataModel = ref.watch(cartListProductsProvider);
+                    return Text(
+                      '\$${cartDataModel.cartPrice()}',
+                      style: TextStyle(
+                        fontSize: Dimension.width(16),
+                        fontWeight: FontWeight.w600,
+                        color: greenColor,
+                      ),
+                    );
+                  }),
                 ],
               ),
             ),

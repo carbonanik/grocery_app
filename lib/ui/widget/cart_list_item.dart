@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-import '../../model/cart_item.dart';
+import '../../provider/cart_provider.dart';
 import 'cart_add_remove.dart';
 
 class CartListItem extends StatelessWidget {
@@ -31,8 +32,10 @@ class CartListItem extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            item.image,
+            baseImageUrl + item.product.image,
             height: Dimension.height(50),
+            errorBuilder: (context, error, stackTrace) =>
+                const Icon(Icons.image),
           ),
           SizedBox(
             width: Dimension.width(20),
@@ -41,8 +44,9 @@ class CartListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                item.name,
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimension.width(14)),
+                item.product.name,
+                style: TextStyle(
+                    fontWeight: FontWeight.w500, fontSize: Dimension.width(14)),
               ),
               SizedBox(
                 height: Dimension.height(10),
@@ -53,20 +57,25 @@ class CartListItem extends StatelessWidget {
                   SizedBox(
                     width: Dimension.width(100),
                     child: Text(
-                      item.weight,
-                      style: TextStyle(fontWeight: FontWeight.w400, color: Colors.grey, fontSize: Dimension.width(13)),
+                      item.product.weight,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey,
+                          fontSize: Dimension.width(13)),
                     ),
                   ),
                   CartAddRemove(
-                    quantity: item.quantity,
+                    quantity: item.count,
                     onAdd: onAdd,
                     onRemove: onRemove,
                   ),
                   SizedBox(
                     width: Dimension.width(90),
                     child: Text(
-                      '\$${(item.price * item.quantity).toStringAsFixed(2)}',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: Dimension.width(16)),
+                      '\$${(item.product.price * item.count).toStringAsFixed(2)}',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: Dimension.width(16)),
                       textAlign: TextAlign.right,
                     ),
                   ),

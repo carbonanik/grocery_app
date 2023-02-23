@@ -12,7 +12,7 @@ import '../core/graph_api_client.dart';
 final locator = GetIt.instance;
 
 void setup() async {
-  locator.registerLazySingleton(() => GraphQLService());
+  // locator.registerLazySingleton(() => GraphQLService());
   locator.registerLazySingleton<CartDatabase>(() => CartDatabase.instance);
 
   locator.registerSingletonAsync<SharedPreferences>(() async {
@@ -20,7 +20,7 @@ void setup() async {
   }, signalsReady: false);
 
   locator.registerLazySingleton(
-      () => FavouritePreference(sharedPreferences: locator.get()));
+      () => FavoritePreference(sharedPreferences: locator.get()));
 
   locator.registerLazySingleton(() => CartRepo(cartDatabase: locator.get()));
   locator
@@ -29,5 +29,5 @@ void setup() async {
   locator.registerLazySingleton(
       () => CartDatabaseController(cartItemRepo: locator.get()));
   locator.registerLazySingleton(
-      () => FavouriteController(favouritePreference: locator.get()));
+      () => FavoriteController(favoritePreference: locator.get()));
 }

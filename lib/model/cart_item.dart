@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 
+@immutable
 class CartItem {
   final int? id;
   final int cartId;
@@ -10,7 +12,7 @@ class CartItem {
   final String image;
   final String weight;
 
-  CartItem({
+  const CartItem({
     this.id,
     required this.cartId,
     required this.quantity,
@@ -79,10 +81,9 @@ class CartItem {
 const String cartItemTable = 'cart_item';
 
 class CartItemFields {
-
   static const values = [
     id,
-    cartId, 
+    cartId,
     quantity,
     productId,
     addedTime,

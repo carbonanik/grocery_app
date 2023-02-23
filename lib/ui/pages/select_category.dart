@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/product_provider.dart';
 
 import '../../core/queries.dart';
 import '../../model/category.dart';
+import '../../provider/category_provider.dart';
 import '../widget/category_item.dart';
 
 class SelectCategory extends StatelessWidget {

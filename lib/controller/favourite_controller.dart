@@ -2,36 +2,33 @@ import 'package:get/get.dart';
 
 import '../data_source/pref/pref_favourite.dart';
 
-class FavouriteController extends GetxController {
+class FavoriteController extends GetxController {
+  static const String FAVORITE_KEY = "favorite";
 
-  static const String FAVOURITE_KEY = "favourite";
+  final FavoritePreference favoritePreference;
 
-  final FavouritePreference favouritePreference;
+  FavoriteController({required this.favoritePreference});
 
-  FavouriteController({required this.favouritePreference});
+  final isFavorite = false.obs;
 
-  final isFavourite = false.obs;
-
-
-  void addToFavourite(int item){
-    favouritePreference.addToFavourite(item);
+  void addToFavorite(int item) {
+    favoritePreference.addToFavorite(item);
   }
 
-  void removeFromFavourite(int item){
-    favouritePreference.removeFromFavourite(item);
+  void removeFromFavorite(int item) {
+    favoritePreference.removeFromFavorite(item);
   }
 
-  void toggleFavourite(int item){
-    favouritePreference.toggleFavourite(item);
-    getIsFavourite(item);
+  void toggleFavorite(int item) {
+    favoritePreference.toggleFavorite(item);
+    getIsFavorite(item);
   }
 
-  List<int> getFavouriteList(){
-    return favouritePreference.getFavouriteList();
+  List<int> getFavoriteList() {
+    return favoritePreference.getFavoriteList();
   }
 
-  void getIsFavourite(int item){
-    isFavourite.value = favouritePreference.isFavourite(item);
+  void getIsFavorite(int item) {
+    isFavorite.value = favoritePreference.isFavorite(item);
   }
-
 }

@@ -14,14 +14,14 @@ class CartDatabaseController extends GetxController {
   final totalPrice = 0.0.obs;
   final totalQuantity = 0.obs;
 
-
   void addItemToCart(CartItem item) async {
     await cartItemRepo.insert(item);
     getCartList();
   }
 
   void calculateTotalPrice() {
-    totalPrice.value = cartList.fold(0.0, (acc, item) => acc + item.price * item.quantity);
+    totalPrice.value =
+        cartList.fold(0.0, (acc, item) => acc + item.price * item.quantity);
   }
 
   void calculateTotalQuantity() {
@@ -66,7 +66,8 @@ class CartDatabaseController extends GetxController {
 
   increaseQuantity(Product product, int cartId) async {
     currentProductQuantity.value = currentProductQuantity.value + 1;
-    currentProductQuantity.value = currentProductQuantity.value > 20 ? 20 : currentProductQuantity.value;
+    currentProductQuantity.value =
+        currentProductQuantity.value > 20 ? 20 : currentProductQuantity.value;
 
     CartItem? item = await getByProductId(product.id);
     if (item == null) {
@@ -78,7 +79,6 @@ class CartDatabaseController extends GetxController {
   }
 
   increaseQuantityFromCart(CartItem cartItem) async {
-
     CartItem? item = await getById(cartItem.id);
     if (item == null) return;
     int newQuantity = item.quantity + 1;
@@ -104,9 +104,10 @@ class CartDatabaseController extends GetxController {
 
   decreaseQuantity(Product product) async {
     currentProductQuantity.value = currentProductQuantity.value - 1;
-    currentProductQuantity.value = currentProductQuantity.value < 0 ? 0 : currentProductQuantity.value;
+    currentProductQuantity.value =
+        currentProductQuantity.value < 0 ? 0 : currentProductQuantity.value;
 
-    if(currentProductQuantity.value == 0){
+    if (currentProductQuantity.value == 0) {
       deleteCartItemByProductId(product.id);
       return;
     }
@@ -125,7 +126,7 @@ class CartDatabaseController extends GetxController {
     if (item == null) return;
     int newQuantity = item.quantity - 1;
 
-    if(newQuantity == 0){
+    if (newQuantity == 0) {
       deleteCartItem(item.id!);
       return;
     } else {

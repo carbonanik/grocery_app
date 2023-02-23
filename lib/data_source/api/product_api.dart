@@ -14,7 +14,7 @@ class ProductApi {
       if (response.statusCode == 200) {
         final Iterable data = json.decode(response.body);
         List<Product> products =
-            List<Product>.from(data.map((model) => Product.fromJson(model)));
+            List<Product>.from(data.map((model) => Product.fromMap(model)));
         return products;
       } else {
         throw Exception('Failed to fetch products');
@@ -28,7 +28,7 @@ class ProductApi {
     try {
       final response = await http.get(Uri.http(baseUrl, '/product/$productId'));
       if (response.statusCode == 200) {
-        return Product.fromJson(json.decode(response.body));
+        return Product.fromMap(json.decode(response.body));
       } else {
         throw Exception('Failed to fetch products');
       }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/category.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
+
+import '../../route/route_helper.dart';
 
 class HomeCategory extends StatelessWidget {
   const HomeCategory({
@@ -17,7 +20,9 @@ class HomeCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.toNamed(RouteHelper.getCategoryTab());
+        Get.toNamed(
+          RouteHelper.getCategoryTab(selectedCategoryId: category.id),
+        );
       },
       child: Container(
         padding: const EdgeInsets.only(left: 2, right: 10, top: 3, bottom: 3),
@@ -29,16 +34,19 @@ class HomeCategory extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-                padding: EdgeInsets.all(Dimension.width(4)),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(Dimension.height(5)),
-                  child: Image.network(
-                    '$basePhotoUrl${category.image}',
-                    fit: BoxFit.cover,
-                    height: Dimension.width(50),
-                    width: Dimension.width(50),
-                  ),
-                )),
+              padding: EdgeInsets.all(Dimension.width(4)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(Dimension.height(5)),
+                child: Image.network(
+                  '$baseImageUrl${category.image}',
+                  fit: BoxFit.cover,
+                  height: Dimension.width(50),
+                  width: Dimension.width(50),
+                  errorBuilder: (context, error, stackTrace) =>
+                      Icon(Icons.image),
+                ),
+              ),
+            ),
             SizedBox(
               width: Dimension.width(5),
             ),

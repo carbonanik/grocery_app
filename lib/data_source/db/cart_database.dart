@@ -7,7 +7,6 @@ import '../../model/cart_item.dart';
 class CartDatabase {
   static final CartDatabase instance = CartDatabase._init();
 
-
   static Database? _database;
 
   CartDatabase._init();

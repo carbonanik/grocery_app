@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../main.dart';
 import '../../model/product.dart';
+import '../../provider/cart_provider.dart';
 import '../../route/route_helper.dart';
 import '../../util/dimension.dart';
 
@@ -37,25 +39,33 @@ class ProductItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // product title/name
             Text(
               product.name,
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: Dimension.width(15)), // height
             ),
+            //product image
             Center(
-                child: Padding(
-              padding: EdgeInsets.symmetric(vertical: Dimension.width(5)),
-              child: Hero(
-                tag: '${heroPrefix}product_image${product.id}',
-                child: Image.network(
-                  "$basePhotoUrl${product.image}",
-                  height: Dimension.width(110),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: Dimension.width(5)),
+                child: Hero(
+                  tag: '${heroPrefix}product_image${product.id}',
+                  child: Image.network(
+                    "$baseImageUrl${product.image}",
+                    height: Dimension.width(110),
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.image),
+                  ),
                 ),
               ),
-            )),
+            ),
+
+            // bottom
             Row(
               children: [
+                //
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -70,17 +80,21 @@ class ProductItem extends StatelessWidget {
                     Text(
                       "\$${product.price}",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: Dimension.width(18)),
+                        fontWeight: FontWeight.bold,
+                        fontSize: Dimension.width(18),
+                      ),
                     )
                   ],
                 ),
+
                 const Spacer(),
-                Hero(
-                  tag: '${heroPrefix}add_to_cart${product.id}',
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: Container(
+                Consumer(builder: (context, ref, child) {
+                  final cartDataModel = ref.read(cartListProductsProvider);
+                  return Hero(
+                    tag: '${heroPrefix}add_to_cart${product.id}',
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: Container(
                         height: Dimension.width(40),
                         width: Dimension.width(40),
                         decoration: BoxDecoration(
@@ -89,16 +103,18 @@ class ProductItem extends StatelessWidget {
                               BorderRadius.circular(Dimension.width(10)),
                         ),
                         child: IconButton(
-                            onPressed: () => {},
-                            //cartDatabaseController.addOrIncreaseProductCard(product, 1), // todo add real cart id
-                            icon: Icon(
-                              // quantity == 0 ? Icons.add : Icons.remove,
-                              Icons.add,
-                              color: Colors.white,
-                              size: Dimension.width(20),
-                            ))),
-                  ),
-                )
+                          onPressed: () => cartDataModel.itemIncrement(product),
+                          icon: Icon(
+                            // quantity == 0 ? Icons.add : Icons.remove,
+                            Icons.add,
+                            color: Colors.white,
+                            size: Dimension.width(20),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                })
               ],
             )
           ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:instant_grrocery_delivery/model/order.dart';
 import 'package:instant_grrocery_delivery/ui/pages/order_item.dart';
 
@@ -19,40 +18,40 @@ class MyOrders extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Query(
-            options: QueryOptions(
-              document: gql(Queries.getOrderByUserId(1)), // this is the query string you just created
-              fetchPolicy: FetchPolicy.cacheAndNetwork,
-              // pollInterval: const Duration(seconds: 10),
-            ),
-            builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}){
+          // Query(
+          //   options: QueryOptions(
+          //     document: gql(Queries.getOrderByUserId(1)), // this is the query string you just created
+          //     fetchPolicy: FetchPolicy.cacheAndNetwork,
+          //     // pollInterval: const Duration(seconds: 10),
+          //   ),
+          //   builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}){
 
-              if (result.hasException) {
-                return Text(result.exception.toString());
-              }
+          //     if (result.hasException) {
+          //       return Text(result.exception.toString());
+          //     }
 
-              if (result.isLoading) {
-                return const Text('Loading');
-              }
+          //     if (result.isLoading) {
+          //       return const Text('Loading');
+          //     }
 
-              List? orderJson = result.data?['order'];
+          //     List? orderJson = result.data?['order'];
 
-              if (orderJson == null || orderJson.isEmpty) {
-                return const Text('No repositories');
-              }
+          //     if (orderJson == null || orderJson.isEmpty) {
+          //       return const Text('No repositories');
+          //     }
 
-              List<Order> orderList = orderJson.map((e) => Order.fromJson(e)).toList();
+          //     List<Order> orderList = orderJson.map((e) => Order.fromJson(e)).toList();
 
-              return Expanded(
-                child: ListView.builder(
-                  itemCount: orderList.length,
-                  itemBuilder: (context, index) {
-                    return OrderCard(order: orderList[index],);
-                  },
-                ),
-              );
-            },
-          ),
+          //     return Expanded(
+          //       child: ListView.builder(
+          //         itemCount: orderList.length,
+          //         itemBuilder: (context, index) {
+          //           return OrderCard(order: orderList[index],);
+          //         },
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );

@@ -2,9 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/provider/product_provider.dart';
-
 import '../../main.dart';
+import '../../provider/category_provider.dart';
 import '../../util/dimension.dart';
 import '../widget/category_item.dart';
 import '../widget/product_item.dart';
@@ -120,16 +119,18 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                                 child: TextField(
                                   controller: textEditingController,
                                   decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Browse Category',
-                                      hintStyle: TextStyle(
-                                          fontSize: 12, color: Colors.black26)),
+                                    border: InputBorder.none,
+                                    hintText: 'Browse Category',
+                                    hintStyle: TextStyle(
+                                        fontSize: 12, color: Colors.black26),
+                                  ),
                                 ),
                               ),
                               const Icon(Icons.clear, color: Colors.grey),
                               Container(
                                 margin: EdgeInsets.symmetric(
-                                    horizontal: Dimension.width(20)),
+                                  horizontal: Dimension.width(20),
+                                ),
                                 height: Dimension.height(30),
                                 width: 1,
                                 color: Colors.black12,

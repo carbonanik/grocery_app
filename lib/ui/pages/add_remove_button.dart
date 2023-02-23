@@ -17,32 +17,35 @@ class AddRemoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Dimension.width(15), vertical: Dimension.height(10)),
-      decoration: BoxDecoration(color: greenColor, borderRadius: BorderRadius.circular(10)),
+      padding: EdgeInsets.symmetric(
+          horizontal: Dimension.width(15), vertical: Dimension.height(10)),
+      decoration: BoxDecoration(
+          color: greenColor, borderRadius: BorderRadius.circular(10)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
             onTap: onRemove,
-            child: Icon(
+            child: const Icon(
               Icons.remove,
               color: Colors.white,
               size: 20,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Text(
             '$quantity',
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18, color: Colors.white),
+            style: const TextStyle(
+                fontWeight: FontWeight.w500, fontSize: 18, color: Colors.white),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           GestureDetector(
             onTap: onAdd,
-            child: Icon(
+            child: const Icon(
               Icons.add,
               color: Colors.white,
               size: 20,

@@ -18,7 +18,7 @@ class OrderItem {
       id: json['id'],
       orderId: json['order_id'],
       quantity: json['quantity'],
-      product: Product.fromJson(json['product']),
+      product: Product.fromMap(json['product']),
     );
   }
 
@@ -27,7 +27,7 @@ class OrderItem {
     data['id'] = id;
     data['order_id'] = orderId;
     data['quantity'] = quantity;
-    data['product'] = product.toJson();
+    data['product'] = product.toMap();
     return data;
   }
 }

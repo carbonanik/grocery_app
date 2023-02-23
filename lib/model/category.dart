@@ -20,7 +20,7 @@ class Category {
     if (json['products'] == null) {
       products = null;
     } else {
-      products = List.from(json['products'].map((c) => Product.fromJson(c)));
+      products = List.from(json['products'].map((c) => Product.fromMap(c)));
     }
     return Category(
         id: json['id'],
