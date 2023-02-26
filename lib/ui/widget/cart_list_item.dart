@@ -34,8 +34,10 @@ class CartListItem extends StatelessWidget {
           Image.network(
             baseImageUrl + item.product.image,
             height: Dimension.height(50),
-            errorBuilder: (context, error, stackTrace) =>
-                const Icon(Icons.image),
+            errorBuilder: (context, error, stackTrace) {
+              print(error);
+              return Icon(Icons.image);
+            },
           ),
           SizedBox(
             width: Dimension.width(20),

@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/controller/cart_database_controller.dart';
 
-import '../../controller/favourite_controller.dart';
-import '../../core/queries.dart';
-import '../../di/locator.dart';
 import '../../main.dart';
-import '../../model/product.dart';
 import '../../util/dimension.dart';
-import '../widget/product_item.dart';
 
 class FavoriteList extends StatelessWidget {
   const FavoriteList({Key? key}) : super(key: key);

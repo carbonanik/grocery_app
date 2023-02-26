@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
@@ -42,8 +44,10 @@ class HomeCategory extends StatelessWidget {
                   fit: BoxFit.cover,
                   height: Dimension.width(50),
                   width: Dimension.width(50),
-                  errorBuilder: (context, error, stackTrace) =>
-                      Icon(Icons.image),
+                  errorBuilder: (context, error, stackTrace) {
+                    print(error);
+                    return Icon(Icons.image);
+                  },
                 ),
               ),
             ),

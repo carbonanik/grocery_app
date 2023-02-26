@@ -18,7 +18,7 @@ Future<void> main() async {
 
 Color backgroundColor = Colors.green.shade50;
 Color greenColor = const Color(0xFF87C428);
-Color alphaBlack = Color.fromARGB(227, 0, 0, 0);
+Color alphaBlack = const Color(0xE2000000);
 
 const baseImageUrl =
     "https://test-and-devops-environment.s3.amazonaws.com/photos/";

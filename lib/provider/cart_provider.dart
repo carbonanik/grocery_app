@@ -8,70 +8,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../model/product.dart';
 
-// @HiveType(typeId: 0)
-// class HiveCartItem extends HiveObject {
-//   HiveCartItem({
-//     required this.id,
-//     required this.price,
-//     required this.name,
-//     required this.description,
-//     required this.image,
-//     required this.weight,
-//     required this.count,
-//   });
-
-//   @HiveField(0)
-//   final int id;
-
-//   @HiveField(1)
-//   final double price;
-
-//   @HiveField(2)
-//   final String name;
-
-//   @HiveField(3)
-//   final String description;
-
-//   @HiveField(4)
-//   final String image;
-
-//   @HiveField(5)
-//   final String weight;
-
-//   @HiveField(6)
-//   final int count;
-
-//   CartItem toCartItem() => CartItem(
-//         product: Product(
-//           id: id,
-//           name: name,
-//           price: price,
-//           weight: weight,
-//           image: image,
-//           description: description,
-//         ),
-//         count: count,
-//       );
-// }
-
 Future<List<CartItem>> getCartItems() async {
   Box box1 = await Hive.openBox('cart_item');
   return box1.values.map((e) => CartItem.fromJson(e)).toList();
 }
-
-// final getCartItemProvider = FutureProvider(
-//   (ref) => getCartItems(),
-// );
 
 Future<bool> addCartItem(CartItem cartItem) async {
   Box box1 = await Hive.openBox('cart_item');
   await box1.put(cartItem.id, cartItem.toJson());
   return true;
 }
-
-// final addCartItemProvider = FutureProvider.family(
-//   (ref, CartItem cartItem) => addCartItem(cartItem),
-// );
 
 Future<CartItem> getSingleCartItem(int cartItemId) async {
   Box box1 = await Hive.openBox('cart_item');
@@ -85,10 +31,6 @@ Future<bool> removeCartItem(int cartItemId) async {
   print("deleted");
   return true;
 }
-
-// final getSingleCartItemProvider = FutureProvider.family(
-//   (ref, int cartItemId) => getSingleCartItem(cartItemId),
-// );
 
 // =================================== CartItem ===================================
 
@@ -117,16 +59,6 @@ class CartItem {
   @override
   String toString() =>
       'CartItem(id: $id, product: ${product.toString()}, count: $count)';
-
-  // HiveCartItem toHiveCartItem() => HiveCartItem(
-  //       id: id,
-  //       price: product.price,
-  //       name: product.name,
-  //       description: product.description,
-  //       image: product.image,
-  //       weight: product.weight,
-  //       count: count,
-  //     );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

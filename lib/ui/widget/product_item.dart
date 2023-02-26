@@ -55,8 +55,10 @@ class ProductItem extends StatelessWidget {
                   child: Image.network(
                     "$baseImageUrl${product.image}",
                     height: Dimension.width(110),
-                    errorBuilder: (context, error, stackTrace) =>
-                        const Icon(Icons.image),
+                    errorBuilder: (context, error, stackTrace) {
+                      print(error);
+                      return Icon(Icons.image);
+                    },
                   ),
                 ),
               ),

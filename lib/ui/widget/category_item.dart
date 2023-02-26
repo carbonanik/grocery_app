@@ -41,8 +41,10 @@ class CategoryItem extends StatelessWidget {
                   fit: BoxFit.cover,
                   height: Dimension.width(40),
                   width: Dimension.width(40),
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.image),
+                  errorBuilder: (context, error, stackTrace) {
+                    print(error);
+                    return Icon(Icons.image);
+                  },
                 ),
               ),
             ),

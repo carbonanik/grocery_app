@@ -113,8 +113,10 @@ class ProductDetail extends StatelessWidget {
                       tag: '${heroPrefix}product_image${data.value.id}',
                       child: Image.network(
                         "$baseImageUrl${data.value.image}",
-                        errorBuilder: (context, error, stackTrace) =>
-                            const Icon(Icons.image),
+                        errorBuilder: (context, error, stackTrace) {
+                          print(error);
+                          return Icon(Icons.image);
+                        },
                       ),
                     ),
                   ),
