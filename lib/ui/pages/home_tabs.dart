@@ -4,6 +4,7 @@ import 'package:instant_grrocery_delivery/ui/pages/select_category.dart';
 import '../../../../main.dart';
 import '../../util/dimension.dart';
 import '../widget/side_tab.dart';
+import 'favorite_list.dart';
 import 'home_page.dart';
 
 class HomeTabs extends StatelessWidget {
@@ -20,7 +21,7 @@ class HomeTabs extends StatelessWidget {
     final pages = [
       const HomePage(), //Text("Home"),
       const SelectCategory(), //Text("Select category"),
-      const Text("Favorite list"), //FavoriteList(),
+      const FavoriteList(), //Text("Favorite list"), //
       const Text("My Order"), //MyOrders(),
       const Center(
         child: Text('5'),

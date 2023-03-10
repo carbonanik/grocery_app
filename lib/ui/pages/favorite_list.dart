@@ -1,82 +1,158 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/provider/product_provider.dart';
 
 import '../../main.dart';
+import '../../provider/category_provider.dart';
+import '../../provider/favorite_provider.dart';
 import '../../util/dimension.dart';
+import '../widget/category_item.dart';
+import '../widget/product_item.dart';
 
 class FavoriteList extends StatelessWidget {
   const FavoriteList({Key? key}) : super(key: key);
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     body: Container(
+  //         color: backgroundColor,
+  //         child: Consumer(
+  //           builder: (context, ref, child) {
+  //             // final favoriteDataModel = ref.watch(favoriteDataModelProvider);
+  //             // final favoriteIds = favoriteDataModel.getOnlyFavorite();
+
+  //             final asyncValue = ref.watch(getFavoriteProducts([1, 2]));
+  //             print("build call");
+
+  //             return asyncValue.map(
+  //               data: (data) => SliverPadding(
+  //                 padding: EdgeInsets.symmetric(
+  //                   horizontal: Dimension.width(20),
+  //                 ),
+  //                 sliver: SliverGrid.count(
+  //                   crossAxisCount: 2,
+  //                   mainAxisSpacing: Dimension.height(10),
+  //                   crossAxisSpacing: Dimension.width(10),
+  //                   childAspectRatio: .70,
+  //                   children: List.generate(data.value.length, (index) {
+  //                     final item = data.value[index];
+  //                     return ProductItem(
+  //                       product: item,
+  //                       // cartDatabaseController: cartDatabaseController,
+  //                     );
+  //                   }),
+  //                 ),
+  //               ),
+  //               error: (error) =>
+  //                   const SliverToBoxAdapter(child: Text("error")),
+  //               loading: (loading) =>
+  //                   const SliverToBoxAdapter(child: Text('Loading')),
+  //             );
+  //           },
+  //         )
+  // CustomScrollView(
+  //   slivers: [
+  //     /// custom sliver app bar
+
+  //     SliverToBoxAdapter(
+  //       child: SizedBox(height: Dimension.height(10)),
+  //     ),
+  //     Consumer(
+  //       builder: (context, ref, child) {
+  //         // final favoriteDataModel = ref.watch(favoriteDataModelProvider);
+  //         // final favoriteIds = favoriteDataModel.getOnlyFavorite();
+
+  //         final asyncValue = ref.watch(getFavoriteProducts([1, 2]));
+  //         print("build call");
+
+  //         return asyncValue.map(
+  //           data: (data) => SliverPadding(
+  //             padding: EdgeInsets.symmetric(
+  //               horizontal: Dimension.width(20),
+  //             ),
+  //             sliver: SliverGrid.count(
+  //               crossAxisCount: 2,
+  //               mainAxisSpacing: Dimension.height(10),
+  //               crossAxisSpacing: Dimension.width(10),
+  //               childAspectRatio: .70,
+  //               children: List.generate(data.value.length, (index) {
+  //                 final item = data.value[index];
+  //                 return ProductItem(
+  //                   product: item,
+  //                   // cartDatabaseController: cartDatabaseController,
+  //                 );
+  //               }),
+  //             ),
+  //           ),
+  //           error: (error) =>
+  //               const SliverToBoxAdapter(child: Text("error")),
+  //           loading: (loading) =>
+  //               const SliverToBoxAdapter(child: Text('Loading')),
+  //         );
+  //       },
+  //     ),
+
+  //     SliverToBoxAdapter(
+  //       child: SizedBox(
+  //         height: Dimension.height(30),
+  //       ),
+  //     )
+  //   ],
+  // ),
+  //         ),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
-    // final favoriteController = locator.get<FavoriteController>();
-    // final cartDatabaseController = locator.get<CartDatabaseController>();
-
-    return Scaffold(
-      body: Container(
-        color: backgroundColor,
-        child: CustomScrollView(
-          slivers: [
-            /// custom sliver app bar
-
-            SliverToBoxAdapter(
-              child: SizedBox(height: Dimension.height(10)),
+    final rnd = Random().nextInt(9999);
+    return Container(
+      color: backgroundColor,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              children: [
+                const Text(
+                  'Categories',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
+                Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Icon(Icons.search))
+              ],
             ),
+          ),
+          Consumer(
+            builder: (context, ref, child) {
+              final favoriteDataModel = ref.watch(favoriteDataModelProvider);
+              final ids = favoriteDataModel.getOnlyFavorite();
+              final favoriteIds = ProductIds(
+                ids: ids,
+              );
+              final asyncValue = ref.watch(getFavoriteProducts(favoriteIds));
+              print("build");
 
-            /// popular list
-            // Query(
-            //   options: QueryOptions(
-            //     document: gql(Queries.getProductByIds(
-            //         favouriteController.getFavouriteList())),
-            //     fetchPolicy: FetchPolicy.cacheAndNetwork,
-            //     // pollInterval: const Duration(seconds: 10),
-            //   ),
-            //   builder: (QueryResult result,
-            //       {VoidCallback? refetch, FetchMore? fetchMore}) {
-            //     if (result.hasException) {
-            //       return SliverToBoxAdapter(
-            //           child: Text(result.exception.toString()));
-            //     }
-
-            //     if (result.isLoading) {
-            //       return const SliverToBoxAdapter(child: Text('Loading'));
-            //     }
-
-            //     List? productJson = result.data?['product'];
-
-            //     if (productJson == null || productJson.isEmpty) {
-            //       return const SliverToBoxAdapter(
-            //           child: Text('No repositories'));
-            //     }
-
-            //     List<Product> productList =
-            //         productJson.map((e) => Product.fromJson(e)).toList();
-
-            //     return SliverPadding(
-            //       padding:
-            //           EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-            //       sliver: SliverGrid.count(
-            //         crossAxisCount: 2,
-            //         mainAxisSpacing: Dimension.height(10),
-            //         crossAxisSpacing: Dimension.width(10),
-            //         childAspectRatio: .70,
-            //         children: List.generate(productList.length, (index) {
-            //           final item = productList[index];
-            //           return ProductItem(
-            //             product: item,
-            //             // cartDatabaseController: cartDatabaseController,
-            //           );
-            //         }),
-            //       ),
-            //     );
-            //   },
-            // ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: Dimension.height(30),
-              ),
-            )
-          ],
-        ),
+              return asyncValue.map(
+                data: (data) => Text(data.value.length.toString()),
+                error: (error) {
+                  print(error);
+                  return Text("error");
+                },
+                loading: (loading) => Text("loading"),
+              );
+            },
+          )
+        ],
       ),
     );
   }

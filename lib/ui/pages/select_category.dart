@@ -38,6 +38,7 @@ class SelectCategory extends StatelessWidget {
           ),
           Consumer(builder: (context, ref, child) {
             final asyncValue = ref.watch(getCategoriesProvider);
+            print('category tab build called');
 
             return asyncValue.map(
               data: (data) => Expanded(

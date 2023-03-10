@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:get/get_utils/get_utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:instant_grrocery_delivery/provider/product_provider.dart';
 
 import '../../model/product.dart';
 
@@ -80,6 +82,35 @@ class ProductApi {
         return true;
       } else {
         throw Exception('Failed to delete product');
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<List<Product>> getFavoriteProducts(List<int> ids) async {
+    try {
+      if (ids.length == 0) {
+        throw Exception('On favorite id provided');
+      }
+
+      if (ids.length == 1) {
+        ids.add(ids[0]);
+      }
+
+      final response = await http.post(Uri.http(baseUrl, '/product/favorite'),
+          headers: {"Content-Type": "application/json"},
+          body: json.encode(ids));
+
+      if (response.statusCode == 200) {
+        final Iterable data = json.decode(response.body);
+        List<Product> products =
+            List<Product>.from(data.map((model) => Product.fromMap(model)));
+        return products;
+      } else {
+        response.printError();
+        print(response.body);
+        throw Exception('Failed to create product');
       }
     } catch (e) {
       throw Exception(e);

@@ -1,16 +1,67 @@
-# instant_grrocery_delivery
+# Instant Shop
 
-A new Flutter project.
+## Shop app
 
-## Getting Started
+A simple shop app created using flutter. And uses RiverPod for state management.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+This app is currently under development. Please use it at your own risk. Any type of feedback is welcome.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Main Feature and Functionality (With Description)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Product Catalog
+- Cart & Order
+- Favorite Item
+
+## Pattern and Language
+
+This app written in Flutter. And RiverPod is used for state management.
+
+## Roadmap
+
+- Multer Vendor
+
+## Screenshot
+
+<!-- ![Home](/screenshot/home.jpeg)
+![Popular List](/screenshot/popular_products.jpeg)
+![Cart](/screenshot/my_cart.jpeg)
+![Product Detail](/screenshot/product_detail.jpeg)
+![Category List](/screenshot/category_list.jpeg) -->
+
+<img src="screenshot/home.jpeg" data-canonical-src="screenshot/home.jpeg" width="200" height="400" />
+<img src="screenshot/popular_products.jpeg" data-canonical-src="screenshot/home.jpeg" width="200" height="400" />
+<img src="screenshot/my_cart.jpeg" data-canonical-src="screenshot/home.jpeg" width="200" height="400" />
+<img src="screenshot/product_detail.jpeg" data-canonical-src="screenshot/home.jpeg" width="200" height="400" />
+<img src="screenshot/category_list.jpeg" data-canonical-src="screenshot/home.jpeg" width="200" height="400" />
+<img src="screenshot/apply_coupon.jpeg" data-canonical-src="screenshot/home.jpeg" width="200" height="400" />
+
+## Download
+
+You can get this app from:
+
+- Play Store (Upcoming)
+
+## Contribute
+
+If you found a bug please report [here](https://github.com/carbonanik/MessApp/issues/new)
+
+If you wan a new feature or any change in existing feature. Please pull request.
+
+## Dependency
+
+- RiverPod
+- Hive
+
+## Contact
+
+You can directly contact me on social media
+
+- [LinkedIn](https://www.linkedin.com/in/carbonanik)
+- [Twitter](https://twitter.com/carbonanik)
+- [Facebook](https://www.facebook.com/carbon.anik)
+
+or,
+
+You can visit my website [here](https://carbonanik.com)

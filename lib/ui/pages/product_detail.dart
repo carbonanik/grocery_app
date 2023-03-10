@@ -134,10 +134,10 @@ class ProductDetail extends StatelessWidget {
                       ),
                     ),
                     Consumer(builder: (context, ref, child) {
-                      final dataModel = ref.watch(isFavoriteProductsProvider);
+                      final dataModel = ref.watch(favoriteDataModelProvider);
 
                       return FavoriteButton(
-                          onTap: () => dataModel.addIsFavorite(
+                          onTap: () => dataModel.setIsFavorite(
                                 productId,
                                 !dataModel.getIsFavorite(productId),
                               ),
