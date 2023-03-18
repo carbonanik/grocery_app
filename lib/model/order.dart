@@ -1,51 +1,38 @@
-import 'order_item.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'coupon.dart';
+import 'order_item.dart';
 
+part 'order.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Order {
   final int id;
-  final int userId;
+  final int? userId;
   final List<OrderItem> orderItems;
   final int count;
-  final double totalPrice;
+  final String totalPrice;
   final String orderDate;
   final String orderStatus;
-  final List<Coupon> coupon;
+  final List<Coupon> coupons;
 
   Order({
     required this.id,
-    required this.userId,
-    required this.orderStatus,
-    required this.orderDate,
+    this.userId,
     required this.orderItems,
     required this.count,
     required this.totalPrice,
-    required this.coupon
+    required this.orderDate,
+    required this.orderStatus,
+    required this.coupons,
   });
 
-  static Order fromJson(Map<String, dynamic> json) {
-    return Order(
-      id: json['id'],
-      userId: json['user_id'],
-      orderStatus: json['order_status'],
-      orderDate: json['order_date'],
-      orderItems: (json['order_items'] as List<dynamic>).map((e) => OrderItem.fromJson(e)).toList(),
-      count: json['count'],
-      totalPrice: json['total_price'].toDouble(),
-      coupon: (json['coupon'] as List<dynamic>).map((e) => Coupon.fromJson(e)).toList()
-    );
-  }
+  Map<String, dynamic> toJson() => _$OrderToJson(this);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['user_id'] = userId;
-    data['order_status'] = orderStatus;
-    data['order_date'] = orderDate;
-    data['order_items'] = orderItems.map((e) => e.toJson()).toList();
-    data['count'] = count;
-    data['total_price'] = totalPrice;
-    data['coupon'] = coupon.map((e) => e.toJson()).toList();
-    return data;
-  }
+  factory Order.fromJson(Map<String, dynamic> source) =>
+      _$OrderFromJson(source);
 }

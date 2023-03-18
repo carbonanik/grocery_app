@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -28,24 +29,24 @@ class FavoriteList extends StatelessWidget {
   //             print("build call");
 
   //             return asyncValue.map(
-  //               data: (data) => SliverPadding(
-  //                 padding: EdgeInsets.symmetric(
-  //                   horizontal: Dimension.width(20),
-  //                 ),
-  //                 sliver: SliverGrid.count(
-  //                   crossAxisCount: 2,
-  //                   mainAxisSpacing: Dimension.height(10),
-  //                   crossAxisSpacing: Dimension.width(10),
-  //                   childAspectRatio: .70,
-  //                   children: List.generate(data.value.length, (index) {
-  //                     final item = data.value[index];
-  //                     return ProductItem(
-  //                       product: item,
-  //                       // cartDatabaseController: cartDatabaseController,
-  //                     );
-  //                   }),
-  //                 ),
-  //               ),
+  // data: (data) => SliverPadding(
+  //   padding: EdgeInsets.symmetric(
+  //     horizontal: Dimension.width(20),
+  //   ),
+  //   sliver: SliverGrid.count(
+  //     crossAxisCount: 2,
+  //     mainAxisSpacing: Dimension.height(10),
+  //     crossAxisSpacing: Dimension.width(10),
+  //     childAspectRatio: .70,
+  //     children: List.generate(data.value.length, (index) {
+  //       final item = data.value[index];
+  //       return ProductItem(
+  //         product: item,
+  //         // cartDatabaseController: cartDatabaseController,
+  //       );
+  //     }),
+  //   ),
+  // ),
   //               error: (error) =>
   //                   const SliverToBoxAdapter(child: Text("error")),
   //               loading: (loading) =>
@@ -111,44 +112,64 @@ class FavoriteList extends StatelessWidget {
     final rnd = Random().nextInt(9999);
     return Container(
       color: backgroundColor,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Row(
-              children: [
-                const Text(
-                  'Categories',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-                const Spacer(),
-                Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: const Icon(Icons.search))
-              ],
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                children: [
+                  const Text(
+                    'Favorites',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  const Spacer(),
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: const Icon(Icons.search))
+                ],
+              ),
             ),
           ),
           Consumer(
             builder: (context, ref, child) {
               final favoriteDataModel = ref.watch(favoriteDataModelProvider);
               final ids = favoriteDataModel.getOnlyFavorite();
-              final favoriteIds = ProductIds(
-                ids: ids,
-              );
-              final asyncValue = ref.watch(getFavoriteProducts(favoriteIds));
+              final asyncValue =
+                  ref.watch(getFavoriteProducts(json.encode(ids)));
               print("build");
 
               return asyncValue.map(
-                data: (data) => Text(data.value.length.toString()),
+                data: (data) => SliverPadding(
+                  padding: EdgeInsets.only(
+                    left: Dimension.width(20),
+                    right: Dimension.width(20),
+                    top: Dimension.width(20),
+                  ),
+                  sliver: SliverGrid.count(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: Dimension.height(10),
+                    crossAxisSpacing: Dimension.width(10),
+                    childAspectRatio: .70,
+                    children: List.generate(data.value.length, (index) {
+                      final item = data.value[index];
+                      return ProductItem(
+                        product: item,
+                        // cartDatabaseController: cartDatabaseController,
+                      );
+                    }),
+                  ),
+                ),
                 error: (error) {
                   print(error);
-                  return Text("error");
+                  return const SliverToBoxAdapter(child: Text("error"));
                 },
-                loading: (loading) => Text("loading"),
+                loading: (loading) =>
+                    const SliverToBoxAdapter(child: Text("loading")),
               );
             },
           )

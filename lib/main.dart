@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      // home: HomePage(),
+      // home: OrderDetailsPage(orderId: 1),
       getPages: RouteHelper.routes,
       initialRoute: RouteHelper.getInitial(),
     );

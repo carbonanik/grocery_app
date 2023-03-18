@@ -1,86 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:collection';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/model/order_create.dart';
 
+import '../data_source/db/cart_hive.dart';
+import '../model/cart_item.dart';
 import '../model/product.dart';
-
-Future<List<CartItem>> getCartItems() async {
-  Box box1 = await Hive.openBox('cart_item');
-  return box1.values.map((e) => CartItem.fromJson(e)).toList();
-}
-
-Future<bool> addCartItem(CartItem cartItem) async {
-  Box box1 = await Hive.openBox('cart_item');
-  await box1.put(cartItem.id, cartItem.toJson());
-  return true;
-}
-
-Future<CartItem> getSingleCartItem(int cartItemId) async {
-  Box box1 = await Hive.openBox('cart_item');
-  final cartItem = box1.get(cartItemId);
-  return CartItem.fromJson(cartItem);
-}
-
-Future<bool> removeCartItem(int cartItemId) async {
-  Box box1 = await Hive.openBox('cart_item');
-  await box1.delete(cartItemId);
-  print("deleted");
-  return true;
-}
-
-// =================================== CartItem ===================================
-
-@immutable
-class CartItem {
-  final int id;
-  final Product product;
-  final int count;
-
-  CartItem({
-    required this.product,
-    required this.count,
-  }) : id = product.id;
-
-  CartItem updated({required int count}) => CartItem(
-        product: product,
-        count: count,
-      );
-
-  @override
-  int get hashCode => id.hashCode;
-
-  @override
-  bool operator ==(covariant CartItem other) => product.id == other.product.id;
-
-  @override
-  String toString() =>
-      'CartItem(id: $id, product: ${product.toString()}, count: $count)';
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'product': product.toMap(),
-      'count': count,
-    };
-  }
-
-  factory CartItem.fromMap(Map<String, dynamic> map) {
-    return CartItem(
-      // id: map['id'] as int,
-      product: Product.fromMap(map['product'] as Map<String, dynamic>),
-      count: map['count'] as int,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory CartItem.fromJson(String source) =>
-      CartItem.fromMap(json.decode(source) as Map<String, dynamic>);
-}
 
 // =============================== CartDataModel =======================================
 
@@ -118,12 +44,16 @@ class CartDataModel extends ChangeNotifier {
     }
   }
 
-  _add(cartItem) async {
+  _add(cartItem) {
     addCartItem(cartItem).then((value) => dataChanged());
   }
 
-  _remove(cartItemId) async {
+  _remove(cartItemId) {
     removeCartItem(cartItemId).then((value) => dataChanged());
+  }
+
+  void clearCart() {
+    clearCartItems().then((value) => dataChanged());
   }
 
   void dataChanged() async {
@@ -158,6 +88,37 @@ class CartDataModel extends ChangeNotifier {
       (previousValue, element) =>
           (element.value.count * element.value.product.price) + previousValue,
     );
+  }
+
+  OrderCreate createOrderFromCart() {
+    print(_cartList);
+    if (_cartList.isEmpty) {
+      throw Exception('Cart Empty');
+    }
+
+    final newOrder = OrderCreate(
+      // id: orderId,
+      userId: 0,
+      orderItems: _cartList.entries
+          .map((e) => _createOrderItem(e.value.count, e.value.product.id))
+          .toList(),
+      count: cartCount(),
+      totalPrice: cartPrice().toString(),
+      orderDate: DateTime.now().toIso8601String(),
+      orderStatus: "PROCESSING",
+      coupons: [],
+    );
+
+    return newOrder;
+  }
+
+  OrderItemCreate _createOrderItem(int count, int productId) {
+    return OrderItemCreate(
+        // id: cartItem.id,
+        // orderId: orderId,
+        // product: cartItem.product,
+        count: count,
+        productId: productId);
   }
 }
 

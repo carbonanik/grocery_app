@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:instant_grrocery_delivery/ui/pages/order_details.dart';
 import '../ui/pages/apply_coupon.dart';
 import '../ui/pages/category_product_list.dart';
 import '../ui/pages/category_tab.dart';
@@ -15,6 +16,7 @@ class RouteHelper {
   static const String _myCart = "/my-cart";
   static const String _paymentMethod = '/payment-method';
   static const String _applyCoupon = '/apply-coupon';
+  static const String _orderDetail = '/order-detail';
 
   static String getInitial() => _initial;
 
@@ -30,6 +32,9 @@ class RouteHelper {
 
   static String getPaymentMethod() => _paymentMethod;
   static String getApplyCoupon() => _applyCoupon;
+
+  static String getOrderDetail(String orderId) =>
+      '$_orderDetail?orderId=$orderId';
 
   static List<GetPage> routes = [
     GetPage(
@@ -60,6 +65,15 @@ class RouteHelper {
     ),
     GetPage(name: _myCart, page: () => MyCart()),
     GetPage(name: _paymentMethod, page: () => PaymentMethod()),
-    GetPage(name: _applyCoupon, page: () => const ApplyCoupon())
+    GetPage(name: _applyCoupon, page: () => const ApplyCoupon()),
+    GetPage(
+      name: _orderDetail,
+      page: () {
+        int orderId = int.parse(Get.parameters['orderId']!);
+        return OrderDetailsPage(
+          orderId: orderId,
+        );
+      },
+    )
   ];
 }

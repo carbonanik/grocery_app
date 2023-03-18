@@ -1,3 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'coupon.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Coupon {
   int id;
   String title;
@@ -17,27 +24,8 @@ class Coupon {
     required this.status,
   });
 
-  factory Coupon.fromJson(Map<String, dynamic> json) {
-    return Coupon(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      code: json['code'],
-      discount: json['discount'].toDouble(),
-      fixed: json['fixed'].toDouble(),
-      status: json['status'],
-    );
-  }
+  Map<String, dynamic> toJson() => _$CouponToJson(this);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['title'] = title;
-    data['description'] = description;
-    data['code'] = code;
-    data['discount'] = discount;
-    data['fixed'] = fixed;
-    data['status'] = status;
-    return data;
-  }
+  factory Coupon.fromJson(Map<String, dynamic> source) =>
+      _$CouponFromJson(source);
 }

@@ -6,6 +6,7 @@ import '../../util/dimension.dart';
 import '../widget/side_tab.dart';
 import 'favorite_list.dart';
 import 'home_page.dart';
+import 'my_orders.dart';
 
 class HomeTabs extends StatelessWidget {
   @override
@@ -22,7 +23,7 @@ class HomeTabs extends StatelessWidget {
       const HomePage(), //Text("Home"),
       const SelectCategory(), //Text("Select category"),
       const FavoriteList(), //Text("Favorite list"), //
-      const Text("My Order"), //MyOrders(),
+      const MyOrders(),
       const Center(
         child: Text('5'),
       ),

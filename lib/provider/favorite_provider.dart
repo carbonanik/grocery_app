@@ -5,20 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/cart_item.dart';
 
-Future<dynamic> getFavoriteIdsHive() async {
-  Box box1 = await Hive.openBox('favorite_item');
-  return box1.toMap();
-}
-
-Future<bool> getIsFavoriteHive(productId) async {
-  Box box1 = await Hive.openBox('favorite_item');
-  return box1.get(productId);
-}
-
-Future<void> setIsFavoriteHive(productId, isFavorite) async {
-  Box box1 = await Hive.openBox('favorite_item');
-  return box1.put(productId, isFavorite);
-}
+import '../data_source/db/favorite_hive.dart';
 
 // =================== DataModel =====================
 

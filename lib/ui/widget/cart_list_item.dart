@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
+import '../../model/cart_item.dart';
 import '../../provider/cart_provider.dart';
 import 'cart_add_remove.dart';
 

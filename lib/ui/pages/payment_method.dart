@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/di/locator.dart';
 
-import '../../provider/cart_provider.dart';
-import '../../util/dimension.dart';
-import '../../controller/cart_database_controller.dart';
 import '../../main.dart';
+import '../../provider/cart_provider.dart';
+import '../../provider/orders_provider.dart';
+import '../../util/dimension.dart';
 import '../widget/my_app_bar.dart';
 import '../widget/payment_method_item.dart';
 
-class PaymentMethod extends StatelessWidget {
-  PaymentMethod({Key? key}) : super(key: key);
-
-  // final CartDatabaseController cartDatabaseController = locator.get();
+class PaymentMethod extends ConsumerWidget {
+  const PaymentMethod({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    ref.listen<AsyncValue<void>>(
+      processOrderNotifierProvider,
+      (_, state) => state.showSnackBarOnError(context),
+    );
+
+    final orderState = ref.watch(processOrderNotifierProvider);
+
     return Scaffold(
       appBar: MyAppBar(title: 'Payment Methods'),
       body: SingleChildScrollView(
@@ -52,30 +55,41 @@ class PaymentMethod extends StatelessWidget {
             ),
             SizedBox(height: Dimension.height(20)),
 
-            /// instant payment button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: Dimension.width(30)),
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimension.width(20),
-                  vertical: Dimension.height(12),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(0, 50),
+                  disabledBackgroundColor: Colors.grey,
+                  backgroundColor: greenColor,
+                  elevation: 0,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
                 ),
-                decoration: BoxDecoration(
-                  color: greenColor,
-                  borderRadius: BorderRadius.circular(Dimension.width(6)),
-                ),
+                onPressed: orderState.isData || orderState.isLoading
+                    ? null
+                    : () {
+                        ref
+                            .read(processOrderNotifierProvider.notifier)
+                            .processOrder(ref);
+                      },
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(width: Dimension.width(30)),
                     const Icon(
                       Icons.energy_savings_leaf,
                       color: Colors.white,
                     ),
-                    SizedBox(width: Dimension.width(30)),
+                    SizedBox(width: Dimension.width(20)),
                     Text(
-                      'Instant Pay with GroWallet',
+                      orderState.isLoading
+                          ? 'Loading...'
+                          : orderState.isData
+                              ? 'Payment Done'
+                              : 'Instant Pay',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: Dimension.width(18),
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -84,6 +98,7 @@ class PaymentMethod extends StatelessWidget {
                 ),
               ),
             ),
+
             SizedBox(height: Dimension.height(20)),
             Container(
               padding: EdgeInsets.symmetric(horizontal: Dimension.width(30)),
@@ -151,4 +166,19 @@ class PaymentMethod extends StatelessWidget {
       ),
     );
   }
+}
+
+extension AsyncValueUI on AsyncValue {
+  // isLoading shorthand (AsyncLoading is a subclass of AsycValue)
+  bool get isLoading => this is AsyncLoading;
+  bool get isData => this is AsyncData && value != null;
+
+  // show a snackbar on error only
+  void showSnackBarOnError(BuildContext context) => whenOrNull(
+        error: (error, _) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(error.toString())),
+          );
+        },
+      );
 }

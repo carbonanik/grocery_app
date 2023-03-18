@@ -1,5 +1,9 @@
 import 'package:instant_grrocery_delivery/model/product.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'category.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Category {
   final int id;
   final String name;
@@ -15,26 +19,8 @@ class Category {
     this.products,
   });
 
-  static Category fromJson(Map<String, dynamic> json) {
-    final List<Product>? products;
-    if (json['products'] == null) {
-      products = null;
-    } else {
-      products = List.from(json['products'].map((c) => Product.fromMap(c)));
-    }
-    return Category(
-        id: json['id'],
-        name: json['name'],
-        image: json['image'],
-        description: json['description'],
-        products: products);
-  }
+  Map<String, dynamic> toJson() => _$CategoryToJson(this);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['image'] = image;
-    return data;
-  }
+  factory Category.fromJson(Map<String, dynamic> source) =>
+      _$CategoryFromJson(source);
 }
