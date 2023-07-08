@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../main.dart';
 import '../../model/product.dart';
-import '../../provider/cart_provider.dart';
+import '../../provider/cart/cart_hive_notifier_provider.dart';
 import '../../route/route_helper.dart';
 import '../../util/dimension.dart';
 
@@ -56,7 +56,6 @@ class ProductItem extends StatelessWidget {
                     "$baseImageUrl${product.image}",
                     height: Dimension.width(110),
                     errorBuilder: (context, error, stackTrace) {
-                      print(error);
                       return Icon(Icons.image);
                     },
                   ),
@@ -91,7 +90,7 @@ class ProductItem extends StatelessWidget {
 
                 const Spacer(),
                 Consumer(builder: (context, ref, child) {
-                  final cartDataModel = ref.read(cartListProductsProvider);
+                  final cartDataModel = ref.read(cartProvider);
                   return Hero(
                     tag: '${heroPrefix}add_to_cart${product.id}',
                     child: Material(

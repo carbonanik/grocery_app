@@ -19,8 +19,8 @@ class CategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.toNamed(
-            RouteHelper.getCategoryTab(selectedCategoryId: category.id));
-        print('category tab');
+          RouteHelper.getCategoryTab(selectedCategoryId: category.id),
+        );
       },
       child: Container(
         height: 60,
@@ -42,8 +42,7 @@ class CategoryItem extends StatelessWidget {
                   height: Dimension.width(40),
                   width: Dimension.width(40),
                   errorBuilder: (context, error, stackTrace) {
-                    print(error);
-                    return Icon(Icons.image);
+                    return const Icon(Icons.image);
                   },
                 ),
               ),

@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:json_annotation/json_annotation.dart';
-
-import 'cart_item.dart';
 
 part 'product.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(explicitToJson: true)
 class Product {
   final int id;
   final double price;

@@ -3,7 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'category.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+// @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(explicitToJson: true)
 class Category {
   final int id;
   final String name;

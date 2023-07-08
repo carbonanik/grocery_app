@@ -3,6 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
+import 'package:instant_grrocery_delivery/ui/views/auth/sign_in.dart';
+import 'package:instant_grrocery_delivery/ui/views/auth/sign_up.dart';
+import 'package:instant_grrocery_delivery/ui/views/auth/verification.dart';
+import 'package:instant_grrocery_delivery/ui/views/cart/payment_method.dart';
+import 'package:instant_grrocery_delivery/ui/views/cart/wallet.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/main_tabs.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_page.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/shop/create_shop.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/faq.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/support.dart';
+import 'package:instant_grrocery_delivery/ui/views/profile/profile.dart';
+import 'package:instant_grrocery_delivery/ui/views/profile/profile_edti.dart';
+import 'package:instant_grrocery_delivery/ui/views/splash.dart';
+import 'package:instant_grrocery_delivery/ui/views/your_location/your_location.dart';
+import 'package:instant_grrocery_delivery/ui/widget/transactions.dart';
 
 Future<void> initHiveDriver() async {
   await Hive.initFlutter();
@@ -16,7 +31,7 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-Color backgroundColor = Colors.green.shade50;
+Color backgroundColor = const Color(0xFFE8F5E9);
 Color greenColor = const Color(0xFF87C428);
 Color alphaBlack = const Color(0xE2000000);
 
@@ -33,9 +48,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      // home: OrderDetailsPage(orderId: 1),
+      // home: SignUp(),
       getPages: RouteHelper.routes,
-      initialRoute: RouteHelper.getInitial(),
+      initialRoute: RouteHelper.getSplash(),
     );
   }
 }

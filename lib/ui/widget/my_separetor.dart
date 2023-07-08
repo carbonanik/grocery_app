@@ -14,7 +14,6 @@ class MySeparator extends StatelessWidget {
         const dashWidth = 5.0;
         final dashHeight = height;
         final dashCount = (boxWidth / (2 * dashWidth)).floor();
-        print(dashCount);
         return Flex(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           direction: Axis.horizontal,

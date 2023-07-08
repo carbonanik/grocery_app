@@ -1,0 +1,19 @@
+{
+  "user": {
+    "disconnect": [],
+    "connect": [
+      {
+        "id": 1,
+        "position": {
+          "end": true
+        }
+      }
+    ]
+  },
+  "count": 10,
+  "totalPrice": "100",
+  "orderDate": "2023-06-06T18:01:44.510Z",
+  "orderStatus": "in_review",
+  "orderItems": {},
+  "coupons": {}
+}

@@ -1,80 +1,83 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
+import 'package:instant_grrocery_delivery/model/dto/category_dto.dart';
 
 import '../../model/category.dart';
+import 'util/paths.dart';
 
 class CategoryApi {
-  static const String baseUrl = '143.244.169.231:8002';
-
-  // Function to fetch all categories from the API
   Future<List<Category>> getCategories() async {
-    final response = await http.get(Uri.http(baseUrl, 'category'));
+    // get all category from api
+    final response = await http.get(
+      getUri(path: ApiPath.category),
+      headers: getHeader(),
+    );
+
     if (response.statusCode == 200) {
-      final Iterable data = json.decode(response.body);
-      List<Category> categories = List<Category>.from(
+      // response to json
+      final Iterable data = json.decode(response.body)['data'];
+
+      // from response to dto
+      List<CategoryDto> categories = List<CategoryDto>.from(
         data.map(
-          (model) => Category.fromJson(model),
+          (model) => CategoryDto.fromJson(model),
         ),
       );
-      return categories;
-    } else {
-      throw Exception('Failed to fetch categories');
-    }
-  }
-
-  Future<List<dynamic>> getCategoriesById(int categoryId) async {
-    final response = await http.get(Uri.http(baseUrl, '/category/$categoryId'));
-    if (response.statusCode == 200) {
-      return json.decode(response.body);
+      return categories.map((e) => e.getCategory()).toList();
     } else {
       throw Exception('Failed to fetch categories');
     }
   }
 
   Future<Category> getCategoriesByIdWithProduct(int categoryId) async {
-    final response =
-        await http.get(Uri.http(baseUrl, '/category/$categoryId/with-product'));
+    final response = await http.get(
+      getUri(
+        path: '${ApiPath.category}/$categoryId',
+        parameters: {'populate': '*'},
+      ),
+    );
     if (response.statusCode == 200) {
-      return Category.fromJson(json.decode(response.body));
+      final Map<String, dynamic> data = json.decode(response.body);
+      final category = CategoryDto.fromJson(data['data']);
+      return category.getCategory();
     } else {
       throw Exception('Failed to fetch categories');
     }
   }
 
-  // Function to create a new category
-  Future<bool> createCategory(Map<String, dynamic> categoryData) async {
-    final response = await http.post(Uri.http(baseUrl, '/category'),
-        headers: {"Content-Type": "application/json"},
-        body: json.encode(categoryData));
-    if (response.statusCode == 201) {
-      return true;
-    } else {
-      throw Exception('Failed to create category');
-    }
-  }
+  // Future<bool> createCategory(Map<String, dynamic> categoryData) async {
+  //   final response = await http.post(getUri(path: ApiPath.category),
+  //       headers: {"Content-Type": "application/json"},
+  //       body: json.encode(categoryData));
+  //   if (response.statusCode == 201) {
+  //     return true;
+  //   } else {
+  //     throw Exception('Failed to create category');
+  //   }
+  // }
 
-  // Function to update an existing category
-  Future<bool> updateCategory(
-      int categoryId, Map<String, dynamic> categoryData) async {
-    final response = await http.put(Uri.http(baseUrl, '/category/$categoryId'),
-        headers: {"Content-Type": "application/json"},
-        body: json.encode(categoryData));
-    if (response.statusCode == 200) {
-      return true;
-    } else {
-      throw Exception('Failed to update category');
-    }
-  }
+  // Future<bool> updateCategory(
+  //     int categoryId, Map<String, dynamic> categoryData) async {
+  //   final response = await http.put(
+  //       getUri(path: '${ApiPath.category}/$categoryId'),
+  //       headers: {"Content-Type": "application/json"},
+  //       body: json.encode(categoryData));
+  //   if (response.statusCode == 200) {
+  //     return true;
+  //   } else {
+  //     throw Exception('Failed to update category');
+  //   }
+  // }
 
-  // Function to delete an existing category
-  Future<bool> deleteCategory(int categoryId) async {
-    final response =
-        await http.delete(Uri.http(baseUrl, '/category/$categoryId'));
-    if (response.statusCode == 204) {
-      return true;
-    } else {
-      throw Exception('Failed to delete category');
-    }
-  }
+  // Future<bool> deleteCategory(int categoryId) async {
+  //   final response =
+  //       await http.delete(getUri(path: '${ApiPath.category}/$categoryId'));
+  //   if (response.statusCode == 204) {
+  //     return true;
+  //   } else {
+  //     throw Exception('Failed to delete category');
+  //   }
+  // }
 }
