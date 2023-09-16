@@ -1,11 +1,9 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/model/cart_item.dart';
+import 'package:instant_grrocery_delivery/data_source/local/favorite_hive.dart';
 
-import '../../data_source/hive/favorite_hive.dart';
 
 // =================== DataModel =====================
 

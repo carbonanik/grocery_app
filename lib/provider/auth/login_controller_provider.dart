@@ -4,8 +4,8 @@ import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_hive_provider.dart';
 import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
 
-class LoginController extends StateNotifier<AsyncValue<AuthResponseDto?>> {
-  LoginController(this.ref) : super(AsyncValueExt.initial());
+class LoginNotifier extends StateNotifier<AsyncValue<AuthResponseDto?>> {
+  LoginNotifier(this.ref) : super(AsyncValueExt.initial());
 
   final Ref ref;
 
@@ -25,7 +25,7 @@ class LoginController extends StateNotifier<AsyncValue<AuthResponseDto?>> {
   }
 }
 
-final loginControllerProvider =
-    StateNotifierProvider<LoginController, AsyncValue<AuthResponseDto?>>(
-  (ref) => LoginController(ref),
+final loginNotifierProvider =
+    StateNotifierProvider<LoginNotifier, AsyncValue<AuthResponseDto?>>(
+  (ref) => LoginNotifier(ref),
 );

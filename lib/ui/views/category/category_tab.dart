@@ -44,7 +44,7 @@ class CategoryTab extends StatelessWidget {
                       )
                     : 0,
                 leading: CircleAvatar(
-                  backgroundColor: greenColor,
+                  backgroundColor: accentColor,
                 ),
               ),
               error: (error) => Text(error.error.toString()),

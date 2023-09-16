@@ -20,7 +20,7 @@ class AddRemoveButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           horizontal: Dimension.width(15), vertical: Dimension.height(10)),
       decoration: BoxDecoration(
-          color: greenColor, borderRadius: BorderRadius.circular(10)),
+          color: accentColor, borderRadius: BorderRadius.circular(10)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

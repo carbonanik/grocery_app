@@ -89,7 +89,7 @@ class VerificationPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: Dimension.width(16),
                         fontWeight: FontWeight.w500,
-                        color: greenColor,
+                        color: accentColor,
                       ),
                     ),
                   ],

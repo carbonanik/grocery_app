@@ -1,72 +1,17 @@
-import 'dart:convert';
+import 'package:instant_grrocery_delivery/model/auth/login.dart';
+import 'package:instant_grrocery_delivery/model/user.dart';
 
-import 'package:http/http.dart' as http;
-import 'package:instant_grrocery_delivery/data_source/api/util/extensions.dart';
-import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
+abstract class AuthApi {
+  Future<AuthResponseDto> login(LoginRequestDto loginUser);
 
-import '../../model/auth/login.dart';
-import '../../model/user.dart';
-import 'util/paths.dart';
-
-class AuthApi {
-  Future<AuthResponseDto> register(CreateUserDto createUser) async {
-    final response = await http.post(
-      getUri(path: ApiPath.register),
-      headers: getHeader(),
-      body: json.encode(createUser),
-    );
-
-    if (response.ok) {
-      return AuthResponseDto.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to create user');
-    }
-  }
-
-  Future<AuthResponseDto> login(LoginRequestDto loginUser) async {
-    print(loginUser);
-    final response = await http.post(
-      getUri(path: ApiPath.login),
-      headers: getHeader(),
-      body: json.encode(loginUser),
-    );
-    if (response.ok) {
-      return AuthResponseDto.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to login');
-    }
-  }
+  Future<AuthResponseDto> register(CreateUserDto createUser);
 
   Future<UserDto> update({
     required AuthResponseDto authUser,
     required UpdateUserDto updateUser,
-  }) async {
-    final response = await http.put(
-      getUri(path: '${ApiPath.updateUser}/${authUser.user.id}'),
-      headers: getHeader(token: authUser),
-      body: json.encode(updateUser),
-    );
-    print("======================================");
-    print(response.body);
-    print(response.statusCode);
-    if (response.ok) {
-      return UserDto.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to update user');
-    }
-  }
+  });
 
-  Future<void> logout() async {}
+  Future<void> logout();
 
-  Future<AuthResponseDto> getMe(AuthResponseDto token) async {
-    final response = await http.get(
-      getUri(path: ApiPath.login),
-      headers: getHeader(token: token),
-    );
-    if (response.ok) {
-      return AuthResponseDto.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to get current user');
-    }
-  }
+  Future<AuthResponseDto> getMe(AuthResponseDto token);
 }

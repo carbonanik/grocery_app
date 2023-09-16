@@ -26,7 +26,7 @@ class ApplyCoupon extends StatelessWidget {
                   suffixStyle: TextStyle(
                     fontSize: Dimension.width(20),
                     fontWeight: FontWeight.w600,
-                    color: greenColor,
+                    color: accentColor,
                   ),
                   hintText: 'Enter Coupon Code',
                   hintStyle: TextStyle(

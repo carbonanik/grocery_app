@@ -113,7 +113,7 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
                       onPressed: () {},
                       text: 'Ok',
                       iconData: Icons.done,
-                      color: greenColor,
+                      color: accentColor,
                       textStyle: TextStyle(color: Colors.white),
                       iconColor: Colors.white,
                     ),
@@ -138,7 +138,7 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(Dimension.width(5)),
                 borderSide: BorderSide(
-                  color: greenColor,
+                  color: accentColor,
                   width: 2,
                 ),
               ),

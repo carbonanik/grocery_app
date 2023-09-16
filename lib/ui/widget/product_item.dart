@@ -99,7 +99,7 @@ class ProductItem extends StatelessWidget {
                         height: Dimension.width(40),
                         width: Dimension.width(40),
                         decoration: BoxDecoration(
-                          color: greenColor,
+                          color: accentColor,
                           borderRadius:
                               BorderRadius.circular(Dimension.width(10)),
                         ),

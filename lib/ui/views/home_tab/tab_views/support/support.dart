@@ -67,7 +67,7 @@ class SupportPage extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                          color: greenColor.withOpacity(.5),
+                          color: accentColor.withOpacity(.5),
                           width: 2,
                         ),
                       ),
@@ -82,7 +82,7 @@ class SupportPage extends StatelessWidget {
                       filled: true,
                       suffixIcon: Icon(
                         Icons.call,
-                        color: greenColor.withOpacity(.5),
+                        color: accentColor.withOpacity(.5),
                       ),
                     ),
                   ),
@@ -110,7 +110,7 @@ class SupportPage extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                          color: greenColor.withOpacity(.5),
+                          color: accentColor.withOpacity(.5),
                           width: 2,
                         ),
                       ),
@@ -125,7 +125,7 @@ class SupportPage extends StatelessWidget {
                       filled: true,
                       suffixIcon: Icon(
                         Icons.email,
-                        color: greenColor.withOpacity(.5),
+                        color: accentColor.withOpacity(.5),
                       ),
                     ),
                   ),
@@ -156,7 +156,7 @@ class SupportPage extends StatelessWidget {
                       ),
                       hintText: "Write Subject",
                       hintStyle: TextStyle(
-                        color: greenColor.withOpacity(.5),
+                        color: accentColor.withOpacity(.5),
                         fontWeight: FontWeight.w500,
                       ),
                       border: OutlineInputBorder(
@@ -169,7 +169,7 @@ class SupportPage extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                          color: greenColor.withOpacity(.5),
+                          color: accentColor.withOpacity(.5),
                           width: 2,
                         ),
                       ),
@@ -196,7 +196,7 @@ class SupportPage extends StatelessWidget {
                       ),
                       hintText: "Write your message",
                       hintStyle: TextStyle(
-                        color: greenColor.withOpacity(.5),
+                        color: accentColor.withOpacity(.5),
                         fontWeight: FontWeight.w500,
                       ),
                       border: OutlineInputBorder(
@@ -209,7 +209,7 @@ class SupportPage extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                          color: greenColor.withOpacity(.5),
+                          color: accentColor.withOpacity(.5),
                           width: 2,
                         ),
                       ),

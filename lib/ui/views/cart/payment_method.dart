@@ -48,7 +48,7 @@ class PaymentMethod extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: Dimension.width(16),
                         fontWeight: FontWeight.w600,
-                        color: greenColor,
+                        color: accentColor,
                       ),
                     );
                   }),
@@ -63,7 +63,7 @@ class PaymentMethod extends ConsumerWidget {
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(0, 50),
                   disabledBackgroundColor: Colors.grey,
-                  backgroundColor: greenColor,
+                  backgroundColor: accentColor,
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(6)),

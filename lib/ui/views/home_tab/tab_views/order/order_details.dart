@@ -29,7 +29,7 @@ class OrderDetailsPage extends StatelessWidget {
                 children: [
                   Container(
                     height: 300,
-                    color: greenColor,
+                    color: accentColor,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -176,7 +176,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 Text(
                                   "Paid Via GroWallet",
                                   style: TextStyle(
-                                    color: greenColor,
+                                    color: accentColor,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),

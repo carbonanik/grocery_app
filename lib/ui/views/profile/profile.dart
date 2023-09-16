@@ -59,7 +59,7 @@ class Profile extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: greenColor,
+                            color: accentColor,
                           ),
                         ),
                       ),
@@ -70,7 +70,7 @@ class Profile extends StatelessWidget {
                     height: 80,
                     width: 80,
                     child: CircleAvatar(
-                      backgroundColor: greenColor,
+                      backgroundColor: accentColor,
                     ),
                   )
                 ],
@@ -140,7 +140,7 @@ Widget ProfileItem(
         children: [
           Icon(
             icon,
-            color: greenColor,
+            color: accentColor,
           ),
           const SizedBox(width: 20),
           Column(

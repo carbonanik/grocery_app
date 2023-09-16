@@ -10,7 +10,7 @@ class ShopListPage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: greenColor,
+        backgroundColor: accentColor,
         child: const Icon(
           Icons.add,
         ),
@@ -35,7 +35,7 @@ class ShopListPage extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: greenColor,
+                      color: accentColor,
                     ),
                     child: const Icon(
                       Icons.shop_rounded,

@@ -106,7 +106,7 @@ class OrderCard extends StatelessWidget {
                         height: Dimension.width(8),
                         width: Dimension.width(8),
                         decoration: BoxDecoration(
-                          color: greenColor,
+                          color: accentColor,
                           borderRadius:
                               BorderRadius.circular(Dimension.width(10)),
                         ),
@@ -132,7 +132,7 @@ class OrderCard extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.green.shade50),
                           foregroundColor:
-                              MaterialStateProperty.all(greenColor),
+                              MaterialStateProperty.all(accentColor),
                         ),
                         onPressed: () {},
                         child: Text(

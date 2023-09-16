@@ -122,7 +122,7 @@ class YourLocation extends StatelessWidget {
                         ),
                         hintText: "Your Current Location",
                         hintStyle: TextStyle(
-                          color: greenColor.withOpacity(.5),
+                          color: accentColor.withOpacity(.5),
                           fontWeight: FontWeight.w500,
                         ),
                         border: OutlineInputBorder(
@@ -135,7 +135,7 @@ class YourLocation extends StatelessWidget {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                           borderSide: BorderSide(
-                            color: greenColor.withOpacity(.5),
+                            color: accentColor.withOpacity(.5),
                             width: 2,
                           ),
                         ),
@@ -150,7 +150,7 @@ class YourLocation extends StatelessWidget {
                         filled: true,
                         prefixIcon: Icon(
                           Icons.location_on,
-                          color: greenColor.withOpacity(.5),
+                          color: accentColor.withOpacity(.5),
                         ),
                       ),
                     ),
@@ -199,7 +199,7 @@ Widget LocationItem(IconData icon, String title, String subtitle,
       children: [
         Icon(
           icon,
-          color: greenColor,
+          color: accentColor,
         ),
         const SizedBox(width: 20),
         Container(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/data_source/local/auth_hive.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/provider/auth/login_controller_provider.dart';
 
-import '../../data_source/hive/auth_hive.dart';
-import '../../provider/auth/login_controller_provider.dart';
 import '../../route/route_helper.dart';
 
 class Splash extends ConsumerWidget {
@@ -24,7 +24,7 @@ class Splash extends ConsumerWidget {
     // );
 
     Future.delayed(const Duration(seconds: 1), () async {
-      // ref.read(loginControllerProvider.notifier).isPreviouslyLoggedIn();
+      ref.read(loginNotifierProvider.notifier).isPreviouslyLoggedIn();
       print("================================================");
       final user = await getAuthUserHive();
       if (user != null) {

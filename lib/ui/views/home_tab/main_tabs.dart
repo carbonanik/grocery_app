@@ -41,7 +41,7 @@ class MainTabs extends StatelessWidget {
               Get.toNamed(RouteHelper.getProfile());
             },
             child: CircleAvatar(
-              backgroundColor: greenColor,
+              backgroundColor: accentColor,
             ),
           ),
         ),

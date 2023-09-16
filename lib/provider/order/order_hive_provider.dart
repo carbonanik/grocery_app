@@ -2,7 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/data_source/hive/orders_hive.dart';
+import 'package:instant_grrocery_delivery/data_source/local/orders_hive.dart';
 import 'package:instant_grrocery_delivery/model/order.dart';
 
 // =============================== CartDataModel =======================================

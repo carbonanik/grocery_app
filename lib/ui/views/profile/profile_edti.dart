@@ -73,7 +73,7 @@ class ProfileEdit extends ConsumerWidget {
                             height: 80,
                             width: 80,
                             child: CircleAvatar(
-                              backgroundColor: greenColor,
+                              backgroundColor: accentColor,
                             ),
                           ),
                           Positioned(

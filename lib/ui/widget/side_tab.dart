@@ -75,7 +75,7 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
                       labelStyle: TextStyle(
                           fontSize: Dimension.width(14),
                           fontWeight: FontWeight.bold),
-                      labelColor: greenColor,
+                      labelColor: accentColor,
                       controller: tabController,
                       unselectedLabelColor: Colors.black54,
                       padding:

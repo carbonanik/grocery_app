@@ -119,7 +119,7 @@ class HomePage extends StatelessWidget {
               hintText: 'Search',
               prefixIcon: Icon(
                 Icons.search,
-                color: greenColor,
+                color: accentColor,
               ),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(Dimension.height(10)),
@@ -208,7 +208,7 @@ class HomePage extends StatelessWidget {
               child: Icon(
                 Icons.wallet,
                 size: Dimension.width(45),
-                color: greenColor,
+                color: accentColor,
               ),
             )
           ],

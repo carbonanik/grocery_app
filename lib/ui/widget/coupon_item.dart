@@ -93,7 +93,7 @@ class CouponItem extends StatelessWidget {
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
                           backgroundColor: MaterialStateProperty.all(Colors.white),
-                          foregroundColor: MaterialStateProperty.all(greenColor),
+                          foregroundColor: MaterialStateProperty.all(accentColor),
                         ),
                         onPressed: () {},
                         child: Text('APPLY',

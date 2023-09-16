@@ -126,7 +126,7 @@ class MyCart extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.label,
-                      color: greenColor,
+                      color: accentColor,
                       size: 20,
                     ),
                     SizedBox(
@@ -143,7 +143,7 @@ class MyCart extends StatelessWidget {
                     const Spacer(),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: greenColor,
+                      color: accentColor,
                       size: 18,
                     ),
                   ],
@@ -281,7 +281,7 @@ class MyCart extends StatelessWidget {
           horizontal: Dimension.width(30),
         ),
         decoration: BoxDecoration(
-          color: alphaBlack,
+          color: foregroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(Dimension.height(30)),
             topRight: Radius.circular(Dimension.height(30)),
@@ -317,7 +317,7 @@ class MyCart extends StatelessWidget {
                     style: TextStyle(
                       fontSize: Dimension.height(16),
                       fontWeight: FontWeight.w500,
-                      color: greenColor,
+                      color: accentColor,
                     ),
                   ),
                 ),
@@ -364,7 +364,7 @@ class MyCart extends StatelessWidget {
                         horizontal: Dimension.width(40),
                         vertical: Dimension.height(15)),
                     decoration: BoxDecoration(
-                        color: greenColor,
+                        color: accentColor,
                         borderRadius: BorderRadius.circular(5)),
                     child: const Text(
                       'Continue to pay',

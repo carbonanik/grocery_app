@@ -299,7 +299,7 @@ class ProductDetail extends StatelessWidget {
           horizontal: Dimension.width(20),
         ),
         decoration: BoxDecoration(
-          color: alphaBlack,
+          color: foregroundColor,
         ),
         child: Row(
           children: [
@@ -321,7 +321,7 @@ class ProductDetail extends StatelessWidget {
             Container(
               height: 35,
               width: 1,
-              color: greenColor,
+              color: accentColor,
             ),
             SizedBox(
               width: Dimension.width(15),
@@ -352,7 +352,7 @@ class ProductDetail extends StatelessWidget {
                   vertical: Dimension.height(15),
                 ),
                 decoration: BoxDecoration(
-                    color: greenColor, borderRadius: BorderRadius.circular(10)),
+                    color: accentColor, borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
                     const Icon(

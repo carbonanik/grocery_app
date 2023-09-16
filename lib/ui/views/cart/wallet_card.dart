@@ -21,7 +21,7 @@ class WalletCard extends StatelessWidget {
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),
-              color: greenColor,
+              color: accentColor,
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -129,14 +129,14 @@ class WalletCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.add, color: greenColor),
+                  Icon(Icons.add, color: accentColor),
                   const SizedBox(width: 10),
                   Text(
                     'Add Money',
                     style: TextStyle(
                       // fontWeight: FontWeight.w500,
                       fontSize: 22,
-                      color: greenColor,
+                      color: accentColor,
                     ),
                   ),
                 ],

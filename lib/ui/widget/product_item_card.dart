@@ -63,7 +63,7 @@ class ProductItemCard extends StatelessWidget {
               Container(
                 height: 35,
                 width: 35,
-                decoration: BoxDecoration(color: greenColor, borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(color: accentColor, borderRadius: BorderRadius.circular(10)),
                 child: const IconButton(
                   onPressed: null,
                   icon: Icon(

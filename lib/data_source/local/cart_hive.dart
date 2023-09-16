@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:hive/hive.dart';
-import 'package:instant_grrocery_delivery/data_source/hive/constant/constant.dart';
+import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 
 import '../../model/cart_item.dart';
 

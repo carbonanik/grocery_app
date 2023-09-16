@@ -71,7 +71,7 @@ class InputField extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(Dimension.width(5)),
                 borderSide: BorderSide(
-                  color: greenColor,
+                  color: accentColor,
                   width: 2,
                 ),
               ),

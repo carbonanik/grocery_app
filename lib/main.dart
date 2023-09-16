@@ -32,8 +32,8 @@ Future<void> main() async {
 }
 
 Color backgroundColor = const Color(0xFFE8F5E9);
-Color greenColor = const Color(0xFF87C428);
-Color alphaBlack = const Color(0xE2000000);
+Color accentColor = const Color(0xFF87C428);
+Color foregroundColor = const Color(0xE2000000);
 
 const baseImageUrl =
     "https://test-and-devops-environment.s3.amazonaws.com/photos/";
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      // home: SignUp(),
+      // home: HomePage(),
       getPages: RouteHelper.routes,
       initialRoute: RouteHelper.getSplash(),
     );

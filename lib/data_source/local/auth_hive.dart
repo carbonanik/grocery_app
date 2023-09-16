@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:instant_grrocery_delivery/data_source/hive/constant/constant.dart';
+import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 
 import '../../model/user.dart';

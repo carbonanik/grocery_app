@@ -23,7 +23,7 @@ class SignIn extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue<void>>(
-      loginControllerProvider,
+      loginNotifierProvider,
       (_, state) {
         state.showSnackBarOnError(context);
         state.whenData((value) {
@@ -32,7 +32,7 @@ class SignIn extends ConsumerWidget {
       },
     );
 
-    final loginState = ref.watch(loginControllerProvider);
+    final loginState = ref.watch(loginNotifierProvider);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -50,7 +50,7 @@ class SignIn extends ConsumerWidget {
                       height: 100,
                       width: 100,
                       decoration: BoxDecoration(
-                          color: greenColor,
+                          color: accentColor,
                           borderRadius: BorderRadius.circular(100)),
                     ),
                   ),
@@ -125,7 +125,7 @@ class SignIn extends ConsumerWidget {
                       identifier: emailTextController.text,
                       password: passwordTextController.text,
                     );
-                    ref.read(loginControllerProvider.notifier).login(loginUser);
+                    ref.read(loginNotifierProvider.notifier).login(loginUser);
                   }
                 },
                 text: loginState.isLoading
