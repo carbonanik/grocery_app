@@ -1,4 +1,4 @@
-import 'package:instant_grrocery_delivery/model/category.dart';
+import 'package:instant_grrocery_delivery/model/category/category.dart';
 
 abstract class CategoryApi {
   Future<List<Category>> getCategories();

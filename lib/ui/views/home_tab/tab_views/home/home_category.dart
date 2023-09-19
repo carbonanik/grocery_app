@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
-import 'package:instant_grrocery_delivery/model/category.dart';
+import 'package:instant_grrocery_delivery/model/category/category.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 import '../../../../../route/route_helper.dart';

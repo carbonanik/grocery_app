@@ -4,7 +4,7 @@ import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-import '../../model/category.dart';
+import '../../model/category/category.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({

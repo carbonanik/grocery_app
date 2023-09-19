@@ -4,9 +4,9 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:instant_grrocery_delivery/data_source/api/product_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
-import 'package:instant_grrocery_delivery/model/dto/product_dto.dart';
+import 'package:instant_grrocery_delivery/model/product/dto/product_dto.dart';
 
-import '../../../model/product.dart';
+import '../../../model/product/product.dart';
 
 class ProductApiImpl extends ProductApi {
   @override
@@ -25,7 +25,7 @@ class ProductApiImpl extends ProductApi {
       );
 
       // dto-products to products
-      return products.map((e) => e.getProduct()).toList();
+      return products.map((e) => e.toProduct()).toList();
     } else {
       throw Exception('Failed to fetch products');
     }
@@ -39,7 +39,7 @@ class ProductApiImpl extends ProductApi {
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       final product = ProductDto.fromJson(data['data']);
-      return product.getProduct();
+      return product.toProduct();
     } else {
       throw Exception('Failed to fetch products');
     }
@@ -104,7 +104,7 @@ class ProductApiImpl extends ProductApi {
       final Iterable data = json.decode(response.body)['data'];
       List<ProductDto> products = List<ProductDto>.from(
           data.map((model) => ProductDto.fromJson(model)));
-      return products.map((e) => e.getProduct()).toList();
+      return products.map((e) => e.toProduct()).toList();
     } else {
       throw Exception('Failed to create product');
     }

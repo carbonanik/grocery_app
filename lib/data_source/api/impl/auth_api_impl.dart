@@ -6,7 +6,7 @@ import 'package:instant_grrocery_delivery/data_source/api/util/extensions.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
 
 import '../../../model/auth/login.dart';
-import '../../../model/user.dart';
+import '../../../model/user/user.dart';
 import '../util/paths.dart';
 
 class AuthApiImpl extends AuthApi {
@@ -50,9 +50,7 @@ class AuthApiImpl extends AuthApi {
       headers: getHeader(token: authUser),
       body: json.encode(updateUser),
     );
-    print("======================================");
-    print(response.body);
-    print(response.statusCode);
+
     if (response.ok) {
       return UserDto.fromJson(json.decode(response.body));
     } else {

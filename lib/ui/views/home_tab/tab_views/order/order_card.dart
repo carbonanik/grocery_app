@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../main.dart';
-import '../../../../../model/order.dart';
+import '../../../../../model/order/order.dart';
 import '../../../../../route/route_helper.dart';
 import '../../../../../util/dimension.dart';
 import '../../../../widget/my_separetor.dart';

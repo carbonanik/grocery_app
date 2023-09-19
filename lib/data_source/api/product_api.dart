@@ -1,4 +1,4 @@
-import 'package:instant_grrocery_delivery/model/product.dart';
+import 'package:instant_grrocery_delivery/model/product/product.dart';
 
 abstract class ProductApi {
   Future<List<Product>> getProducts();

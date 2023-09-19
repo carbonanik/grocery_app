@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:hive/hive.dart';
 import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 
-import '../../model/cart_item.dart';
+import '../../model/cart/cart_item/cart_item.dart';
 
 Future<List<CartItem>> getCartItems() async {
   Box box1 = await Hive.openBox(HiveBoxName.cartBox);

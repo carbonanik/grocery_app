@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
-import 'package:instant_grrocery_delivery/model/user.dart';
+import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_hive_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/update_user_controller_provider.dart';
 import 'package:instant_grrocery_delivery/ui/widget/auth_button.dart';

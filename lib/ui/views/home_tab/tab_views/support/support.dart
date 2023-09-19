@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/model/dto/support_dto.dart';
+import 'package:instant_grrocery_delivery/model/support/dto/support_dto.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_hive_provider.dart';
 import 'package:instant_grrocery_delivery/provider/support/support_provider.dart';
 

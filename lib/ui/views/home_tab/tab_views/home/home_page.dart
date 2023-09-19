@@ -7,7 +7,7 @@ import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_category.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-import '../../../../../model/product.dart';
+import '../../../../../model/product/product.dart';
 import '../../../../../provider/category/category_api_provider.dart';
 import '../../../../../provider/product/product_api_provider.dart';
 import '../../../../../route/route_helper.dart';

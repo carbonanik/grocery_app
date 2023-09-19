@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../main.dart';
-import '../../../../../model/order_item.dart';
+import '../../../../../model/order/order_item/order_item.dart';
 import '../../../../../provider/order/order_hive_provider.dart';
 
 class OrderDetailsPage extends StatelessWidget {

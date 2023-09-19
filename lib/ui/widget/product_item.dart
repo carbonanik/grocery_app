@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../main.dart';
-import '../../model/product.dart';
+import '../../model/product/product.dart';
 import '../../provider/cart/cart_hive_notifier_provider.dart';
 import '../../route/route_helper.dart';
 import '../../util/dimension.dart';

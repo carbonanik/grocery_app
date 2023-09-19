@@ -5,8 +5,8 @@ import 'package:instant_grrocery_delivery/data_source/api/support_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/extensions.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
-import 'package:instant_grrocery_delivery/model/dto/support_dto.dart';
-import 'package:instant_grrocery_delivery/model/support.dart';
+import 'package:instant_grrocery_delivery/model/support/dto/support_dto.dart';
+import 'package:instant_grrocery_delivery/model/support/support.dart';
 
 import '../util/paths.dart';
 
@@ -29,7 +29,7 @@ class SupportApiImpl extends SupportApi {
           (model) => ReadSupportDto.fromJson(model),
         ),
       );
-      return supports.map((e) => e.getSupport()).toList();
+      return supports.map((e) => e.toSupport()).toList();
     } else {
       throw Exception('Failed to fetch supports');
     }

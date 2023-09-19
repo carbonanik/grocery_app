@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:hive/hive.dart';
 
 import 'constant/constant.dart';
-import '../../model/order.dart';
+import '../../model/order/order.dart';
 
 Future<List<Order>> getOrdersHive() async {
   Box box = await Hive.openBox(HiveBoxName.orderBox);

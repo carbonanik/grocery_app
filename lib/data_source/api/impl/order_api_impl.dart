@@ -6,9 +6,9 @@ import 'package:instant_grrocery_delivery/data_source/api/util/extensions.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
-import 'package:instant_grrocery_delivery/model/dto/order_dto.dart';
+import 'package:instant_grrocery_delivery/model/order/dtos/order_dto.dart';
 
-import '../../../model/order.dart';
+import '../../../model/order/order.dart';
 
 class OrderApiImpl extends OrderApi {
   // Function to create a new order

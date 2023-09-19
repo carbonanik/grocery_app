@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/model/user.dart';
+import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/signup_controller_provider.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
 import 'package:instant_grrocery_delivery/ui/widget/input_field.dart';

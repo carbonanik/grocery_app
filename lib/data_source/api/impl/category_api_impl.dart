@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:instant_grrocery_delivery/data_source/api/category_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
-import 'package:instant_grrocery_delivery/model/dto/category_dto.dart';
+import 'package:instant_grrocery_delivery/model/category/dto/category_dto.dart';
 
-import '../../../model/category.dart';
+import '../../../model/category/category.dart';
 import '../util/paths.dart';
 
 class CategoryApiImpl extends CategoryApi{
@@ -27,7 +27,7 @@ class CategoryApiImpl extends CategoryApi{
           (model) => CategoryDto.fromJson(model),
         ),
       );
-      return categories.map((e) => e.getCategory()).toList();
+      return categories.map((e) => e.toCategory()).toList();
     } else {
       throw Exception('Failed to fetch categories');
     }
@@ -44,7 +44,7 @@ class CategoryApiImpl extends CategoryApi{
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       final category = CategoryDto.fromJson(data['data']);
-      return category.getCategory();
+      return category.toCategory();
     } else {
       throw Exception('Failed to fetch categories');
     }

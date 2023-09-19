@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
-import 'package:instant_grrocery_delivery/model/user.dart';
+import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_hive_provider.dart';
 import 'package:instant_grrocery_delivery/util/extension/async_value.dart';

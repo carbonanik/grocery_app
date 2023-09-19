@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 
-import '../../model/user.dart';
+import '../../model/user/user.dart';
 
 const authUserId = 'auth_user_id';
 const currentUserId = 'me';

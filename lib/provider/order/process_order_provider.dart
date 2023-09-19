@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/api/impl/order_api_impl.dart';
 import 'package:instant_grrocery_delivery/data_source/local/auth_hive.dart';
-import 'package:instant_grrocery_delivery/model/order.dart';
+import 'package:instant_grrocery_delivery/model/order/order.dart';
 import 'package:instant_grrocery_delivery/provider/cart/cart_hive_notifier_provider.dart';
 import 'package:instant_grrocery_delivery/provider/order/order_hive_provider.dart';
 import 'package:instant_grrocery_delivery/util/extension/async_value.dart';

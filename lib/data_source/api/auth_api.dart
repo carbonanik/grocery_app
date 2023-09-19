@@ -1,5 +1,5 @@
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
-import 'package:instant_grrocery_delivery/model/user.dart';
+import 'package:instant_grrocery_delivery/model/user/user.dart';
 
 abstract class AuthApi {
   Future<AuthResponseDto> login(LoginRequestDto loginUser);

@@ -3,9 +3,9 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/local/cart_hive.dart';
-import 'package:instant_grrocery_delivery/model/cart_item.dart';
-import 'package:instant_grrocery_delivery/model/order_create.dart';
-import 'package:instant_grrocery_delivery/model/product.dart';
+import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
+import 'package:instant_grrocery_delivery/model/order/dtos/order_create.dart';
+import 'package:instant_grrocery_delivery/model/product/product.dart';
 
 // =============================== CartDataModel =======================================
 
@@ -22,6 +22,7 @@ class CartChangeNotifier extends ChangeNotifier {
   void itemIncrement(Product product) {
     final prevCount = _cartList[product.id]?.count ?? 0;
     final newCartItem = CartItem(
+      id: product.id,
       product: product,
       count: prevCount + 1,
     );
@@ -34,6 +35,7 @@ class CartChangeNotifier extends ChangeNotifier {
 
     if (prevCount > 1) {
       final newCartItem = CartItem(
+        id: product.id,
         product: product,
         count: prevCount - 1,
       );

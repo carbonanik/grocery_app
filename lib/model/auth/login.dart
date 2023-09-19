@@ -1,69 +1,37 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:instant_grrocery_delivery/model/user/user.dart';
 
 part 'login.g.dart';
+part 'login.freezed.dart';
 
-@JsonSerializable(explicitToJson: true)
-class LoginRequestDto {
-  String identifier;
-  String password;
+@freezed
+class LoginRequestDto with _$LoginRequestDto {
 
-  LoginRequestDto({
-    required this.identifier,
-    required this.password,
-  });
-
-  Map<String, dynamic> toJson() => _$LoginRequestDtoToJson(this);
+  const factory LoginRequestDto({
+    required String identifier,
+    required String password,
+  }) = _LoginRequestDto;
 
   factory LoginRequestDto.fromJson(Map<String, dynamic> source) =>
       _$LoginRequestDtoFromJson(source);
 }
 
-@JsonSerializable(explicitToJson: true)
-class AuthResponseDto {
-  String jwt;
-  UserDto user;
+@freezed
+class AuthResponseDto with _$AuthResponseDto {
 
-  AuthResponseDto({
-    required this.jwt,
-    required this.user,
-  });
-
-  Map<String, dynamic> toJson() => _$AuthResponseDtoToJson(this);
+  const factory AuthResponseDto({
+    required String jwt,
+    required UserDto user,
+  }) = _AuthResponseDto;
 
   factory AuthResponseDto.fromJson(Map<String, dynamic> source) =>
       _$AuthResponseDtoFromJson(source);
 
+}
+
+extension AuthToken on AuthResponseDto {
   String authorizationToken() {
     return 'Bearer $jwt';
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-class UserDto {
-  int id;
-  String? username;
-  String? email;
-  String? provider;
-  bool? confirmed;
-  bool? blocked;
-  String? fullName;
-  String? phone;
-  bool? isActive;
-
-  UserDto({
-    required this.id,
-    required this.username,
-    required this.email,
-    required this.provider,
-    required this.confirmed,
-    required this.blocked,
-    required this.fullName,
-    required this.phone,
-    required this.isActive,
-  });
-
-  Map<String, dynamic> toJson() => _$UserDtoToJson(this);
-
-  factory UserDto.fromJson(Map<String, dynamic> source) =>
-      _$UserDtoFromJson(source);
-}

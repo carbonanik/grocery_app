@@ -6,6 +6,7 @@ import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/order/orde
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/privacy_policy.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/support.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/terms_and_conditions.dart';
+import 'package:instant_grrocery_delivery/ui/views/on_boarding.dart';
 
 import '../ui/views/auth/sign_up.dart';
 import '../ui/views/cart/apply_coupon.dart';
@@ -23,6 +24,7 @@ import '../ui/views/your_location/your_location.dart';
 
 class RouteHelper {
   static const String _splash = '/splash';
+  static const String _onBoarding = '/on-boarding';
   static const String _login = '/login';
   static const String _signup = '/signup';
   static const String _verification = '/verification';
@@ -44,8 +46,9 @@ class RouteHelper {
   static const String _termsAndCondition = '/terms-and-condition';
   static const String _privacyPolicy = '/privacy-policy';
 
-
   static String getSplash() => _splash;
+
+  static String getOnBoarding() => _onBoarding;
 
   static String getLogin() => _login;
 
@@ -53,8 +56,7 @@ class RouteHelper {
 
   static String getHomeTab() => _homeTab;
 
-  static String getCategoryTab({int? selectedCategoryId}) =>
-      '$_categoryTab?selectedCategoryId=$selectedCategoryId';
+  static String getCategoryTab({int? selectedCategoryId}) => '$_categoryTab?selectedCategoryId=$selectedCategoryId';
 
   static String getCategoryProductList() => _categoryProductList;
 
@@ -67,8 +69,7 @@ class RouteHelper {
 
   static String getApplyCoupon() => _applyCoupon;
 
-  static String getOrderDetail(String orderId) =>
-      '$_orderDetail?orderId=$orderId';
+  static String getOrderDetail(String orderId) => '$_orderDetail?orderId=$orderId';
 
   static String getProfile() => _profile;
 
@@ -86,12 +87,16 @@ class RouteHelper {
 
   static String getPrivacyPolicy() => _privacyPolicy;
 
-
   //
   static List<GetPage> routes = [
     GetPage(
       name: _splash,
       page: () => const Splash(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _onBoarding,
+      page: () => const OnBoarding(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -126,9 +131,8 @@ class RouteHelper {
     GetPage(
       name: _categoryTab,
       page: () => CategoryTab(
-        selectedCategoryId: Get.parameters['selectedCategoryId'] == null
-            ? null
-            : int.parse(Get.parameters['selectedCategoryId']!),
+        selectedCategoryId:
+            Get.parameters['selectedCategoryId'] == null ? null : int.parse(Get.parameters['selectedCategoryId']!),
       ),
       transition: Transition.fadeIn,
     ),
@@ -196,7 +200,6 @@ class RouteHelper {
       name: _termsAndCondition,
       page: () => const TermsAndConditions(),
       transition: Transition.fadeIn,
-
     ),
     GetPage(
       name: _privacyPolicy,
