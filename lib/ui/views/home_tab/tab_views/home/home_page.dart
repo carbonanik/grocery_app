@@ -259,15 +259,14 @@ class HomePage extends StatelessWidget {
         builder: (context, ref, child) {
           final responseAsyncValue = ref.watch(getProductsProvider);
           return responseAsyncValue.map(
-            data: (_) => SliverGrid.count(
+            data: (data) => SliverGrid.count(
               crossAxisCount: 2,
               mainAxisSpacing: Dimension.width(20),
               crossAxisSpacing: Dimension.width(20),
               childAspectRatio: .699,
-              children: List.generate(_.value.length, (index) {
-                final Product item = _.value[index];
+              children: List.generate(data.value.length, (index) {
+                final Product item = data.value[index];
                 return ProductItem(
-                  // cartDatabaseController: cartDatabaseController,
                   product: item,
                 );
               }),
@@ -298,7 +297,7 @@ class CustomSilverHeaderDelegate extends SliverPersistentHeaderDelegate {
       fit: StackFit.expand,
       children: [
         Image.asset(
-          'assets/images/77-775114_delivery-man-clipart-png-moto-delivery-png-vector.png',
+          'assets/images/delivery_man.png',
           fit: BoxFit.cover,
         ),
         Container(

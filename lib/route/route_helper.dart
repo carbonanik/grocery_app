@@ -60,8 +60,8 @@ class RouteHelper {
 
   static String getCategoryProductList() => _categoryProductList;
 
-  static String getProductDetail(int productId, int heroPrefix) =>
-      '$_productDetail?productId=$productId&heroPrefix=$heroPrefix';
+  static String getProductDetail(int productId) =>
+      '$_productDetail?productId=$productId';
 
   static String getMyCart() => _myCart;
 
@@ -123,8 +123,7 @@ class RouteHelper {
       name: _productDetail,
       page: () {
         int productId = int.parse(Get.parameters['productId']!);
-        int heroPrefix = int.parse(Get.parameters['heroPrefix']!);
-        return ProductDetail(productId: productId, heroPrefix: heroPrefix);
+        return ProductDetail(productId: productId);
       },
       transition: Transition.fadeIn,
     ),

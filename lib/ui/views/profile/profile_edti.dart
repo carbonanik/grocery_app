@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
+import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_hive_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/update_user_controller_provider.dart';
@@ -21,7 +22,7 @@ class ProfileEdit extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.read<AsyncValue<AuthResponseDto?>>(getAuthUserProvider).whenData(
+    ref.read<AsyncValue<AuthResponse?>>(getAuthUserProvider).whenData(
       (value) {
         nameTextController.text = value?.user.fullName ?? '';
         phoneTextController.text = value?.user.phone ?? '';
@@ -122,7 +123,7 @@ class ProfileEdit extends ConsumerWidget {
                 const SizedBox(height: 150),
                 AuthButton(
                   onPressed: () {
-                    final updateUser = UpdateUserDto(
+                    final updateUser = UpdateUserRequest(
                       email: emailTextController.text,
                       fullName: nameTextController.text,
                       phone: phoneTextController.text,

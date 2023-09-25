@@ -6,8 +6,8 @@ part of 'user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CreateUserDto _$$_CreateUserDtoFromJson(Map<String, dynamic> json) =>
-    _$_CreateUserDto(
+_$_CreateUserRequest _$$_CreateUserRequestFromJson(Map<String, dynamic> json) =>
+    _$_CreateUserRequest(
       email: json['email'] as String,
       username: json['username'] as String,
       fullName: json['fullName'] as String?,
@@ -15,7 +15,8 @@ _$_CreateUserDto _$$_CreateUserDtoFromJson(Map<String, dynamic> json) =>
       password: json['password'] as String,
     );
 
-Map<String, dynamic> _$$_CreateUserDtoToJson(_$_CreateUserDto instance) =>
+Map<String, dynamic> _$$_CreateUserRequestToJson(
+        _$_CreateUserRequest instance) =>
     <String, dynamic>{
       'email': instance.email,
       'username': instance.username,
@@ -24,21 +25,22 @@ Map<String, dynamic> _$$_CreateUserDtoToJson(_$_CreateUserDto instance) =>
       'password': instance.password,
     };
 
-_$_UpdateUserDto _$$_UpdateUserDtoFromJson(Map<String, dynamic> json) =>
-    _$_UpdateUserDto(
+_$_UpdateUserRequest _$$_UpdateUserRequestFromJson(Map<String, dynamic> json) =>
+    _$_UpdateUserRequest(
       fullName: json['fullName'] as String?,
       phone: json['phone'] as String?,
       email: json['email'] as String?,
     );
 
-Map<String, dynamic> _$$_UpdateUserDtoToJson(_$_UpdateUserDto instance) =>
+Map<String, dynamic> _$$_UpdateUserRequestToJson(
+        _$_UpdateUserRequest instance) =>
     <String, dynamic>{
       'fullName': instance.fullName,
       'phone': instance.phone,
       'email': instance.email,
     };
 
-_$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
+_$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       id: json['id'] as int,
       username: json['username'] as String,
       email: json['email'] as String,
@@ -50,8 +52,7 @@ _$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
       isActive: json['isActive'] as bool,
     );
 
-Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'id': instance.id,
       'username': instance.username,
       'email': instance.email,

@@ -1,13 +1,14 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/api/impl/product_api_impl.dart';
+import 'package:instant_grrocery_delivery/data_source/api/mock_impl/product_api_mock_impl.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
 
 
-final productApiProvider = Provider((ref) => ProductApiImpl());
+final productApiProvider = Provider((ref) => ProductApiMockImpl()); // todo mock
 
 final getProductsProvider = FutureProvider<List<Product>>((ref) async {
   final httpClient = ref.read(productApiProvider);
-  return httpClient.getProducts();
+  return httpClient.getPopularProducts();
 });
 
 final getProductByIdProvider =

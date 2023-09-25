@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CreateUserDto _$CreateUserDtoFromJson(Map<String, dynamic> json) {
-  return _CreateUserDto.fromJson(json);
+CreateUserRequest _$CreateUserRequestFromJson(Map<String, dynamic> json) {
+  return _CreateUserRequest.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CreateUserDto {
+mixin _$CreateUserRequest {
   String get email => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String? get fullName => throw _privateConstructorUsedError;
@@ -28,15 +28,15 @@ mixin _$CreateUserDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CreateUserDtoCopyWith<CreateUserDto> get copyWith =>
+  $CreateUserRequestCopyWith<CreateUserRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreateUserDtoCopyWith<$Res> {
-  factory $CreateUserDtoCopyWith(
-          CreateUserDto value, $Res Function(CreateUserDto) then) =
-      _$CreateUserDtoCopyWithImpl<$Res, CreateUserDto>;
+abstract class $CreateUserRequestCopyWith<$Res> {
+  factory $CreateUserRequestCopyWith(
+          CreateUserRequest value, $Res Function(CreateUserRequest) then) =
+      _$CreateUserRequestCopyWithImpl<$Res, CreateUserRequest>;
   @useResult
   $Res call(
       {String email,
@@ -47,9 +47,9 @@ abstract class $CreateUserDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CreateUserDtoCopyWithImpl<$Res, $Val extends CreateUserDto>
-    implements $CreateUserDtoCopyWith<$Res> {
-  _$CreateUserDtoCopyWithImpl(this._value, this._then);
+class _$CreateUserRequestCopyWithImpl<$Res, $Val extends CreateUserRequest>
+    implements $CreateUserRequestCopyWith<$Res> {
+  _$CreateUserRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,11 +91,11 @@ class _$CreateUserDtoCopyWithImpl<$Res, $Val extends CreateUserDto>
 }
 
 /// @nodoc
-abstract class _$$_CreateUserDtoCopyWith<$Res>
-    implements $CreateUserDtoCopyWith<$Res> {
-  factory _$$_CreateUserDtoCopyWith(
-          _$_CreateUserDto value, $Res Function(_$_CreateUserDto) then) =
-      __$$_CreateUserDtoCopyWithImpl<$Res>;
+abstract class _$$_CreateUserRequestCopyWith<$Res>
+    implements $CreateUserRequestCopyWith<$Res> {
+  factory _$$_CreateUserRequestCopyWith(_$_CreateUserRequest value,
+          $Res Function(_$_CreateUserRequest) then) =
+      __$$_CreateUserRequestCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$_CreateUserDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateUserDtoCopyWithImpl<$Res>
-    extends _$CreateUserDtoCopyWithImpl<$Res, _$_CreateUserDto>
-    implements _$$_CreateUserDtoCopyWith<$Res> {
-  __$$_CreateUserDtoCopyWithImpl(
-      _$_CreateUserDto _value, $Res Function(_$_CreateUserDto) _then)
+class __$$_CreateUserRequestCopyWithImpl<$Res>
+    extends _$CreateUserRequestCopyWithImpl<$Res, _$_CreateUserRequest>
+    implements _$$_CreateUserRequestCopyWith<$Res> {
+  __$$_CreateUserRequestCopyWithImpl(
+      _$_CreateUserRequest _value, $Res Function(_$_CreateUserRequest) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_CreateUserDtoCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? password = null,
   }) {
-    return _then(_$_CreateUserDto(
+    return _then(_$_CreateUserRequest(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -150,16 +150,16 @@ class __$$_CreateUserDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CreateUserDto implements _CreateUserDto {
-  const _$_CreateUserDto(
+class _$_CreateUserRequest implements _CreateUserRequest {
+  const _$_CreateUserRequest(
       {required this.email,
       required this.username,
       this.fullName,
       this.phone,
       required this.password});
 
-  factory _$_CreateUserDto.fromJson(Map<String, dynamic> json) =>
-      _$$_CreateUserDtoFromJson(json);
+  factory _$_CreateUserRequest.fromJson(Map<String, dynamic> json) =>
+      _$$_CreateUserRequestFromJson(json);
 
   @override
   final String email;
@@ -174,14 +174,14 @@ class _$_CreateUserDto implements _CreateUserDto {
 
   @override
   String toString() {
-    return 'CreateUserDto(email: $email, username: $username, fullName: $fullName, phone: $phone, password: $password)';
+    return 'CreateUserRequest(email: $email, username: $username, fullName: $fullName, phone: $phone, password: $password)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateUserDto &&
+            other is _$_CreateUserRequest &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.username, username) ||
                 other.username == username) &&
@@ -200,27 +200,28 @@ class _$_CreateUserDto implements _CreateUserDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateUserDtoCopyWith<_$_CreateUserDto> get copyWith =>
-      __$$_CreateUserDtoCopyWithImpl<_$_CreateUserDto>(this, _$identity);
+  _$$_CreateUserRequestCopyWith<_$_CreateUserRequest> get copyWith =>
+      __$$_CreateUserRequestCopyWithImpl<_$_CreateUserRequest>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateUserDtoToJson(
+    return _$$_CreateUserRequestToJson(
       this,
     );
   }
 }
 
-abstract class _CreateUserDto implements CreateUserDto {
-  const factory _CreateUserDto(
+abstract class _CreateUserRequest implements CreateUserRequest {
+  const factory _CreateUserRequest(
       {required final String email,
       required final String username,
       final String? fullName,
       final String? phone,
-      required final String password}) = _$_CreateUserDto;
+      required final String password}) = _$_CreateUserRequest;
 
-  factory _CreateUserDto.fromJson(Map<String, dynamic> json) =
-      _$_CreateUserDto.fromJson;
+  factory _CreateUserRequest.fromJson(Map<String, dynamic> json) =
+      _$_CreateUserRequest.fromJson;
 
   @override
   String get email;
@@ -234,39 +235,39 @@ abstract class _CreateUserDto implements CreateUserDto {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateUserDtoCopyWith<_$_CreateUserDto> get copyWith =>
+  _$$_CreateUserRequestCopyWith<_$_CreateUserRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-UpdateUserDto _$UpdateUserDtoFromJson(Map<String, dynamic> json) {
-  return _UpdateUserDto.fromJson(json);
+UpdateUserRequest _$UpdateUserRequestFromJson(Map<String, dynamic> json) {
+  return _UpdateUserRequest.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UpdateUserDto {
+mixin _$UpdateUserRequest {
   String? get fullName => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UpdateUserDtoCopyWith<UpdateUserDto> get copyWith =>
+  $UpdateUserRequestCopyWith<UpdateUserRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UpdateUserDtoCopyWith<$Res> {
-  factory $UpdateUserDtoCopyWith(
-          UpdateUserDto value, $Res Function(UpdateUserDto) then) =
-      _$UpdateUserDtoCopyWithImpl<$Res, UpdateUserDto>;
+abstract class $UpdateUserRequestCopyWith<$Res> {
+  factory $UpdateUserRequestCopyWith(
+          UpdateUserRequest value, $Res Function(UpdateUserRequest) then) =
+      _$UpdateUserRequestCopyWithImpl<$Res, UpdateUserRequest>;
   @useResult
   $Res call({String? fullName, String? phone, String? email});
 }
 
 /// @nodoc
-class _$UpdateUserDtoCopyWithImpl<$Res, $Val extends UpdateUserDto>
-    implements $UpdateUserDtoCopyWith<$Res> {
-  _$UpdateUserDtoCopyWithImpl(this._value, this._then);
+class _$UpdateUserRequestCopyWithImpl<$Res, $Val extends UpdateUserRequest>
+    implements $UpdateUserRequestCopyWith<$Res> {
+  _$UpdateUserRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -298,22 +299,22 @@ class _$UpdateUserDtoCopyWithImpl<$Res, $Val extends UpdateUserDto>
 }
 
 /// @nodoc
-abstract class _$$_UpdateUserDtoCopyWith<$Res>
-    implements $UpdateUserDtoCopyWith<$Res> {
-  factory _$$_UpdateUserDtoCopyWith(
-          _$_UpdateUserDto value, $Res Function(_$_UpdateUserDto) then) =
-      __$$_UpdateUserDtoCopyWithImpl<$Res>;
+abstract class _$$_UpdateUserRequestCopyWith<$Res>
+    implements $UpdateUserRequestCopyWith<$Res> {
+  factory _$$_UpdateUserRequestCopyWith(_$_UpdateUserRequest value,
+          $Res Function(_$_UpdateUserRequest) then) =
+      __$$_UpdateUserRequestCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? fullName, String? phone, String? email});
 }
 
 /// @nodoc
-class __$$_UpdateUserDtoCopyWithImpl<$Res>
-    extends _$UpdateUserDtoCopyWithImpl<$Res, _$_UpdateUserDto>
-    implements _$$_UpdateUserDtoCopyWith<$Res> {
-  __$$_UpdateUserDtoCopyWithImpl(
-      _$_UpdateUserDto _value, $Res Function(_$_UpdateUserDto) _then)
+class __$$_UpdateUserRequestCopyWithImpl<$Res>
+    extends _$UpdateUserRequestCopyWithImpl<$Res, _$_UpdateUserRequest>
+    implements _$$_UpdateUserRequestCopyWith<$Res> {
+  __$$_UpdateUserRequestCopyWithImpl(
+      _$_UpdateUserRequest _value, $Res Function(_$_UpdateUserRequest) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -323,7 +324,7 @@ class __$$_UpdateUserDtoCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? email = freezed,
   }) {
-    return _then(_$_UpdateUserDto(
+    return _then(_$_UpdateUserRequest(
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -342,11 +343,11 @@ class __$$_UpdateUserDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UpdateUserDto implements _UpdateUserDto {
-  const _$_UpdateUserDto({this.fullName, this.phone, this.email});
+class _$_UpdateUserRequest implements _UpdateUserRequest {
+  const _$_UpdateUserRequest({this.fullName, this.phone, this.email});
 
-  factory _$_UpdateUserDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UpdateUserDtoFromJson(json);
+  factory _$_UpdateUserRequest.fromJson(Map<String, dynamic> json) =>
+      _$$_UpdateUserRequestFromJson(json);
 
   @override
   final String? fullName;
@@ -357,14 +358,14 @@ class _$_UpdateUserDto implements _UpdateUserDto {
 
   @override
   String toString() {
-    return 'UpdateUserDto(fullName: $fullName, phone: $phone, email: $email)';
+    return 'UpdateUserRequest(fullName: $fullName, phone: $phone, email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateUserDto &&
+            other is _$_UpdateUserRequest &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.phone, phone) || other.phone == phone) &&
@@ -378,25 +379,26 @@ class _$_UpdateUserDto implements _UpdateUserDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateUserDtoCopyWith<_$_UpdateUserDto> get copyWith =>
-      __$$_UpdateUserDtoCopyWithImpl<_$_UpdateUserDto>(this, _$identity);
+  _$$_UpdateUserRequestCopyWith<_$_UpdateUserRequest> get copyWith =>
+      __$$_UpdateUserRequestCopyWithImpl<_$_UpdateUserRequest>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UpdateUserDtoToJson(
+    return _$$_UpdateUserRequestToJson(
       this,
     );
   }
 }
 
-abstract class _UpdateUserDto implements UpdateUserDto {
-  const factory _UpdateUserDto(
+abstract class _UpdateUserRequest implements UpdateUserRequest {
+  const factory _UpdateUserRequest(
       {final String? fullName,
       final String? phone,
-      final String? email}) = _$_UpdateUserDto;
+      final String? email}) = _$_UpdateUserRequest;
 
-  factory _UpdateUserDto.fromJson(Map<String, dynamic> json) =
-      _$_UpdateUserDto.fromJson;
+  factory _UpdateUserRequest.fromJson(Map<String, dynamic> json) =
+      _$_UpdateUserRequest.fromJson;
 
   @override
   String? get fullName;
@@ -406,16 +408,16 @@ abstract class _UpdateUserDto implements UpdateUserDto {
   String? get email;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateUserDtoCopyWith<_$_UpdateUserDto> get copyWith =>
+  _$$_UpdateUserRequestCopyWith<_$_UpdateUserRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
-  return _UserDto.fromJson(json);
+User _$UserFromJson(Map<String, dynamic> json) {
+  return _User.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserDto {
+mixin _$User {
   int get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -428,13 +430,13 @@ mixin _$UserDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserDtoCopyWith<UserDto> get copyWith => throw _privateConstructorUsedError;
+  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserDtoCopyWith<$Res> {
-  factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) =
-      _$UserDtoCopyWithImpl<$Res, UserDto>;
+abstract class $UserCopyWith<$Res> {
+  factory $UserCopyWith(User value, $Res Function(User) then) =
+      _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
       {int id,
@@ -449,9 +451,9 @@ abstract class $UserDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
-    implements $UserDtoCopyWith<$Res> {
-  _$UserDtoCopyWithImpl(this._value, this._then);
+class _$UserCopyWithImpl<$Res, $Val extends User>
+    implements $UserCopyWith<$Res> {
+  _$UserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -513,10 +515,9 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
 }
 
 /// @nodoc
-abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
-  factory _$$_UserDtoCopyWith(
-          _$_UserDto value, $Res Function(_$_UserDto) then) =
-      __$$_UserDtoCopyWithImpl<$Res>;
+abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
+      __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -532,10 +533,9 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserDtoCopyWithImpl<$Res>
-    extends _$UserDtoCopyWithImpl<$Res, _$_UserDto>
-    implements _$$_UserDtoCopyWith<$Res> {
-  __$$_UserDtoCopyWithImpl(_$_UserDto _value, $Res Function(_$_UserDto) _then)
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
+    implements _$$_UserCopyWith<$Res> {
+  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -551,7 +551,7 @@ class __$$_UserDtoCopyWithImpl<$Res>
     Object? phone = null,
     Object? isActive = null,
   }) {
-    return _then(_$_UserDto(
+    return _then(_$_User(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -594,8 +594,8 @@ class __$$_UserDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserDto implements _UserDto {
-  const _$_UserDto(
+class _$_User implements _User {
+  const _$_User(
       {required this.id,
       required this.username,
       required this.email,
@@ -606,8 +606,7 @@ class _$_UserDto implements _UserDto {
       required this.phone,
       required this.isActive});
 
-  factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDtoFromJson(json);
+  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
   final int id;
@@ -630,14 +629,14 @@ class _$_UserDto implements _UserDto {
 
   @override
   String toString() {
-    return 'UserDto(id: $id, username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, fullName: $fullName, phone: $phone, isActive: $isActive)';
+    return 'User(id: $id, username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, fullName: $fullName, phone: $phone, isActive: $isActive)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserDto &&
+            other is _$_User &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
@@ -662,19 +661,19 @@ class _$_UserDto implements _UserDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>
-      __$$_UserDtoCopyWithImpl<_$_UserDto>(this, _$identity);
+  _$$_UserCopyWith<_$_User> get copyWith =>
+      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDtoToJson(
+    return _$$_UserToJson(
       this,
     );
   }
 }
 
-abstract class _UserDto implements UserDto {
-  const factory _UserDto(
+abstract class _User implements User {
+  const factory _User(
       {required final int id,
       required final String username,
       required final String email,
@@ -683,9 +682,9 @@ abstract class _UserDto implements UserDto {
       required final bool blocked,
       required final String fullName,
       required final String phone,
-      required final bool isActive}) = _$_UserDto;
+      required final bool isActive}) = _$_User;
 
-  factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
+  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
   int get id;
@@ -707,6 +706,5 @@ abstract class _UserDto implements UserDto {
   bool get isActive;
   @override
   @JsonKey(ignore: true)
-  _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
 }

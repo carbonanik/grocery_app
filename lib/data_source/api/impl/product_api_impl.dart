@@ -32,6 +32,11 @@ class ProductApiImpl extends ProductApi {
   }
 
   @override
+  Future<List<Product>> getPopularProducts() async {
+    return [];
+  }
+
+  @override
   Future<Product> getProductsById(int productId) async {
     final response = await http.get(
       getUri(path: '${ApiPath.product}/$productId'),

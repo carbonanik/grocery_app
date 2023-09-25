@@ -4,12 +4,18 @@ import '../../main.dart';
 import '../../util/dimension.dart';
 
 class AuthButton extends StatelessWidget {
-  const AuthButton(
-      {super.key, this.onPressed, this.text = 'Continue', this.padding});
+  const AuthButton({
+    required this.text,
+    this.onPressed,
+    this.padding,
+    this.color,
+    super.key,
+  });
 
   final void Function()? onPressed;
   final String text;
   final EdgeInsetsGeometry? padding;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class AuthButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           elevation: MaterialStateProperty.all(0),
-          backgroundColor: MaterialStateProperty.all(accentColor),
+          backgroundColor: MaterialStateProperty.all(color ?? accentColor),
           foregroundColor: MaterialStateProperty.all(Colors.white),
         ),
         onPressed: onPressed,

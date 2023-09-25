@@ -31,6 +31,8 @@ dependencies:
   csc_picker: ^0.2.7
   # dio: ^5.1.1
   material_dialogs: ^1.1.4
+  #  flutter_gen: ^5.3.2
+  flutter_hooks: ^0.20.1
 
 
 dev_dependencies:
@@ -42,6 +44,7 @@ dev_dependencies:
   freezed_annotation: ^2.4.1
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
+  flutter_gen_runner:
 
 flutter:
   uses-material-design: true
@@ -49,6 +52,16 @@ flutter:
   assets:
     - assets/images/
     - assets/images/fruit/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/roboto/Roboto-Thin.ttf
+          weight: 100
+
 
 
 # flutter pub run build_runner build

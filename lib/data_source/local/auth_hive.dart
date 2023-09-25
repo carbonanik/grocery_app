@@ -3,24 +3,25 @@ import 'dart:convert';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
+import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 
 import '../../model/user/user.dart';
 
 const authUserId = 'auth_user_id';
 const currentUserId = 'me';
 
-Future<AuthResponseDto?> getAuthUserHive() async {
+Future<AuthResponse?> getAuthUserHive() async {
   Box box = await Hive.openBox(HiveBoxName.authBox);
   final authUserJson = await box.get(authUserId);
   if (authUserJson != null) {
-    AuthResponseDto? authUser = AuthResponseDto.fromJson(jsonDecode(jsonEncode(authUserJson)));
+    AuthResponse? authUser = AuthResponse.fromJson(jsonDecode(jsonEncode(authUserJson)));
     return authUser;
   }
   // throw Exception('Failed to get auth user');
   return null;
 }
 
-Future<bool> putAuthUserHive(AuthResponseDto authUser) async {
+Future<bool> putAuthUserHive(AuthResponse authUser) async {
   Box box = await Hive.openBox(HiveBoxName.authBox);
   box.put(authUserId, authUser.toJson());
   return true;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/signup_controller_provider.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
@@ -24,13 +25,19 @@ class SignUp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<AsyncValue<void>>(
+    ref.listen<AuthResult>(
       signUpControllerProvider,
       (_, state) {
-        state.showSnackBarOnError(context);
-        state.whenData((value) {
-          Get.toNamed(RouteHelper.getHomeTab());
-        });
+        state.whenOrNull(
+          data: (value) {
+            Get.toNamed(RouteHelper.getHomeTab());
+          },
+          error: (error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(error.toString())),
+            );
+          },
+        );
       },
     );
 
@@ -113,7 +120,7 @@ class SignUp extends ConsumerWidget {
                   final isValid = _formKey.currentState?.validate() ?? false;
 
                   if (isValid) {
-                    final createUser = CreateUserDto(
+                    final createUser = CreateUserRequest(
                       fullName: nameTextController.text,
                       username: emailTextController.text.split('@')[0],
                       email: emailTextController.text,

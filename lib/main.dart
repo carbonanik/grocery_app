@@ -13,6 +13,7 @@ import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/shop/create_shop.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/faq.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/support.dart';
+import 'package:instant_grrocery_delivery/ui/views/on_boarding.dart';
 import 'package:instant_grrocery_delivery/ui/views/profile/profile.dart';
 import 'package:instant_grrocery_delivery/ui/views/profile/profile_edti.dart';
 import 'package:instant_grrocery_delivery/ui/views/splash.dart';
@@ -31,9 +32,9 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-Color backgroundColor = const Color(0xFFE8F5E9);
-Color accentColor = const Color(0xFF87C428);
-Color foregroundColor = const Color(0xE2000000);
+const Color backgroundColor = Color(0xFFE8F5E9);
+const Color accentColor = Color(0xFF87C428);
+const Color foregroundColor = Color(0xE2000000);
 
 const baseImageUrl =
     "https://test-and-devops-environment.s3.amazonaws.com/photos/";
@@ -46,9 +47,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.lightGreen,
       ),
-      // home: HomePage(),
+      // home: SignIn(),
       getPages: RouteHelper.routes,
       initialRoute: RouteHelper.getSplash(),
     );

@@ -1,17 +1,18 @@
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
+import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 
 abstract class AuthApi {
-  Future<AuthResponseDto> login(LoginRequestDto loginUser);
+  Future<AuthResponse> login(LoginRequest loginUser);
 
-  Future<AuthResponseDto> register(CreateUserDto createUser);
+  Future<AuthResponse> register(CreateUserRequest createUser);
 
-  Future<UserDto> update({
-    required AuthResponseDto authUser,
-    required UpdateUserDto updateUser,
+  Future<User> update({
+    required AuthResponse authUser,
+    required UpdateUserRequest updateUser,
   });
 
   Future<void> logout();
 
-  Future<AuthResponseDto> getMe(AuthResponseDto token);
+  Future<AuthResponse> getMe(AuthResponse token);
 }

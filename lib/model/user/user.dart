@@ -5,37 +5,37 @@ part 'user.freezed.dart';
 
 
 @freezed
-class CreateUserDto with _$CreateUserDto {
+class CreateUserRequest with _$CreateUserRequest {
 
-  const factory CreateUserDto({
+  const factory CreateUserRequest({
     required String email,
     required String username,
     String? fullName,
     String? phone,
     required String password,
-  }) = _CreateUserDto;
+  }) = _CreateUserRequest;
 
-  factory CreateUserDto.fromJson(Map<String, dynamic> source) =>
-      _$CreateUserDtoFromJson(source);
+  factory CreateUserRequest.fromJson(Map<String, dynamic> source) =>
+      _$CreateUserRequestFromJson(source);
 }
 
 @freezed
-class UpdateUserDto with _$UpdateUserDto {
+class UpdateUserRequest with _$UpdateUserRequest {
 
-  const factory UpdateUserDto({
+  const factory UpdateUserRequest({
     String? fullName,
     String? phone,
     String? email,
-  }) = _UpdateUserDto;
+  }) = _UpdateUserRequest;
 
-  factory UpdateUserDto.fromJson(Map<String, dynamic> source) =>
-      _$UpdateUserDtoFromJson(source);
+  factory UpdateUserRequest.fromJson(Map<String, dynamic> source) =>
+      _$UpdateUserRequestFromJson(source);
 }
 
 @freezed
-class UserDto with _$UserDto {
+class User with _$User {
 
-  const factory UserDto({
+  const factory User({
     required int id,
     required String username,
     required String email,
@@ -45,9 +45,9 @@ class UserDto with _$UserDto {
     required String fullName,
     required String phone,
     required bool isActive,
-  }) = _UserDto;
+  }) = _User;
 
 
-  factory UserDto.fromJson(Map<String, dynamic> source) =>
-      _$UserDtoFromJson(source);
+  factory User.fromJson(Map<String, dynamic> source) =>
+      _$UserFromJson(source);
 }

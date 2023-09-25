@@ -13,12 +13,11 @@ import 'package:instant_grrocery_delivery/util/dimension.dart';
 import '../../widget/product_item.dart';
 
 class ProductDetail extends StatelessWidget {
-  ProductDetail({Key? key, required this.productId, this.heroPrefix = 0})
+  ProductDetail({Key? key, required this.productId})
       : super(key: key);
 
   final int productId;
   final bottomBarHeight = Dimension.height(100);
-  final int heroPrefix;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +77,7 @@ class ProductDetail extends StatelessWidget {
         height: kToolbarHeight,
         padding: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
         color: backgroundColor.withAlpha(100),
-        child: Row(children: const [
+        child: const Row(children: [
           BackButton(
             color: Colors.black,
           ),
@@ -109,14 +108,11 @@ class ProductDetail extends StatelessWidget {
                 Center(
                   child: SizedBox(
                     height: Dimension.height(320),
-                    child: Hero(
-                      tag: '${heroPrefix}product_image${data.value.id}',
-                      child: Image.network(
-                        "$baseImageUrl${data.value.image}",
-                        errorBuilder: (context, error, stackTrace) {
-                          return Icon(Icons.image);
-                        },
-                      ),
+                    child: Image.network(
+                      "$baseImageUrl${data.value.image}",
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Icon(Icons.image);
+                      },
                     ),
                   ),
                 ),
@@ -136,7 +132,7 @@ class ProductDetail extends StatelessWidget {
                       final dataModel = ref.watch(favoriteProvider);
 
                       return FavoriteButton(
-                          onTap: () => dataModel.setIsFavorite(
+                          onTap: () async => await dataModel.setIsFavorite(
                                 productId,
                                 !dataModel.getIsFavorite(productId),
                               ),
@@ -177,19 +173,13 @@ class ProductDetail extends StatelessWidget {
                     /// cart add remove button
                     Consumer(builder: (context, ref, child) {
                       final cartDataModel = ref.watch(cartProvider);
-                      return Hero(
-                        tag: '${heroPrefix}add_to_cart${data.value.id}',
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: AddRemoveButton(
-                            quantity: cartDataModel.itemCount(productId),
-                            onAdd: () => cartDataModel.itemIncrement(
-                              data.value,
-                            ),
-                            onRemove: () => cartDataModel.itemDecrement(
-                              data.value,
-                            ),
-                          ),
+                      return AddRemoveButton(
+                        quantity: cartDataModel.itemCount(productId),
+                        onAdd: () => cartDataModel.itemIncrement(
+                          data.value,
+                        ),
+                        onRemove: () => cartDataModel.itemDecrement(
+                          data.value,
                         ),
                       );
                     }),
@@ -273,8 +263,6 @@ class ProductDetail extends StatelessWidget {
                         margin: EdgeInsets.only(left: Dimension.width(20)),
                         child: ProductItem(
                           product: similarProduct,
-                          // cartDatabaseController: cartDatabaseController,
-                          heroPrefix: heroPrefix + 1,
                         ));
                   },
                 ),
@@ -298,7 +286,7 @@ class ProductDetail extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: Dimension.width(20),
         ),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: foregroundColor,
         ),
         child: Row(
@@ -352,7 +340,8 @@ class ProductDetail extends StatelessWidget {
                   vertical: Dimension.height(15),
                 ),
                 decoration: BoxDecoration(
-                    color: accentColor, borderRadius: BorderRadius.circular(10)),
+                    color: accentColor,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
                     const Icon(

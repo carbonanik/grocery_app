@@ -6,6 +6,7 @@ import 'package:instant_grrocery_delivery/data_source/api/util/extensions.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
+import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/order/dtos/order_dto.dart';
 
 import '../../../model/order/order.dart';
@@ -13,7 +14,7 @@ import '../../../model/order/order.dart';
 class OrderApiImpl extends OrderApi {
   // Function to create a new order
   @override
-  Future<Order> createOrder(Map<String, dynamic> orderData, AuthResponseDto authUser) async {
+  Future<Order> createOrder(Map<String, dynamic> orderData, AuthResponse authUser) async {
     final response = await http.post(
       getUri(path: ApiPath.order),
       headers: getHeader(token: authUser),

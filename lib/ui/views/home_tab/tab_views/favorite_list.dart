@@ -42,7 +42,7 @@ class FavoriteList extends StatelessWidget {
           Consumer(
             builder: (context, ref, child) {
               final favoriteDataModel = ref.watch(favoriteProvider);
-              final ids = favoriteDataModel.getWhereFavoriteTrue();
+              final ids = favoriteDataModel.getFavoriteIdList();
               final asyncValue = ref.watch(
                 getFavoriteProducts(json.encode(ids)),
               );

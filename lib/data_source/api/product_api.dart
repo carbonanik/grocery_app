@@ -3,6 +3,8 @@ import 'package:instant_grrocery_delivery/model/product/product.dart';
 abstract class ProductApi {
   Future<List<Product>> getProducts();
 
+  Future<List<Product>> getPopularProducts();
+
   Future<Product> getProductsById(int productId);
 
   Future<bool> createProduct(Map<String, dynamic> productData);

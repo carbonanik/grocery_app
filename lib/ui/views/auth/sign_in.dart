@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
+import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
@@ -22,17 +23,27 @@ class SignIn extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<AsyncValue<void>>(
-      loginNotifierProvider,
-      (_, state) {
-        state.showSnackBarOnError(context);
-        state.whenData((value) {
-          Get.toNamed(RouteHelper.getHomeTab());
-        });
-      },
-    );
+    // ref.listen<AuthResult>(
+    //   loginNotifierProvider,
+    //   (_, state) {
+    //     state.whenOrNull(
+    //       error: (error) {
+    //         ScaffoldMessenger.of(context).showSnackBar(
+    //           SnackBar(content: Text(error.toString())),
+    //         );
+    //       },
+    //       data: (value) {
+    //         Get.offAndToNamed(RouteHelper.getHomeTab());
+    //       },
+    //     );
+    //   },
+    // );
 
     final loginState = ref.watch(loginNotifierProvider);
+
+    loginState.whenOrNull(
+
+    );
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -117,22 +128,27 @@ class SignIn extends ConsumerWidget {
 
               /// login button
               AuthButton(
-                onPressed: () {
-                  final isValid = _formKey.currentState?.validate() ?? false;
+                onPressed: loginState.isLoading
+                    ? null
+                    : () {
+                        final isValid = _formKey.currentState?.validate();
 
-                  if (isValid) {
-                    final loginUser = LoginRequestDto(
-                      identifier: emailTextController.text,
-                      password: passwordTextController.text,
-                    );
-                    ref.read(loginNotifierProvider.notifier).login(loginUser);
-                  }
-                },
+                        if (isValid == true) {
+                          final loginUser = LoginRequest(
+                            identifier: emailTextController.text,
+                            password: passwordTextController.text,
+                          );
+                          ref
+                              .read(loginNotifierProvider.notifier)
+                              .login(loginUser);
+                        }
+                      },
                 text: loginState.isLoading
                     ? 'Please Wait'
                     : loginState.isData
                         ? 'Successful'
                         : 'Continue',
+                color: loginState.isLoading ? Colors.grey : null,
               ),
 
               Container(

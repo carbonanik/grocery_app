@@ -12,9 +12,9 @@ class BoardingLocalImpl extends BoardingLocal {
   }
 
   @override
-  Future<bool> putPreviouslyBoarded(bool boarded) async {
+  Future<bool> donePreviouslyBoarding() async {
     final box = await Hive.openBox(HiveBoxName.boardingBox);
-    await box.put(boarding, boarded);
+    await box.put(boarding, true);
     return true;
   }
 }

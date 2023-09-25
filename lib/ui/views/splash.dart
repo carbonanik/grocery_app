@@ -3,44 +3,49 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/gen/fonts.gen.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 
-class Splash extends ConsumerWidget {
+import 'on_boarding.dart';
+
+class Splash extends ConsumerStatefulWidget {
   const Splash({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final previouslyBoarded = ref.watch(previouslyBoardedProvider);
-    print(previouslyBoarded);
-    previouslyBoarded.map(
-      data: (value) {
-        print(value);
-        Timer(1000.milliseconds, () {
-          Get.toNamed(
-            value.value ? RouteHelper.getHomeTab() : RouteHelper.getOnBoarding(),
-          );
-        });
-      },
-      error: (error) {
-        print(error);
+  ConsumerState<ConsumerStatefulWidget> createState() => _SplashState();
+}
 
-      },
-      loading: (loading) {
-        print(loading);
-      },
+class _SplashState extends ConsumerState<Splash> {
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  void init() async {
+    final previouslyBoarded = await ref.read(previouslyBoardedProvider.future);
+    await Future.delayed(1.seconds);
+    Get.offAndToNamed(
+      previouslyBoarded
+          ? RouteHelper.getHomeTab()
+          : RouteHelper.getOnBoarding(),
     );
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: const Center(
+      body: Center(
         child: Text(
           "Splash",
           style: TextStyle(
-            color: Colors.white,
+            color: accentColor,
             fontSize: 30,
             fontWeight: FontWeight.bold,
+            fontFamily: FontFamily.roboto
           ),
         ),
       ),
