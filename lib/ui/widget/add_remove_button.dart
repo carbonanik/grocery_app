@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
@@ -17,14 +18,12 @@ class AddRemoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-          horizontal: Dimension.width(15), vertical: Dimension.height(10)),
-      decoration: BoxDecoration(
-          color: accentColor, borderRadius: BorderRadius.circular(10)),
+      padding: EdgeInsets.symmetric(horizontal: Dimension.width(15), vertical: Dimension.height(10)),
+      decoration: BoxDecoration(color: accentColor, borderRadius: BorderRadius.circular(10)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GestureDetector(
+          InkWell(
             onTap: onRemove,
             child: const Icon(
               Icons.remove,
@@ -37,13 +36,16 @@ class AddRemoveButton extends StatelessWidget {
           ),
           Text(
             '$quantity',
-            style: const TextStyle(
-                fontWeight: FontWeight.w500, fontSize: 18, color: Colors.white),
+            style: GoogleFonts.ibmPlexMono(
+              fontWeight: FontWeight.w500,
+              fontSize: 18,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(
             width: 10,
           ),
-          GestureDetector(
+          InkWell(
             onTap: onAdd,
             child: const Icon(
               Icons.add,

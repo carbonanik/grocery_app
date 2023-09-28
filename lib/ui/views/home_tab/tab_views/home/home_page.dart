@@ -5,14 +5,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_category.dart';
+import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 import '../../../../../model/product/product.dart';
 import '../../../../../provider/category/category_api_provider.dart';
 import '../../../../../provider/product/product_api_provider.dart';
 import '../../../../../route/route_helper.dart';
-import '../../../../widget/product_item.dart';
 import '../../../../widget/my_action_button.dart';
+import '../../../../widget/product_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -30,7 +31,6 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: const MyActionButton(
-        // count: cartDatabaseController.totalQuantity.value,
         count: 0,
       ),
       body: Container(
@@ -76,21 +76,22 @@ class HomePage extends StatelessWidget {
         height: 140,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimension.height(12)),
-          // color: Colors.green,
         ),
         child: Consumer(builder: (context, ref, child) {
           final responseAsyncValue = ref.watch(getCategoriesProvider);
           return responseAsyncValue.map(
-              data: (_) => GridView.count(
+            data: (data) => data.value.isEmpty
+                ? const OopsNoData()
+                : GridView.count(
                     crossAxisCount: 2,
                     scrollDirection: Axis.horizontal,
                     mainAxisSpacing: Dimension.width(10),
                     crossAxisSpacing: Dimension.height(10),
                     childAspectRatio: .4,
                     children: List.generate(
-                      _.value.length,
+                      data.value.length,
                       (index) {
-                        final category = _.value[index];
+                        final category = data.value[index];
                         return HomeCategory(
                           category: category,
                           index: index,
@@ -98,8 +99,13 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                   ),
-              error: (_) => Text(_.error.toString()),
-              loading: (_) => const Center(child: CircularProgressIndicator()));
+            error: (error) => const Center(
+              child: OopsNoData(),
+            ),
+            loading: (loading) => const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         }),
       ),
     );
@@ -117,18 +123,16 @@ class HomePage extends StatelessWidget {
               fillColor: Colors.white,
               filled: true,
               hintText: 'Search',
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 Icons.search,
                 color: accentColor,
               ),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(Dimension.height(10)),
-                  borderSide:
-                      const BorderSide(width: 1.0, color: Colors.green)),
+                  borderSide: const BorderSide(width: 1.0, color: Colors.green)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(Dimension.height(10)),
-                  borderSide:
-                      const BorderSide(width: 1.0, color: Colors.white)),
+                  borderSide: const BorderSide(width: 1.0, color: Colors.white)),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(Dimension.height(20)),
               )),
@@ -140,7 +144,6 @@ class HomePage extends StatelessWidget {
   SliverToBoxAdapter _buildImageGallery(List<String> featuredImages) {
     return SliverToBoxAdapter(
       child: Container(
-        // padding: EdgeInsets.symmetric(horizontal: Dimension.height(20)),
         height: Dimension.height(150),
         width: Dimension.width(300),
         decoration: BoxDecoration(
@@ -148,16 +151,13 @@ class HomePage extends StatelessWidget {
         ),
         child: PageView.builder(
             itemCount: featuredImages.length,
-            // controller: PageController(viewportFraction: .85),
             itemBuilder: (context, index) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
                 margin: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: index.isOdd
-                      ? Colors.lightGreen.shade200
-                      : Colors.green.shade200,
+                  color: index.isOdd ? Colors.lightGreen.shade200 : Colors.green.shade200,
                   image: DecorationImage(
                     image: NetworkImage(featuredImages[index]),
                     fit: BoxFit.cover,
@@ -172,10 +172,7 @@ class HomePage extends StatelessWidget {
   SliverToBoxAdapter _buildHeader() {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.only(
-            left: Dimension.width(20),
-            right: Dimension.width(20),
-            top: Dimension.height(30)),
+        padding: EdgeInsets.only(left: Dimension.width(20), right: Dimension.width(20), top: Dimension.height(30)),
         child: Row(
           children: [
             InkWell(
@@ -187,18 +184,15 @@ class HomePage extends StatelessWidget {
                     children: [
                       Text(
                         'Amazon sparklers',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: Dimension.width(20),
-                            color: Colors.black),
+                        style:
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: Dimension.width(20), color: Colors.black),
                       ),
                       const Icon(Icons.arrow_drop_down)
                     ],
                   ),
                   SizedBox(height: Dimension.height(8)),
                   Text('Terminal 3 potter road new york',
-                      style: TextStyle(
-                          fontSize: Dimension.width(16), color: Colors.grey)),
+                      style: TextStyle(fontSize: Dimension.width(16), color: Colors.grey)),
                 ],
               ),
             ),
@@ -229,17 +223,17 @@ class HomePage extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dimension.height(12)),
-          // color: Colors.green,
-        ),
+        // decoration: BoxDecoration(
+        //   borderRadius: BorderRadius.circular(Dimension.height(12)),
+        // color: Colors.green,
+        // ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               text,
-              style: TextStyle(
-                fontSize: Dimension.height(20),
+              style: const TextStyle(
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -257,21 +251,23 @@ class HomePage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
       sliver: Consumer(
         builder: (context, ref, child) {
-          final responseAsyncValue = ref.watch(getProductsProvider);
+          final responseAsyncValue = ref.watch(getPopularProductProvider);
           return responseAsyncValue.map(
-            data: (data) => SliverGrid.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: Dimension.width(20),
-              crossAxisSpacing: Dimension.width(20),
-              childAspectRatio: .699,
-              children: List.generate(data.value.length, (index) {
-                final Product item = data.value[index];
-                return ProductItem(
-                  product: item,
-                );
-              }),
-            ),
-            error: (_) => SliverToBoxAdapter(child: Text(_.error.toString())),
+            data: (data) => data.value.isEmpty
+                ? const SliverToBoxAdapter(child: OopsNoData())
+                : SliverGrid.count(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: Dimension.width(20),
+                    crossAxisSpacing: Dimension.width(20),
+                    childAspectRatio: .699,
+                    children: List.generate(data.value.length, (index) {
+                      final Product item = data.value[index];
+                      return ProductItem(
+                        product: item,
+                      );
+                    }),
+                  ),
+            error: (_) => const SliverToBoxAdapter(child: OopsNoData()),
             loading: (_) => const SliverToBoxAdapter(
               child: Center(child: CircularProgressIndicator()),
             ),
@@ -291,8 +287,7 @@ class CustomSilverHeaderDelegate extends SliverPersistentHeaderDelegate {
   CustomSilverHeaderDelegate(this.minExtent, this.maxExtent);
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Stack(
       fit: StackFit.expand,
       children: [

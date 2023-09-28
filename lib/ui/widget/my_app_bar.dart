@@ -7,7 +7,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  MyAppBar( { Key? key, this.title,}) : preferredSize = Size.fromHeight(50.0),
+  const MyAppBar( { Key? key, this.title,}) : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
   @override
@@ -16,10 +16,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       centerTitle: true,
       elevation: 0,
-      title: Text(title??'', style: TextStyle(color: Colors.black)),
-      leading: BackButton(
+      title: Text(title??'', style: const TextStyle(color: Colors.black)),
+      leading: const BackButton(
         color: Colors.black,
       ),
+      actions: [TextButton(onPressed: (){} , child: const Text('View Cart', style: TextStyle(color: Colors.black)))],
     );
   }
 }

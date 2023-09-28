@@ -7,20 +7,20 @@ import '../../model/cart/cart_item/cart_item.dart';
 Future<List<CartItem>> getCartItems() async {
   Box box1 = await Hive.openBox(HiveBoxName.cartBox);
   return box1.values.map((e) {
-    return CartItem.fromJson(jsonDecode(jsonEncode(e)));
+    return CartItem.fromJson(jsonDecode((e)));
   }).toList();
 }
 
 Future<bool> addCartItem(CartItem cartItem) async {
   Box box1 = await Hive.openBox(HiveBoxName.cartBox);
-  await box1.put(cartItem.id, cartItem.toJson());
+  await box1.put(cartItem.id, jsonEncode(cartItem.toJson()));
   return true;
 }
 
 Future<CartItem> getSingleCartItem(int cartItemId) async {
   Box box1 = await Hive.openBox(HiveBoxName.cartBox);
   final cartItem = box1.get(cartItemId);
-  return CartItem.fromJson(cartItem);
+  return CartItem.fromJson(jsonDecode(cartItem));
 }
 
 Future<bool> removeCartItem(int cartItemId) async {

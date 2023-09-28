@@ -33,6 +33,7 @@ dependencies:
   material_dialogs: ^1.1.4
   #  flutter_gen: ^5.3.2
   flutter_hooks: ^0.20.1
+  google_fonts: ^6.1.0
 
 
 dev_dependencies:
@@ -52,15 +53,17 @@ flutter:
   assets:
     - assets/images/
     - assets/images/fruit/
+#    - assets/fonts/roboto/
+    - assets/fonts/dmsans/
 
-  fonts:
-    - family: Roboto
-      fonts:
-        - asset: assets/fonts/roboto/Roboto-Regular.ttf
-        - asset: assets/fonts/roboto/Roboto-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/roboto/Roboto-Thin.ttf
-          weight: 100
+#  fonts:
+#    - family: Roboto
+#      fonts:
+#        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+#        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+#          weight: 700
+#        - asset: assets/fonts/roboto/Roboto-Thin.ttf
+#          weight: 100
 
 
 

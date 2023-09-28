@@ -32,6 +32,7 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    super.initState();
     _tabKeys = widget.tabList.map((Widget tab) => GlobalKey()).toList();
     _tabs = widget.tabList.asMap().entries.map((entity) {
       int ind = entity.key;
@@ -46,10 +47,8 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(
-        length: widget.tabList.length,
-        vsync: this,
-        initialIndex: widget.preSelectedTab);
+    TabController tabController =
+        TabController(length: widget.tabList.length, vsync: this, initialIndex: widget.preSelectedTab);
 
     return Row(
       children: [
@@ -58,39 +57,28 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(
-                    top: Dimension.height(40), bottom: Dimension.height(10)),
+                margin: EdgeInsets.only(top: Dimension.height(40), bottom: Dimension.height(10)),
                 child: widget.leading,
               ),
               Container(
-                // height: Dimension.screenHeight - Dimension.height(130),
-                // width: Dimension.width(60),
                 color: Colors.white,
-                child: Container(
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height - 140,
                   child: RotatedBox(
                     quarterTurns: 1,
                     child: TabBar(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       labelStyle: TextStyle(
-                          fontSize: Dimension.width(14),
-                          fontWeight: FontWeight.bold),
+                        fontSize: Dimension.width(14),
+                        fontWeight: FontWeight.bold,
+                      ),
                       labelColor: accentColor,
                       controller: tabController,
                       unselectedLabelColor: Colors.black54,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                      padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
                       isScrollable: true,
-                      indicator:
-                          TriangleTabIndicator(color: widget.backgroundColor),
-                      // indicatorSize: TabBarIndicatorSize.label,
+                      indicator: TriangleTabIndicator(color: widget.backgroundColor),
                       tabs: _tabs,
-                      // widget.tabList.map((tab) {
-                      //   return RotatedBox(
-                      //     quarterTurns: 2,
-                      //     child: tab,
-                      //   );
-                      // }).toList()
                     ),
                   ),
                 ),
@@ -99,8 +87,7 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
           ),
         ),
         Expanded(
-          child: TabBarView(
-              controller: tabController, children: widget.tabViewList),
+          child: TabBarView(controller: tabController, children: widget.tabViewList),
         )
       ],
     );

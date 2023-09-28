@@ -1,17 +1,24 @@
+import 'dart:math';
+
+import 'package:get/get_utils/get_utils.dart';
 import 'package:instant_grrocery_delivery/data_source/api/category_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/product_api_mock_impl.dart';
-import 'package:instant_grrocery_delivery/model/product/product.dart';
+import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fetch.dart';
+
 import '../../../model/category/category.dart';
 
 class CategoryApiMockImpl extends CategoryApi {
+
   @override
   Future<List<Category>> getCategories() async {
-    final categories = categoriesJson.map((e) => Category.fromJson(e)).toList();
+    await simulateFetch();
+    final categories = categoriesJson.map(Category.fromJson).toList();
     return categories;
   }
 
   @override
   Future<Category> getCategoriesByIdWithProduct(int categoryId) async {
+    await simulateFetch();
     final productsIds = relationJson[categoryId.toString()] as List;
 
     final productsJ = productsJson.where(
@@ -33,8 +40,7 @@ class CategoryApiMockImpl extends CategoryApi {
   }
 
   @override
-  Future<bool> updateCategory(
-      int categoryId, Map<String, dynamic> categoryData) async {
+  Future<bool> updateCategory(int categoryId, Map<String, dynamic> categoryData) async {
     return false;
   }
 

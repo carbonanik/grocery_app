@@ -33,7 +33,7 @@ class ProductApiImpl extends ProductApi {
 
   @override
   Future<List<Product>> getPopularProducts() async {
-    return [];
+    return getProducts();
   }
 
   @override
@@ -48,6 +48,16 @@ class ProductApiImpl extends ProductApi {
     } else {
       throw Exception('Failed to fetch products');
     }
+  }
+
+  @override
+  Future<List<Product>> getSimilarProducts(int productId) {
+    return getProducts();
+  }
+
+  @override
+  Future<List<Product>> getFrequentlyBoughtTogether(List<int> ids) {
+    return getProducts();
   }
 
   @override

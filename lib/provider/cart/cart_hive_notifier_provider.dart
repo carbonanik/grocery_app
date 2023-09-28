@@ -45,6 +45,10 @@ class CartChangeNotifier extends ChangeNotifier {
     }
   }
 
+  void itemRemove(Product product) {
+    _remove(product.id);
+  }
+
   _add(cartItem) {
     addCartItem(cartItem).then((value) => _dataChanged());
   }

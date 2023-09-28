@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 class CartAddRemove extends StatelessWidget {
   const CartAddRemove({
-    Key? key, required this.quantity, required this.onAdd, required this.onRemove,
+    Key? key,
+    required this.quantity,
+    required this.onAdd,
+    required this.onRemove,
   }) : super(key: key);
 
   final int quantity;
@@ -21,12 +23,12 @@ class CartAddRemove extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GestureDetector(
+          InkWell(
             onTap: onRemove,
             child: const Icon(
               Icons.remove,
               color: Colors.white,
-              size: 15,
+              // size: 15,
             ),
           ),
           const SizedBox(
@@ -34,14 +36,23 @@ class CartAddRemove extends StatelessWidget {
           ),
           Text(
             quantity.toString(),
-            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 14, color: Colors.white),
+            style: GoogleFonts.ibmPlexMono(
+              fontWeight: FontWeight.w500,
+              // fontSize: 14,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(
             width: 10,
           ),
-          GestureDetector(
-              onTap: onAdd,
-              child: const Icon(Icons.add, color: Colors.white, size: 15),),
+          InkWell(
+            onTap: onAdd,
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+              // size: 15,
+            ),
+          ),
         ],
       ),
     );

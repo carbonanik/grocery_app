@@ -2,22 +2,23 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/gen/fonts.gen.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 
-import 'on_boarding.dart';
-
-class Splash extends ConsumerStatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+class SplashPage extends ConsumerStatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SplashState();
 }
 
-class _SplashState extends ConsumerState<Splash> {
+class _SplashState extends ConsumerState<SplashPage> {
+  // late Future googleFontsPending;
+
   @override
   void initState() {
     super.initState();
@@ -26,27 +27,28 @@ class _SplashState extends ConsumerState<Splash> {
 
   void init() async {
     final previouslyBoarded = await ref.read(previouslyBoardedProvider.future);
-    await Future.delayed(1.seconds);
-    Get.offAndToNamed(
-      previouslyBoarded
-          ? RouteHelper.getHomeTab()
-          : RouteHelper.getOnBoarding(),
-    );
+    // googleFontsPending = GoogleFonts.pendingFonts([
+    //   GoogleFonts.dmSans(),
+      // GoogleFonts.poppins(),
+      // GoogleFonts.montserrat(fontStyle: FontStyle.italic),
+    // ]);
+
+    Timer(1.seconds, () {
+      Get.offAndToNamed(
+        previouslyBoarded ? RouteHelper.getHomeTab() : RouteHelper.getOnBoarding(),
+      );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
         child: Text(
           "Splash",
-          style: TextStyle(
-            color: accentColor,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            fontFamily: FontFamily.roboto
-          ),
+          style:
+              TextStyle(color: accentColor, fontSize: 30, fontWeight: FontWeight.bold, fontFamily: FontFamily.roboto),
         ),
       ),
     );

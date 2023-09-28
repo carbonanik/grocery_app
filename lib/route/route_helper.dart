@@ -10,13 +10,13 @@ import 'package:instant_grrocery_delivery/ui/views/on_boarding.dart';
 
 import '../ui/views/auth/sign_up.dart';
 import '../ui/views/cart/apply_coupon.dart';
-import '../ui/views/cart/my_cart.dart';
+import '../ui/views/cart/my_cart_page.dart';
 import '../ui/views/cart/payment_method.dart';
 import '../ui/views/category/category_product_list.dart';
 import '../ui/views/category/category_tab.dart';
 import '../ui/views/home_tab/main_tabs.dart';
 import '../ui/views/home_tab/tab_views/support/faq.dart';
-import '../ui/views/product/product_detail.dart';
+import '../ui/views/product/product_detail_page.dart';
 import '../ui/views/profile/profile.dart';
 import '../ui/views/profile/profile_edti.dart';
 import '../ui/views/splash.dart';
@@ -91,7 +91,7 @@ class RouteHelper {
   static List<GetPage> routes = [
     GetPage(
       name: _splash,
-      page: () => const Splash(),
+      page: () => const SplashPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -123,7 +123,7 @@ class RouteHelper {
       name: _productDetail,
       page: () {
         int productId = int.parse(Get.parameters['productId']!);
-        return ProductDetail(productId: productId);
+        return ProductDetailPage(productId: productId);
       },
       transition: Transition.fadeIn,
     ),
@@ -142,7 +142,7 @@ class RouteHelper {
     ),
     GetPage(
       name: _myCart,
-      page: () => MyCart(),
+      page: () => MyCartPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(

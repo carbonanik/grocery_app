@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:get/get_utils/get_utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fetch.dart';
 import 'package:instant_grrocery_delivery/data_source/api/product_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
 import 'package:instant_grrocery_delivery/model/product/dto/product_dto.dart';
@@ -16,12 +17,14 @@ int next(int min, int max) => min + _random.nextInt(max - min);
 class ProductApiMockImpl extends ProductApi {
   @override
   Future<List<Product>> getProducts() async {
+    await simulateFetch();
     final products = productsJson.map((e) => Product.fromJson(e)).toList();
     return products;
   }
 
   @override
   Future<List<Product>> getPopularProducts() async {
+    await simulateFetch();
     final pps = productsJson
         .sublist(
           next(0, productsJson.length ~/ 2),
@@ -34,12 +37,24 @@ class ProductApiMockImpl extends ProductApi {
 
   @override
   Future<Product> getProductsById(int productId) async {
+    await simulateFetch();
+    // throw Exception('Not implemented');
     final product = Product.fromJson(
       productsJson.firstWhere(
         (element) => element["id"] == productId,
       ),
     );
     return product;
+  }
+
+  @override
+  Future<List<Product>> getSimilarProducts(int productId) {
+    return getPopularProducts();
+  }
+
+  @override
+  Future<List<Product>> getFrequentlyBoughtTogether(List<int> ids) {
+    return getPopularProducts();
   }
 
   @override
@@ -60,6 +75,7 @@ class ProductApiMockImpl extends ProductApi {
 
   @override
   Future<List<Product>> getFavoriteProducts(String idsJson) async {
+    await simulateFetch();
     final List<dynamic> ids = json.decode(idsJson);
     if (ids.isEmpty) return [];
 

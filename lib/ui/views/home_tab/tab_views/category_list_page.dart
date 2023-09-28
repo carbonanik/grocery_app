@@ -1,12 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 
 import '../../../../provider/category/category_api_provider.dart';
 import '../../../widget/category_item.dart';
 
-class SelectCategory extends StatelessWidget {
-  const SelectCategory({Key? key}) : super(key: key);
+class CategoryListPage extends StatelessWidget {
+  const CategoryListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +41,28 @@ class SelectCategory extends StatelessWidget {
           Consumer(builder: (context, ref, child) {
             final asyncValue = ref.watch(getCategoriesProvider);
 
+            if (asyncValue is AsyncError || (asyncValue is AsyncData && asyncValue.value == [])) {
+              // Timer(500.milliseconds, () {
+                ref.refresh(getCategoriesProvider);
+                // print("refresh");
+              // });
+            }
+
             return asyncValue.map(
-              data: (data) => Expanded(
-                  child: ListView.builder(
-                      itemCount: data.value.length,
-                      itemBuilder: (context, index) {
-                        final category = data.value[index];
-                        return CategoryItem(category: category);
-                      })),
-              error: (error) => Container(),
+              data: (data) => data.value.isEmpty
+                  ? const Expanded(child: Center(child: OopsNoData()))
+                  : Expanded(
+                      child: ListView.builder(
+                          itemCount: data.value.length,
+                          itemBuilder: (context, index) {
+                            final category = data.value[index];
+                            return CategoryItem(category: category);
+                          })),
+              error: (error) => const Expanded(
+                child: Center(
+                  child: OopsNoData(),
+                ),
+              ),
               loading: (loading) => const CircularProgressIndicator(),
             );
           })

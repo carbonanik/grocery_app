@@ -7,6 +7,10 @@ abstract class ProductApi {
 
   Future<Product> getProductsById(int productId);
 
+  Future<List<Product>> getSimilarProducts(int productId);
+
+  Future<List<Product>> getFrequentlyBoughtTogether(List<int> ids);
+
   Future<bool> createProduct(Map<String, dynamic> productData);
 
   Future<bool> updateProduct(int productId, Map<String, dynamic> productData);
