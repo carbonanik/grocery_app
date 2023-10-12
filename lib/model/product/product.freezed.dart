@@ -20,11 +20,17 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   double get price => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get name => throw _privateConstructorUsedError;
+  @HiveField(3)
   String get description => throw _privateConstructorUsedError;
+  @HiveField(4)
   String get image => throw _privateConstructorUsedError;
+  @HiveField(5)
   String get weight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,12 +44,12 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {int id,
-      double price,
-      String name,
-      String description,
-      String image,
-      String weight});
+      {@HiveField(0) int id,
+      @HiveField(1) double price,
+      @HiveField(2) String name,
+      @HiveField(3) String description,
+      @HiveField(4) String image,
+      @HiveField(5) String weight});
 }
 
 /// @nodoc
@@ -96,26 +102,27 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 }
 
 /// @nodoc
-abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$$_ProductCopyWith(
-          _$_Product value, $Res Function(_$_Product) then) =
-      __$$_ProductCopyWithImpl<$Res>;
+abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
+  factory _$$ProductImplCopyWith(
+          _$ProductImpl value, $Res Function(_$ProductImpl) then) =
+      __$$ProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int id,
-      double price,
-      String name,
-      String description,
-      String image,
-      String weight});
+      {@HiveField(0) int id,
+      @HiveField(1) double price,
+      @HiveField(2) String name,
+      @HiveField(3) String description,
+      @HiveField(4) String image,
+      @HiveField(5) String weight});
 }
 
 /// @nodoc
-class __$$_ProductCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$_Product>
-    implements _$$_ProductCopyWith<$Res> {
-  __$$_ProductCopyWithImpl(_$_Product _value, $Res Function(_$_Product) _then)
+class __$$ProductImplCopyWithImpl<$Res>
+    extends _$ProductCopyWithImpl<$Res, _$ProductImpl>
+    implements _$$ProductImplCopyWith<$Res> {
+  __$$ProductImplCopyWithImpl(
+      _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +135,7 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? image = null,
     Object? weight = null,
   }) {
-    return _then(_$_Product(
+    return _then(_$ProductImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -159,29 +166,37 @@ class __$$_ProductCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Product with DiagnosticableTreeMixin implements _Product {
-  const _$_Product(
-      {required this.id,
-      required this.price,
-      required this.name,
-      required this.description,
-      required this.image,
-      required this.weight});
+@HiveType(typeId: productHiveTypeId, adapterName: productAdapterName)
+class _$ProductImpl extends _Product with DiagnosticableTreeMixin {
+  _$ProductImpl(
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.price,
+      @HiveField(2) required this.name,
+      @HiveField(3) required this.description,
+      @HiveField(4) required this.image,
+      @HiveField(5) required this.weight})
+      : super._();
 
-  factory _$_Product.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductFromJson(json);
+  factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final double price;
   @override
+  @HiveField(2)
   final String name;
   @override
+  @HiveField(3)
   final String description;
   @override
+  @HiveField(4)
   final String image;
   @override
+  @HiveField(5)
   final String weight;
 
   @override
@@ -206,7 +221,7 @@ class _$_Product with DiagnosticableTreeMixin implements _Product {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Product &&
+            other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.name, name) || other.name == name) &&
@@ -224,42 +239,49 @@ class _$_Product with DiagnosticableTreeMixin implements _Product {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductCopyWith<_$_Product> get copyWith =>
-      __$$_ProductCopyWithImpl<_$_Product>(this, _$identity);
+  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
+      __$$ProductImplCopyWithImpl<_$ProductImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductToJson(
+    return _$$ProductImplToJson(
       this,
     );
   }
 }
 
-abstract class _Product implements Product {
-  const factory _Product(
-      {required final int id,
-      required final double price,
-      required final String name,
-      required final String description,
-      required final String image,
-      required final String weight}) = _$_Product;
+abstract class _Product extends Product {
+  factory _Product(
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final double price,
+      @HiveField(2) required final String name,
+      @HiveField(3) required final String description,
+      @HiveField(4) required final String image,
+      @HiveField(5) required final String weight}) = _$ProductImpl;
+  _Product._() : super._();
 
-  factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
+  factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   double get price;
   @override
+  @HiveField(2)
   String get name;
   @override
+  @HiveField(3)
   String get description;
   @override
+  @HiveField(4)
   String get image;
   @override
+  @HiveField(5)
   String get weight;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductCopyWith<_$_Product> get copyWith =>
+  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

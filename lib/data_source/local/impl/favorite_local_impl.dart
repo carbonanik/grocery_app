@@ -4,20 +4,20 @@ import 'package:instant_grrocery_delivery/data_source/local/favorite_local.dart'
 
 class FavoriteLocalImpl extends FavoriteLocal {
   @override
-  Future<Map<int, bool>> getFavoriteIds() async {
-    Box box = await Hive.openBox(HiveBoxName.favoriteBox);
-    return box.toMap().map((key, value) => MapEntry(key as int, value as bool));
+  Map<int, bool> getFavoriteIds() {
+    final box = Hive.box<bool>(HiveBoxName.favoriteBox);
+    return box.toMap().map((key, value) => MapEntry(key as int, value));
   }
 
   @override
-  Future<bool> getIsFavorite(int productId) async {
-    Box box = await Hive.openBox(HiveBoxName.favoriteBox);
-    return box.get(productId);
+  bool getIsFavorite(int productId) {
+    final box = Hive.box<bool>(HiveBoxName.favoriteBox);
+    return box.get(productId) ?? false;
   }
 
   @override
-  Future<void> setIsFavorite(int productId, bool isFavorite) async {
-    Box box = await Hive.openBox(HiveBoxName.favoriteBox);
-    return box.put(productId, isFavorite);
+  void setIsFavorite(int productId, bool isFavorite) {
+    final box = Hive.box<bool>(HiveBoxName.favoriteBox);
+    box.put(productId, isFavorite);
   }
 }

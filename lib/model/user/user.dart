@@ -1,12 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
+import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 
-part 'user.g.dart';
 part 'user.freezed.dart';
 
+part 'user.g.dart';
 
 @freezed
 class CreateUserRequest with _$CreateUserRequest {
-
   const factory CreateUserRequest({
     required String email,
     required String username,
@@ -15,39 +16,37 @@ class CreateUserRequest with _$CreateUserRequest {
     required String password,
   }) = _CreateUserRequest;
 
-  factory CreateUserRequest.fromJson(Map<String, dynamic> source) =>
-      _$CreateUserRequestFromJson(source);
+  factory CreateUserRequest.fromJson(Map<String, dynamic> source) => _$CreateUserRequestFromJson(source);
 }
 
 @freezed
 class UpdateUserRequest with _$UpdateUserRequest {
-
   const factory UpdateUserRequest({
     String? fullName,
     String? phone,
     String? email,
   }) = _UpdateUserRequest;
 
-  factory UpdateUserRequest.fromJson(Map<String, dynamic> source) =>
-      _$UpdateUserRequestFromJson(source);
+  factory UpdateUserRequest.fromJson(Map<String, dynamic> source) => _$UpdateUserRequestFromJson(source);
 }
 
 @freezed
-class User with _$User {
+class User extends HiveObject with _$User {
 
-  const factory User({
-    required int id,
-    required String username,
-    required String email,
-    required String provider,
-    required bool confirmed,
-    required bool blocked,
-    required String fullName,
-    required String phone,
-    required bool isActive,
+  User._();
+
+  @HiveType(typeId: userHiveTypeId, adapterName: userAdapterName)
+  factory User({
+    @HiveField(0) required int id,
+    @HiveField(1) required String username,
+    @HiveField(2) required String email,
+    @HiveField(3) String? provider,
+    @HiveField(4) bool? confirmed,
+    @HiveField(5) bool? blocked,
+    @HiveField(6) String? fullName,
+    @HiveField(7) String? phone,
+    @HiveField(8) bool? isActive,
   }) = _User;
 
-
-  factory User.fromJson(Map<String, dynamic> source) =>
-      _$UserFromJson(source);
+  factory User.fromJson(Map<String, dynamic> source) => _$UserFromJson(source);
 }

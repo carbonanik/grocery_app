@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/category_list_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/support.dart';
 
@@ -8,7 +9,7 @@ import '../../../../../main.dart';
 import '../../widget/side_tab.dart';
 import 'tab_views/favorite_list_page.dart';
 import 'tab_views/home/home_page.dart';
-import 'tab_views/order/my_orders.dart';
+import 'tab_views/order/my_orders_page.dart';
 
 class MainTabs extends StatelessWidget {
   const MainTabs({super.key});
@@ -27,7 +28,7 @@ class MainTabs extends StatelessWidget {
       const HomePage(),
       const CategoryListPage(),
       const FavoriteListPage(),
-      const MyOrders(),
+      const MyOrdersPage(),
       SupportPage(),
     ];
 

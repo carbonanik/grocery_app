@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 class Faqs extends StatelessWidget {
   const Faqs({Key? key}) : super(key: key);

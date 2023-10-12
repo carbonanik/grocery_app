@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 import '../../main.dart';
 import '../../model/product/product.dart';
-import '../../provider/cart/cart_hive_notifier_provider.dart';
+import '../../provider/cart/cart_provider.dart';
 import '../../route/route_helper.dart';
 import '../../util/dimension.dart';
 

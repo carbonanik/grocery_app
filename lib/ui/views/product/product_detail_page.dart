@@ -5,13 +5,15 @@ import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
-import 'package:instant_grrocery_delivery/provider/cart/cart_hive_notifier_provider.dart';
+import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
 import 'package:instant_grrocery_delivery/provider/favorite/favorite_hive_provider.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/add_remove_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/favorite_button.dart';
+import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
@@ -30,22 +32,7 @@ class ProductDetailPage extends ConsumerWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: const Text("Product Detail"),
-        leading: const BackButton(
-          color: Colors.lightGreen,
-        ),
-        backgroundColor: backgroundColor.withAlpha(100),
-        elevation: 0,
-        flexibleSpace: ClipRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              color: Colors.transparent,
-            ),
-          ),
-        ),
-      ),
+      appBar: const MyAppBar(title: 'Product Detail'),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -139,7 +126,7 @@ class ProductDetailPage extends ConsumerWidget {
                   final dataModel = ref.watch(favoriteProvider);
 
                   return FavoriteButton(
-                    onTap: () async => await dataModel.setIsFavorite(
+                    onTap: () async => dataModel.setIsFavorite(
                       productId,
                       !dataModel.getIsFavorite(productId),
                     ),
@@ -337,6 +324,7 @@ class ProductDetailPage extends ConsumerWidget {
 
                 /// view cart button
                 ActionButton(
+                  enabled: true,
                   onTap: () {
                     Get.toNamed(RouteHelper.getMyCart());
                   },

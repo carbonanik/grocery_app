@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 
 import '../../../../provider/category/category_api_provider.dart';
@@ -42,10 +43,7 @@ class CategoryListPage extends StatelessWidget {
             final asyncValue = ref.watch(getCategoriesProvider);
 
             if (asyncValue is AsyncError || (asyncValue is AsyncData && asyncValue.value == [])) {
-              // Timer(500.milliseconds, () {
-                ref.refresh(getCategoriesProvider);
-                // print("refresh");
-              // });
+                ref.invalidate(getCategoriesProvider);
             }
 
             return asyncValue.map(

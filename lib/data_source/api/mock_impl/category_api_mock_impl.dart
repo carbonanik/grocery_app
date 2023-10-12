@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:get/get_utils/get_utils.dart';
 import 'package:instant_grrocery_delivery/data_source/api/category_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/product_api_mock_impl.dart';
@@ -8,27 +6,62 @@ import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fet
 import '../../../model/category/category.dart';
 
 class CategoryApiMockImpl extends CategoryApi {
-
   @override
   Future<List<Category>> getCategories() async {
     await simulateFetch();
-    final categories = categoriesJson.map(Category.fromJson).toList();
+    final categories = categoriesJson
+        .map((e) {
+          final e2 = Map<String, dynamic>.from(e);
+          e2.remove('products');
+          return e2;
+        })
+        .toList()
+        .map((e) => Category.fromJson(e),)
+        .toList();
     return categories;
   }
 
   @override
   Future<Category> getCategoriesByIdWithProduct(int categoryId) async {
     await simulateFetch();
-    final productsIds = relationJson[categoryId.toString()] as List;
+    // final productsIds = relationJson[categoryId.toString()] as List;
 
-    final productsJ = productsJson.where(
-      (element) => productsIds.contains(element["id"]),
-    );
+    // final productsJ = productsJson.where(
+    //   (element) => productsIds.contains(element["id"]),
+    // );
 
-    final categoryJ = categoriesJson.firstWhere(
-      (element) => element["id"] == categoryId,
-    );
-    categoryJ["products"] = productsJ;
+    Map<String, dynamic>? categoryJ;
+
+    for (var category in categoriesJson) {
+      if (category["id"] == categoryId) {
+        categoryJ = category;
+        break;
+      }
+    }
+
+    if(categoryJ == null) {
+      throw Exception('category not found');
+    }
+
+    // categoryJ["products"] = (categoryJ["products"] as List)
+    //     .map(
+    //       (id) => productsJson.firstWhere((pj) => pj["id"] == id),
+    //     )
+    //     .toList();
+
+    List products = [];
+    for (int productId in categoryJ["products"]) {
+      // productsJson.firstWhere((pj) => pj["id"] == productId)
+      for (var product in productsJson) {
+
+        if (product["id"] == productId) {
+          products.add(product);
+        }
+      }
+    }
+
+    categoryJ["products"] = products;
+
     final category = Category.fromJson(categoryJ);
 
     return category;
@@ -50,17 +83,6 @@ class CategoryApiMockImpl extends CategoryApi {
   }
 }
 
-final relationJson = {
-  "1": ["1", "2", "4"],
-  "2": ["3"],
-  "3": ["5", "6", "10"],
-  "4": ["7", "8", "12", "16"],
-  "5": ["9"],
-  "6": ["11"],
-  "7": ["13", "14"],
-  "8": ["15"],
-  "9": ["17", "18"],
-};
 
 final categoriesJson = [
   {
@@ -68,62 +90,71 @@ final categoriesJson = [
     "name": "Bakery and Bread",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "raspberries.png"
+    "image": "raspberries.png",
+    "products": [1, 2, 4],
   },
   {
     "id": 2,
     "name": "Meat and Seafood",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "pineapple.png"
+    "image": "pineapple.png",
+    "products": [3],
   },
   {
     "id": 3,
     "name": "Pasta and Rice",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "pear.png"
+    "image": "pear.png",
+    "products": [5, 6, 10],
   },
   {
     "id": 4,
     "name": "Oils Sauces",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "orange.png"
+    "image": "orange.png",
+    "products": [7, 8, 12, 16],
   },
   {
     "id": 5,
     "name": "Salad Dressings",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "mango.png"
+    "image": "mango.png",
+    "products": [9],
   },
   {
     "id": 6,
     "name": "Cereals and Breakfast Foods",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "mango.png"
+    "image": "mango.png",
+    "products": [11],
   },
   {
     "id": 7,
     "name": "Soups and Canned Goods",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "lemons.png"
+    "image": "lemons.png",
+    "products": [13, 14],
   },
   {
     "id": 8,
     "name": "Frozen Foods",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "kiwis.png"
+    "image": "kiwis.png",
+    "products": [15],
   },
   {
     "id": 9,
     "name": "Dairy, Cheese and Eggs",
     "description":
         "Description is the pattern of narrative development that aims to make vivid a place, object, character, or group.",
-    "image": "guava.png"
+    "image": "guava.png",
+    "products": [17, 18],
   }
 ];

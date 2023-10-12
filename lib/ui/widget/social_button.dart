@@ -13,7 +13,7 @@ class SocialLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
+      child: SizedBox(
         height: Dimension.height(40),
         child: ElevatedButton(
           style: ButtonStyle(

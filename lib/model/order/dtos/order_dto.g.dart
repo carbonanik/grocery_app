@@ -6,21 +6,22 @@ part of 'order_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderReadDto _$$_OrderReadDtoFromJson(Map<String, dynamic> json) =>
-    _$_OrderReadDto(
+_$OrderReadDtoImpl _$$OrderReadDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderReadDtoImpl(
       id: json['id'] as int,
       attributes:
           OrderSubReadDto.fromJson(json['attributes'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_OrderReadDtoToJson(_$_OrderReadDto instance) =>
+Map<String, dynamic> _$$OrderReadDtoImplToJson(_$OrderReadDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'attributes': instance.attributes,
     };
 
-_$_OrderSubReadDto _$$_OrderSubReadDtoFromJson(Map<String, dynamic> json) =>
-    _$_OrderSubReadDto(
+_$OrderSubReadDtoImpl _$$OrderSubReadDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OrderSubReadDtoImpl(
       count: json['count'] as int,
       totalPrice: json['totalPrice'] as String,
       orderDate: json['orderDate'] as String,
@@ -34,7 +35,8 @@ _$_OrderSubReadDto _$$_OrderSubReadDtoFromJson(Map<String, dynamic> json) =>
       user: UserInOrderReadDto.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_OrderSubReadDtoToJson(_$_OrderSubReadDto instance) =>
+Map<String, dynamic> _$$OrderSubReadDtoImplToJson(
+        _$OrderSubReadDtoImpl instance) =>
     <String, dynamic>{
       'count': instance.count,
       'totalPrice': instance.totalPrice,
@@ -45,45 +47,47 @@ Map<String, dynamic> _$$_OrderSubReadDtoToJson(_$_OrderSubReadDto instance) =>
       'user': instance.user,
     };
 
-_$_OrderItemReadDto _$$_OrderItemReadDtoFromJson(Map<String, dynamic> json) =>
-    _$_OrderItemReadDto(
+_$OrderItemReadDtoImpl _$$OrderItemReadDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OrderItemReadDtoImpl(
       count: json['count'] as int,
       product: ProductDto.fromJson(json['product'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_OrderItemReadDtoToJson(_$_OrderItemReadDto instance) =>
+Map<String, dynamic> _$$OrderItemReadDtoImplToJson(
+        _$OrderItemReadDtoImpl instance) =>
     <String, dynamic>{
       'count': instance.count,
       'product': instance.product,
     };
 
-_$_UserInOrderReadDto _$$_UserInOrderReadDtoFromJson(
+_$UserInOrderReadDtoImpl _$$UserInOrderReadDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserInOrderReadDto(
+    _$UserInOrderReadDtoImpl(
       data: UserReadDto.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_UserInOrderReadDtoToJson(
-        _$_UserInOrderReadDto instance) =>
+Map<String, dynamic> _$$UserInOrderReadDtoImplToJson(
+        _$UserInOrderReadDtoImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
 
-_$_UserReadDto _$$_UserReadDtoFromJson(Map<String, dynamic> json) =>
-    _$_UserReadDto(
+_$UserReadDtoImpl _$$UserReadDtoImplFromJson(Map<String, dynamic> json) =>
+    _$UserReadDtoImpl(
       id: json['id'] as int,
       attributes:
           UserSubReadDto.fromJson(json['attributes'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_UserReadDtoToJson(_$_UserReadDto instance) =>
+Map<String, dynamic> _$$UserReadDtoImplToJson(_$UserReadDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'attributes': instance.attributes,
     };
 
-_$_UserSubReadDto _$$_UserSubReadDtoFromJson(Map<String, dynamic> json) =>
-    _$_UserSubReadDto(
+_$UserSubReadDtoImpl _$$UserSubReadDtoImplFromJson(Map<String, dynamic> json) =>
+    _$UserSubReadDtoImpl(
       username: json['username'] as String,
       email: json['email'] as String,
       provider: json['provider'] as String,
@@ -96,7 +100,8 @@ _$_UserSubReadDto _$$_UserSubReadDtoFromJson(Map<String, dynamic> json) =>
       isActive: json['isActive'] as bool,
     );
 
-Map<String, dynamic> _$$_UserSubReadDtoToJson(_$_UserSubReadDto instance) =>
+Map<String, dynamic> _$$UserSubReadDtoImplToJson(
+        _$UserSubReadDtoImpl instance) =>
     <String, dynamic>{
       'username': instance.username,
       'email': instance.email,

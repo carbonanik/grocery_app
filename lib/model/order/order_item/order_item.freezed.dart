@@ -20,7 +20,9 @@ OrderItem _$OrderItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderItem {
+  @HiveField(0)
   Product get product => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get count => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +36,7 @@ abstract class $OrderItemCopyWith<$Res> {
   factory $OrderItemCopyWith(OrderItem value, $Res Function(OrderItem) then) =
       _$OrderItemCopyWithImpl<$Res, OrderItem>;
   @useResult
-  $Res call({Product product, int count});
+  $Res call({@HiveField(0) Product product, @HiveField(1) int count});
 
   $ProductCopyWith<$Res> get product;
 }
@@ -77,24 +79,25 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
 }
 
 /// @nodoc
-abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
-  factory _$$_OrderItemCopyWith(
-          _$_OrderItem value, $Res Function(_$_OrderItem) then) =
-      __$$_OrderItemCopyWithImpl<$Res>;
+abstract class _$$OrderItemImplCopyWith<$Res>
+    implements $OrderItemCopyWith<$Res> {
+  factory _$$OrderItemImplCopyWith(
+          _$OrderItemImpl value, $Res Function(_$OrderItemImpl) then) =
+      __$$OrderItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Product product, int count});
+  $Res call({@HiveField(0) Product product, @HiveField(1) int count});
 
   @override
   $ProductCopyWith<$Res> get product;
 }
 
 /// @nodoc
-class __$$_OrderItemCopyWithImpl<$Res>
-    extends _$OrderItemCopyWithImpl<$Res, _$_OrderItem>
-    implements _$$_OrderItemCopyWith<$Res> {
-  __$$_OrderItemCopyWithImpl(
-      _$_OrderItem _value, $Res Function(_$_OrderItem) _then)
+class __$$OrderItemImplCopyWithImpl<$Res>
+    extends _$OrderItemCopyWithImpl<$Res, _$OrderItemImpl>
+    implements _$$OrderItemImplCopyWith<$Res> {
+  __$$OrderItemImplCopyWithImpl(
+      _$OrderItemImpl _value, $Res Function(_$OrderItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +106,7 @@ class __$$_OrderItemCopyWithImpl<$Res>
     Object? product = null,
     Object? count = null,
   }) {
-    return _then(_$_OrderItem(
+    return _then(_$OrderItemImpl(
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
@@ -118,15 +121,20 @@ class __$$_OrderItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderItem with DiagnosticableTreeMixin implements _OrderItem {
-  const _$_OrderItem({required this.product, required this.count});
+@HiveType(typeId: orderItemHiveTypeId, adapterName: orderItemAdapterName)
+class _$OrderItemImpl extends _OrderItem with DiagnosticableTreeMixin {
+  _$OrderItemImpl(
+      {@HiveField(0) required this.product, @HiveField(1) required this.count})
+      : super._();
 
-  factory _$_OrderItem.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderItemFromJson(json);
+  factory _$OrderItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemImplFromJson(json);
 
   @override
+  @HiveField(0)
   final Product product;
   @override
+  @HiveField(1)
   final int count;
 
   @override
@@ -147,7 +155,7 @@ class _$_OrderItem with DiagnosticableTreeMixin implements _OrderItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderItem &&
+            other is _$OrderItemImpl &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.count, count) || other.count == count));
   }
@@ -159,31 +167,34 @@ class _$_OrderItem with DiagnosticableTreeMixin implements _OrderItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderItemCopyWith<_$_OrderItem> get copyWith =>
-      __$$_OrderItemCopyWithImpl<_$_OrderItem>(this, _$identity);
+  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
+      __$$OrderItemImplCopyWithImpl<_$OrderItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderItemToJson(
+    return _$$OrderItemImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderItem implements OrderItem {
-  const factory _OrderItem(
-      {required final Product product,
-      required final int count}) = _$_OrderItem;
+abstract class _OrderItem extends OrderItem {
+  factory _OrderItem(
+      {@HiveField(0) required final Product product,
+      @HiveField(1) required final int count}) = _$OrderItemImpl;
+  _OrderItem._() : super._();
 
   factory _OrderItem.fromJson(Map<String, dynamic> json) =
-      _$_OrderItem.fromJson;
+      _$OrderItemImpl.fromJson;
 
   @override
+  @HiveField(0)
   Product get product;
   @override
+  @HiveField(1)
   int get count;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderItemCopyWith<_$_OrderItem> get copyWith =>
+  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

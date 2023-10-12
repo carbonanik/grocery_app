@@ -78,11 +78,11 @@ class _$OrderReadDtoCopyWithImpl<$Res, $Val extends OrderReadDto>
 }
 
 /// @nodoc
-abstract class _$$_OrderReadDtoCopyWith<$Res>
+abstract class _$$OrderReadDtoImplCopyWith<$Res>
     implements $OrderReadDtoCopyWith<$Res> {
-  factory _$$_OrderReadDtoCopyWith(
-          _$_OrderReadDto value, $Res Function(_$_OrderReadDto) then) =
-      __$$_OrderReadDtoCopyWithImpl<$Res>;
+  factory _$$OrderReadDtoImplCopyWith(
+          _$OrderReadDtoImpl value, $Res Function(_$OrderReadDtoImpl) then) =
+      __$$OrderReadDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, OrderSubReadDto attributes});
@@ -92,11 +92,11 @@ abstract class _$$_OrderReadDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderReadDtoCopyWithImpl<$Res>
-    extends _$OrderReadDtoCopyWithImpl<$Res, _$_OrderReadDto>
-    implements _$$_OrderReadDtoCopyWith<$Res> {
-  __$$_OrderReadDtoCopyWithImpl(
-      _$_OrderReadDto _value, $Res Function(_$_OrderReadDto) _then)
+class __$$OrderReadDtoImplCopyWithImpl<$Res>
+    extends _$OrderReadDtoCopyWithImpl<$Res, _$OrderReadDtoImpl>
+    implements _$$OrderReadDtoImplCopyWith<$Res> {
+  __$$OrderReadDtoImplCopyWithImpl(
+      _$OrderReadDtoImpl _value, $Res Function(_$OrderReadDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -105,7 +105,7 @@ class __$$_OrderReadDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? attributes = null,
   }) {
-    return _then(_$_OrderReadDto(
+    return _then(_$OrderReadDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -120,11 +120,11 @@ class __$$_OrderReadDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderReadDto with DiagnosticableTreeMixin implements _OrderReadDto {
-  const _$_OrderReadDto({required this.id, required this.attributes});
+class _$OrderReadDtoImpl with DiagnosticableTreeMixin implements _OrderReadDto {
+  const _$OrderReadDtoImpl({required this.id, required this.attributes});
 
-  factory _$_OrderReadDto.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderReadDtoFromJson(json);
+  factory _$OrderReadDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderReadDtoImplFromJson(json);
 
   @override
   final int id;
@@ -149,7 +149,7 @@ class _$_OrderReadDto with DiagnosticableTreeMixin implements _OrderReadDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderReadDto &&
+            other is _$OrderReadDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.attributes, attributes) ||
                 other.attributes == attributes));
@@ -162,12 +162,12 @@ class _$_OrderReadDto with DiagnosticableTreeMixin implements _OrderReadDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderReadDtoCopyWith<_$_OrderReadDto> get copyWith =>
-      __$$_OrderReadDtoCopyWithImpl<_$_OrderReadDto>(this, _$identity);
+  _$$OrderReadDtoImplCopyWith<_$OrderReadDtoImpl> get copyWith =>
+      __$$OrderReadDtoImplCopyWithImpl<_$OrderReadDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderReadDtoToJson(
+    return _$$OrderReadDtoImplToJson(
       this,
     );
   }
@@ -176,10 +176,10 @@ class _$_OrderReadDto with DiagnosticableTreeMixin implements _OrderReadDto {
 abstract class _OrderReadDto implements OrderReadDto {
   const factory _OrderReadDto(
       {required final int id,
-      required final OrderSubReadDto attributes}) = _$_OrderReadDto;
+      required final OrderSubReadDto attributes}) = _$OrderReadDtoImpl;
 
   factory _OrderReadDto.fromJson(Map<String, dynamic> json) =
-      _$_OrderReadDto.fromJson;
+      _$OrderReadDtoImpl.fromJson;
 
   @override
   int get id;
@@ -187,7 +187,7 @@ abstract class _OrderReadDto implements OrderReadDto {
   OrderSubReadDto get attributes;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderReadDtoCopyWith<_$_OrderReadDto> get copyWith =>
+  _$$OrderReadDtoImplCopyWith<_$OrderReadDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -292,11 +292,11 @@ class _$OrderSubReadDtoCopyWithImpl<$Res, $Val extends OrderSubReadDto>
 }
 
 /// @nodoc
-abstract class _$$_OrderSubReadDtoCopyWith<$Res>
+abstract class _$$OrderSubReadDtoImplCopyWith<$Res>
     implements $OrderSubReadDtoCopyWith<$Res> {
-  factory _$$_OrderSubReadDtoCopyWith(
-          _$_OrderSubReadDto value, $Res Function(_$_OrderSubReadDto) then) =
-      __$$_OrderSubReadDtoCopyWithImpl<$Res>;
+  factory _$$OrderSubReadDtoImplCopyWith(_$OrderSubReadDtoImpl value,
+          $Res Function(_$OrderSubReadDtoImpl) then) =
+      __$$OrderSubReadDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -313,11 +313,11 @@ abstract class _$$_OrderSubReadDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderSubReadDtoCopyWithImpl<$Res>
-    extends _$OrderSubReadDtoCopyWithImpl<$Res, _$_OrderSubReadDto>
-    implements _$$_OrderSubReadDtoCopyWith<$Res> {
-  __$$_OrderSubReadDtoCopyWithImpl(
-      _$_OrderSubReadDto _value, $Res Function(_$_OrderSubReadDto) _then)
+class __$$OrderSubReadDtoImplCopyWithImpl<$Res>
+    extends _$OrderSubReadDtoCopyWithImpl<$Res, _$OrderSubReadDtoImpl>
+    implements _$$OrderSubReadDtoImplCopyWith<$Res> {
+  __$$OrderSubReadDtoImplCopyWithImpl(
+      _$OrderSubReadDtoImpl _value, $Res Function(_$OrderSubReadDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -331,7 +331,7 @@ class __$$_OrderSubReadDtoCopyWithImpl<$Res>
     Object? coupons = null,
     Object? user = null,
   }) {
-    return _then(_$_OrderSubReadDto(
+    return _then(_$OrderSubReadDtoImpl(
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -366,10 +366,10 @@ class __$$_OrderSubReadDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderSubReadDto
+class _$OrderSubReadDtoImpl
     with DiagnosticableTreeMixin
     implements _OrderSubReadDto {
-  const _$_OrderSubReadDto(
+  const _$OrderSubReadDtoImpl(
       {required this.count,
       required this.totalPrice,
       required this.orderDate,
@@ -380,8 +380,8 @@ class _$_OrderSubReadDto
       : _orderItems = orderItems,
         _coupons = coupons;
 
-  factory _$_OrderSubReadDto.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderSubReadDtoFromJson(json);
+  factory _$OrderSubReadDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderSubReadDtoImplFromJson(json);
 
   @override
   final int count;
@@ -433,7 +433,7 @@ class _$_OrderSubReadDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderSubReadDto &&
+            other is _$OrderSubReadDtoImpl &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.totalPrice, totalPrice) ||
                 other.totalPrice == totalPrice) &&
@@ -462,12 +462,13 @@ class _$_OrderSubReadDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderSubReadDtoCopyWith<_$_OrderSubReadDto> get copyWith =>
-      __$$_OrderSubReadDtoCopyWithImpl<_$_OrderSubReadDto>(this, _$identity);
+  _$$OrderSubReadDtoImplCopyWith<_$OrderSubReadDtoImpl> get copyWith =>
+      __$$OrderSubReadDtoImplCopyWithImpl<_$OrderSubReadDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderSubReadDtoToJson(
+    return _$$OrderSubReadDtoImplToJson(
       this,
     );
   }
@@ -481,10 +482,10 @@ abstract class _OrderSubReadDto implements OrderSubReadDto {
       required final String orderStatus,
       required final List<OrderItemReadDto> orderItems,
       required final List<Coupon> coupons,
-      required final UserInOrderReadDto user}) = _$_OrderSubReadDto;
+      required final UserInOrderReadDto user}) = _$OrderSubReadDtoImpl;
 
   factory _OrderSubReadDto.fromJson(Map<String, dynamic> json) =
-      _$_OrderSubReadDto.fromJson;
+      _$OrderSubReadDtoImpl.fromJson;
 
   @override
   int get count;
@@ -502,7 +503,7 @@ abstract class _OrderSubReadDto implements OrderSubReadDto {
   UserInOrderReadDto get user;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderSubReadDtoCopyWith<_$_OrderSubReadDto> get copyWith =>
+  _$$OrderSubReadDtoImplCopyWith<_$OrderSubReadDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -570,11 +571,11 @@ class _$OrderItemReadDtoCopyWithImpl<$Res, $Val extends OrderItemReadDto>
 }
 
 /// @nodoc
-abstract class _$$_OrderItemReadDtoCopyWith<$Res>
+abstract class _$$OrderItemReadDtoImplCopyWith<$Res>
     implements $OrderItemReadDtoCopyWith<$Res> {
-  factory _$$_OrderItemReadDtoCopyWith(
-          _$_OrderItemReadDto value, $Res Function(_$_OrderItemReadDto) then) =
-      __$$_OrderItemReadDtoCopyWithImpl<$Res>;
+  factory _$$OrderItemReadDtoImplCopyWith(_$OrderItemReadDtoImpl value,
+          $Res Function(_$OrderItemReadDtoImpl) then) =
+      __$$OrderItemReadDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int count, ProductDto product});
@@ -584,11 +585,11 @@ abstract class _$$_OrderItemReadDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderItemReadDtoCopyWithImpl<$Res>
-    extends _$OrderItemReadDtoCopyWithImpl<$Res, _$_OrderItemReadDto>
-    implements _$$_OrderItemReadDtoCopyWith<$Res> {
-  __$$_OrderItemReadDtoCopyWithImpl(
-      _$_OrderItemReadDto _value, $Res Function(_$_OrderItemReadDto) _then)
+class __$$OrderItemReadDtoImplCopyWithImpl<$Res>
+    extends _$OrderItemReadDtoCopyWithImpl<$Res, _$OrderItemReadDtoImpl>
+    implements _$$OrderItemReadDtoImplCopyWith<$Res> {
+  __$$OrderItemReadDtoImplCopyWithImpl(_$OrderItemReadDtoImpl _value,
+      $Res Function(_$OrderItemReadDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -597,7 +598,7 @@ class __$$_OrderItemReadDtoCopyWithImpl<$Res>
     Object? count = null,
     Object? product = null,
   }) {
-    return _then(_$_OrderItemReadDto(
+    return _then(_$OrderItemReadDtoImpl(
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -612,13 +613,13 @@ class __$$_OrderItemReadDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderItemReadDto
+class _$OrderItemReadDtoImpl
     with DiagnosticableTreeMixin
     implements _OrderItemReadDto {
-  const _$_OrderItemReadDto({required this.count, required this.product});
+  const _$OrderItemReadDtoImpl({required this.count, required this.product});
 
-  factory _$_OrderItemReadDto.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderItemReadDtoFromJson(json);
+  factory _$OrderItemReadDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemReadDtoImplFromJson(json);
 
   @override
   final int count;
@@ -643,7 +644,7 @@ class _$_OrderItemReadDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderItemReadDto &&
+            other is _$OrderItemReadDtoImpl &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.product, product) || other.product == product));
   }
@@ -655,12 +656,13 @@ class _$_OrderItemReadDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderItemReadDtoCopyWith<_$_OrderItemReadDto> get copyWith =>
-      __$$_OrderItemReadDtoCopyWithImpl<_$_OrderItemReadDto>(this, _$identity);
+  _$$OrderItemReadDtoImplCopyWith<_$OrderItemReadDtoImpl> get copyWith =>
+      __$$OrderItemReadDtoImplCopyWithImpl<_$OrderItemReadDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderItemReadDtoToJson(
+    return _$$OrderItemReadDtoImplToJson(
       this,
     );
   }
@@ -669,10 +671,10 @@ class _$_OrderItemReadDto
 abstract class _OrderItemReadDto implements OrderItemReadDto {
   const factory _OrderItemReadDto(
       {required final int count,
-      required final ProductDto product}) = _$_OrderItemReadDto;
+      required final ProductDto product}) = _$OrderItemReadDtoImpl;
 
   factory _OrderItemReadDto.fromJson(Map<String, dynamic> json) =
-      _$_OrderItemReadDto.fromJson;
+      _$OrderItemReadDtoImpl.fromJson;
 
   @override
   int get count;
@@ -680,7 +682,7 @@ abstract class _OrderItemReadDto implements OrderItemReadDto {
   ProductDto get product;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderItemReadDtoCopyWith<_$_OrderItemReadDto> get copyWith =>
+  _$$OrderItemReadDtoImplCopyWith<_$OrderItemReadDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -742,11 +744,11 @@ class _$UserInOrderReadDtoCopyWithImpl<$Res, $Val extends UserInOrderReadDto>
 }
 
 /// @nodoc
-abstract class _$$_UserInOrderReadDtoCopyWith<$Res>
+abstract class _$$UserInOrderReadDtoImplCopyWith<$Res>
     implements $UserInOrderReadDtoCopyWith<$Res> {
-  factory _$$_UserInOrderReadDtoCopyWith(_$_UserInOrderReadDto value,
-          $Res Function(_$_UserInOrderReadDto) then) =
-      __$$_UserInOrderReadDtoCopyWithImpl<$Res>;
+  factory _$$UserInOrderReadDtoImplCopyWith(_$UserInOrderReadDtoImpl value,
+          $Res Function(_$UserInOrderReadDtoImpl) then) =
+      __$$UserInOrderReadDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserReadDto data});
@@ -756,11 +758,11 @@ abstract class _$$_UserInOrderReadDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserInOrderReadDtoCopyWithImpl<$Res>
-    extends _$UserInOrderReadDtoCopyWithImpl<$Res, _$_UserInOrderReadDto>
-    implements _$$_UserInOrderReadDtoCopyWith<$Res> {
-  __$$_UserInOrderReadDtoCopyWithImpl(
-      _$_UserInOrderReadDto _value, $Res Function(_$_UserInOrderReadDto) _then)
+class __$$UserInOrderReadDtoImplCopyWithImpl<$Res>
+    extends _$UserInOrderReadDtoCopyWithImpl<$Res, _$UserInOrderReadDtoImpl>
+    implements _$$UserInOrderReadDtoImplCopyWith<$Res> {
+  __$$UserInOrderReadDtoImplCopyWithImpl(_$UserInOrderReadDtoImpl _value,
+      $Res Function(_$UserInOrderReadDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -768,7 +770,7 @@ class __$$_UserInOrderReadDtoCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_UserInOrderReadDto(
+    return _then(_$UserInOrderReadDtoImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -779,13 +781,13 @@ class __$$_UserInOrderReadDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserInOrderReadDto
+class _$UserInOrderReadDtoImpl
     with DiagnosticableTreeMixin
     implements _UserInOrderReadDto {
-  const _$_UserInOrderReadDto({required this.data});
+  const _$UserInOrderReadDtoImpl({required this.data});
 
-  factory _$_UserInOrderReadDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserInOrderReadDtoFromJson(json);
+  factory _$UserInOrderReadDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserInOrderReadDtoImplFromJson(json);
 
   @override
   final UserReadDto data;
@@ -807,7 +809,7 @@ class _$_UserInOrderReadDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserInOrderReadDto &&
+            other is _$UserInOrderReadDtoImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -818,13 +820,13 @@ class _$_UserInOrderReadDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserInOrderReadDtoCopyWith<_$_UserInOrderReadDto> get copyWith =>
-      __$$_UserInOrderReadDtoCopyWithImpl<_$_UserInOrderReadDto>(
+  _$$UserInOrderReadDtoImplCopyWith<_$UserInOrderReadDtoImpl> get copyWith =>
+      __$$UserInOrderReadDtoImplCopyWithImpl<_$UserInOrderReadDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserInOrderReadDtoToJson(
+    return _$$UserInOrderReadDtoImplToJson(
       this,
     );
   }
@@ -832,16 +834,16 @@ class _$_UserInOrderReadDto
 
 abstract class _UserInOrderReadDto implements UserInOrderReadDto {
   const factory _UserInOrderReadDto({required final UserReadDto data}) =
-      _$_UserInOrderReadDto;
+      _$UserInOrderReadDtoImpl;
 
   factory _UserInOrderReadDto.fromJson(Map<String, dynamic> json) =
-      _$_UserInOrderReadDto.fromJson;
+      _$UserInOrderReadDtoImpl.fromJson;
 
   @override
   UserReadDto get data;
   @override
   @JsonKey(ignore: true)
-  _$$_UserInOrderReadDtoCopyWith<_$_UserInOrderReadDto> get copyWith =>
+  _$$UserInOrderReadDtoImplCopyWith<_$UserInOrderReadDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -909,11 +911,11 @@ class _$UserReadDtoCopyWithImpl<$Res, $Val extends UserReadDto>
 }
 
 /// @nodoc
-abstract class _$$_UserReadDtoCopyWith<$Res>
+abstract class _$$UserReadDtoImplCopyWith<$Res>
     implements $UserReadDtoCopyWith<$Res> {
-  factory _$$_UserReadDtoCopyWith(
-          _$_UserReadDto value, $Res Function(_$_UserReadDto) then) =
-      __$$_UserReadDtoCopyWithImpl<$Res>;
+  factory _$$UserReadDtoImplCopyWith(
+          _$UserReadDtoImpl value, $Res Function(_$UserReadDtoImpl) then) =
+      __$$UserReadDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, UserSubReadDto attributes});
@@ -923,11 +925,11 @@ abstract class _$$_UserReadDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserReadDtoCopyWithImpl<$Res>
-    extends _$UserReadDtoCopyWithImpl<$Res, _$_UserReadDto>
-    implements _$$_UserReadDtoCopyWith<$Res> {
-  __$$_UserReadDtoCopyWithImpl(
-      _$_UserReadDto _value, $Res Function(_$_UserReadDto) _then)
+class __$$UserReadDtoImplCopyWithImpl<$Res>
+    extends _$UserReadDtoCopyWithImpl<$Res, _$UserReadDtoImpl>
+    implements _$$UserReadDtoImplCopyWith<$Res> {
+  __$$UserReadDtoImplCopyWithImpl(
+      _$UserReadDtoImpl _value, $Res Function(_$UserReadDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -936,7 +938,7 @@ class __$$_UserReadDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? attributes = null,
   }) {
-    return _then(_$_UserReadDto(
+    return _then(_$UserReadDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -951,11 +953,11 @@ class __$$_UserReadDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserReadDto with DiagnosticableTreeMixin implements _UserReadDto {
-  const _$_UserReadDto({required this.id, required this.attributes});
+class _$UserReadDtoImpl with DiagnosticableTreeMixin implements _UserReadDto {
+  const _$UserReadDtoImpl({required this.id, required this.attributes});
 
-  factory _$_UserReadDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserReadDtoFromJson(json);
+  factory _$UserReadDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserReadDtoImplFromJson(json);
 
   @override
   final int id;
@@ -980,7 +982,7 @@ class _$_UserReadDto with DiagnosticableTreeMixin implements _UserReadDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserReadDto &&
+            other is _$UserReadDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.attributes, attributes) ||
                 other.attributes == attributes));
@@ -993,12 +995,12 @@ class _$_UserReadDto with DiagnosticableTreeMixin implements _UserReadDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserReadDtoCopyWith<_$_UserReadDto> get copyWith =>
-      __$$_UserReadDtoCopyWithImpl<_$_UserReadDto>(this, _$identity);
+  _$$UserReadDtoImplCopyWith<_$UserReadDtoImpl> get copyWith =>
+      __$$UserReadDtoImplCopyWithImpl<_$UserReadDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserReadDtoToJson(
+    return _$$UserReadDtoImplToJson(
       this,
     );
   }
@@ -1007,10 +1009,10 @@ class _$_UserReadDto with DiagnosticableTreeMixin implements _UserReadDto {
 abstract class _UserReadDto implements UserReadDto {
   const factory _UserReadDto(
       {required final int id,
-      required final UserSubReadDto attributes}) = _$_UserReadDto;
+      required final UserSubReadDto attributes}) = _$UserReadDtoImpl;
 
   factory _UserReadDto.fromJson(Map<String, dynamic> json) =
-      _$_UserReadDto.fromJson;
+      _$UserReadDtoImpl.fromJson;
 
   @override
   int get id;
@@ -1018,7 +1020,7 @@ abstract class _UserReadDto implements UserReadDto {
   UserSubReadDto get attributes;
   @override
   @JsonKey(ignore: true)
-  _$$_UserReadDtoCopyWith<_$_UserReadDto> get copyWith =>
+  _$$UserReadDtoImplCopyWith<_$UserReadDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1134,11 +1136,11 @@ class _$UserSubReadDtoCopyWithImpl<$Res, $Val extends UserSubReadDto>
 }
 
 /// @nodoc
-abstract class _$$_UserSubReadDtoCopyWith<$Res>
+abstract class _$$UserSubReadDtoImplCopyWith<$Res>
     implements $UserSubReadDtoCopyWith<$Res> {
-  factory _$$_UserSubReadDtoCopyWith(
-          _$_UserSubReadDto value, $Res Function(_$_UserSubReadDto) then) =
-      __$$_UserSubReadDtoCopyWithImpl<$Res>;
+  factory _$$UserSubReadDtoImplCopyWith(_$UserSubReadDtoImpl value,
+          $Res Function(_$UserSubReadDtoImpl) then) =
+      __$$UserSubReadDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1155,11 +1157,11 @@ abstract class _$$_UserSubReadDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserSubReadDtoCopyWithImpl<$Res>
-    extends _$UserSubReadDtoCopyWithImpl<$Res, _$_UserSubReadDto>
-    implements _$$_UserSubReadDtoCopyWith<$Res> {
-  __$$_UserSubReadDtoCopyWithImpl(
-      _$_UserSubReadDto _value, $Res Function(_$_UserSubReadDto) _then)
+class __$$UserSubReadDtoImplCopyWithImpl<$Res>
+    extends _$UserSubReadDtoCopyWithImpl<$Res, _$UserSubReadDtoImpl>
+    implements _$$UserSubReadDtoImplCopyWith<$Res> {
+  __$$UserSubReadDtoImplCopyWithImpl(
+      _$UserSubReadDtoImpl _value, $Res Function(_$UserSubReadDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1176,7 +1178,7 @@ class __$$_UserSubReadDtoCopyWithImpl<$Res>
     Object? phone = null,
     Object? isActive = null,
   }) {
-    return _then(_$_UserSubReadDto(
+    return _then(_$UserSubReadDtoImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -1223,10 +1225,10 @@ class __$$_UserSubReadDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserSubReadDto
+class _$UserSubReadDtoImpl
     with DiagnosticableTreeMixin
     implements _UserSubReadDto {
-  const _$_UserSubReadDto(
+  const _$UserSubReadDtoImpl(
       {required this.username,
       required this.email,
       required this.provider,
@@ -1238,8 +1240,8 @@ class _$_UserSubReadDto
       required this.phone,
       required this.isActive});
 
-  factory _$_UserSubReadDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserSubReadDtoFromJson(json);
+  factory _$UserSubReadDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserSubReadDtoImplFromJson(json);
 
   @override
   final String username;
@@ -1288,7 +1290,7 @@ class _$_UserSubReadDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserSubReadDto &&
+            other is _$UserSubReadDtoImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
@@ -1316,12 +1318,13 @@ class _$_UserSubReadDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserSubReadDtoCopyWith<_$_UserSubReadDto> get copyWith =>
-      __$$_UserSubReadDtoCopyWithImpl<_$_UserSubReadDto>(this, _$identity);
+  _$$UserSubReadDtoImplCopyWith<_$UserSubReadDtoImpl> get copyWith =>
+      __$$UserSubReadDtoImplCopyWithImpl<_$UserSubReadDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserSubReadDtoToJson(
+    return _$$UserSubReadDtoImplToJson(
       this,
     );
   }
@@ -1338,10 +1341,10 @@ abstract class _UserSubReadDto implements UserSubReadDto {
       required final DateTime updatedAt,
       required final String fullName,
       required final String phone,
-      required final bool isActive}) = _$_UserSubReadDto;
+      required final bool isActive}) = _$UserSubReadDtoImpl;
 
   factory _UserSubReadDto.fromJson(Map<String, dynamic> json) =
-      _$_UserSubReadDto.fromJson;
+      _$UserSubReadDtoImpl.fromJson;
 
   @override
   String get username;
@@ -1365,6 +1368,6 @@ abstract class _UserSubReadDto implements UserSubReadDto {
   bool get isActive;
   @override
   @JsonKey(ignore: true)
-  _$$_UserSubReadDtoCopyWith<_$_UserSubReadDto> get copyWith =>
+  _$$UserSubReadDtoImplCopyWith<_$UserSubReadDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -84,11 +84,11 @@ class _$CreateSupportDtoCopyWithImpl<$Res, $Val extends CreateSupportDto>
 }
 
 /// @nodoc
-abstract class _$$_CreateSupportDtoCopyWith<$Res>
+abstract class _$$CreateSupportDtoImplCopyWith<$Res>
     implements $CreateSupportDtoCopyWith<$Res> {
-  factory _$$_CreateSupportDtoCopyWith(
-          _$_CreateSupportDto value, $Res Function(_$_CreateSupportDto) then) =
-      __$$_CreateSupportDtoCopyWithImpl<$Res>;
+  factory _$$CreateSupportDtoImplCopyWith(_$CreateSupportDtoImpl value,
+          $Res Function(_$CreateSupportDtoImpl) then) =
+      __$$CreateSupportDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String subject, String message, UserInSupportDto user});
@@ -98,11 +98,11 @@ abstract class _$$_CreateSupportDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateSupportDtoCopyWithImpl<$Res>
-    extends _$CreateSupportDtoCopyWithImpl<$Res, _$_CreateSupportDto>
-    implements _$$_CreateSupportDtoCopyWith<$Res> {
-  __$$_CreateSupportDtoCopyWithImpl(
-      _$_CreateSupportDto _value, $Res Function(_$_CreateSupportDto) _then)
+class __$$CreateSupportDtoImplCopyWithImpl<$Res>
+    extends _$CreateSupportDtoCopyWithImpl<$Res, _$CreateSupportDtoImpl>
+    implements _$$CreateSupportDtoImplCopyWith<$Res> {
+  __$$CreateSupportDtoImplCopyWithImpl(_$CreateSupportDtoImpl _value,
+      $Res Function(_$CreateSupportDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_CreateSupportDtoCopyWithImpl<$Res>
     Object? message = null,
     Object? user = null,
   }) {
-    return _then(_$_CreateSupportDto(
+    return _then(_$CreateSupportDtoImpl(
       subject: null == subject
           ? _value.subject
           : subject // ignore: cast_nullable_to_non_nullable
@@ -131,12 +131,12 @@ class __$$_CreateSupportDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CreateSupportDto implements _CreateSupportDto {
-  const _$_CreateSupportDto(
+class _$CreateSupportDtoImpl implements _CreateSupportDto {
+  const _$CreateSupportDtoImpl(
       {required this.subject, required this.message, required this.user});
 
-  factory _$_CreateSupportDto.fromJson(Map<String, dynamic> json) =>
-      _$$_CreateSupportDtoFromJson(json);
+  factory _$CreateSupportDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreateSupportDtoImplFromJson(json);
 
   @override
   final String subject;
@@ -154,7 +154,7 @@ class _$_CreateSupportDto implements _CreateSupportDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateSupportDto &&
+            other is _$CreateSupportDtoImpl &&
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.user, user) || other.user == user));
@@ -167,12 +167,13 @@ class _$_CreateSupportDto implements _CreateSupportDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateSupportDtoCopyWith<_$_CreateSupportDto> get copyWith =>
-      __$$_CreateSupportDtoCopyWithImpl<_$_CreateSupportDto>(this, _$identity);
+  _$$CreateSupportDtoImplCopyWith<_$CreateSupportDtoImpl> get copyWith =>
+      __$$CreateSupportDtoImplCopyWithImpl<_$CreateSupportDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateSupportDtoToJson(
+    return _$$CreateSupportDtoImplToJson(
       this,
     );
   }
@@ -182,10 +183,10 @@ abstract class _CreateSupportDto implements CreateSupportDto {
   const factory _CreateSupportDto(
       {required final String subject,
       required final String message,
-      required final UserInSupportDto user}) = _$_CreateSupportDto;
+      required final UserInSupportDto user}) = _$CreateSupportDtoImpl;
 
   factory _CreateSupportDto.fromJson(Map<String, dynamic> json) =
-      _$_CreateSupportDto.fromJson;
+      _$CreateSupportDtoImpl.fromJson;
 
   @override
   String get subject;
@@ -195,7 +196,7 @@ abstract class _CreateSupportDto implements CreateSupportDto {
   UserInSupportDto get user;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateSupportDtoCopyWith<_$_CreateSupportDto> get copyWith =>
+  _$$CreateSupportDtoImplCopyWith<_$CreateSupportDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -247,22 +248,22 @@ class _$UserInSupportDtoCopyWithImpl<$Res, $Val extends UserInSupportDto>
 }
 
 /// @nodoc
-abstract class _$$_UserInSupportDtoCopyWith<$Res>
+abstract class _$$UserInSupportDtoImplCopyWith<$Res>
     implements $UserInSupportDtoCopyWith<$Res> {
-  factory _$$_UserInSupportDtoCopyWith(
-          _$_UserInSupportDto value, $Res Function(_$_UserInSupportDto) then) =
-      __$$_UserInSupportDtoCopyWithImpl<$Res>;
+  factory _$$UserInSupportDtoImplCopyWith(_$UserInSupportDtoImpl value,
+          $Res Function(_$UserInSupportDtoImpl) then) =
+      __$$UserInSupportDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<int> connect});
 }
 
 /// @nodoc
-class __$$_UserInSupportDtoCopyWithImpl<$Res>
-    extends _$UserInSupportDtoCopyWithImpl<$Res, _$_UserInSupportDto>
-    implements _$$_UserInSupportDtoCopyWith<$Res> {
-  __$$_UserInSupportDtoCopyWithImpl(
-      _$_UserInSupportDto _value, $Res Function(_$_UserInSupportDto) _then)
+class __$$UserInSupportDtoImplCopyWithImpl<$Res>
+    extends _$UserInSupportDtoCopyWithImpl<$Res, _$UserInSupportDtoImpl>
+    implements _$$UserInSupportDtoImplCopyWith<$Res> {
+  __$$UserInSupportDtoImplCopyWithImpl(_$UserInSupportDtoImpl _value,
+      $Res Function(_$UserInSupportDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -270,7 +271,7 @@ class __$$_UserInSupportDtoCopyWithImpl<$Res>
   $Res call({
     Object? connect = null,
   }) {
-    return _then(_$_UserInSupportDto(
+    return _then(_$UserInSupportDtoImpl(
       connect: null == connect
           ? _value._connect
           : connect // ignore: cast_nullable_to_non_nullable
@@ -281,12 +282,12 @@ class __$$_UserInSupportDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserInSupportDto implements _UserInSupportDto {
-  const _$_UserInSupportDto({required final List<int> connect})
+class _$UserInSupportDtoImpl implements _UserInSupportDto {
+  const _$UserInSupportDtoImpl({required final List<int> connect})
       : _connect = connect;
 
-  factory _$_UserInSupportDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserInSupportDtoFromJson(json);
+  factory _$UserInSupportDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserInSupportDtoImplFromJson(json);
 
   final List<int> _connect;
   @override
@@ -305,7 +306,7 @@ class _$_UserInSupportDto implements _UserInSupportDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserInSupportDto &&
+            other is _$UserInSupportDtoImpl &&
             const DeepCollectionEquality().equals(other._connect, _connect));
   }
 
@@ -317,12 +318,13 @@ class _$_UserInSupportDto implements _UserInSupportDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserInSupportDtoCopyWith<_$_UserInSupportDto> get copyWith =>
-      __$$_UserInSupportDtoCopyWithImpl<_$_UserInSupportDto>(this, _$identity);
+  _$$UserInSupportDtoImplCopyWith<_$UserInSupportDtoImpl> get copyWith =>
+      __$$UserInSupportDtoImplCopyWithImpl<_$UserInSupportDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserInSupportDtoToJson(
+    return _$$UserInSupportDtoImplToJson(
       this,
     );
   }
@@ -330,16 +332,16 @@ class _$_UserInSupportDto implements _UserInSupportDto {
 
 abstract class _UserInSupportDto implements UserInSupportDto {
   const factory _UserInSupportDto({required final List<int> connect}) =
-      _$_UserInSupportDto;
+      _$UserInSupportDtoImpl;
 
   factory _UserInSupportDto.fromJson(Map<String, dynamic> json) =
-      _$_UserInSupportDto.fromJson;
+      _$UserInSupportDtoImpl.fromJson;
 
   @override
   List<int> get connect;
   @override
   @JsonKey(ignore: true)
-  _$$_UserInSupportDtoCopyWith<_$_UserInSupportDto> get copyWith =>
+  _$$UserInSupportDtoImplCopyWith<_$UserInSupportDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -407,11 +409,11 @@ class _$ReadSupportDtoCopyWithImpl<$Res, $Val extends ReadSupportDto>
 }
 
 /// @nodoc
-abstract class _$$_ReadSupportDtoCopyWith<$Res>
+abstract class _$$ReadSupportDtoImplCopyWith<$Res>
     implements $ReadSupportDtoCopyWith<$Res> {
-  factory _$$_ReadSupportDtoCopyWith(
-          _$_ReadSupportDto value, $Res Function(_$_ReadSupportDto) then) =
-      __$$_ReadSupportDtoCopyWithImpl<$Res>;
+  factory _$$ReadSupportDtoImplCopyWith(_$ReadSupportDtoImpl value,
+          $Res Function(_$ReadSupportDtoImpl) then) =
+      __$$ReadSupportDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, ReadSupportAttributeDto attributes});
@@ -421,11 +423,11 @@ abstract class _$$_ReadSupportDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ReadSupportDtoCopyWithImpl<$Res>
-    extends _$ReadSupportDtoCopyWithImpl<$Res, _$_ReadSupportDto>
-    implements _$$_ReadSupportDtoCopyWith<$Res> {
-  __$$_ReadSupportDtoCopyWithImpl(
-      _$_ReadSupportDto _value, $Res Function(_$_ReadSupportDto) _then)
+class __$$ReadSupportDtoImplCopyWithImpl<$Res>
+    extends _$ReadSupportDtoCopyWithImpl<$Res, _$ReadSupportDtoImpl>
+    implements _$$ReadSupportDtoImplCopyWith<$Res> {
+  __$$ReadSupportDtoImplCopyWithImpl(
+      _$ReadSupportDtoImpl _value, $Res Function(_$ReadSupportDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -434,7 +436,7 @@ class __$$_ReadSupportDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? attributes = null,
   }) {
-    return _then(_$_ReadSupportDto(
+    return _then(_$ReadSupportDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -449,11 +451,11 @@ class __$$_ReadSupportDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReadSupportDto implements _ReadSupportDto {
-  const _$_ReadSupportDto({required this.id, required this.attributes});
+class _$ReadSupportDtoImpl implements _ReadSupportDto {
+  const _$ReadSupportDtoImpl({required this.id, required this.attributes});
 
-  factory _$_ReadSupportDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ReadSupportDtoFromJson(json);
+  factory _$ReadSupportDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReadSupportDtoImplFromJson(json);
 
   @override
   final int id;
@@ -469,7 +471,7 @@ class _$_ReadSupportDto implements _ReadSupportDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReadSupportDto &&
+            other is _$ReadSupportDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.attributes, attributes) ||
                 other.attributes == attributes));
@@ -482,12 +484,13 @@ class _$_ReadSupportDto implements _ReadSupportDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReadSupportDtoCopyWith<_$_ReadSupportDto> get copyWith =>
-      __$$_ReadSupportDtoCopyWithImpl<_$_ReadSupportDto>(this, _$identity);
+  _$$ReadSupportDtoImplCopyWith<_$ReadSupportDtoImpl> get copyWith =>
+      __$$ReadSupportDtoImplCopyWithImpl<_$ReadSupportDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReadSupportDtoToJson(
+    return _$$ReadSupportDtoImplToJson(
       this,
     );
   }
@@ -495,11 +498,12 @@ class _$_ReadSupportDto implements _ReadSupportDto {
 
 abstract class _ReadSupportDto implements ReadSupportDto {
   const factory _ReadSupportDto(
-      {required final int id,
-      required final ReadSupportAttributeDto attributes}) = _$_ReadSupportDto;
+          {required final int id,
+          required final ReadSupportAttributeDto attributes}) =
+      _$ReadSupportDtoImpl;
 
   factory _ReadSupportDto.fromJson(Map<String, dynamic> json) =
-      _$_ReadSupportDto.fromJson;
+      _$ReadSupportDtoImpl.fromJson;
 
   @override
   int get id;
@@ -507,7 +511,7 @@ abstract class _ReadSupportDto implements ReadSupportDto {
   ReadSupportAttributeDto get attributes;
   @override
   @JsonKey(ignore: true)
-  _$$_ReadSupportDtoCopyWith<_$_ReadSupportDto> get copyWith =>
+  _$$ReadSupportDtoImplCopyWith<_$ReadSupportDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -567,23 +571,25 @@ class _$ReadSupportAttributeDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ReadSupportAttributeDtoCopyWith<$Res>
+abstract class _$$ReadSupportAttributeDtoImplCopyWith<$Res>
     implements $ReadSupportAttributeDtoCopyWith<$Res> {
-  factory _$$_ReadSupportAttributeDtoCopyWith(_$_ReadSupportAttributeDto value,
-          $Res Function(_$_ReadSupportAttributeDto) then) =
-      __$$_ReadSupportAttributeDtoCopyWithImpl<$Res>;
+  factory _$$ReadSupportAttributeDtoImplCopyWith(
+          _$ReadSupportAttributeDtoImpl value,
+          $Res Function(_$ReadSupportAttributeDtoImpl) then) =
+      __$$ReadSupportAttributeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String subject, String message});
 }
 
 /// @nodoc
-class __$$_ReadSupportAttributeDtoCopyWithImpl<$Res>
+class __$$ReadSupportAttributeDtoImplCopyWithImpl<$Res>
     extends _$ReadSupportAttributeDtoCopyWithImpl<$Res,
-        _$_ReadSupportAttributeDto>
-    implements _$$_ReadSupportAttributeDtoCopyWith<$Res> {
-  __$$_ReadSupportAttributeDtoCopyWithImpl(_$_ReadSupportAttributeDto _value,
-      $Res Function(_$_ReadSupportAttributeDto) _then)
+        _$ReadSupportAttributeDtoImpl>
+    implements _$$ReadSupportAttributeDtoImplCopyWith<$Res> {
+  __$$ReadSupportAttributeDtoImplCopyWithImpl(
+      _$ReadSupportAttributeDtoImpl _value,
+      $Res Function(_$ReadSupportAttributeDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -592,7 +598,7 @@ class __$$_ReadSupportAttributeDtoCopyWithImpl<$Res>
     Object? subject = null,
     Object? message = null,
   }) {
-    return _then(_$_ReadSupportAttributeDto(
+    return _then(_$ReadSupportAttributeDtoImpl(
       subject: null == subject
           ? _value.subject
           : subject // ignore: cast_nullable_to_non_nullable
@@ -607,12 +613,12 @@ class __$$_ReadSupportAttributeDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReadSupportAttributeDto implements _ReadSupportAttributeDto {
-  const _$_ReadSupportAttributeDto(
+class _$ReadSupportAttributeDtoImpl implements _ReadSupportAttributeDto {
+  const _$ReadSupportAttributeDtoImpl(
       {required this.subject, required this.message});
 
-  factory _$_ReadSupportAttributeDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ReadSupportAttributeDtoFromJson(json);
+  factory _$ReadSupportAttributeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReadSupportAttributeDtoImplFromJson(json);
 
   @override
   final String subject;
@@ -628,7 +634,7 @@ class _$_ReadSupportAttributeDto implements _ReadSupportAttributeDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReadSupportAttributeDto &&
+            other is _$ReadSupportAttributeDtoImpl &&
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -640,14 +646,13 @@ class _$_ReadSupportAttributeDto implements _ReadSupportAttributeDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReadSupportAttributeDtoCopyWith<_$_ReadSupportAttributeDto>
-      get copyWith =>
-          __$$_ReadSupportAttributeDtoCopyWithImpl<_$_ReadSupportAttributeDto>(
-              this, _$identity);
+  _$$ReadSupportAttributeDtoImplCopyWith<_$ReadSupportAttributeDtoImpl>
+      get copyWith => __$$ReadSupportAttributeDtoImplCopyWithImpl<
+          _$ReadSupportAttributeDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReadSupportAttributeDtoToJson(
+    return _$$ReadSupportAttributeDtoImplToJson(
       this,
     );
   }
@@ -656,10 +661,10 @@ class _$_ReadSupportAttributeDto implements _ReadSupportAttributeDto {
 abstract class _ReadSupportAttributeDto implements ReadSupportAttributeDto {
   const factory _ReadSupportAttributeDto(
       {required final String subject,
-      required final String message}) = _$_ReadSupportAttributeDto;
+      required final String message}) = _$ReadSupportAttributeDtoImpl;
 
   factory _ReadSupportAttributeDto.fromJson(Map<String, dynamic> json) =
-      _$_ReadSupportAttributeDto.fromJson;
+      _$ReadSupportAttributeDtoImpl.fromJson;
 
   @override
   String get subject;
@@ -667,6 +672,6 @@ abstract class _ReadSupportAttributeDto implements ReadSupportAttributeDto {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_ReadSupportAttributeDtoCopyWith<_$_ReadSupportAttributeDto>
+  _$$ReadSupportAttributeDtoImplCopyWith<_$ReadSupportAttributeDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 import '../../../util/dimension.dart';
 import '../../widget/auth_button.dart';

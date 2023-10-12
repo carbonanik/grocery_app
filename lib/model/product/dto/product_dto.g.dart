@@ -6,8 +6,8 @@ part of 'product_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductDto _$$_ProductDtoFromJson(Map<String, dynamic> json) =>
-    _$_ProductDto(
+_$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ProductDtoImpl(
       id: json['id'] as int,
       price: (json['price'] as num).toDouble(),
       name: json['name'] as String,
@@ -16,7 +16,7 @@ _$_ProductDto _$$_ProductDtoFromJson(Map<String, dynamic> json) =>
       weight: json['weight'] as String,
     );
 
-Map<String, dynamic> _$$_ProductDtoToJson(_$_ProductDto instance) =>
+Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'price': instance.price,
@@ -26,8 +26,8 @@ Map<String, dynamic> _$$_ProductDtoToJson(_$_ProductDto instance) =>
       'weight': instance.weight,
     };
 
-_$_ProductDtoSub _$$_ProductDtoSubFromJson(Map<String, dynamic> json) =>
-    _$_ProductDtoSub(
+_$ProductDtoSubImpl _$$ProductDtoSubImplFromJson(Map<String, dynamic> json) =>
+    _$ProductDtoSubImpl(
       price: (json['price'] as num).toDouble(),
       name: json['name'] as String,
       description: json['description'] as String,
@@ -35,7 +35,7 @@ _$_ProductDtoSub _$$_ProductDtoSubFromJson(Map<String, dynamic> json) =>
       weight: json['weight'] as String,
     );
 
-Map<String, dynamic> _$$_ProductDtoSubToJson(_$_ProductDtoSub instance) =>
+Map<String, dynamic> _$$ProductDtoSubImplToJson(_$ProductDtoSubImpl instance) =>
     <String, dynamic>{
       'price': instance.price,
       'name': instance.name,

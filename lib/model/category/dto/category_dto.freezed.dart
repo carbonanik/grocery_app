@@ -78,11 +78,11 @@ class _$CategoryDtoCopyWithImpl<$Res, $Val extends CategoryDto>
 }
 
 /// @nodoc
-abstract class _$$_CategoryDtoCopyWith<$Res>
+abstract class _$$CategoryDtoImplCopyWith<$Res>
     implements $CategoryDtoCopyWith<$Res> {
-  factory _$$_CategoryDtoCopyWith(
-          _$_CategoryDto value, $Res Function(_$_CategoryDto) then) =
-      __$$_CategoryDtoCopyWithImpl<$Res>;
+  factory _$$CategoryDtoImplCopyWith(
+          _$CategoryDtoImpl value, $Res Function(_$CategoryDtoImpl) then) =
+      __$$CategoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, CategorySubDto attributes});
@@ -92,11 +92,11 @@ abstract class _$$_CategoryDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CategoryDtoCopyWithImpl<$Res>
-    extends _$CategoryDtoCopyWithImpl<$Res, _$_CategoryDto>
-    implements _$$_CategoryDtoCopyWith<$Res> {
-  __$$_CategoryDtoCopyWithImpl(
-      _$_CategoryDto _value, $Res Function(_$_CategoryDto) _then)
+class __$$CategoryDtoImplCopyWithImpl<$Res>
+    extends _$CategoryDtoCopyWithImpl<$Res, _$CategoryDtoImpl>
+    implements _$$CategoryDtoImplCopyWith<$Res> {
+  __$$CategoryDtoImplCopyWithImpl(
+      _$CategoryDtoImpl _value, $Res Function(_$CategoryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -105,7 +105,7 @@ class __$$_CategoryDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? attributes = null,
   }) {
-    return _then(_$_CategoryDto(
+    return _then(_$CategoryDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -120,11 +120,11 @@ class __$$_CategoryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoryDto implements _CategoryDto {
-  const _$_CategoryDto({required this.id, required this.attributes});
+class _$CategoryDtoImpl implements _CategoryDto {
+  const _$CategoryDtoImpl({required this.id, required this.attributes});
 
-  factory _$_CategoryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryDtoFromJson(json);
+  factory _$CategoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryDtoImplFromJson(json);
 
   @override
   final int id;
@@ -140,7 +140,7 @@ class _$_CategoryDto implements _CategoryDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoryDto &&
+            other is _$CategoryDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.attributes, attributes) ||
                 other.attributes == attributes));
@@ -153,12 +153,12 @@ class _$_CategoryDto implements _CategoryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryDtoCopyWith<_$_CategoryDto> get copyWith =>
-      __$$_CategoryDtoCopyWithImpl<_$_CategoryDto>(this, _$identity);
+  _$$CategoryDtoImplCopyWith<_$CategoryDtoImpl> get copyWith =>
+      __$$CategoryDtoImplCopyWithImpl<_$CategoryDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryDtoToJson(
+    return _$$CategoryDtoImplToJson(
       this,
     );
   }
@@ -167,10 +167,10 @@ class _$_CategoryDto implements _CategoryDto {
 abstract class _CategoryDto implements CategoryDto {
   const factory _CategoryDto(
       {required final int id,
-      required final CategorySubDto attributes}) = _$_CategoryDto;
+      required final CategorySubDto attributes}) = _$CategoryDtoImpl;
 
   factory _CategoryDto.fromJson(Map<String, dynamic> json) =
-      _$_CategoryDto.fromJson;
+      _$CategoryDtoImpl.fromJson;
 
   @override
   int get id;
@@ -178,7 +178,7 @@ abstract class _CategoryDto implements CategoryDto {
   CategorySubDto get attributes;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryDtoCopyWith<_$_CategoryDto> get copyWith =>
+  _$$CategoryDtoImplCopyWith<_$CategoryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -266,11 +266,11 @@ class _$CategorySubDtoCopyWithImpl<$Res, $Val extends CategorySubDto>
 }
 
 /// @nodoc
-abstract class _$$_CategorySubDtoCopyWith<$Res>
+abstract class _$$CategorySubDtoImplCopyWith<$Res>
     implements $CategorySubDtoCopyWith<$Res> {
-  factory _$$_CategorySubDtoCopyWith(
-          _$_CategorySubDto value, $Res Function(_$_CategorySubDto) then) =
-      __$$_CategorySubDtoCopyWithImpl<$Res>;
+  factory _$$CategorySubDtoImplCopyWith(_$CategorySubDtoImpl value,
+          $Res Function(_$CategorySubDtoImpl) then) =
+      __$$CategorySubDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -284,11 +284,11 @@ abstract class _$$_CategorySubDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CategorySubDtoCopyWithImpl<$Res>
-    extends _$CategorySubDtoCopyWithImpl<$Res, _$_CategorySubDto>
-    implements _$$_CategorySubDtoCopyWith<$Res> {
-  __$$_CategorySubDtoCopyWithImpl(
-      _$_CategorySubDto _value, $Res Function(_$_CategorySubDto) _then)
+class __$$CategorySubDtoImplCopyWithImpl<$Res>
+    extends _$CategorySubDtoCopyWithImpl<$Res, _$CategorySubDtoImpl>
+    implements _$$CategorySubDtoImplCopyWith<$Res> {
+  __$$CategorySubDtoImplCopyWithImpl(
+      _$CategorySubDtoImpl _value, $Res Function(_$CategorySubDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -299,7 +299,7 @@ class __$$_CategorySubDtoCopyWithImpl<$Res>
     Object? description = null,
     Object? products = freezed,
   }) {
-    return _then(_$_CategorySubDto(
+    return _then(_$CategorySubDtoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -322,15 +322,15 @@ class __$$_CategorySubDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategorySubDto implements _CategorySubDto {
-  const _$_CategorySubDto(
+class _$CategorySubDtoImpl implements _CategorySubDto {
+  const _$CategorySubDtoImpl(
       {required this.name,
       required this.image,
       required this.description,
       this.products});
 
-  factory _$_CategorySubDto.fromJson(Map<String, dynamic> json) =>
-      _$$_CategorySubDtoFromJson(json);
+  factory _$CategorySubDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategorySubDtoImplFromJson(json);
 
   @override
   final String name;
@@ -350,7 +350,7 @@ class _$_CategorySubDto implements _CategorySubDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategorySubDto &&
+            other is _$CategorySubDtoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.description, description) ||
@@ -367,12 +367,13 @@ class _$_CategorySubDto implements _CategorySubDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategorySubDtoCopyWith<_$_CategorySubDto> get copyWith =>
-      __$$_CategorySubDtoCopyWithImpl<_$_CategorySubDto>(this, _$identity);
+  _$$CategorySubDtoImplCopyWith<_$CategorySubDtoImpl> get copyWith =>
+      __$$CategorySubDtoImplCopyWithImpl<_$CategorySubDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategorySubDtoToJson(
+    return _$$CategorySubDtoImplToJson(
       this,
     );
   }
@@ -383,10 +384,10 @@ abstract class _CategorySubDto implements CategorySubDto {
       {required final String name,
       required final String image,
       required final String description,
-      final ProductsInCategoryDto? products}) = _$_CategorySubDto;
+      final ProductsInCategoryDto? products}) = _$CategorySubDtoImpl;
 
   factory _CategorySubDto.fromJson(Map<String, dynamic> json) =
-      _$_CategorySubDto.fromJson;
+      _$CategorySubDtoImpl.fromJson;
 
   @override
   String get name;
@@ -398,7 +399,7 @@ abstract class _CategorySubDto implements CategorySubDto {
   ProductsInCategoryDto? get products;
   @override
   @JsonKey(ignore: true)
-  _$$_CategorySubDtoCopyWith<_$_CategorySubDto> get copyWith =>
+  _$$CategorySubDtoImplCopyWith<_$CategorySubDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -452,22 +453,24 @@ class _$ProductsInCategoryDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ProductsInCategoryDtoCopyWith<$Res>
+abstract class _$$ProductsInCategoryDtoImplCopyWith<$Res>
     implements $ProductsInCategoryDtoCopyWith<$Res> {
-  factory _$$_ProductsInCategoryDtoCopyWith(_$_ProductsInCategoryDto value,
-          $Res Function(_$_ProductsInCategoryDto) then) =
-      __$$_ProductsInCategoryDtoCopyWithImpl<$Res>;
+  factory _$$ProductsInCategoryDtoImplCopyWith(
+          _$ProductsInCategoryDtoImpl value,
+          $Res Function(_$ProductsInCategoryDtoImpl) then) =
+      __$$ProductsInCategoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ProductDto> data});
 }
 
 /// @nodoc
-class __$$_ProductsInCategoryDtoCopyWithImpl<$Res>
-    extends _$ProductsInCategoryDtoCopyWithImpl<$Res, _$_ProductsInCategoryDto>
-    implements _$$_ProductsInCategoryDtoCopyWith<$Res> {
-  __$$_ProductsInCategoryDtoCopyWithImpl(_$_ProductsInCategoryDto _value,
-      $Res Function(_$_ProductsInCategoryDto) _then)
+class __$$ProductsInCategoryDtoImplCopyWithImpl<$Res>
+    extends _$ProductsInCategoryDtoCopyWithImpl<$Res,
+        _$ProductsInCategoryDtoImpl>
+    implements _$$ProductsInCategoryDtoImplCopyWith<$Res> {
+  __$$ProductsInCategoryDtoImplCopyWithImpl(_$ProductsInCategoryDtoImpl _value,
+      $Res Function(_$ProductsInCategoryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -475,7 +478,7 @@ class __$$_ProductsInCategoryDtoCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_ProductsInCategoryDto(
+    return _then(_$ProductsInCategoryDtoImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -486,12 +489,12 @@ class __$$_ProductsInCategoryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductsInCategoryDto implements _ProductsInCategoryDto {
-  const _$_ProductsInCategoryDto({required final List<ProductDto> data})
+class _$ProductsInCategoryDtoImpl implements _ProductsInCategoryDto {
+  const _$ProductsInCategoryDtoImpl({required final List<ProductDto> data})
       : _data = data;
 
-  factory _$_ProductsInCategoryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductsInCategoryDtoFromJson(json);
+  factory _$ProductsInCategoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductsInCategoryDtoImplFromJson(json);
 
   final List<ProductDto> _data;
   @override
@@ -510,7 +513,7 @@ class _$_ProductsInCategoryDto implements _ProductsInCategoryDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductsInCategoryDto &&
+            other is _$ProductsInCategoryDtoImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -522,13 +525,13 @@ class _$_ProductsInCategoryDto implements _ProductsInCategoryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductsInCategoryDtoCopyWith<_$_ProductsInCategoryDto> get copyWith =>
-      __$$_ProductsInCategoryDtoCopyWithImpl<_$_ProductsInCategoryDto>(
-          this, _$identity);
+  _$$ProductsInCategoryDtoImplCopyWith<_$ProductsInCategoryDtoImpl>
+      get copyWith => __$$ProductsInCategoryDtoImplCopyWithImpl<
+          _$ProductsInCategoryDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductsInCategoryDtoToJson(
+    return _$$ProductsInCategoryDtoImplToJson(
       this,
     );
   }
@@ -536,15 +539,15 @@ class _$_ProductsInCategoryDto implements _ProductsInCategoryDto {
 
 abstract class _ProductsInCategoryDto implements ProductsInCategoryDto {
   const factory _ProductsInCategoryDto({required final List<ProductDto> data}) =
-      _$_ProductsInCategoryDto;
+      _$ProductsInCategoryDtoImpl;
 
   factory _ProductsInCategoryDto.fromJson(Map<String, dynamic> json) =
-      _$_ProductsInCategoryDto.fromJson;
+      _$ProductsInCategoryDtoImpl.fromJson;
 
   @override
   List<ProductDto> get data;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductsInCategoryDtoCopyWith<_$_ProductsInCategoryDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ProductsInCategoryDtoImplCopyWith<_$ProductsInCategoryDtoImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

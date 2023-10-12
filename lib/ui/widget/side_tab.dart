@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
+import '../theme/colors.dart';
 import 'side_tab_item.dart';
 
 class SideTab extends StatefulWidget {

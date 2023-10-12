@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/gen/fonts.gen.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/util/dimension.dart';
+
+import '../../gen/assets.gen.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -42,14 +45,17 @@ class _SplashState extends ConsumerState<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
-        child: Text(
-          "Splash",
-          style:
-              TextStyle(color: accentColor, fontSize: 30, fontWeight: FontWeight.bold, fontFamily: FontFamily.roboto),
-        ),
+        // child: Text(
+        //   "Splash",
+        //   style:
+        //       TextStyle(color: accentColor, fontSize: 30, fontWeight: FontWeight.bold),
+        // ),
+        child: Padding(
+          padding: EdgeInsets.all(Dimension.width(80)),
+            child: Assets.images.logo.image()),
       ),
     );
   }

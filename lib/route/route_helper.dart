@@ -1,25 +1,25 @@
 import 'package:get/get.dart';
-import 'package:instant_grrocery_delivery/ui/views/auth/sign_in.dart';
+import 'package:instant_grrocery_delivery/ui/views/auth/sign_in_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/auth/verification.dart';
 import 'package:instant_grrocery_delivery/ui/views/cart/wallet.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/order/order_details.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/privacy_policy.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/support.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/terms_and_conditions.dart';
-import 'package:instant_grrocery_delivery/ui/views/on_boarding.dart';
+import 'package:instant_grrocery_delivery/ui/views/on_boarding_page.dart';
 
 import '../ui/views/auth/sign_up.dart';
 import '../ui/views/cart/apply_coupon.dart';
 import '../ui/views/cart/my_cart_page.dart';
-import '../ui/views/cart/payment_method.dart';
-import '../ui/views/category/category_product_list.dart';
+import '../ui/views/cart/payment_method_page.dart';
+import '../ui/views/category/category_product_list_page.dart';
 import '../ui/views/category/category_tab.dart';
 import '../ui/views/home_tab/main_tabs.dart';
 import '../ui/views/home_tab/tab_views/support/faq.dart';
 import '../ui/views/product/product_detail_page.dart';
-import '../ui/views/profile/profile.dart';
-import '../ui/views/profile/profile_edti.dart';
-import '../ui/views/splash.dart';
+import '../ui/views/profile/view_profile_page.dart';
+import '../ui/views/profile/update_profile_page.dart';
+import '../ui/views/splash_page.dart';
 import '../ui/views/your_location/your_location.dart';
 
 class RouteHelper {
@@ -96,12 +96,12 @@ class RouteHelper {
     ),
     GetPage(
       name: _onBoarding,
-      page: () => const OnBoarding(),
+      page: () => const OnBoardingPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
       name: _login,
-      page: () => SignIn(),
+      page: () => SignInPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -137,7 +137,7 @@ class RouteHelper {
     ),
     GetPage(
       name: _categoryProductList,
-      page: () => const CategoryProductList(selectedCategoryId: 1),
+      page: () => const CategoryProductListPage(selectedCategoryId: 1),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -147,7 +147,7 @@ class RouteHelper {
     ),
     GetPage(
       name: _paymentMethod,
-      page: () => const PaymentMethod(),
+      page: () => const PaymentMethodPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -167,12 +167,12 @@ class RouteHelper {
     ),
     GetPage(
       name: _profile,
-      page: () => const Profile(),
+      page: () => const ViewProfilePage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
       name: _profileEdit,
-      page: () => ProfileEdit(),
+      page: () => UpdateProfilePage(),
       transition: Transition.fadeIn,
     ),
     GetPage(

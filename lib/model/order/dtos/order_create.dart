@@ -2,11 +2,28 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:instant_grrocery_delivery/model/coupon/coupon.dart';
+import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
 
 
 part 'order_create.g.dart';
 part 'order_create.freezed.dart';
+
+@freezed
+class OrderCreate with _$OrderCreate {
+
+  const factory OrderCreate({
+    required int userId,
+    required int count,
+    required String totalPrice,
+    required String orderDate,
+    required List<OrderItem> orderItems,
+    required List<Coupon> coupons,
+  }) = _OrderCreate;
+
+  factory OrderCreate.fromJson(Map<String, dynamic> source) => _$OrderCreateFromJson(source);
+}
+
 
 @freezed
 class OrderCreateDto with _$OrderCreateDto {

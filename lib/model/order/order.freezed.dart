@@ -20,13 +20,21 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Order {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   int? get userId => throw _privateConstructorUsedError;
+  @HiveField(2)
   List<OrderItem> get orderItems => throw _privateConstructorUsedError;
+  @HiveField(3)
   int get count => throw _privateConstructorUsedError;
+  @HiveField(4)
   String get totalPrice => throw _privateConstructorUsedError;
+  @HiveField(5)
   String get orderDate => throw _privateConstructorUsedError;
+  @HiveField(6)
   String get orderStatus => throw _privateConstructorUsedError;
+  @HiveField(7)
   List<Coupon> get coupons => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,14 +48,14 @@ abstract class $OrderCopyWith<$Res> {
       _$OrderCopyWithImpl<$Res, Order>;
   @useResult
   $Res call(
-      {int id,
-      int? userId,
-      List<OrderItem> orderItems,
-      int count,
-      String totalPrice,
-      String orderDate,
-      String orderStatus,
-      List<Coupon> coupons});
+      {@HiveField(0) int id,
+      @HiveField(1) int? userId,
+      @HiveField(2) List<OrderItem> orderItems,
+      @HiveField(3) int count,
+      @HiveField(4) String totalPrice,
+      @HiveField(5) String orderDate,
+      @HiveField(6) String orderStatus,
+      @HiveField(7) List<Coupon> coupons});
 }
 
 /// @nodoc
@@ -110,26 +118,29 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
 }
 
 /// @nodoc
-abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
-  factory _$$_OrderCopyWith(_$_Order value, $Res Function(_$_Order) then) =
-      __$$_OrderCopyWithImpl<$Res>;
+abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
+  factory _$$OrderImplCopyWith(
+          _$OrderImpl value, $Res Function(_$OrderImpl) then) =
+      __$$OrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int id,
-      int? userId,
-      List<OrderItem> orderItems,
-      int count,
-      String totalPrice,
-      String orderDate,
-      String orderStatus,
-      List<Coupon> coupons});
+      {@HiveField(0) int id,
+      @HiveField(1) int? userId,
+      @HiveField(2) List<OrderItem> orderItems,
+      @HiveField(3) int count,
+      @HiveField(4) String totalPrice,
+      @HiveField(5) String orderDate,
+      @HiveField(6) String orderStatus,
+      @HiveField(7) List<Coupon> coupons});
 }
 
 /// @nodoc
-class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
-    implements _$$_OrderCopyWith<$Res> {
-  __$$_OrderCopyWithImpl(_$_Order _value, $Res Function(_$_Order) _then)
+class __$$OrderImplCopyWithImpl<$Res>
+    extends _$OrderCopyWithImpl<$Res, _$OrderImpl>
+    implements _$$OrderImplCopyWith<$Res> {
+  __$$OrderImplCopyWithImpl(
+      _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +155,7 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? orderStatus = null,
     Object? coupons = null,
   }) {
-    return _then(_$_Order(
+    return _then(_$OrderImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -183,28 +194,33 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Order implements _Order {
-  const _$_Order(
-      {required this.id,
-      this.userId,
-      required final List<OrderItem> orderItems,
-      required this.count,
-      required this.totalPrice,
-      required this.orderDate,
-      required this.orderStatus,
-      required final List<Coupon> coupons})
+@HiveType(typeId: orderHiveTypeId, adapterName: orderAdapterName)
+class _$OrderImpl extends _Order {
+  _$OrderImpl(
+      {@HiveField(0) required this.id,
+      @HiveField(1) this.userId,
+      @HiveField(2) required final List<OrderItem> orderItems,
+      @HiveField(3) required this.count,
+      @HiveField(4) required this.totalPrice,
+      @HiveField(5) required this.orderDate,
+      @HiveField(6) required this.orderStatus,
+      @HiveField(7) required final List<Coupon> coupons})
       : _orderItems = orderItems,
-        _coupons = coupons;
+        _coupons = coupons,
+        super._();
 
-  factory _$_Order.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderFromJson(json);
+  factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final int? userId;
   final List<OrderItem> _orderItems;
   @override
+  @HiveField(2)
   List<OrderItem> get orderItems {
     if (_orderItems is EqualUnmodifiableListView) return _orderItems;
     // ignore: implicit_dynamic_type
@@ -212,15 +228,20 @@ class _$_Order implements _Order {
   }
 
   @override
+  @HiveField(3)
   final int count;
   @override
+  @HiveField(4)
   final String totalPrice;
   @override
+  @HiveField(5)
   final String orderDate;
   @override
+  @HiveField(6)
   final String orderStatus;
   final List<Coupon> _coupons;
   @override
+  @HiveField(7)
   List<Coupon> get coupons {
     if (_coupons is EqualUnmodifiableListView) return _coupons;
     // ignore: implicit_dynamic_type
@@ -236,7 +257,7 @@ class _$_Order implements _Order {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Order &&
+            other is _$OrderImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             const DeepCollectionEquality()
@@ -267,48 +288,57 @@ class _$_Order implements _Order {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderCopyWith<_$_Order> get copyWith =>
-      __$$_OrderCopyWithImpl<_$_Order>(this, _$identity);
+  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
+      __$$OrderImplCopyWithImpl<_$OrderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderToJson(
+    return _$$OrderImplToJson(
       this,
     );
   }
 }
 
-abstract class _Order implements Order {
-  const factory _Order(
-      {required final int id,
-      final int? userId,
-      required final List<OrderItem> orderItems,
-      required final int count,
-      required final String totalPrice,
-      required final String orderDate,
-      required final String orderStatus,
-      required final List<Coupon> coupons}) = _$_Order;
+abstract class _Order extends Order {
+  factory _Order(
+      {@HiveField(0) required final int id,
+      @HiveField(1) final int? userId,
+      @HiveField(2) required final List<OrderItem> orderItems,
+      @HiveField(3) required final int count,
+      @HiveField(4) required final String totalPrice,
+      @HiveField(5) required final String orderDate,
+      @HiveField(6) required final String orderStatus,
+      @HiveField(7) required final List<Coupon> coupons}) = _$OrderImpl;
+  _Order._() : super._();
 
-  factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
+  factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   int? get userId;
   @override
+  @HiveField(2)
   List<OrderItem> get orderItems;
   @override
+  @HiveField(3)
   int get count;
   @override
+  @HiveField(4)
   String get totalPrice;
   @override
+  @HiveField(5)
   String get orderDate;
   @override
+  @HiveField(6)
   String get orderStatus;
   @override
+  @HiveField(7)
   List<Coupon> get coupons;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderCopyWith<_$_Order> get copyWith =>
+  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

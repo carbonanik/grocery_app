@@ -2,22 +2,29 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/data_source/local/cart_hive.dart';
+import 'package:instant_grrocery_delivery/data_source/local/cart_local.dart';
+import 'package:instant_grrocery_delivery/data_source/local/impl/cart_local_impl.dart';
 import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
 import 'package:instant_grrocery_delivery/model/order/dtos/order_create.dart';
+import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
+import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
+
+final cartLocalProvider = Provider<CartLocal>((ref) {
+  return CartLocalImpl();
+});
 
 // =============================== CartDataModel =======================================
 
 class CartChangeNotifier extends ChangeNotifier {
   final Map<int, CartItem> _cartList = {};
+  final Ref ref;
 
-  CartChangeNotifier() {
+  CartChangeNotifier(this.ref) {
     _dataChanged();
   }
 
-  UnmodifiableMapView<int, CartItem> get cartList =>
-      UnmodifiableMapView(_cartList);
+  UnmodifiableMapView<int, CartItem> get cartList => UnmodifiableMapView(_cartList);
 
   void itemIncrement(Product product) {
     final prevCount = _cartList[product.id]?.count ?? 0;
@@ -50,26 +57,27 @@ class CartChangeNotifier extends ChangeNotifier {
   }
 
   _add(cartItem) {
-    addCartItem(cartItem).then((value) => _dataChanged());
+    ref.read(cartLocalProvider).addCartItem(cartItem);
+    _dataChanged();
   }
 
   _remove(cartItemId) {
-    removeCartItem(cartItemId).then((value) => _dataChanged());
+    ref.read(cartLocalProvider).removeCartItem(cartItemId);
+    _dataChanged();
   }
 
-  void clearCart() {
-    clearCartItems().then((value) => _dataChanged());
+  Future<void> clearCart() async {
+    await ref.read(cartLocalProvider).clearCartItems();
+    _dataChanged();
   }
 
-  void _dataChanged() async {
-    getCartItems().then(
-      (value) {
-        _cartList.clear();
-        for (var e in value) {
-          _cartList[e.product.id] = e;
-        }
-      },
-    ).whenComplete(() => notifyListeners());
+  void _dataChanged() {
+    _cartList.clear();
+    final d = ref.read(cartLocalProvider).getCartItems();
+    for (var e in d) {
+      _cartList[e.product.id] = e;
+    }
+    notifyListeners();
   }
 
   int itemCount(int productId) {
@@ -90,37 +98,39 @@ class CartChangeNotifier extends ChangeNotifier {
   double cartPrice() {
     return _cartList.entries.fold<double>(
       0,
-      (previousValue, element) =>
-          (element.value.count * element.value.product.price) + previousValue,
+      (previousValue, element) => (element.value.count * element.value.product.price) + previousValue,
     );
   }
 
-  OrderCreateDto getOrderFromCart() {
+  OrderCreate? getOrderFromCart() {
     if (_cartList.isEmpty) {
       throw Exception('Cart Empty');
     }
 
-    final newOrder = OrderCreateDto(
-        orderItems: _orderItemCreateList(),
+    final authUser = ref.read(authControllerProvider);
+
+    return authUser.whenOrNull(
+      data: (value) => OrderCreate(
+        orderItems: _orderItems(),
         count: cartCount(),
         totalPrice: cartPrice().toString(),
         orderDate: DateTime.now().toIso8601String(),
         coupons: [],
-        user: UserInOrderCreateDto(connect: [1]));
-
-    return newOrder;
+        userId: value.user.id,
+      ),
+    );
   }
 
-  List<OrderItemCreateDto> _orderItemCreateList() {
-    return _cartList.entries
+  List<OrderItem> _orderItems() {
+    return _cartList.values
         .map(
-          (e) => OrderItemCreateDto(
-            count: e.value.count,
-            product: e.value.product,
+          (e) => OrderItem(
+            product: e.product,
+            count: e.count,
           ),
         )
         .toList();
   }
 }
 
-final cartProvider = ChangeNotifierProvider((_) => CartChangeNotifier());
+final cartProvider = ChangeNotifierProvider((ref) => CartChangeNotifier(ref));

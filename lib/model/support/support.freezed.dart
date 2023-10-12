@@ -72,20 +72,21 @@ class _$SupportCopyWithImpl<$Res, $Val extends Support>
 }
 
 /// @nodoc
-abstract class _$$_SupportCopyWith<$Res> implements $SupportCopyWith<$Res> {
-  factory _$$_SupportCopyWith(
-          _$_Support value, $Res Function(_$_Support) then) =
-      __$$_SupportCopyWithImpl<$Res>;
+abstract class _$$SupportImplCopyWith<$Res> implements $SupportCopyWith<$Res> {
+  factory _$$SupportImplCopyWith(
+          _$SupportImpl value, $Res Function(_$SupportImpl) then) =
+      __$$SupportImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String subject, String message});
 }
 
 /// @nodoc
-class __$$_SupportCopyWithImpl<$Res>
-    extends _$SupportCopyWithImpl<$Res, _$_Support>
-    implements _$$_SupportCopyWith<$Res> {
-  __$$_SupportCopyWithImpl(_$_Support _value, $Res Function(_$_Support) _then)
+class __$$SupportImplCopyWithImpl<$Res>
+    extends _$SupportCopyWithImpl<$Res, _$SupportImpl>
+    implements _$$SupportImplCopyWith<$Res> {
+  __$$SupportImplCopyWithImpl(
+      _$SupportImpl _value, $Res Function(_$SupportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +96,7 @@ class __$$_SupportCopyWithImpl<$Res>
     Object? subject = null,
     Object? message = null,
   }) {
-    return _then(_$_Support(
+    return _then(_$SupportImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -114,12 +115,12 @@ class __$$_SupportCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Support implements _Support {
-  const _$_Support(
+class _$SupportImpl implements _Support {
+  const _$SupportImpl(
       {required this.id, required this.subject, required this.message});
 
-  factory _$_Support.fromJson(Map<String, dynamic> json) =>
-      _$$_SupportFromJson(json);
+  factory _$SupportImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SupportImplFromJson(json);
 
   @override
   final int id;
@@ -137,7 +138,7 @@ class _$_Support implements _Support {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Support &&
+            other is _$SupportImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.message, message) || other.message == message));
@@ -150,12 +151,12 @@ class _$_Support implements _Support {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SupportCopyWith<_$_Support> get copyWith =>
-      __$$_SupportCopyWithImpl<_$_Support>(this, _$identity);
+  _$$SupportImplCopyWith<_$SupportImpl> get copyWith =>
+      __$$SupportImplCopyWithImpl<_$SupportImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SupportToJson(
+    return _$$SupportImplToJson(
       this,
     );
   }
@@ -165,9 +166,9 @@ abstract class _Support implements Support {
   const factory _Support(
       {required final int id,
       required final String subject,
-      required final String message}) = _$_Support;
+      required final String message}) = _$SupportImpl;
 
-  factory _Support.fromJson(Map<String, dynamic> json) = _$_Support.fromJson;
+  factory _Support.fromJson(Map<String, dynamic> json) = _$SupportImpl.fromJson;
 
   @override
   int get id;
@@ -177,6 +178,6 @@ abstract class _Support implements Support {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_SupportCopyWith<_$_Support> get copyWith =>
+  _$$SupportImplCopyWith<_$SupportImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

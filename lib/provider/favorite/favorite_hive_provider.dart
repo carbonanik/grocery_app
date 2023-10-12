@@ -25,13 +25,13 @@ class FavoriteChangeNotifier extends ChangeNotifier {
     return favoriteList[productId] ?? false;
   }
 
-  Future<void> setIsFavorite(int productId, bool isFavorite) async {
-    await ref.read(favoriteLocalProvider).setIsFavorite(productId, isFavorite);
+  void setIsFavorite(int productId, bool isFavorite)  {
+    ref.read(favoriteLocalProvider).setIsFavorite(productId, isFavorite);
     updateFavoriteList();
   }
 
-  void updateFavoriteList() async {
-    final ids = await ref.read(favoriteLocalProvider).getFavoriteIds();
+  void updateFavoriteList() {
+    final ids = ref.read(favoriteLocalProvider).getFavoriteIds();
     _favoriteList.clear();
     _favoriteList.addAll(ids);
     notifyListeners();

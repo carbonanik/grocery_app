@@ -13,27 +13,24 @@ dependencies:
     sdk: flutter
   get: ^4.6.5
   cupertino_icons: ^1.0.5
-  equatable: ^2.0.3
   dartz: ^0.10.1
-  injectable: ^2.1.2
   shared_preferences: ^2.0.15
   http: ^1.0.0
   hooks_riverpod: ^2.1.3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   intl: ^0.18.0
-  json_annotation: ^4.8.0
+  json_annotation: ^4.8.0 # annotation for 'json_serializable'
   http_status_code: ^0.0.2
-
   number_paginator: ^0.2.3
   pin_code_fields: ^7.4.0
   flutter_svg: ^2.0.5
   csc_picker: ^0.2.7
-  # dio: ^5.1.1
   material_dialogs: ^1.1.4
-  #  flutter_gen: ^5.3.2
+  flutter_gen: ^5.3.2
   flutter_hooks: ^0.20.1
   google_fonts: ^6.1.0
+  freezed_annotation: ^2.4.1
 
 
 dev_dependencies:
@@ -42,7 +39,6 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   hive_generator: ^2.0.0
   freezed: ^2.4.2
-  freezed_annotation: ^2.4.1
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
   flutter_gen_runner:
@@ -68,3 +64,4 @@ flutter:
 
 
 # flutter pub run build_runner build
+#  flutter pub run build_runner watch --delete-conflicting-outputs

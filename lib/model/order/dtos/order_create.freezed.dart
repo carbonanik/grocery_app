@@ -14,6 +14,282 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+OrderCreate _$OrderCreateFromJson(Map<String, dynamic> json) {
+  return _OrderCreate.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OrderCreate {
+  int get userId => throw _privateConstructorUsedError;
+  int get count => throw _privateConstructorUsedError;
+  String get totalPrice => throw _privateConstructorUsedError;
+  String get orderDate => throw _privateConstructorUsedError;
+  List<OrderItem> get orderItems => throw _privateConstructorUsedError;
+  List<Coupon> get coupons => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OrderCreateCopyWith<OrderCreate> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OrderCreateCopyWith<$Res> {
+  factory $OrderCreateCopyWith(
+          OrderCreate value, $Res Function(OrderCreate) then) =
+      _$OrderCreateCopyWithImpl<$Res, OrderCreate>;
+  @useResult
+  $Res call(
+      {int userId,
+      int count,
+      String totalPrice,
+      String orderDate,
+      List<OrderItem> orderItems,
+      List<Coupon> coupons});
+}
+
+/// @nodoc
+class _$OrderCreateCopyWithImpl<$Res, $Val extends OrderCreate>
+    implements $OrderCreateCopyWith<$Res> {
+  _$OrderCreateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? count = null,
+    Object? totalPrice = null,
+    Object? orderDate = null,
+    Object? orderItems = null,
+    Object? coupons = null,
+  }) {
+    return _then(_value.copyWith(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPrice: null == totalPrice
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderDate: null == orderDate
+          ? _value.orderDate
+          : orderDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderItems: null == orderItems
+          ? _value.orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
+              as List<OrderItem>,
+      coupons: null == coupons
+          ? _value.coupons
+          : coupons // ignore: cast_nullable_to_non_nullable
+              as List<Coupon>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OrderCreateImplCopyWith<$Res>
+    implements $OrderCreateCopyWith<$Res> {
+  factory _$$OrderCreateImplCopyWith(
+          _$OrderCreateImpl value, $Res Function(_$OrderCreateImpl) then) =
+      __$$OrderCreateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int userId,
+      int count,
+      String totalPrice,
+      String orderDate,
+      List<OrderItem> orderItems,
+      List<Coupon> coupons});
+}
+
+/// @nodoc
+class __$$OrderCreateImplCopyWithImpl<$Res>
+    extends _$OrderCreateCopyWithImpl<$Res, _$OrderCreateImpl>
+    implements _$$OrderCreateImplCopyWith<$Res> {
+  __$$OrderCreateImplCopyWithImpl(
+      _$OrderCreateImpl _value, $Res Function(_$OrderCreateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? count = null,
+    Object? totalPrice = null,
+    Object? orderDate = null,
+    Object? orderItems = null,
+    Object? coupons = null,
+  }) {
+    return _then(_$OrderCreateImpl(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPrice: null == totalPrice
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderDate: null == orderDate
+          ? _value.orderDate
+          : orderDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderItems: null == orderItems
+          ? _value._orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
+              as List<OrderItem>,
+      coupons: null == coupons
+          ? _value._coupons
+          : coupons // ignore: cast_nullable_to_non_nullable
+              as List<Coupon>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OrderCreateImpl with DiagnosticableTreeMixin implements _OrderCreate {
+  const _$OrderCreateImpl(
+      {required this.userId,
+      required this.count,
+      required this.totalPrice,
+      required this.orderDate,
+      required final List<OrderItem> orderItems,
+      required final List<Coupon> coupons})
+      : _orderItems = orderItems,
+        _coupons = coupons;
+
+  factory _$OrderCreateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderCreateImplFromJson(json);
+
+  @override
+  final int userId;
+  @override
+  final int count;
+  @override
+  final String totalPrice;
+  @override
+  final String orderDate;
+  final List<OrderItem> _orderItems;
+  @override
+  List<OrderItem> get orderItems {
+    if (_orderItems is EqualUnmodifiableListView) return _orderItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_orderItems);
+  }
+
+  final List<Coupon> _coupons;
+  @override
+  List<Coupon> get coupons {
+    if (_coupons is EqualUnmodifiableListView) return _coupons;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_coupons);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OrderCreate(userId: $userId, count: $count, totalPrice: $totalPrice, orderDate: $orderDate, orderItems: $orderItems, coupons: $coupons)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OrderCreate'))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('count', count))
+      ..add(DiagnosticsProperty('totalPrice', totalPrice))
+      ..add(DiagnosticsProperty('orderDate', orderDate))
+      ..add(DiagnosticsProperty('orderItems', orderItems))
+      ..add(DiagnosticsProperty('coupons', coupons));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OrderCreateImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.totalPrice, totalPrice) ||
+                other.totalPrice == totalPrice) &&
+            (identical(other.orderDate, orderDate) ||
+                other.orderDate == orderDate) &&
+            const DeepCollectionEquality()
+                .equals(other._orderItems, _orderItems) &&
+            const DeepCollectionEquality().equals(other._coupons, _coupons));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      userId,
+      count,
+      totalPrice,
+      orderDate,
+      const DeepCollectionEquality().hash(_orderItems),
+      const DeepCollectionEquality().hash(_coupons));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrderCreateImplCopyWith<_$OrderCreateImpl> get copyWith =>
+      __$$OrderCreateImplCopyWithImpl<_$OrderCreateImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OrderCreateImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OrderCreate implements OrderCreate {
+  const factory _OrderCreate(
+      {required final int userId,
+      required final int count,
+      required final String totalPrice,
+      required final String orderDate,
+      required final List<OrderItem> orderItems,
+      required final List<Coupon> coupons}) = _$OrderCreateImpl;
+
+  factory _OrderCreate.fromJson(Map<String, dynamic> json) =
+      _$OrderCreateImpl.fromJson;
+
+  @override
+  int get userId;
+  @override
+  int get count;
+  @override
+  String get totalPrice;
+  @override
+  String get orderDate;
+  @override
+  List<OrderItem> get orderItems;
+  @override
+  List<Coupon> get coupons;
+  @override
+  @JsonKey(ignore: true)
+  _$$OrderCreateImplCopyWith<_$OrderCreateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 OrderCreateDto _$OrderCreateDtoFromJson(Map<String, dynamic> json) {
   return _OrderCreateDto.fromJson(json);
 }
@@ -108,11 +384,11 @@ class _$OrderCreateDtoCopyWithImpl<$Res, $Val extends OrderCreateDto>
 }
 
 /// @nodoc
-abstract class _$$_OrderCreateDtoCopyWith<$Res>
+abstract class _$$OrderCreateDtoImplCopyWith<$Res>
     implements $OrderCreateDtoCopyWith<$Res> {
-  factory _$$_OrderCreateDtoCopyWith(
-          _$_OrderCreateDto value, $Res Function(_$_OrderCreateDto) then) =
-      __$$_OrderCreateDtoCopyWithImpl<$Res>;
+  factory _$$OrderCreateDtoImplCopyWith(_$OrderCreateDtoImpl value,
+          $Res Function(_$OrderCreateDtoImpl) then) =
+      __$$OrderCreateDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -128,11 +404,11 @@ abstract class _$$_OrderCreateDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderCreateDtoCopyWithImpl<$Res>
-    extends _$OrderCreateDtoCopyWithImpl<$Res, _$_OrderCreateDto>
-    implements _$$_OrderCreateDtoCopyWith<$Res> {
-  __$$_OrderCreateDtoCopyWithImpl(
-      _$_OrderCreateDto _value, $Res Function(_$_OrderCreateDto) _then)
+class __$$OrderCreateDtoImplCopyWithImpl<$Res>
+    extends _$OrderCreateDtoCopyWithImpl<$Res, _$OrderCreateDtoImpl>
+    implements _$$OrderCreateDtoImplCopyWith<$Res> {
+  __$$OrderCreateDtoImplCopyWithImpl(
+      _$OrderCreateDtoImpl _value, $Res Function(_$OrderCreateDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +421,7 @@ class __$$_OrderCreateDtoCopyWithImpl<$Res>
     Object? coupons = null,
     Object? user = null,
   }) {
-    return _then(_$_OrderCreateDto(
+    return _then(_$OrderCreateDtoImpl(
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -176,10 +452,10 @@ class __$$_OrderCreateDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderCreateDto
+class _$OrderCreateDtoImpl
     with DiagnosticableTreeMixin
     implements _OrderCreateDto {
-  const _$_OrderCreateDto(
+  const _$OrderCreateDtoImpl(
       {required this.count,
       required this.totalPrice,
       required this.orderDate,
@@ -189,8 +465,8 @@ class _$_OrderCreateDto
       : _orderItems = orderItems,
         _coupons = coupons;
 
-  factory _$_OrderCreateDto.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderCreateDtoFromJson(json);
+  factory _$OrderCreateDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderCreateDtoImplFromJson(json);
 
   @override
   final int count;
@@ -239,7 +515,7 @@ class _$_OrderCreateDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderCreateDto &&
+            other is _$OrderCreateDtoImpl &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.totalPrice, totalPrice) ||
                 other.totalPrice == totalPrice) &&
@@ -265,12 +541,13 @@ class _$_OrderCreateDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderCreateDtoCopyWith<_$_OrderCreateDto> get copyWith =>
-      __$$_OrderCreateDtoCopyWithImpl<_$_OrderCreateDto>(this, _$identity);
+  _$$OrderCreateDtoImplCopyWith<_$OrderCreateDtoImpl> get copyWith =>
+      __$$OrderCreateDtoImplCopyWithImpl<_$OrderCreateDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderCreateDtoToJson(
+    return _$$OrderCreateDtoImplToJson(
       this,
     );
   }
@@ -283,10 +560,10 @@ abstract class _OrderCreateDto implements OrderCreateDto {
       required final String orderDate,
       required final List<OrderItemCreateDto> orderItems,
       required final List<Coupon> coupons,
-      required final UserInOrderCreateDto user}) = _$_OrderCreateDto;
+      required final UserInOrderCreateDto user}) = _$OrderCreateDtoImpl;
 
   factory _OrderCreateDto.fromJson(Map<String, dynamic> json) =
-      _$_OrderCreateDto.fromJson;
+      _$OrderCreateDtoImpl.fromJson;
 
   @override
   int get count;
@@ -302,7 +579,7 @@ abstract class _OrderCreateDto implements OrderCreateDto {
   UserInOrderCreateDto get user;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderCreateDtoCopyWith<_$_OrderCreateDto> get copyWith =>
+  _$$OrderCreateDtoImplCopyWith<_$OrderCreateDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -370,11 +647,11 @@ class _$OrderItemCreateDtoCopyWithImpl<$Res, $Val extends OrderItemCreateDto>
 }
 
 /// @nodoc
-abstract class _$$_OrderItemCreateDtoCopyWith<$Res>
+abstract class _$$OrderItemCreateDtoImplCopyWith<$Res>
     implements $OrderItemCreateDtoCopyWith<$Res> {
-  factory _$$_OrderItemCreateDtoCopyWith(_$_OrderItemCreateDto value,
-          $Res Function(_$_OrderItemCreateDto) then) =
-      __$$_OrderItemCreateDtoCopyWithImpl<$Res>;
+  factory _$$OrderItemCreateDtoImplCopyWith(_$OrderItemCreateDtoImpl value,
+          $Res Function(_$OrderItemCreateDtoImpl) then) =
+      __$$OrderItemCreateDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int count, Product product});
@@ -384,11 +661,11 @@ abstract class _$$_OrderItemCreateDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderItemCreateDtoCopyWithImpl<$Res>
-    extends _$OrderItemCreateDtoCopyWithImpl<$Res, _$_OrderItemCreateDto>
-    implements _$$_OrderItemCreateDtoCopyWith<$Res> {
-  __$$_OrderItemCreateDtoCopyWithImpl(
-      _$_OrderItemCreateDto _value, $Res Function(_$_OrderItemCreateDto) _then)
+class __$$OrderItemCreateDtoImplCopyWithImpl<$Res>
+    extends _$OrderItemCreateDtoCopyWithImpl<$Res, _$OrderItemCreateDtoImpl>
+    implements _$$OrderItemCreateDtoImplCopyWith<$Res> {
+  __$$OrderItemCreateDtoImplCopyWithImpl(_$OrderItemCreateDtoImpl _value,
+      $Res Function(_$OrderItemCreateDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -397,7 +674,7 @@ class __$$_OrderItemCreateDtoCopyWithImpl<$Res>
     Object? count = null,
     Object? product = null,
   }) {
-    return _then(_$_OrderItemCreateDto(
+    return _then(_$OrderItemCreateDtoImpl(
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -412,13 +689,13 @@ class __$$_OrderItemCreateDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderItemCreateDto
+class _$OrderItemCreateDtoImpl
     with DiagnosticableTreeMixin
     implements _OrderItemCreateDto {
-  const _$_OrderItemCreateDto({required this.count, required this.product});
+  const _$OrderItemCreateDtoImpl({required this.count, required this.product});
 
-  factory _$_OrderItemCreateDto.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderItemCreateDtoFromJson(json);
+  factory _$OrderItemCreateDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemCreateDtoImplFromJson(json);
 
   @override
   final int count;
@@ -443,7 +720,7 @@ class _$_OrderItemCreateDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderItemCreateDto &&
+            other is _$OrderItemCreateDtoImpl &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.product, product) || other.product == product));
   }
@@ -455,13 +732,13 @@ class _$_OrderItemCreateDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderItemCreateDtoCopyWith<_$_OrderItemCreateDto> get copyWith =>
-      __$$_OrderItemCreateDtoCopyWithImpl<_$_OrderItemCreateDto>(
+  _$$OrderItemCreateDtoImplCopyWith<_$OrderItemCreateDtoImpl> get copyWith =>
+      __$$OrderItemCreateDtoImplCopyWithImpl<_$OrderItemCreateDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderItemCreateDtoToJson(
+    return _$$OrderItemCreateDtoImplToJson(
       this,
     );
   }
@@ -470,10 +747,10 @@ class _$_OrderItemCreateDto
 abstract class _OrderItemCreateDto implements OrderItemCreateDto {
   const factory _OrderItemCreateDto(
       {required final int count,
-      required final Product product}) = _$_OrderItemCreateDto;
+      required final Product product}) = _$OrderItemCreateDtoImpl;
 
   factory _OrderItemCreateDto.fromJson(Map<String, dynamic> json) =
-      _$_OrderItemCreateDto.fromJson;
+      _$OrderItemCreateDtoImpl.fromJson;
 
   @override
   int get count;
@@ -481,7 +758,7 @@ abstract class _OrderItemCreateDto implements OrderItemCreateDto {
   Product get product;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderItemCreateDtoCopyWith<_$_OrderItemCreateDto> get copyWith =>
+  _$$OrderItemCreateDtoImplCopyWith<_$OrderItemCreateDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -534,22 +811,22 @@ class _$UserInOrderCreateDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UserInOrderCreateDtoCopyWith<$Res>
+abstract class _$$UserInOrderCreateDtoImplCopyWith<$Res>
     implements $UserInOrderCreateDtoCopyWith<$Res> {
-  factory _$$_UserInOrderCreateDtoCopyWith(_$_UserInOrderCreateDto value,
-          $Res Function(_$_UserInOrderCreateDto) then) =
-      __$$_UserInOrderCreateDtoCopyWithImpl<$Res>;
+  factory _$$UserInOrderCreateDtoImplCopyWith(_$UserInOrderCreateDtoImpl value,
+          $Res Function(_$UserInOrderCreateDtoImpl) then) =
+      __$$UserInOrderCreateDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<int> connect});
 }
 
 /// @nodoc
-class __$$_UserInOrderCreateDtoCopyWithImpl<$Res>
-    extends _$UserInOrderCreateDtoCopyWithImpl<$Res, _$_UserInOrderCreateDto>
-    implements _$$_UserInOrderCreateDtoCopyWith<$Res> {
-  __$$_UserInOrderCreateDtoCopyWithImpl(_$_UserInOrderCreateDto _value,
-      $Res Function(_$_UserInOrderCreateDto) _then)
+class __$$UserInOrderCreateDtoImplCopyWithImpl<$Res>
+    extends _$UserInOrderCreateDtoCopyWithImpl<$Res, _$UserInOrderCreateDtoImpl>
+    implements _$$UserInOrderCreateDtoImplCopyWith<$Res> {
+  __$$UserInOrderCreateDtoImplCopyWithImpl(_$UserInOrderCreateDtoImpl _value,
+      $Res Function(_$UserInOrderCreateDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -557,7 +834,7 @@ class __$$_UserInOrderCreateDtoCopyWithImpl<$Res>
   $Res call({
     Object? connect = null,
   }) {
-    return _then(_$_UserInOrderCreateDto(
+    return _then(_$UserInOrderCreateDtoImpl(
       connect: null == connect
           ? _value._connect
           : connect // ignore: cast_nullable_to_non_nullable
@@ -568,14 +845,14 @@ class __$$_UserInOrderCreateDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserInOrderCreateDto
+class _$UserInOrderCreateDtoImpl
     with DiagnosticableTreeMixin
     implements _UserInOrderCreateDto {
-  const _$_UserInOrderCreateDto({required final List<int> connect})
+  const _$UserInOrderCreateDtoImpl({required final List<int> connect})
       : _connect = connect;
 
-  factory _$_UserInOrderCreateDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserInOrderCreateDtoFromJson(json);
+  factory _$UserInOrderCreateDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserInOrderCreateDtoImplFromJson(json);
 
   final List<int> _connect;
   @override
@@ -602,7 +879,7 @@ class _$_UserInOrderCreateDto
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserInOrderCreateDto &&
+            other is _$UserInOrderCreateDtoImpl &&
             const DeepCollectionEquality().equals(other._connect, _connect));
   }
 
@@ -614,13 +891,14 @@ class _$_UserInOrderCreateDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserInOrderCreateDtoCopyWith<_$_UserInOrderCreateDto> get copyWith =>
-      __$$_UserInOrderCreateDtoCopyWithImpl<_$_UserInOrderCreateDto>(
-          this, _$identity);
+  _$$UserInOrderCreateDtoImplCopyWith<_$UserInOrderCreateDtoImpl>
+      get copyWith =>
+          __$$UserInOrderCreateDtoImplCopyWithImpl<_$UserInOrderCreateDtoImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserInOrderCreateDtoToJson(
+    return _$$UserInOrderCreateDtoImplToJson(
       this,
     );
   }
@@ -628,15 +906,15 @@ class _$_UserInOrderCreateDto
 
 abstract class _UserInOrderCreateDto implements UserInOrderCreateDto {
   const factory _UserInOrderCreateDto({required final List<int> connect}) =
-      _$_UserInOrderCreateDto;
+      _$UserInOrderCreateDtoImpl;
 
   factory _UserInOrderCreateDto.fromJson(Map<String, dynamic> json) =
-      _$_UserInOrderCreateDto.fromJson;
+      _$UserInOrderCreateDtoImpl.fromJson;
 
   @override
   List<int> get connect;
   @override
   @JsonKey(ignore: true)
-  _$$_UserInOrderCreateDtoCopyWith<_$_UserInOrderCreateDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserInOrderCreateDtoImplCopyWith<_$UserInOrderCreateDtoImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

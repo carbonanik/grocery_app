@@ -20,12 +20,19 @@ Coupon _$CouponFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Coupon {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get description => throw _privateConstructorUsedError;
+  @HiveField(3)
   String get code => throw _privateConstructorUsedError;
+  @HiveField(4)
   double get discount => throw _privateConstructorUsedError;
+  @HiveField(5)
   double get fixed => throw _privateConstructorUsedError;
+  @HiveField(6)
   String get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,13 +46,13 @@ abstract class $CouponCopyWith<$Res> {
       _$CouponCopyWithImpl<$Res, Coupon>;
   @useResult
   $Res call(
-      {int id,
-      String title,
-      String description,
-      String code,
-      double discount,
-      double fixed,
-      String status});
+      {@HiveField(0) int id,
+      @HiveField(1) String title,
+      @HiveField(2) String description,
+      @HiveField(3) String code,
+      @HiveField(4) double discount,
+      @HiveField(5) double fixed,
+      @HiveField(6) String status});
 }
 
 /// @nodoc
@@ -103,26 +110,28 @@ class _$CouponCopyWithImpl<$Res, $Val extends Coupon>
 }
 
 /// @nodoc
-abstract class _$$_CouponCopyWith<$Res> implements $CouponCopyWith<$Res> {
-  factory _$$_CouponCopyWith(_$_Coupon value, $Res Function(_$_Coupon) then) =
-      __$$_CouponCopyWithImpl<$Res>;
+abstract class _$$CouponImplCopyWith<$Res> implements $CouponCopyWith<$Res> {
+  factory _$$CouponImplCopyWith(
+          _$CouponImpl value, $Res Function(_$CouponImpl) then) =
+      __$$CouponImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int id,
-      String title,
-      String description,
-      String code,
-      double discount,
-      double fixed,
-      String status});
+      {@HiveField(0) int id,
+      @HiveField(1) String title,
+      @HiveField(2) String description,
+      @HiveField(3) String code,
+      @HiveField(4) double discount,
+      @HiveField(5) double fixed,
+      @HiveField(6) String status});
 }
 
 /// @nodoc
-class __$$_CouponCopyWithImpl<$Res>
-    extends _$CouponCopyWithImpl<$Res, _$_Coupon>
-    implements _$$_CouponCopyWith<$Res> {
-  __$$_CouponCopyWithImpl(_$_Coupon _value, $Res Function(_$_Coupon) _then)
+class __$$CouponImplCopyWithImpl<$Res>
+    extends _$CouponCopyWithImpl<$Res, _$CouponImpl>
+    implements _$$CouponImplCopyWith<$Res> {
+  __$$CouponImplCopyWithImpl(
+      _$CouponImpl _value, $Res Function(_$CouponImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,7 +145,7 @@ class __$$_CouponCopyWithImpl<$Res>
     Object? fixed = null,
     Object? status = null,
   }) {
-    return _then(_$_Coupon(
+    return _then(_$CouponImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -171,32 +180,41 @@ class __$$_CouponCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Coupon with DiagnosticableTreeMixin implements _Coupon {
-  const _$_Coupon(
-      {required this.id,
-      required this.title,
-      required this.description,
-      required this.code,
-      required this.discount,
-      required this.fixed,
-      required this.status});
+@HiveType(typeId: couponHiveTypeId, adapterName: couponAdapterName)
+class _$CouponImpl extends _Coupon with DiagnosticableTreeMixin {
+  _$CouponImpl(
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.title,
+      @HiveField(2) required this.description,
+      @HiveField(3) required this.code,
+      @HiveField(4) required this.discount,
+      @HiveField(5) required this.fixed,
+      @HiveField(6) required this.status})
+      : super._();
 
-  factory _$_Coupon.fromJson(Map<String, dynamic> json) =>
-      _$$_CouponFromJson(json);
+  factory _$CouponImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CouponImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String title;
   @override
+  @HiveField(2)
   final String description;
   @override
+  @HiveField(3)
   final String code;
   @override
+  @HiveField(4)
   final double discount;
   @override
+  @HiveField(5)
   final double fixed;
   @override
+  @HiveField(6)
   final String status;
 
   @override
@@ -222,7 +240,7 @@ class _$_Coupon with DiagnosticableTreeMixin implements _Coupon {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Coupon &&
+            other is _$CouponImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -242,45 +260,53 @@ class _$_Coupon with DiagnosticableTreeMixin implements _Coupon {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CouponCopyWith<_$_Coupon> get copyWith =>
-      __$$_CouponCopyWithImpl<_$_Coupon>(this, _$identity);
+  _$$CouponImplCopyWith<_$CouponImpl> get copyWith =>
+      __$$CouponImplCopyWithImpl<_$CouponImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CouponToJson(
+    return _$$CouponImplToJson(
       this,
     );
   }
 }
 
-abstract class _Coupon implements Coupon {
-  const factory _Coupon(
-      {required final int id,
-      required final String title,
-      required final String description,
-      required final String code,
-      required final double discount,
-      required final double fixed,
-      required final String status}) = _$_Coupon;
+abstract class _Coupon extends Coupon {
+  factory _Coupon(
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String title,
+      @HiveField(2) required final String description,
+      @HiveField(3) required final String code,
+      @HiveField(4) required final double discount,
+      @HiveField(5) required final double fixed,
+      @HiveField(6) required final String status}) = _$CouponImpl;
+  _Coupon._() : super._();
 
-  factory _Coupon.fromJson(Map<String, dynamic> json) = _$_Coupon.fromJson;
+  factory _Coupon.fromJson(Map<String, dynamic> json) = _$CouponImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   String get title;
   @override
+  @HiveField(2)
   String get description;
   @override
+  @HiveField(3)
   String get code;
   @override
+  @HiveField(4)
   double get discount;
   @override
+  @HiveField(5)
   double get fixed;
   @override
+  @HiveField(6)
   String get status;
   @override
   @JsonKey(ignore: true)
-  _$$_CouponCopyWith<_$_Coupon> get copyWith =>
+  _$$CouponImplCopyWith<_$CouponImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

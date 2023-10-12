@@ -26,8 +26,8 @@ class OnBoardingItem {
   });
 }
 
-class OnBoarding extends HookConsumerWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+class OnBoardingPage extends HookConsumerWidget {
+  const OnBoardingPage({Key? key}) : super(key: key);
 
   static final List<OnBoardingItem> _items = [
     OnBoardingItem(

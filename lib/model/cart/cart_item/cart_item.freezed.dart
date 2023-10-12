@@ -20,8 +20,11 @@ CartItem _$CartItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartItem {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   Product get product => throw _privateConstructorUsedError;
+  @HiveField(2)
   int get count => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +38,10 @@ abstract class $CartItemCopyWith<$Res> {
   factory $CartItemCopyWith(CartItem value, $Res Function(CartItem) then) =
       _$CartItemCopyWithImpl<$Res, CartItem>;
   @useResult
-  $Res call({int id, Product product, int count});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) Product product,
+      @HiveField(2) int count});
 
   $ProductCopyWith<$Res> get product;
 }
@@ -83,24 +89,28 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
 }
 
 /// @nodoc
-abstract class _$$_CartItemCopyWith<$Res> implements $CartItemCopyWith<$Res> {
-  factory _$$_CartItemCopyWith(
-          _$_CartItem value, $Res Function(_$_CartItem) then) =
-      __$$_CartItemCopyWithImpl<$Res>;
+abstract class _$$CartItemImplCopyWith<$Res>
+    implements $CartItemCopyWith<$Res> {
+  factory _$$CartItemImplCopyWith(
+          _$CartItemImpl value, $Res Function(_$CartItemImpl) then) =
+      __$$CartItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, Product product, int count});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) Product product,
+      @HiveField(2) int count});
 
   @override
   $ProductCopyWith<$Res> get product;
 }
 
 /// @nodoc
-class __$$_CartItemCopyWithImpl<$Res>
-    extends _$CartItemCopyWithImpl<$Res, _$_CartItem>
-    implements _$$_CartItemCopyWith<$Res> {
-  __$$_CartItemCopyWithImpl(
-      _$_CartItem _value, $Res Function(_$_CartItem) _then)
+class __$$CartItemImplCopyWithImpl<$Res>
+    extends _$CartItemCopyWithImpl<$Res, _$CartItemImpl>
+    implements _$$CartItemImplCopyWith<$Res> {
+  __$$CartItemImplCopyWithImpl(
+      _$CartItemImpl _value, $Res Function(_$CartItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,7 +120,7 @@ class __$$_CartItemCopyWithImpl<$Res>
     Object? product = null,
     Object? count = null,
   }) {
-    return _then(_$_CartItem(
+    return _then(_$CartItemImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -129,18 +139,25 @@ class __$$_CartItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CartItem with DiagnosticableTreeMixin implements _CartItem {
-  const _$_CartItem(
-      {required this.id, required this.product, required this.count});
+@HiveType(typeId: cartItemHiveTypeId, adapterName: cartItemAdapterName)
+class _$CartItemImpl extends _CartItem with DiagnosticableTreeMixin {
+  _$CartItemImpl(
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.product,
+      @HiveField(2) required this.count})
+      : super._();
 
-  factory _$_CartItem.fromJson(Map<String, dynamic> json) =>
-      _$$_CartItemFromJson(json);
+  factory _$CartItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CartItemImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final Product product;
   @override
+  @HiveField(2)
   final int count;
 
   @override
@@ -162,7 +179,7 @@ class _$_CartItem with DiagnosticableTreeMixin implements _CartItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartItem &&
+            other is _$CartItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.count, count) || other.count == count));
@@ -175,33 +192,38 @@ class _$_CartItem with DiagnosticableTreeMixin implements _CartItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartItemCopyWith<_$_CartItem> get copyWith =>
-      __$$_CartItemCopyWithImpl<_$_CartItem>(this, _$identity);
+  _$$CartItemImplCopyWith<_$CartItemImpl> get copyWith =>
+      __$$CartItemImplCopyWithImpl<_$CartItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CartItemToJson(
+    return _$$CartItemImplToJson(
       this,
     );
   }
 }
 
-abstract class _CartItem implements CartItem {
-  const factory _CartItem(
-      {required final int id,
-      required final Product product,
-      required final int count}) = _$_CartItem;
+abstract class _CartItem extends CartItem {
+  factory _CartItem(
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final Product product,
+      @HiveField(2) required final int count}) = _$CartItemImpl;
+  _CartItem._() : super._();
 
-  factory _CartItem.fromJson(Map<String, dynamic> json) = _$_CartItem.fromJson;
+  factory _CartItem.fromJson(Map<String, dynamic> json) =
+      _$CartItemImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   Product get product;
   @override
+  @HiveField(2)
   int get count;
   @override
   @JsonKey(ignore: true)
-  _$$_CartItemCopyWith<_$_CartItem> get copyWith =>
+  _$$CartItemImplCopyWith<_$CartItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,7 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../main.dart';
 import '../../../provider/category/category_api_provider.dart';
 import '../../widget/side_tab.dart';
-import 'category_product_list.dart';
+import 'category_product_list_page.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 class CategoryTab extends StatelessWidget {
   const CategoryTab({
@@ -33,7 +34,7 @@ class CategoryTab extends StatelessWidget {
                     .toList(),
                 tabViewList: data.value
                     .map(
-                      (category) => CategoryProductList(
+                      (category) => CategoryProductListPage(
                         selectedCategoryId: category.id,
                       ),
                     )

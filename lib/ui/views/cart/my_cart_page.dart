@@ -8,8 +8,9 @@ import 'package:instant_grrocery_delivery/provider/product/product_api_provider.
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
-import '../../../provider/cart/cart_hive_notifier_provider.dart';
+import '../../../provider/cart/cart_provider.dart';
 import '../../widget/cart_list_item.dart';
 import '../../widget/product_item.dart';
 
@@ -143,27 +144,31 @@ class MyCartPage extends StatelessWidget {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Dismissible(
+              direction:  DismissDirection.endToStart,
               key: Key(cartList[index].id.toString()),
               onDismissed: (direction) {
                 cartDataModel.itemRemove(cartList[index].product);
               },
-              background: Container(
-                color: backgroundColor,
+              background: Padding(
+                padding: const EdgeInsets.only(top: 10),
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
                     child: const Icon(
                       Icons.delete,
-                      color: Colors.white,
+                      color: accentColor,
                     ),
                   ),
                 ),
               ),
-              child: CartListItem(
-                item: cartList[index],
-                onAdd: () => cartDataModel.itemIncrement(cartList[index].product),
-                onRemove: () => cartDataModel.itemDecrement(cartList[index].product),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: CartListItem(
+                  item: cartList[index],
+                  onAdd: () => cartDataModel.itemIncrement(cartList[index].product),
+                  onRemove: () => cartDataModel.itemDecrement(cartList[index].product),
+                ),
               ),
             );
           },
@@ -257,6 +262,7 @@ class MyCartPage extends StatelessWidget {
 
                     /// Continue to pay button
                     ActionButton(
+                      enabled: true,
                       onTap: () {
                         Get.toNamed(RouteHelper.getPaymentMethod());
                       },

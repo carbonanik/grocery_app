@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/ui/views/cart/wallet_card.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({Key? key}) : super(key: key);

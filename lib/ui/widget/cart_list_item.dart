@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-import 'cart_add_remove.dart';
+import 'buttons/cart_add_remove.dart';
 
 class CartListItem extends StatelessWidget {
   const CartListItem({
@@ -26,9 +27,9 @@ class CartListItem extends StatelessWidget {
         vertical: Dimension.height(10),
         horizontal: Dimension.width(10),
       ),
-      margin: EdgeInsets.only(bottom: Dimension.height(10)),
+      // margin: EdgeInsets.only(bottom: Dimension.height(10)),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(Dimension.height(10)),
       ),
       child: Row(

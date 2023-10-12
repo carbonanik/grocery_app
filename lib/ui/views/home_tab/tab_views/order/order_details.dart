@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../main.dart';
@@ -21,7 +22,7 @@ class OrderDetailsPage extends StatelessWidget {
         final orderAsyncData = ref.watch(orderByIdProvider(orderId));
         return orderAsyncData.map(
           data: (data) {
-            final time = DateTime.parse(data.value.orderDate);
+            final time = DateTime.parse(data.value!.orderDate);
             final DateFormat formatter = DateFormat('d MMM hh:mm a');
             final String formatted = formatter.format(time);
             return SingleChildScrollView(
@@ -88,8 +89,8 @@ class OrderDetailsPage extends StatelessWidget {
                             ),
                             child: Column(
                               children: List.generate(
-                                data.value.orderItems.length,
-                                (index) => _item(data.value.orderItems[index]),
+                                data.value?.orderItems.length ?? 0,
+                                (index) => _item(data.value!.orderItems[index]),
                               ),
                             ),
                           ),
@@ -119,7 +120,7 @@ class OrderDetailsPage extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "${data.value.count}\$",
+                                      "${data.value!.count}\$",
                                       style: const TextStyle(
                                         // color: Colors.grey,
                                         fontSize: 18,

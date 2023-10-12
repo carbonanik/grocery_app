@@ -4,6 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/model/result_value.dart';
+import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
@@ -12,40 +15,45 @@ import '../../../provider/auth/login_controller_provider.dart';
 import '../../../route/route_helper.dart';
 import '../../widget/auth_button.dart';
 import '../../widget/input_field.dart';
+import '../../widget/my_app_bar.dart';
 import '../../widget/social_button.dart';
 
-class SignIn extends ConsumerWidget {
-  SignIn({Key? key}) : super(key: key);
+class SignInPage extends ConsumerWidget {
+  SignInPage({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
-  final emailTextController = TextEditingController(text: 'anik');
+  final emailTextController = TextEditingController(text: 'u1@email.com');
   final passwordTextController = TextEditingController(text: '123456');
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ref.listen<AuthResult>(
-    //   loginNotifierProvider,
-    //   (_, state) {
-    //     state.whenOrNull(
-    //       error: (error) {
-    //         ScaffoldMessenger.of(context).showSnackBar(
-    //           SnackBar(content: Text(error.toString())),
-    //         );
-    //       },
-    //       data: (value) {
-    //         Get.offAndToNamed(RouteHelper.getHomeTab());
-    //       },
-    //     );
-    //   },
-    // );
-
-    final loginState = ref.watch(loginNotifierProvider);
-
-    loginState.whenOrNull(
-
+    ref.listen<ResultValue<AuthResponse>>(
+      authControllerProvider,
+      (_, state) {
+        state.whenOrNull(
+          error: (error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(error.toString())),
+            );
+          },
+          data: (value) {
+            Get.offAndToNamed(RouteHelper.getHomeTab());
+          },
+        );
+      },
     );
 
+    final loginState = ref.watch(authControllerProvider);
+    //
+    // loginState.mapOrNull(
+    //   error: (error) => ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(content: Text(error.toString())),
+    //   )
+    // );
+
     return Scaffold(
+      // extendBodyBehindAppBar: true,
+      // appBar: const MyAppBar(title: 'Login'),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -139,7 +147,7 @@ class SignIn extends ConsumerWidget {
                             password: passwordTextController.text,
                           );
                           ref
-                              .read(loginNotifierProvider.notifier)
+                              .read(authControllerProvider.notifier)
                               .login(loginUser);
                         }
                       },

@@ -98,11 +98,11 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
 }
 
 /// @nodoc
-abstract class _$$_ProductDtoCopyWith<$Res>
+abstract class _$$ProductDtoImplCopyWith<$Res>
     implements $ProductDtoCopyWith<$Res> {
-  factory _$$_ProductDtoCopyWith(
-          _$_ProductDto value, $Res Function(_$_ProductDto) then) =
-      __$$_ProductDtoCopyWithImpl<$Res>;
+  factory _$$ProductDtoImplCopyWith(
+          _$ProductDtoImpl value, $Res Function(_$ProductDtoImpl) then) =
+      __$$ProductDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_ProductDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProductDtoCopyWithImpl<$Res>
-    extends _$ProductDtoCopyWithImpl<$Res, _$_ProductDto>
-    implements _$$_ProductDtoCopyWith<$Res> {
-  __$$_ProductDtoCopyWithImpl(
-      _$_ProductDto _value, $Res Function(_$_ProductDto) _then)
+class __$$ProductDtoImplCopyWithImpl<$Res>
+    extends _$ProductDtoCopyWithImpl<$Res, _$ProductDtoImpl>
+    implements _$$ProductDtoImplCopyWith<$Res> {
+  __$$ProductDtoImplCopyWithImpl(
+      _$ProductDtoImpl _value, $Res Function(_$ProductDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$_ProductDtoCopyWithImpl<$Res>
     Object? image = null,
     Object? weight = null,
   }) {
-    return _then(_$_ProductDto(
+    return _then(_$ProductDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -163,8 +163,8 @@ class __$$_ProductDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductDto with DiagnosticableTreeMixin implements _ProductDto {
-  const _$_ProductDto(
+class _$ProductDtoImpl with DiagnosticableTreeMixin implements _ProductDto {
+  const _$ProductDtoImpl(
       {required this.id,
       required this.price,
       required this.name,
@@ -172,8 +172,8 @@ class _$_ProductDto with DiagnosticableTreeMixin implements _ProductDto {
       required this.image,
       required this.weight});
 
-  factory _$_ProductDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductDtoFromJson(json);
+  factory _$ProductDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductDtoImplFromJson(json);
 
   @override
   final int id;
@@ -210,7 +210,7 @@ class _$_ProductDto with DiagnosticableTreeMixin implements _ProductDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductDto &&
+            other is _$ProductDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.name, name) || other.name == name) &&
@@ -228,12 +228,12 @@ class _$_ProductDto with DiagnosticableTreeMixin implements _ProductDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductDtoCopyWith<_$_ProductDto> get copyWith =>
-      __$$_ProductDtoCopyWithImpl<_$_ProductDto>(this, _$identity);
+  _$$ProductDtoImplCopyWith<_$ProductDtoImpl> get copyWith =>
+      __$$ProductDtoImplCopyWithImpl<_$ProductDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductDtoToJson(
+    return _$$ProductDtoImplToJson(
       this,
     );
   }
@@ -246,10 +246,10 @@ abstract class _ProductDto implements ProductDto {
       required final String name,
       required final String description,
       required final String image,
-      required final String weight}) = _$_ProductDto;
+      required final String weight}) = _$ProductDtoImpl;
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
-      _$_ProductDto.fromJson;
+      _$ProductDtoImpl.fromJson;
 
   @override
   int get id;
@@ -265,7 +265,7 @@ abstract class _ProductDto implements ProductDto {
   String get weight;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductDtoCopyWith<_$_ProductDto> get copyWith =>
+  _$$ProductDtoImplCopyWith<_$ProductDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -346,11 +346,11 @@ class _$ProductDtoSubCopyWithImpl<$Res, $Val extends ProductDtoSub>
 }
 
 /// @nodoc
-abstract class _$$_ProductDtoSubCopyWith<$Res>
+abstract class _$$ProductDtoSubImplCopyWith<$Res>
     implements $ProductDtoSubCopyWith<$Res> {
-  factory _$$_ProductDtoSubCopyWith(
-          _$_ProductDtoSub value, $Res Function(_$_ProductDtoSub) then) =
-      __$$_ProductDtoSubCopyWithImpl<$Res>;
+  factory _$$ProductDtoSubImplCopyWith(
+          _$ProductDtoSubImpl value, $Res Function(_$ProductDtoSubImpl) then) =
+      __$$ProductDtoSubImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -362,11 +362,11 @@ abstract class _$$_ProductDtoSubCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProductDtoSubCopyWithImpl<$Res>
-    extends _$ProductDtoSubCopyWithImpl<$Res, _$_ProductDtoSub>
-    implements _$$_ProductDtoSubCopyWith<$Res> {
-  __$$_ProductDtoSubCopyWithImpl(
-      _$_ProductDtoSub _value, $Res Function(_$_ProductDtoSub) _then)
+class __$$ProductDtoSubImplCopyWithImpl<$Res>
+    extends _$ProductDtoSubCopyWithImpl<$Res, _$ProductDtoSubImpl>
+    implements _$$ProductDtoSubImplCopyWith<$Res> {
+  __$$ProductDtoSubImplCopyWithImpl(
+      _$ProductDtoSubImpl _value, $Res Function(_$ProductDtoSubImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -378,7 +378,7 @@ class __$$_ProductDtoSubCopyWithImpl<$Res>
     Object? image = null,
     Object? weight = null,
   }) {
-    return _then(_$_ProductDtoSub(
+    return _then(_$ProductDtoSubImpl(
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -405,16 +405,18 @@ class __$$_ProductDtoSubCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductDtoSub with DiagnosticableTreeMixin implements _ProductDtoSub {
-  const _$_ProductDtoSub(
+class _$ProductDtoSubImpl
+    with DiagnosticableTreeMixin
+    implements _ProductDtoSub {
+  const _$ProductDtoSubImpl(
       {required this.price,
       required this.name,
       required this.description,
       required this.image,
       required this.weight});
 
-  factory _$_ProductDtoSub.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductDtoSubFromJson(json);
+  factory _$ProductDtoSubImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductDtoSubImplFromJson(json);
 
   @override
   final double price;
@@ -448,7 +450,7 @@ class _$_ProductDtoSub with DiagnosticableTreeMixin implements _ProductDtoSub {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductDtoSub &&
+            other is _$ProductDtoSubImpl &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -465,12 +467,12 @@ class _$_ProductDtoSub with DiagnosticableTreeMixin implements _ProductDtoSub {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductDtoSubCopyWith<_$_ProductDtoSub> get copyWith =>
-      __$$_ProductDtoSubCopyWithImpl<_$_ProductDtoSub>(this, _$identity);
+  _$$ProductDtoSubImplCopyWith<_$ProductDtoSubImpl> get copyWith =>
+      __$$ProductDtoSubImplCopyWithImpl<_$ProductDtoSubImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductDtoSubToJson(
+    return _$$ProductDtoSubImplToJson(
       this,
     );
   }
@@ -482,10 +484,10 @@ abstract class _ProductDtoSub implements ProductDtoSub {
       required final String name,
       required final String description,
       required final String image,
-      required final String weight}) = _$_ProductDtoSub;
+      required final String weight}) = _$ProductDtoSubImpl;
 
   factory _ProductDtoSub.fromJson(Map<String, dynamic> json) =
-      _$_ProductDtoSub.fromJson;
+      _$ProductDtoSubImpl.fromJson;
 
   @override
   double get price;
@@ -499,6 +501,6 @@ abstract class _ProductDtoSub implements ProductDtoSub {
   String get weight;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductDtoSubCopyWith<_$_ProductDtoSub> get copyWith =>
+  _$$ProductDtoSubImplCopyWith<_$ProductDtoSubImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

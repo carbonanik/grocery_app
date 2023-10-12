@@ -1,5 +1,5 @@
 abstract class BoardingLocal {
-  Future<bool> isPreviouslyBoarded();
+  bool isPreviouslyBoarded();
 
-  Future<void> donePreviouslyBoarding();
+  void doneBoarding();
 }

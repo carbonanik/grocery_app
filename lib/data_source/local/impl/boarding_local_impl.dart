@@ -6,15 +6,15 @@ class BoardingLocalImpl extends BoardingLocal {
   final boarding = "boarding";
 
   @override
-  Future<bool> isPreviouslyBoarded() async {
-    final box = await Hive.openBox(HiveBoxName.boardingBox);
-    return await box.get(boarding) ?? false;
+  bool isPreviouslyBoarded() {
+    final box = Hive.box<bool>(HiveBoxName.boardingBox);
+    return box.get(boarding) ?? false;
   }
 
   @override
-  Future<bool> donePreviouslyBoarding() async {
-    final box = await Hive.openBox(HiveBoxName.boardingBox);
-    await box.put(boarding, true);
+  bool doneBoarding() {
+    final box = Hive.box<bool>(HiveBoxName.boardingBox);
+    box.put(boarding, true);
     return true;
   }
 }

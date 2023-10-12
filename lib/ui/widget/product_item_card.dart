@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 class ProductItemCard extends StatelessWidget {

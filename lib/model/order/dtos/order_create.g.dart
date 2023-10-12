@@ -6,8 +6,32 @@ part of 'order_create.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderCreateDto _$$_OrderCreateDtoFromJson(Map<String, dynamic> json) =>
-    _$_OrderCreateDto(
+_$OrderCreateImpl _$$OrderCreateImplFromJson(Map<String, dynamic> json) =>
+    _$OrderCreateImpl(
+      userId: json['userId'] as int,
+      count: json['count'] as int,
+      totalPrice: json['totalPrice'] as String,
+      orderDate: json['orderDate'] as String,
+      orderItems: (json['orderItems'] as List<dynamic>)
+          .map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      coupons: (json['coupons'] as List<dynamic>)
+          .map((e) => Coupon.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$OrderCreateImplToJson(_$OrderCreateImpl instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'count': instance.count,
+      'totalPrice': instance.totalPrice,
+      'orderDate': instance.orderDate,
+      'orderItems': instance.orderItems,
+      'coupons': instance.coupons,
+    };
+
+_$OrderCreateDtoImpl _$$OrderCreateDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderCreateDtoImpl(
       count: json['count'] as int,
       totalPrice: json['totalPrice'] as String,
       orderDate: json['orderDate'] as String,
@@ -20,7 +44,8 @@ _$_OrderCreateDto _$$_OrderCreateDtoFromJson(Map<String, dynamic> json) =>
       user: UserInOrderCreateDto.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_OrderCreateDtoToJson(_$_OrderCreateDto instance) =>
+Map<String, dynamic> _$$OrderCreateDtoImplToJson(
+        _$OrderCreateDtoImpl instance) =>
     <String, dynamic>{
       'count': instance.count,
       'totalPrice': instance.totalPrice,
@@ -30,28 +55,28 @@ Map<String, dynamic> _$$_OrderCreateDtoToJson(_$_OrderCreateDto instance) =>
       'user': instance.user,
     };
 
-_$_OrderItemCreateDto _$$_OrderItemCreateDtoFromJson(
+_$OrderItemCreateDtoImpl _$$OrderItemCreateDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_OrderItemCreateDto(
+    _$OrderItemCreateDtoImpl(
       count: json['count'] as int,
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_OrderItemCreateDtoToJson(
-        _$_OrderItemCreateDto instance) =>
+Map<String, dynamic> _$$OrderItemCreateDtoImplToJson(
+        _$OrderItemCreateDtoImpl instance) =>
     <String, dynamic>{
       'count': instance.count,
       'product': instance.product,
     };
 
-_$_UserInOrderCreateDto _$$_UserInOrderCreateDtoFromJson(
+_$UserInOrderCreateDtoImpl _$$UserInOrderCreateDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserInOrderCreateDto(
+    _$UserInOrderCreateDtoImpl(
       connect: (json['connect'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_UserInOrderCreateDtoToJson(
-        _$_UserInOrderCreateDto instance) =>
+Map<String, dynamic> _$$UserInOrderCreateDtoImplToJson(
+        _$UserInOrderCreateDtoImpl instance) =>
     <String, dynamic>{
       'connect': instance.connect,
     };

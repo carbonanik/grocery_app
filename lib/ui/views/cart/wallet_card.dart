@@ -1,3 +1,4 @@
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/widget/auth_button.dart';
 import 'package:material_dialogs/material_dialogs.dart';

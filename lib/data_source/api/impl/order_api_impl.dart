@@ -7,6 +7,7 @@ import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/model/order/dtos/order_create.dart';
 import 'package:instant_grrocery_delivery/model/order/dtos/order_dto.dart';
 
 import '../../../model/order/order.dart';
@@ -14,13 +15,25 @@ import '../../../model/order/order.dart';
 class OrderApiImpl extends OrderApi {
   // Function to create a new order
   @override
-  Future<Order> createOrder(Map<String, dynamic> orderData, AuthResponse authUser) async {
+  Future<Order> createOrder(OrderCreate createOrder, AuthResponse authUser) async {
+
+    OrderCreateDto createOrderDto = OrderCreateDto(
+      count: createOrder.count,
+      totalPrice: createOrder.totalPrice,
+      orderDate: createOrder.orderDate,
+      orderItems: createOrder.orderItems.map((e) => OrderItemCreateDto(count: e.count, product: e.product)).toList(),
+      coupons: createOrder.coupons,
+      user: UserInOrderCreateDto(connect: [createOrder.userId]),
+    );
+
+    final createOrderJson = {"data": createOrderDto.toJson()};
+
     final response = await http.post(
       getUri(path: ApiPath.order),
       headers: getHeader(token: authUser),
-      body: json.encode(orderData),
+      body: json.encode(createOrderJson),
     );
-    print(response.body);
+
     if (response.ok) {
       return OrderReadDto.fromJson(
         json.decode(response.body)['data'],
@@ -37,7 +50,7 @@ class OrderApiImpl extends OrderApi {
     if (response.statusCode == 200) {
       final Iterable data = json.decode(response.body);
       List<Order> orders =
-          List<Order>.from(data.map((model) => Order.fromJson(model)));
+      List<Order>.from(data.map((model) => Order.fromJson(model)));
       return orders;
     } else {
       throw Exception('Failed to fetch orders');

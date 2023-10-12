@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_category.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 import '../../../../../model/product/product.dart';
 import '../../../../../provider/category/category_api_provider.dart';
 import '../../../../../provider/product/product_api_provider.dart';
 import '../../../../../route/route_helper.dart';
-import '../../../../widget/my_action_button.dart';
+import '../../../../widget/buttons/my_action_button.dart';
 import '../../../../widget/product_item.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,8 +32,13 @@ class HomePage extends StatelessWidget {
     ];
 
     return Scaffold(
-      floatingActionButton: const MyActionButton(
-        count: 0,
+      floatingActionButton: Consumer(
+        builder: (context, ref, child) {
+          final cartDataModel = ref.watch(cartProvider);
+          return  MyActionButton(
+            count: cartDataModel.cartCount(),
+          );
+        }
       ),
       body: Container(
         color: backgroundColor,

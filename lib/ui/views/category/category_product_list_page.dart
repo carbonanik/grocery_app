@@ -2,15 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+
 import '../../../main.dart';
 import '../../../provider/category/category_api_provider.dart';
 import '../../../util/dimension.dart';
 import '../../widget/category_item.dart';
 import '../../widget/product_item.dart';
 
-class CategoryProductList extends StatelessWidget {
-  const CategoryProductList({Key? key, required this.selectedCategoryId})
-      : super(key: key);
+class CategoryProductListPage extends StatelessWidget {
+  const CategoryProductListPage({Key? key, required this.selectedCategoryId}) : super(key: key);
 
   final int selectedCategoryId;
 
@@ -39,20 +40,17 @@ class CategoryProductList extends StatelessWidget {
             /// popular list
             Consumer(
               builder: (context, ref, _) {
-                final asyncValue = ref.watch(
-                    getCategoriesByIdWithProductProvider(selectedCategoryId));
+                final asyncValue = ref.watch(getCategoriesByIdWithProductProvider(selectedCategoryId));
 
                 return asyncValue.map(
                   data: (data) => SliverPadding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                    padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
                     sliver: SliverGrid.count(
                       crossAxisCount: 2,
                       mainAxisSpacing: Dimension.height(10),
                       crossAxisSpacing: Dimension.width(10),
                       childAspectRatio: .70,
-                      children: List.generate(data.value.products?.length ?? 0,
-                          (index) {
+                      children: List.generate(data.value.products?.length ?? 0, (index) {
                         final item = data.value.products![index];
                         return ProductItem(
                           product: item,
@@ -60,9 +58,15 @@ class CategoryProductList extends StatelessWidget {
                       }),
                     ),
                   ),
-                  error: (_) => const SliverToBoxAdapter(child: Text("Error")),
+                  error: (_) => const SliverToBoxAdapter(
+                    child: Center(
+                      child: Text("Error"),
+                    ),
+                  ),
                   loading: (_) => const SliverToBoxAdapter(
-                    child: Text('Loading'),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   ),
                 );
               },
@@ -87,12 +91,10 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   int selectedCategoryId;
 
-  _CategorySilverHeaderDelegate(this.minExtent, this.maxExtent,
-      {required this.selectedCategoryId});
+  _CategorySilverHeaderDelegate(this.minExtent, this.maxExtent, {required this.selectedCategoryId});
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -101,17 +103,14 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
             showDialog(
                 context: context,
                 builder: (context) {
-                  final TextEditingController textEditingController =
-                      TextEditingController();
+                  final TextEditingController textEditingController = TextEditingController();
 
                   return Dialog(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: Dimension.width(20)),
+                          padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
                           child: Row(
                             children: [
                               SizedBox(
@@ -121,8 +120,7 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     hintText: 'Browse Category',
-                                    hintStyle: TextStyle(
-                                        fontSize: 12, color: Colors.black26),
+                                    hintStyle: TextStyle(fontSize: 12, color: Colors.black26),
                                   ),
                                 ),
                               ),
@@ -159,8 +157,7 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                                 ),
                               ),
                               error: (error) => const Text(""),
-                              loading: (error) =>
-                                  const CircularProgressIndicator(),
+                              loading: (error) => const CircularProgressIndicator(),
                             );
                           }),
                         ),

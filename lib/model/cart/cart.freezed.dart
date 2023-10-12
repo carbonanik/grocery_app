@@ -117,9 +117,10 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
 }
 
 /// @nodoc
-abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
-  factory _$$_CartCopyWith(_$_Cart value, $Res Function(_$_Cart) then) =
-      __$$_CartCopyWithImpl<$Res>;
+abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
+  factory _$$CartImplCopyWith(
+          _$CartImpl value, $Res Function(_$CartImpl) then) =
+      __$$CartImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -135,9 +136,10 @@ abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
-    implements _$$_CartCopyWith<$Res> {
-  __$$_CartCopyWithImpl(_$_Cart _value, $Res Function(_$_Cart) _then)
+class __$$CartImplCopyWithImpl<$Res>
+    extends _$CartCopyWithImpl<$Res, _$CartImpl>
+    implements _$$CartImplCopyWith<$Res> {
+  __$$CartImplCopyWithImpl(_$CartImpl _value, $Res Function(_$CartImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -153,7 +155,7 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
     Object? lastItemDate = null,
     Object? coupon = freezed,
   }) {
-    return _then(_$_Cart(
+    return _then(_$CartImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -196,8 +198,8 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Cart with DiagnosticableTreeMixin implements _Cart {
-  const _$_Cart(
+class _$CartImpl with DiagnosticableTreeMixin implements _Cart {
+  const _$CartImpl(
       {this.id,
       required this.isActive,
       required this.totalQuantity,
@@ -210,7 +212,8 @@ class _$_Cart with DiagnosticableTreeMixin implements _Cart {
       : _cartItems = cartItems,
         _coupon = coupon;
 
-  factory _$_Cart.fromJson(Map<String, dynamic> json) => _$$_CartFromJson(json);
+  factory _$CartImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CartImplFromJson(json);
 
   @override
   final int? id;
@@ -271,7 +274,7 @@ class _$_Cart with DiagnosticableTreeMixin implements _Cart {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Cart &&
+            other is _$CartImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
@@ -306,12 +309,12 @@ class _$_Cart with DiagnosticableTreeMixin implements _Cart {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartCopyWith<_$_Cart> get copyWith =>
-      __$$_CartCopyWithImpl<_$_Cart>(this, _$identity);
+  _$$CartImplCopyWith<_$CartImpl> get copyWith =>
+      __$$CartImplCopyWithImpl<_$CartImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CartToJson(
+    return _$$CartImplToJson(
       this,
     );
   }
@@ -327,9 +330,9 @@ abstract class _Cart implements Cart {
       required final String totalPrice,
       required final String firstItemDate,
       required final String lastItemDate,
-      final List<Coupon>? coupon}) = _$_Cart;
+      final List<Coupon>? coupon}) = _$CartImpl;
 
-  factory _Cart.fromJson(Map<String, dynamic> json) = _$_Cart.fromJson;
+  factory _Cart.fromJson(Map<String, dynamic> json) = _$CartImpl.fromJson;
 
   @override
   int? get id;
@@ -351,5 +354,6 @@ abstract class _Cart implements Cart {
   List<Coupon>? get coupon;
   @override
   @JsonKey(ignore: true)
-  _$$_CartCopyWith<_$_Cart> get copyWith => throw _privateConstructorUsedError;
+  _$$CartImplCopyWith<_$CartImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

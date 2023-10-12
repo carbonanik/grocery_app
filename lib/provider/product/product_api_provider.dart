@@ -1,12 +1,26 @@
 import 'dart:convert';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/data_source/api/impl/product_api_impl.dart';
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/product_api_mock_impl.dart';
+import 'package:instant_grrocery_delivery/data_source/api/product_api.dart';
+import 'package:instant_grrocery_delivery/data_source/api/util/using_api_impl_for.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
-import 'package:instant_grrocery_delivery/provider/cart/cart_hive_notifier_provider.dart';
+import 'package:instant_grrocery_delivery/provider/api_server_provider.dart';
+import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
 import 'package:instant_grrocery_delivery/provider/favorite/favorite_hive_provider.dart';
 
-final productApiProvider = Provider((ref) => ProductApiMockImpl()); // todo mock
+final productApiProvider = Provider<ProductApi>((ref) {
+  final usingApi = ref.read(apiServerProvider);
+  switch (usingApi) {
+    case UsingApiImplFor.fastApiServer:
+      throw UnimplementedError();
+    case UsingApiImplFor.strapiServer:
+      return ProductApiImpl();
+    case UsingApiImplFor.mockServer:
+      return ProductApiMockImpl();
+  }
+});
 
 final getProductsProvider = FutureProvider<List<Product>>((ref) async {
   final api = ref.read(productApiProvider);

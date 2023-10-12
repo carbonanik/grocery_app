@@ -7,6 +7,6 @@ Future<void> simulateFetch() async {
   await Future.delayed(randmili.milliseconds);
   final rand = Random().nextInt(10);
   if (rand % 2 == 0) {
-    // throw Exception('Failed to fetch categories');
+    // throw Exception('Failed');
   }
 }

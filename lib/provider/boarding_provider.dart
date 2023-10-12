@@ -8,7 +8,7 @@ final previouslyBoardedProvider = FutureProvider(
 );
 
 final doneBoardingProvider = FutureProvider(
-  (ref) => ref.read(boardingProvider).donePreviouslyBoarding(),
+  (ref) => ref.read(boardingProvider).doneBoarding(),
 );
 
 final boardingPageStateProvider = StateProvider(

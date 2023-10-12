@@ -3,10 +3,69 @@
 part of 'order.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class OrderAdapter extends TypeAdapter<_$OrderImpl> {
+  @override
+  final int typeId = 4;
+
+  @override
+  _$OrderImpl read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$OrderImpl(
+      id: fields[0] as int,
+      userId: fields[1] as int?,
+      orderItems: (fields[2] as List).cast<OrderItem>(),
+      count: fields[3] as int,
+      totalPrice: fields[4] as String,
+      orderDate: fields[5] as String,
+      orderStatus: fields[6] as String,
+      coupons: (fields[7] as List).cast<Coupon>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$OrderImpl obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.userId)
+      ..writeByte(3)
+      ..write(obj.count)
+      ..writeByte(4)
+      ..write(obj.totalPrice)
+      ..writeByte(5)
+      ..write(obj.orderDate)
+      ..writeByte(6)
+      ..write(obj.orderStatus)
+      ..writeByte(2)
+      ..write(obj.orderItems)
+      ..writeByte(7)
+      ..write(obj.coupons);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
+_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       id: json['id'] as int,
       userId: json['userId'] as int?,
       orderItems: (json['orderItems'] as List<dynamic>)
@@ -21,7 +80,8 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
           .toList(),
     );
 
-Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
+Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,
       'orderItems': instance.orderItems,
