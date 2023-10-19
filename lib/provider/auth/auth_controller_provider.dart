@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
@@ -58,7 +60,7 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> implements
   void update(UpdateUserRequest updateUser) async {
     try {
       state = const ResultValue.loading(); // ? Loading state
-      final savedAuthUser = await ref.read(getAuthUserProvider);
+      final savedAuthUser = ref.read(getAuthUserProvider);
 
       if (savedAuthUser == null) {
         throw Exception('Failed to get auth user');
