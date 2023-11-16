@@ -32,15 +32,15 @@ class ProcessOrderController extends StateNotifier<ResultValue<Order>> {
   Future<void> processOrder() async {
     try {
       state = const ResultValue.loading();
-      final authUser = ref.read(getAuthUserProvider);
+      final authUser = await ref.read(getAuthUserProvider.future);
 
       if (authUser != null) {
         final order = ref.read(cartProvider).getOrderFromCart();
-
         final newOrder = await ref.read(orderApiProvider).createOrder(order!, authUser);
 
-        ref.read(ordersListProvider).addOrder(newOrder);
+        await ref.read(ordersListProvider).addOrder(newOrder);
         await ref.read(cartProvider).clearCart();
+
         state = ResultValue.data(newOrder);
         //
       } else {
@@ -49,6 +49,10 @@ class ProcessOrderController extends StateNotifier<ResultValue<Order>> {
     } on Exception catch (e) {
       state = ResultValue.error(e);
     }
+  }
+
+  void clear(){
+    state = const ResultValue.empty();
   }
 }
 

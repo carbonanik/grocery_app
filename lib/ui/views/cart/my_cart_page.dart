@@ -3,16 +3,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
+import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
-
-import '../../../provider/cart/cart_provider.dart';
-import '../../widget/cart_list_item.dart';
-import '../../widget/product_item.dart';
+import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
+import 'package:instant_grrocery_delivery/ui/widget/cart_list_item.dart';
+import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
 
 class MyCartPage extends StatelessWidget {
   const MyCartPage({Key? key}) : super(key: key);
@@ -57,12 +56,6 @@ class MyCartPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // const SizedBox(
-            //   height: kToolbarHeight,
-            // ),
-            // SizedBox(
-            //   height: Dimension.height(20),
-            // ),
             ConstrainedBox(
               constraints: BoxConstraints(
                 minHeight: Dimension.height(230),
@@ -91,46 +84,46 @@ class MyCartPage extends StatelessWidget {
 
   GestureDetector _addCouponCodeButton() {
     return GestureDetector(
-            onTap: () {
-              Get.toNamed(RouteHelper.getApplyCoupon());
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: Dimension.width(20), vertical: Dimension.height(20)),
-              margin: EdgeInsets.symmetric(horizontal: Dimension.height(20)),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(
-                  Dimension.height(10),
-                ),
-              ),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.label,
-                    color: accentColor,
-                    size: 20,
-                  ),
-                  SizedBox(
-                    width: Dimension.width(20),
-                  ),
-                  Text(
-                    'Add coupon code',
-                    style: TextStyle(
-                      fontSize: Dimension.height(16),
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    color: accentColor,
-                    size: 18,
-                  ),
-                ],
+      onTap: () {
+        Get.toNamed(RouteHelper.getApplyCoupon());
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20), vertical: Dimension.height(20)),
+        margin: EdgeInsets.symmetric(horizontal: Dimension.height(20)),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(
+            Dimension.height(10),
+          ),
+        ),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.label,
+              color: accentColor,
+              size: 20,
+            ),
+            SizedBox(
+              width: Dimension.width(20),
+            ),
+            Text(
+              'Add coupon code',
+              style: TextStyle(
+                fontSize: Dimension.height(16),
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
               ),
             ),
-          );
+            const Spacer(),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: accentColor,
+              size: 18,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Consumer _cartItemList() {
@@ -139,15 +132,15 @@ class MyCartPage extends StatelessWidget {
       final cartList = cartDataModel.cartList.values.toList();
       return Container(
         padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
-        child: ListView.builder(
+        child: cartList.isNotEmpty ?  ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Dismissible(
-              direction:  DismissDirection.endToStart,
+              direction: DismissDirection.endToStart,
               key: Key(cartList[index].id.toString()),
-              onDismissed: (direction) {
-                cartDataModel.itemRemove(cartList[index].product);
+              onDismissed: (direction) async {
+                await cartDataModel.itemRemove(cartList[index].product);
               },
               background: Padding(
                 padding: const EdgeInsets.only(top: 10),
@@ -166,13 +159,18 @@ class MyCartPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: CartListItem(
                   item: cartList[index],
-                  onAdd: () => cartDataModel.itemIncrement(cartList[index].product),
-                  onRemove: () => cartDataModel.itemDecrement(cartList[index].product),
+                  onAdd: () async => await cartDataModel.itemIncrement(cartList[index].product),
+                  onRemove: () async  => await cartDataModel.itemDecrement(cartList[index].product),
                 ),
               ),
             );
           },
           itemCount: cartList.length,
+        ) : const Padding(
+          padding: EdgeInsets.only(top: 100),
+          child: Center(
+            child: OopsNoData()
+          ),
         ),
       );
     });
@@ -239,7 +237,6 @@ class MyCartPage extends StatelessWidget {
                         Consumer(builder: (context, ref, child) {
                           final cartDataModel = ref.watch(cartProvider);
                           return Text('\$${cartDataModel.cartPrice()}',
-                              //'\$${cartDatabaseController.totalPrice.toStringAsFixed(2)}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,

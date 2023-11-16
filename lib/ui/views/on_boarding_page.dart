@@ -3,12 +3,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/gen/assets.gen.dart';
-import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/labels.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 
 class Constants {
   static const String seen = "seen";
@@ -30,10 +29,7 @@ class OnBoardingPage extends HookConsumerWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
 
   static final List<OnBoardingItem> _items = [
-    OnBoardingItem(
-        image: Assets.images.undrawOnTheWayReSwjt.path,
-        title: Labels.find,
-        description: Labels.findYour),
+    OnBoardingItem(image: Assets.images.undrawOnTheWayReSwjt.path, title: Labels.find, description: Labels.findYour),
     OnBoardingItem(
         image: Assets.images.undrawOnlineGroceriesA02y.path,
         title: Labels.productDelivery,
@@ -70,19 +66,20 @@ class OnBoardingPage extends HookConsumerWidget {
     }
 
     return Scaffold(
-      backgroundColor: theme.cardColor,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextButton(
-              onPressed: skip,
-              child: Text(index.value == 2 ? "HOME" : "SKIP"),
+            ActionButton(
+              enabled: true,
+              onTap: skip,
+              text: index.value == 2 ? "HOME" : "SKIP",
             ),
-            MaterialButton(
-              color: scheme.primary,
-              onPressed: () {
+            ActionButton(
+              enabled: true,
+              // color: scheme.primary,
+              onTap: () {
                 if (controller.index < 2) {
                   index.value = index.value + 1;
                   controller.animateTo(controller.index + 1);
@@ -90,13 +87,14 @@ class OnBoardingPage extends HookConsumerWidget {
                   done();
                 }
               },
-              child: Text(index.value == 2 ? "SIGN UP" : "NEXT"),
+              text: index.value == 2 ? "SIGN UP" : "NEXT",
+              color: backgroundColor,
+              textColor: accentColor,
             ),
           ],
         ),
       ),
       bottomSheet: Material(
-        color: theme.cardColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 32),
           child: Row(
@@ -108,9 +106,7 @@ class OnBoardingPage extends HookConsumerWidget {
                 child: Container(
                   decoration: ShapeDecoration(
                     shape: const StadiumBorder(),
-                    color: index.value == i
-                        ? scheme.tertiary
-                        : scheme.tertiaryContainer,
+                    color: index.value == i ? scheme.tertiary : scheme.tertiaryContainer,
                   ),
                   child: AnimatedSize(
                     duration: const Duration(milliseconds: 500),
@@ -134,22 +130,29 @@ class OnBoardingPage extends HookConsumerWidget {
                 padding: const EdgeInsets.all(24),
                 child: Column(
                   children: [
-                    Expanded(
-                      flex: 32,
+                    const Spacer(),
+                    Container(
+                      height: 400,
+                      width: 400,
+                      decoration: BoxDecoration(
+                        color: foregroundColor.withOpacity(.1),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
                       child: Image.asset(e.image),
-                    ),
-                    Text(
-                      e.title,
-                      style: style.headlineLarge,
-                      textAlign: TextAlign.center,
                     ),
                     const Spacer(),
                     Text(
-                      e.description,
-                      style: style.titleLarge,
+                      e.title,
+                      style: style.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
-                    const Spacer(flex: 4),
+                    const SizedBox(height: 8),
+                    Text(
+                      e.description,
+                      style: style.titleMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    const Spacer(),
                   ],
                 ),
               ),

@@ -1,14 +1,14 @@
+import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
-import 'package:intl/intl.dart';
-
-import '../../../../../main.dart';
-import '../../../../../model/order/order_item/order_item.dart';
-import '../../../../../provider/order/order_hive_provider.dart';
+import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
+import 'package:instant_grrocery_delivery/provider/order/order_hive_provider.dart';
 
 class OrderDetailsPage extends StatelessWidget {
   final int orderId;
+
   const OrderDetailsPage({
     required this.orderId,
     super.key,
@@ -17,6 +17,8 @@ class OrderDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: const MyAppBar(title: "Order Details"),
       backgroundColor: backgroundColor,
       body: Consumer(builder: (context, ref, child) {
         final orderAsyncData = ref.watch(orderByIdProvider(orderId));
@@ -28,17 +30,11 @@ class OrderDetailsPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                    height: 300,
-                    color: accentColor,
-                  ),
+                  Container(height: 300, color: accentColor),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: _estimatedTime(),
                   ),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
@@ -49,7 +45,6 @@ class OrderDetailsPage extends StatelessWidget {
                             const Text(
                               "Ordered Items",
                               style: TextStyle(
-                                // color: Colors.grey,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -68,9 +63,7 @@ class OrderDetailsPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Container(
@@ -80,13 +73,9 @@ class OrderDetailsPage extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Column(
                               children: List.generate(
                                 data.value?.orderItems.length ?? 0,
@@ -94,115 +83,67 @@ class OrderDetailsPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Divider(
-                            thickness: 3,
-                            color: backgroundColor,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          const Divider(thickness: 3, color: backgroundColor),
+                          const SizedBox(height: 20),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text(
                                       "Item Total",
-                                      style: TextStyle(
-                                        // color: Colors.grey,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       "${data.value!.count}\$",
-                                      style: const TextStyle(
-                                        // color: Colors.grey,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
+                                const SizedBox(height: 20),
                                 const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       "Delivery Fee",
-                                      style: TextStyle(
-                                        // color: Colors.grey,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       "100.0\$",
-                                      style: TextStyle(
-                                        // color: Colors.grey,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
                               ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Divider(
-                            thickness: 3,
-                            color: backgroundColor,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0,
-                            ),
+                          const SizedBox(height: 20),
+                          const Divider(thickness: 3, color: backgroundColor),
+                          const SizedBox(height: 20),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "Paid Via GroWallet",
-                                  style: TextStyle(
-                                    color: accentColor,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: TextStyle(color: accentColor, fontSize: 18, fontWeight: FontWeight.bold),
                                 ),
-                                const Text(
+                                Text(
                                   "100.0\$",
-                                  style: TextStyle(
-                                    // color: Colors.grey,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                         ],
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
             );
@@ -221,10 +162,7 @@ class OrderDetailsPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-          vertical: 20,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -245,23 +183,15 @@ class OrderDetailsPage extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       "08:30 min",
-                      style: TextStyle(
-                        // color: Colors.grey[700],
-                        fontSize: 30,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),
                 Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(
-                      Icons.person,
-                      size: 30,
-                    ))
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+                  child: const Icon(Icons.person, size: 30),
+                )
               ],
             ),
             const SizedBox(height: 20),
@@ -300,19 +230,11 @@ class OrderDetailsPage extends StatelessWidget {
           children: [
             Text(
               orderItem.product.name,
-              style: const TextStyle(
-                // color: Colors.grey,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
               "${orderItem.count * orderItem.product.price}\$",
-              style: const TextStyle(
-                // color: Colors.grey,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -325,9 +247,7 @@ class OrderDetailsPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(
-          height: 16,
-        )
+        const SizedBox(height: 16)
       ],
     );
   }

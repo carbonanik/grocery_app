@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/order/order_hive_provider.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'order_card.dart';
 
@@ -41,25 +42,37 @@ class MyOrdersPage extends StatelessWidget {
           ),
           Consumer(builder: (context, ref, child) {
             final orderDataModel = ref.watch(ordersListProvider);
-            final orderList =
-                orderDataModel.orderList.values.toList().reversed.toList();
+            final orderList = orderDataModel.orderList.values.toList().reversed.toList();
             return SliverPadding(
               padding: EdgeInsets.only(
                 left: Dimension.width(20),
                 right: Dimension.width(20),
                 top: Dimension.width(20),
               ),
-              sliver: SliverList.builder(
-                itemCount: orderList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: OrderCard(
-                      order: orderList[index],
+              sliver: orderList.isEmpty
+                  ? SliverFillRemaining(
+                      child: Center(
+                        child: Text(
+                          "No Orders",
+                          style: TextStyle(
+                            color: Colors.grey[900],
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    )
+                  : SliverList.builder(
+                      itemCount: orderList.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: OrderCard(
+                            order: orderList[index],
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
             );
           }),
         ],

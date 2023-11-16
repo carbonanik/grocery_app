@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/local/cart_local.dart';
 import 'package:instant_grrocery_delivery/data_source/local/impl/cart_local_impl.dart';
@@ -8,7 +9,10 @@ import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
 import 'package:instant_grrocery_delivery/model/order/dtos/order_create.dart';
 import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
+import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
+import 'package:instant_grrocery_delivery/provider/order/process_order_provider.dart';
+import 'package:instant_grrocery_delivery/util/extension/log.dart';
 
 final cartLocalProvider = Provider<CartLocal>((ref) {
   return CartLocalImpl();
@@ -26,17 +30,17 @@ class CartChangeNotifier extends ChangeNotifier {
 
   UnmodifiableMapView<int, CartItem> get cartList => UnmodifiableMapView(_cartList);
 
-  void itemIncrement(Product product) {
+  Future<void> itemIncrement(Product product) async {
     final prevCount = _cartList[product.id]?.count ?? 0;
     final newCartItem = CartItem(
       id: product.id,
       product: product,
       count: prevCount + 1,
     );
-    _add(newCartItem);
+    await _add(newCartItem);
   }
 
-  void itemDecrement(Product product) {
+  Future<void> itemDecrement(Product product) async {
     final prevCount = _cartList[product.id]?.count;
     if (prevCount == null) return;
 
@@ -46,36 +50,40 @@ class CartChangeNotifier extends ChangeNotifier {
         product: product,
         count: prevCount - 1,
       );
-      _add(newCartItem);
+      await _add(newCartItem);
     } else {
-      _remove(product.id);
+      await _remove(product.id);
     }
   }
 
-  void itemRemove(Product product) {
-    _remove(product.id);
+  Future<void> itemRemove(Product product) async {
+    await _remove(product.id);
   }
 
-  _add(cartItem) {
-    ref.read(cartLocalProvider).addCartItem(cartItem);
-    _dataChanged();
+  Future<void> _add(CartItem cartItem) async {
+    await ref.read(cartLocalProvider).addCartItem(cartItem);
+    final a = ref.read(processOrderControllerProvider);
+    if (a.isData) {
+      ref.read(processOrderControllerProvider.notifier).clear();
+    }
+    await _dataChanged();
   }
 
-  _remove(cartItemId) {
-    ref.read(cartLocalProvider).removeCartItem(cartItemId);
-    _dataChanged();
+  Future<void> _remove(cartItemId) async {
+    await ref.read(cartLocalProvider).removeCartItem(cartItemId);
+    await _dataChanged();
   }
 
   Future<void> clearCart() async {
     await ref.read(cartLocalProvider).clearCartItems();
-    _dataChanged();
+    await _dataChanged();
   }
 
-  void _dataChanged() {
+  Future<void> _dataChanged() async {
     _cartList.clear();
-    final d = ref.read(cartLocalProvider).getCartItems();
-    for (var e in d) {
-      _cartList[e.product.id] = e;
+    final cartItems = await ref.read(cartLocalProvider).getCartItems();
+    for (var item in cartItems) {
+      _cartList[item.product.id] = item;
     }
     notifyListeners();
   }

@@ -24,7 +24,7 @@ final supportApiProvider = Provider<SupportApi>((ref) {
 
 final createSupportProvider = FutureProvider.family<bool, CreateSupportDto>(
   (ref, arg) async {
-    final authUser = ref.read(getAuthUserProvider);
+    final authUser = await ref.read(getAuthUserProvider.future);
     if (authUser != null) {
       final r = await ref.read(supportApiProvider).createSupport(arg, authUser);
       return r;

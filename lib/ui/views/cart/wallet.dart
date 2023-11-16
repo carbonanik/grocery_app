@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/ui/views/cart/wallet_card.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({Key? key}) : super(key: key);
@@ -11,20 +12,13 @@ class Wallet extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: const MyAppBar(title: "Wallet"),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 10),
-            InkWell(
-              onTap: () => Get.back(),
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.arrow_back_ios_sharp),
-              ),
-            ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: WalletCard(),
@@ -37,8 +31,8 @@ class Wallet extends StatelessWidget {
                   right: 20,
                   top: 30,
                 ),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   ),

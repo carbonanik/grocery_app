@@ -8,27 +8,21 @@ const authUserId = 'auth_user_id';
 
 class AuthLocalImpl extends AuthLocal {
   @override
-  AuthResponse? getAuthUser() {
-    final box = Hive.box<AuthResponse>(HiveBoxName.authBox);
-    return box.get(authUserId);
-    // final authUserJson = box.get(authUserId);
-    // if (authUserJson != null) {
-    //   AuthResponse? authUser = AuthResponse.fromJson(jsonDecode(authUserJson));
-    //   return authUser;
-    // }
-    // return null;
+  Future<AuthResponse?> getAuthUser() async {
+    final box = Hive.lazyBox<AuthResponse>(HiveBoxName.authBox);
+    return await box.get(authUserId);
   }
 
   @override
-  bool putAuthUser(AuthResponse authUser)  {
-    final box = Hive.box<AuthResponse>(HiveBoxName.authBox);
-    box.put(authUserId, authUser);
+  Future<bool> putAuthUser(AuthResponse authUser) async {
+    final box = Hive.lazyBox<AuthResponse>(HiveBoxName.authBox);
+    await box.put(authUserId, authUser);
     return true;
   }
 
   @override
-  void removeAuthUser() async {
-    final box = Hive.box<AuthResponse>(HiveBoxName.authBox);
-    box.delete(authUserId);
+  Future<void> removeAuthUser() async {
+    final box = Hive.lazyBox<AuthResponse>(HiveBoxName.authBox);
+    await box.delete(authUserId);
   }
 }

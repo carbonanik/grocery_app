@@ -5,39 +5,37 @@ import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
 
 class CartLocalImpl extends CartLocal {
   @override
-  List<CartItem> getCartItems() {
-    final box = Hive.box<CartItem>(HiveBoxName.cartBox);
-    return box.values.toList();
-    // box.values.map((e) {
-    // return CartItem.fromJson(jsonDecode((e)));
-    // }).toList();
+  Future<List<CartItem>> getCartItems() async {
+    final box = Hive.lazyBox<CartItem>(HiveBoxName.cartBox);
+    Iterable<Future<CartItem?>> listOfFuture = box.keys.map((e) => box.get(e));
+    final cartList = await Future.wait(listOfFuture);
+    return cartList.whereType<CartItem>().toList();
   }
 
   @override
-  bool addCartItem(CartItem cartItem) {
-    final box = Hive.box<CartItem>(HiveBoxName.cartBox);
-    box.put(cartItem.id, cartItem);
+  Future<bool> addCartItem(CartItem cartItem) async {
+    final box = Hive.lazyBox<CartItem>(HiveBoxName.cartBox);
+    await box.put(cartItem.id, cartItem);
     return true;
   }
 
   @override
-  CartItem? getSingleCartItem(int cartItemId) {
-    final box = Hive.box<CartItem>(HiveBoxName.cartBox);
-    final cartItem = box.get(cartItemId);
+  Future<CartItem?> getSingleCartItem(int cartItemId) async {
+    final box = Hive.lazyBox<CartItem>(HiveBoxName.cartBox);
+    final cartItem = await box.get(cartItemId);
     return cartItem;
   }
 
   @override
-  bool removeCartItem(int cartItemId) {
-    final box = Hive.box<CartItem>(HiveBoxName.cartBox);
-    box.delete(cartItemId);
+  Future<bool> removeCartItem(int cartItemId) async {
+    final box = Hive.lazyBox<CartItem>(HiveBoxName.cartBox);
+    await box.delete(cartItemId);
     return true;
   }
 
   @override
   Future<void> clearCartItems() async {
-    final box = Hive.box<CartItem>(HiveBoxName.cartBox);
+    final box = Hive.lazyBox<CartItem>(HiveBoxName.cartBox);
     await box.clear();
-
   }
 }

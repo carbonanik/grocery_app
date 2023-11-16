@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/local/impl/order_local_impl.dart';
 import 'package:instant_grrocery_delivery/data_source/local/orders_local.dart';
 import 'package:instant_grrocery_delivery/model/order/order.dart';
+import 'package:instant_grrocery_delivery/util/extension/log.dart';
 
 final orderLocalProvider = Provider<OrderLocal>((ref) => OrderLocalImpl());
 
@@ -14,24 +15,30 @@ class OrdersChangeNotifier extends ChangeNotifier {
   final Map<int, Order> _orderList = {};
 
   OrdersChangeNotifier(this.ref) {
-    _dataChanged();
+    init();
   }
 
   Ref ref;
 
   UnmodifiableMapView<int, Order> get orderList => UnmodifiableMapView(_orderList);
 
-  void addOrder(Order order) {
-    ref.read(orderLocalProvider).addOrder(order);
-    _dataChanged();
+  void init() async {
+    await _dataChanged();
   }
 
-  void _dataChanged() async {
+  Future<void> addOrder(Order order) async {
+    await ref.read(orderLocalProvider).addOrder(order);
+    await _dataChanged();
+    orderList.length.log();
+  }
+
+  Future<void> _dataChanged() async {
     _orderList.clear();
-    final d = ref.read(orderLocalProvider).getOrders();
-    for (var e in d) {
-      _orderList[e.id] = e;
+    final orders = await ref.read(orderLocalProvider).getOrders();
+    for (var item in orders) {
+      _orderList[item.id] = item;
     }
+    _orderList.log();
     notifyListeners();
   }
 }
@@ -39,5 +46,5 @@ class OrdersChangeNotifier extends ChangeNotifier {
 final ordersListProvider = ChangeNotifierProvider((ref) => OrdersChangeNotifier(ref));
 
 final orderByIdProvider = FutureProvider.family<Order?, int>((ref, orderId) async {
-  return ref.read(orderLocalProvider).getSingleOrder(orderId);
+  return await ref.read(orderLocalProvider).getSingleOrder(orderId);
 });

@@ -16,8 +16,7 @@ import 'package:instant_grrocery_delivery/ui/widget/favorite_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
-
-import '../../widget/product_item.dart';
+import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
 
 class ProductDetailPage extends ConsumerWidget {
   ProductDetailPage({Key? key, required this.productId}) : super(key: key);
@@ -171,8 +170,8 @@ class ProductDetailPage extends ConsumerWidget {
                 final cartDataModel = ref.watch(cartProvider);
                 return AddRemoveButton(
                   quantity: cartDataModel.itemCount(productId),
-                  onAdd: () => cartDataModel.itemIncrement(product),
-                  onRemove: () => cartDataModel.itemDecrement(product),
+                  onAdd: () async => await cartDataModel.itemIncrement(product),
+                  onRemove: () async => await cartDataModel.itemDecrement(product),
                 );
               }),
             ],

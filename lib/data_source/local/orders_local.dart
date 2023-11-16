@@ -1,11 +1,11 @@
-import '../../model/order/order.dart';
+import 'package:instant_grrocery_delivery/model/order/order.dart';
 
 abstract class OrderLocal {
-  List<Order> getOrders();
+  Future<List<Order>> getOrders();
 
-  bool addOrder(Order order);
+  Future<bool> addOrder(Order order);
 
-  Order? getSingleOrder(int orderId);
+  Future<Order?> getSingleOrder(int orderId);
 
-  bool removeOrder(int orderId);
+  Future<bool> removeOrder(int orderId);
 }

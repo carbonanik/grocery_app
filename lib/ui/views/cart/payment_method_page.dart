@@ -5,13 +5,11 @@ import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/login_to_access.dart';
-import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
-
-import '../../../provider/cart/cart_provider.dart';
-import '../../../provider/order/process_order_provider.dart';
-import '../../../util/dimension.dart';
-import '../../widget/my_app_bar.dart';
-import '../../widget/payment_method_item.dart';
+import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
+import 'package:instant_grrocery_delivery/provider/order/process_order_provider.dart';
+import 'package:instant_grrocery_delivery/util/dimension.dart';
+import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
+import 'package:instant_grrocery_delivery/ui/widget/payment_method_item.dart';
 
 class PaymentMethodPage extends ConsumerWidget {
   const PaymentMethodPage({Key? key}) : super(key: key);
@@ -24,6 +22,7 @@ class PaymentMethodPage extends ConsumerWidget {
     );
 
     final orderState = ref.watch(processOrderControllerProvider);
+    final cartLength = ref.watch(cartProvider).cartList.length;
 
     return Scaffold(
       appBar: const MyAppBar(title: 'Payment Methods'),
@@ -64,15 +63,15 @@ class PaymentMethodPage extends ConsumerWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Dimension.width(30)),
                 child: ActionButton(
-                  enabled: orderState.isData || orderState.isLoading,
+                  enabled: cartLength != 0 && orderState.isEmpty,
                   text: orderState.isLoading
                       ? 'Loading...'
                       : orderState.isData
                           ? 'Payment Done'
                           : 'Instant Pay',
                   onTap: () {
-                          ref.read(processOrderControllerProvider.notifier).processOrder();
-                        },
+                    ref.read(processOrderControllerProvider.notifier).processOrder();
+                  },
                   icon: Icons.energy_savings_leaf,
                 ),
               ),
@@ -103,13 +102,8 @@ class PaymentMethodPage extends ConsumerWidget {
                     ),
                     SizedBox(height: Dimension.height(5)),
                     const PaymentMethodItem(
-                      name: 'PayU',
-                      icon: Icons.paypal,
-                    ),
-                    SizedBox(height: Dimension.height(5)),
-                    const PaymentMethodItem(
                       name: 'Stripe',
-                      icon: Icons.paypal,
+                      icon: Icons.double_arrow,
                     ),
 
                     /// pay with card
@@ -130,7 +124,7 @@ class PaymentMethodPage extends ConsumerWidget {
                     /// pay on delivery
                     SizedBox(height: Dimension.height(20)),
                     Text(
-                      'Pay on Delivery',
+                      'Cash',
                       style: TextStyle(
                         fontSize: Dimension.width(16),
                         fontWeight: FontWeight.w600,

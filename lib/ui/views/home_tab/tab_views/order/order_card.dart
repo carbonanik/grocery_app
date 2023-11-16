@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
-
-import '../../../../../main.dart';
-import '../../../../../model/order/order.dart';
-import '../../../../../route/route_helper.dart';
-import '../../../../../util/dimension.dart';
-import '../../../../widget/my_separetor.dart';
+import 'package:instant_grrocery_delivery/model/order/order.dart';
+import 'package:instant_grrocery_delivery/route/route_helper.dart';
+import 'package:instant_grrocery_delivery/util/dimension.dart';
+import 'package:instant_grrocery_delivery/ui/widget/my_separetor.dart';
 
 class OrderCard extends StatelessWidget {
   OrderCard({
@@ -37,7 +35,9 @@ class OrderCard extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                          left: Dimension.width(20), top: Dimension.height(15)),
+                        left: Dimension.width(20),
+                        top: Dimension.height(15),
+                      ),
                       child: Row(
                         children: [
                           Text(
@@ -59,9 +59,10 @@ class OrderCard extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          left: Dimension.width(20),
-                          right: Dimension.width(20),
-                          top: Dimension.height(10)),
+                        left: Dimension.width(20),
+                        right: Dimension.width(20),
+                        top: Dimension.height(10),
+                      ),
                       child: Text(
                         order.orderDate,
                         style: TextStyle(
@@ -101,15 +102,13 @@ class OrderCard extends StatelessWidget {
 
                     // Create a green circle
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: Dimension.width(10)),
+                      padding: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
                       child: Container(
                         height: Dimension.width(8),
                         width: Dimension.width(8),
                         decoration: BoxDecoration(
                           color: accentColor,
-                          borderRadius:
-                              BorderRadius.circular(Dimension.width(10)),
+                          borderRadius: BorderRadius.circular(Dimension.width(10)),
                         ),
                       ),
                     ),
@@ -130,10 +129,8 @@ class OrderCard extends StatelessWidget {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.green.shade50),
-                          foregroundColor:
-                              MaterialStateProperty.all(accentColor),
+                          backgroundColor: MaterialStateProperty.all(Colors.green.shade50),
+                          foregroundColor: MaterialStateProperty.all(accentColor),
                         ),
                         onPressed: () {},
                         child: Text(

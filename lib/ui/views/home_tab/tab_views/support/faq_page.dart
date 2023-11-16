@@ -1,68 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
-class Faqs extends StatelessWidget {
-  const Faqs({Key? key}) : super(key: key);
+class FaqsPage extends StatelessWidget {
+  const FaqsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 10),
-            InkWell(
-              onTap: () => Get.back(),
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.arrow_back_ios_sharp),
+      appBar: const MyAppBar(title: "FAQs"),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 30),
+              Text(
+                "Your questions got answered",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Colors.grey[800],
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  // const SizedBox(height: 50),
-                  const Text(
-                    "FAQs",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Your questions got answered",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height - 170,
-                    child: ListView.separated(
-                        // shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return const Faq();
-                        },
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(height: 10),
-                        itemCount: 10),
-                  ),
-                ],
+              const SizedBox(height: 40),
+              ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return const Faq();
+                },
+                separatorBuilder: (context, index) => const SizedBox(height: 10),
+                itemCount: 10,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -105,10 +80,7 @@ class _FaqState extends State<Faq> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text("How to loram ipsium dolor. ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: Colors.black54)),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black54)),
                   expanded
                       ? const Icon(
                           Icons.keyboard_arrow_up,
@@ -131,10 +103,7 @@ class _FaqState extends State<Faq> {
                 "Lorem ipsum dolor sit amet, "
                 "consectetur adipiscing elit. "
                 "Suspendisse varius enim in eros elementum tristique. ",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: Colors.black38)),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black38)),
           )
         ],
       ),

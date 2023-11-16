@@ -2,10 +2,10 @@ import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/ui/views/auth/sign_in_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/auth/verification.dart';
 import 'package:instant_grrocery_delivery/ui/views/cart/wallet.dart';
-import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/order/order_details.dart';
-import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/privacy_policy.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/order/order_details_page.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/privacy_policy_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/support.dart';
-import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/terms_and_conditions.dart';
+import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/terms_and_conditions_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/on_boarding_page.dart';
 
 import '../ui/views/auth/sign_up.dart';
@@ -15,7 +15,7 @@ import '../ui/views/cart/payment_method_page.dart';
 import '../ui/views/category/category_product_list_page.dart';
 import '../ui/views/category/category_tab.dart';
 import '../ui/views/home_tab/main_tabs.dart';
-import '../ui/views/home_tab/tab_views/support/faq.dart';
+import '../ui/views/home_tab/tab_views/support/faq_page.dart';
 import '../ui/views/product/product_detail_page.dart';
 import '../ui/views/profile/view_profile_page.dart';
 import '../ui/views/profile/update_profile_page.dart';
@@ -187,7 +187,7 @@ class RouteHelper {
     ),
     GetPage(
       name: _faqs,
-      page: () => const Faqs(),
+      page: () => const FaqsPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -197,12 +197,12 @@ class RouteHelper {
     ),
     GetPage(
       name: _termsAndCondition,
-      page: () => const TermsAndConditions(),
+      page: () => const TermsAndConditionsPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
       name: _privacyPolicy,
-      page: () => const PrivacyPolicy(),
+      page: () => const PrivacyPolicyPage(),
       transition: Transition.fadeIn,
     )
   ];

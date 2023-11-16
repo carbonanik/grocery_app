@@ -7,29 +7,30 @@ import 'package:instant_grrocery_delivery/model/order/order.dart';
 
 class OrderLocalImpl implements OrderLocal {
   @override
-  List<Order> getOrders() {
-    final box = Hive.box<Order>(HiveBoxName.orderBox);
-    return box.values.toList();
+  Future<List<Order>> getOrders() async {
+    final box = Hive.lazyBox<Order>(HiveBoxName.orderBox);
+    final listOfFuture = box.keys.map((e) => box.get(e));
+    final orders = await Future.wait(listOfFuture);
+    return orders.whereType<Order>().toList();
   }
 
   @override
-  bool addOrder(Order order)  {
-    final box = Hive.box<Order>(HiveBoxName.orderBox);
-    box.put(order.id, order);
+  Future<bool> addOrder(Order order) async {
+    final box = Hive.lazyBox<Order>(HiveBoxName.orderBox);
+    await box.put(order.id, order);
     return true;
   }
 
   @override
-  Order? getSingleOrder(int orderId) {
-    final box = Hive.box<Order>(HiveBoxName.orderBox);
-    // final Map<String, dynamic> cartItem = ;
-    return box.get(orderId);
+  Future<Order?> getSingleOrder(int orderId) async {
+    final box = Hive.lazyBox<Order>(HiveBoxName.orderBox);
+    return await box.get(orderId);
   }
 
   @override
-  bool removeOrder(int orderId)  {
-    final box = Hive.box<Order>(HiveBoxName.orderBox);
-    box.delete(orderId);
+  Future<bool> removeOrder(int orderId) async {
+    final box = Hive.lazyBox<Order>(HiveBoxName.orderBox);
+    await box.delete(orderId);
     return true;
   }
 }

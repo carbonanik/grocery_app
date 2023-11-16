@@ -4,11 +4,11 @@ import 'package:instant_grrocery_delivery/data_source/local/impl/boarding_local_
 final boardingProvider = Provider((ref) => BoardingLocalImpl());
 
 final previouslyBoardedProvider = FutureProvider(
-  (ref) => ref.read(boardingProvider).isPreviouslyBoarded(),
+  (ref) async => await ref.read(boardingProvider).isPreviouslyBoarded(),
 );
 
 final doneBoardingProvider = FutureProvider(
-  (ref) => ref.read(boardingProvider).doneBoarding(),
+  (ref) async => await ref.read(boardingProvider).doneBoarding(),
 );
 
 final boardingPageStateProvider = StateProvider(

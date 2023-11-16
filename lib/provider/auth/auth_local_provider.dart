@@ -8,12 +8,12 @@ final authLocalProvider = Provider<AuthLocal>((ref) {
   return AuthLocalImpl();
 });
 
-final getAuthUserProvider = Provider.autoDispose<AuthResponse?>((ref) {
-  return ref.read(authLocalProvider).getAuthUser();
+final getAuthUserProvider = FutureProvider.autoDispose<AuthResponse?>((ref) async {
+  return await ref.read(authLocalProvider).getAuthUser();
 });
 
-final saveAuthUserProvider = Provider.family<bool, AuthResponse>((ref, arg) {
-  return ref.read(authLocalProvider).putAuthUser(arg);
+final saveAuthUserProvider = FutureProvider.family<bool, AuthResponse>((ref, arg) async {
+  return await ref.read(authLocalProvider).putAuthUser(arg);
 });
 
 // class LocalAuthListener extends StateNotifier<AuthResult> {
