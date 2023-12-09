@@ -1,12 +1,9 @@
-# Instant Shop
+# Instant Grocery Shop
+**A simple shop app created using flutter. And uses RiverPod for state management.**
+
 ![Home & Products](/screenshot/shop-banner.jpg)
-## Shop app
-
-A simple shop app created using flutter. And uses RiverPod for state management.
-
 ---
-
-This app is currently under development. Please use it at your own risk. Any type of feedback is welcome.
+Introducing a dynamic and user-friendly shopping app crafted with Flutter and powered by RiverPod for seamless state management. As a work in progress, users are advised to use the application at their own discretion, understanding that it is currently undergoing development. We welcome and encourage all types of feedback to enhance the user experience and address any potential issues. Your input is invaluable in shaping this app into a reliable and efficient shopping companion. Explore its features, provide your insights, and be a part of the journey as we strive to create a top-notch shopping experience for our users.
 
 ## Main Feature and Functionality (With Description)
 
@@ -60,8 +57,3 @@ You can directly contact me on social media
 
 - [LinkedIn](https://www.linkedin.com/in/carbonanik)
 - [Twitter](https://twitter.com/carbonanik)
-- [Facebook](https://www.facebook.com/carbon.anik)
-
-<!-- or,
-
-[//]: # (You can visit my website [here]&#40;https://carbonanik.com&#41; -->)
