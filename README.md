@@ -1,4 +1,4 @@
-# Instant Grocery Shop
+# Grocery Shop
 **A simple shop app created using flutter. And uses RiverPod for state management.**
 
 ![Home & Products](/screenshot/shop-banner.jpg)
@@ -15,7 +15,6 @@ Introducing a dynamic and user-friendly shopping app crafted with Flutter and po
 |**Order Management:**|✅|Place orders for items in your cart. View your order history.|
 |**User Profile:**|✅|Create and manage your user profile.|
 |**Shop Management (Future):**|❌|Create your own shop. Add products to your shop.|
-
 
 ## Pattern and Language
 
