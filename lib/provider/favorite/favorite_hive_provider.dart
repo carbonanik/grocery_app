@@ -18,8 +18,7 @@ class FavoriteChangeNotifier extends ChangeNotifier {
 
   final Map<int, bool> _favoriteList = {};
 
-  UnmodifiableMapView<int, bool> get favoriteList =>
-      UnmodifiableMapView(_favoriteList);
+  UnmodifiableMapView<int, bool> get favoriteList => UnmodifiableMapView(_favoriteList);
 
   bool getIsFavorite(productId) {
     return favoriteList[productId] ?? false;

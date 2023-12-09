@@ -1,5 +1,5 @@
 # Instant Shop
-
+![Home & Products](/screenshot/shop-banner.jpg)
 ## Shop app
 
 A simple shop app created using flutter. And uses RiverPod for state management.

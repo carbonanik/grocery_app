@@ -6,14 +6,12 @@ import 'package:instant_grrocery_delivery/data_source/local/init_hive.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
-
 Future<void> main() async {
   await initHiveDriver();
   runApp(const ProviderScope(child: MyApp()));
 }
 
-const baseImageUrl =
-    "https://test-and-devops-environment.s3.amazonaws.com/photos/";
+const baseImageUrl = "https://test-and-devops-environment.s3.amazonaws.com/photos/";
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
