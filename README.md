@@ -1,5 +1,8 @@
-# Grocery Shop
-**A simple shop app created using flutter. And uses RiverPod for state management.**
+<h1 align="center">Grocery Shop</h1>
+
+<p align="center">
+<b>A simple shop app created using flutter. And uses RiverPod for state management.</b>
+</p>
 
 ![Home & Products](/screenshot/shop-banner.jpg)
 ---
