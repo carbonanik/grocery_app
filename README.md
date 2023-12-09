@@ -4,7 +4,7 @@
 <b>A simple shop app created using flutter. And uses RiverPod for state management.</b>
 </p>
 
-![Home & Products](/screenshot/shop-banner.jpg)
+![Home & Products](/screenshot/shop-banner-1.jpg)
 ---
 Introducing a dynamic and user-friendly shopping app crafted with Flutter and powered by RiverPod for seamless state management. As a work in progress, users are advised to use the application at their own discretion, understanding that it is currently undergoing development. We welcome and encourage all types of feedback to enhance the user experience and address any potential issues. Your input is invaluable in shaping this app into a reliable and efficient shopping companion. Explore its features, provide your insights, and be a part of the journey as we strive to create a top-notch shopping experience for our users.
 
