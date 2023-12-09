@@ -7,14 +7,15 @@ Introducing a dynamic and user-friendly shopping app crafted with Flutter and po
 
 ## Main Feature and Functionality (With Description)
 
-- Products & Categories view (✅)
-- Add or remove item to Cart (✅)
-- Favorite items (✅)
-- Order your cart items (✅)
-- View your orders (✅)
-- Create Profile (✅)
-- Create your own Shop (❌)
-- Add products to your shop (❌)
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+|**Products & Categories View**|✅|Browse through a variety of products and categories.|
+|**Cart Functionality**|✅|Easily add or remove items from your cart.|
+|**Favorites:**|✅|Mark your favorite items for quick access.|
+|**Order Management:**|✅|Place orders for items in your cart. View your order history.|
+|**User Profile:**|✅|Create and manage your user profile.|
+|**Shop Management (Future):**|❌|Create your own shop. Add products to your shop.|
+
 
 ## Pattern and Language
 
