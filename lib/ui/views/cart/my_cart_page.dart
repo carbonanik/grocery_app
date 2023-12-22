@@ -48,7 +48,7 @@ class MyCartPage extends StatelessWidget {
     );
   }
 
-  Widget _scrollArea(double bottomBarHeight, context) {
+  Widget _scrollArea(double bottomBarHeight, BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(

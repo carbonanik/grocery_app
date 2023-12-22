@@ -8,18 +8,19 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/local/init_hive.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
-import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_page.dart';
-import 'package:instant_grrocery_delivery/ui/views/product/product_detail_page.dart';
 
 Future<void> main() async {
   await initHiveDriver();
   runApp(
-     ProviderScope(
+    ProviderScope(
       child: DevicePreview(
+        isToolbarVisible: false,
+        backgroundColor: Colors.grey[900],
+        defaultDevice: Devices.android.mediumPhone,
         enabled: !kReleaseMode,
         builder: (context) {
           return const MyApp();
-        }
+        },
       ),
     ),
   );
@@ -54,7 +55,7 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices
   @override
   Set<PointerDeviceKind> get dragDevices => {
-    PointerDeviceKind.touch,
-    PointerDeviceKind.mouse,
-  };
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
