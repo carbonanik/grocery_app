@@ -1,9 +1,10 @@
-import 'package:get/get_utils/get_utils.dart';
+// import 'package:get/get_utils/get_utils.dart';
 import 'package:instant_grrocery_delivery/data_source/api/auth_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fetch.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
+import 'package:instant_grrocery_delivery/util/extension/list/extension.dart';
 
 class AuthApiMockImpl extends AuthApi {
   @override
@@ -70,6 +71,8 @@ class AuthApiMockImpl extends AuthApi {
     return User.fromJson(user);
   }
 }
+
+
 
 final userJson = [
   {

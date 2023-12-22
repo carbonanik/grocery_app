@@ -31,8 +31,8 @@ class ActionButton extends StatelessWidget {
       ),
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: Dimension.width(20),
-          vertical: Dimension.height(15),
+          horizontal: context.w(20),
+          vertical: context.h(15),
         ),
         // decoration: BoxDecoration(
         //   color: enabled ? color : Colors.grey,
@@ -41,7 +41,7 @@ class ActionButton extends StatelessWidget {
         child: Row(
           children: [
             icon != null ? Icon(icon, color: textColor) : const SizedBox(),
-            icon != null ? SizedBox(width: Dimension.width(10)) : const SizedBox(),
+            icon != null ? SizedBox(width: context.w(10)) : const SizedBox(),
             Text(
               text,
               style: TextStyle(

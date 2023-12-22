@@ -19,7 +19,7 @@ class AddRemoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Dimension.width(15), vertical: Dimension.height(10)),
+      padding: EdgeInsets.symmetric(horizontal: context.w(15), vertical: context.h(10)),
       decoration: BoxDecoration(color: accentColor, borderRadius: BorderRadius.circular(10)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

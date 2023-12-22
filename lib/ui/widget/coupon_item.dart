@@ -14,9 +14,9 @@ class CouponItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    height ??= Dimension.height(140);
+    height ??= context.h(140);
     return Container(
-      margin: EdgeInsets.only(bottom: Dimension.height(20)),
+      margin: EdgeInsets.only(bottom: context.h(20)),
       child: Stack(
         children: [
           Column(
@@ -26,26 +26,26 @@ class CouponItem extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(Dimension.width(10)),
+                  borderRadius: BorderRadius.circular(context.w(10)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: Dimension.width(20), top: Dimension.height(8)),
+                      padding: EdgeInsets.only(left: context.w(20), top: context.h(8)),
                       child: Text('Get 10% OFF',
                           style: TextStyle(
-                            fontSize: Dimension.width(18),
+                            fontSize: context.w(18),
                             fontWeight: FontWeight.w500,
                           )),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: Dimension.width(20), right: Dimension.width(20), top: Dimension.height(8)),
+                      padding: EdgeInsets.only(left: context.w(20), right: context.w(20), top: context.h(8)),
                       child: Text('Lorteas asjdfn asdkfj asdjfh urtyg bnjf3 4io hnou dfyhergf vcphj niysdb eruytgflghtpj fgjdfg7edrkldfg ',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: Dimension.width(12),
+                            fontSize: context.w(12),
                             fontWeight: FontWeight.w500,
                             color: Colors.black38,
                           )),
@@ -59,15 +59,15 @@ class CouponItem extends StatelessWidget {
                     color: Colors.black12,
                   )),
               Container(
-                height: height!/2 - Dimension.height(10),
+                height: height!/2 - context.h(10),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(Dimension.width(10)),
+                  borderRadius: BorderRadius.circular(context.w(10)),
                 ),
                 child: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: Dimension.width(20), top: Dimension.height(8)),
+                      padding: EdgeInsets.only(left: context.w(20), top: context.h(8)),
                       child: ElevatedButton(
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
@@ -82,14 +82,14 @@ class CouponItem extends StatelessWidget {
                         onPressed: () {},
                         child: Text('GET50GH',
                             style: TextStyle(
-                              fontSize: Dimension.width(18),
+                              fontSize: context.w(18),
                               fontWeight: FontWeight.w500,
                             )),
                       ),
                     ),
                     Spacer(),
                     Padding(
-                      padding: EdgeInsets.only(right: Dimension.width(20), top: Dimension.height(10)),
+                      padding: EdgeInsets.only(right: context.w(20), top: context.h(10)),
                       child: ElevatedButton(
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
@@ -99,7 +99,7 @@ class CouponItem extends StatelessWidget {
                         onPressed: () {},
                         child: Text('APPLY',
                             style: TextStyle(
-                              fontSize: Dimension.width(18),
+                              fontSize: context.w(18),
                               fontWeight: FontWeight.w500,
                             )),
                       ),
@@ -110,26 +110,26 @@ class CouponItem extends StatelessWidget {
             ],
           ),
           Positioned(
-            left: Dimension.width(-10),
+            left: context.w(-10),
             top: height!/2 - 8.8,
             child: Container(
-              height: Dimension.width(20),
-              width: Dimension.width(20),
+              height: context.w(20),
+              width: context.w(20),
               decoration: BoxDecoration(
                 color: backgroundColor,
-                borderRadius: BorderRadius.circular(Dimension.width(10)),
+                borderRadius: BorderRadius.circular(context.w(10)),
               ),
             ),
           ),
           Positioned(
-            right: Dimension.width(-10),
+            right: context.w(-10),
             top: height!/2 - 8.8,
             child: Container(
-              height: Dimension.width(20),
-              width: Dimension.width(20),
+              height: context.w(20),
+              width: context.w(20),
               decoration: BoxDecoration(
                 color: backgroundColor,
-                borderRadius: BorderRadius.circular(Dimension.width(10)),
+                borderRadius: BorderRadius.circular(context.w(10)),
               ),
             ),
           ),

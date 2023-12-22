@@ -19,7 +19,7 @@ class TransparentTopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: kToolbarHeight,
-      padding: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
+      padding: EdgeInsets.symmetric(horizontal: context.w(10)),
       color: backgroundColor.withAlpha(100),
       child: Row(children: [
         BackButton(

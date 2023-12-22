@@ -1,20 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
+@RoutePage()
 class PrivacyPolicyPage extends StatelessWidget {
   const PrivacyPolicyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: MyAppBar(title: "Privacy Policy",),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 10),
-            const Padding(
+            SizedBox(height: 10),
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

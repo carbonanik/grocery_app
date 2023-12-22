@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_category.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
@@ -32,57 +34,55 @@ class HomePage extends StatelessWidget {
     ];
 
     return Scaffold(
-      floatingActionButton: Consumer(
-        builder: (context, ref, child) {
-          final cartDataModel = ref.watch(cartProvider);
-          return  MyActionButton(
-            count: cartDataModel.cartCount(),
-          );
-        }
-      ),
+      floatingActionButton: Consumer(builder: (context, ref, child) {
+        final cartDataModel = ref.watch(cartProvider);
+        return MyActionButton(
+          count: cartDataModel.cartCount(),
+        );
+      }),
       body: Container(
         color: backgroundColor,
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
             /// top selector
-            _buildHeader(),
-            _sliverSpace(),
+            _buildHeader(context),
+            _sliverSpace(context: context),
 
             /// image gallery
-            _buildImageGallery(featuredImages),
-            _sliverSpace(height: 40),
+            _buildImageGallery(context, featuredImages),
+            _sliverSpace(context: context, height: 40),
 
             /// search box
-            _buildSearchBox(),
-            _sliverSpace(),
+            _buildSearchBox(context),
+            _sliverSpace(context: context),
 
             /// Category Text
-            _buildSectionHeader('Category'),
+            _buildSectionHeader(context, 'Category'),
 
             /// category list
-            _buildCategoryList(),
-            _sliverSpace(),
+            _buildCategoryList(context),
+            _sliverSpace(context: context),
 
             /// popular text
-            _buildSectionHeader('Popular'),
+            _buildSectionHeader(context, 'Popular'),
 
             /// popular list
-            _buildProductGrid(),
-            _sliverSpace()
+            _buildProductGrid(context),
+            _sliverSpace(context: context)
           ],
         ),
       ),
     );
   }
 
-  SliverToBoxAdapter _buildCategoryList() {
+  SliverToBoxAdapter _buildCategoryList(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+        padding: EdgeInsets.symmetric(horizontal: context.w(20)),
         height: 140,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dimension.height(12)),
+          borderRadius: BorderRadius.circular(context.h(12)),
         ),
         child: Consumer(builder: (context, ref, child) {
           final responseAsyncValue = ref.watch(getCategoriesProvider);
@@ -92,8 +92,8 @@ class HomePage extends StatelessWidget {
                 : GridView.count(
                     crossAxisCount: 2,
                     scrollDirection: Axis.horizontal,
-                    mainAxisSpacing: Dimension.width(10),
-                    crossAxisSpacing: Dimension.height(10),
+                    mainAxisSpacing: context.w(10),
+                    crossAxisSpacing: context.h(10),
                     childAspectRatio: .4,
                     children: List.generate(
                       data.value.length,
@@ -118,12 +118,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildSearchBox() {
+  SliverToBoxAdapter _buildSearchBox(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+        padding: EdgeInsets.symmetric(horizontal: context.w(20)),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dimension.height(12)),
+          borderRadius: BorderRadius.circular(context.h(12)),
         ),
         child: TextField(
           decoration: InputDecoration(
@@ -135,33 +135,33 @@ class HomePage extends StatelessWidget {
                 color: accentColor,
               ),
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(Dimension.height(10)),
+                  borderRadius: BorderRadius.circular(context.h(10)),
                   borderSide: const BorderSide(width: 1.0, color: Colors.green)),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(Dimension.height(10)),
+                  borderRadius: BorderRadius.circular(context.h(10)),
                   borderSide: const BorderSide(width: 1.0, color: Colors.white)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimension.height(20)),
+                borderRadius: BorderRadius.circular(context.h(20)),
               )),
         ),
       ),
     );
   }
 
-  SliverToBoxAdapter _buildImageGallery(List<String> featuredImages) {
+  SliverToBoxAdapter _buildImageGallery(BuildContext context, List<String> featuredImages) {
     return SliverToBoxAdapter(
       child: Container(
-        height: Dimension.height(150),
-        width: Dimension.width(300),
+        height: context.h(150),
+        width: context.w(300),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dimension.height(12)),
+          borderRadius: BorderRadius.circular(context.h(12)),
         ),
         child: PageView.builder(
             itemCount: featuredImages.length,
             itemBuilder: (context, index) {
               return Container(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
-                margin: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(10)),
+                margin: EdgeInsets.symmetric(horizontal: context.w(20)),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: index.isOdd ? Colors.lightGreen.shade200 : Colors.green.shade200,
@@ -176,14 +176,17 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildHeader() {
+  SliverToBoxAdapter _buildHeader(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.only(left: Dimension.width(20), right: Dimension.width(20), top: Dimension.height(30)),
+        padding: EdgeInsets.only(left: context.w(20), right: context.w(20), top: context.h(30)),
         child: Row(
           children: [
             InkWell(
-              onTap: () => Get.toNamed(RouteHelper.getYourLocation()),
+              onTap: () {
+                // Get.toNamed(RouteHelper.getYourLocation());
+                AutoRouter.of(context).push(const YourLocationRoute());
+              },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -191,24 +194,26 @@ class HomePage extends StatelessWidget {
                     children: [
                       Text(
                         'Amazon sparklers',
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: Dimension.width(20), color: Colors.black),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: context.w(20), color: Colors.black),
                       ),
                       const Icon(Icons.arrow_drop_down)
                     ],
                   ),
-                  SizedBox(height: Dimension.height(8)),
+                  SizedBox(height: context.h(8)),
                   Text('Terminal 3 potter road new york',
-                      style: TextStyle(fontSize: Dimension.width(16), color: Colors.grey)),
+                      style: TextStyle(fontSize: context.w(16), color: Colors.grey)),
                 ],
               ),
             ),
             const Spacer(),
             InkWell(
-              onTap: () => Get.toNamed(RouteHelper.getWallet()),
+              onTap: () {
+                // Get.toNamed(RouteHelper.getWallet());
+                AutoRouter.of(context).push(const WalletRoute());
+              },
               child: Icon(
                 Icons.wallet,
-                size: Dimension.width(45),
+                size: context.w(45),
                 color: accentColor,
               ),
             )
@@ -218,20 +223,20 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _sliverSpace({double height = 30}) {
+  SliverToBoxAdapter _sliverSpace({required BuildContext context, double height = 30}) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: Dimension.height(height),
+        height: context.h(height),
       ),
     );
   }
 
-  SliverToBoxAdapter _buildSectionHeader(String text) {
+  SliverToBoxAdapter _buildSectionHeader(BuildContext context, String text) {
     return SliverToBoxAdapter(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+        padding: EdgeInsets.symmetric(horizontal: context.w(20)),
         // decoration: BoxDecoration(
-        //   borderRadius: BorderRadius.circular(Dimension.height(12)),
+        //   borderRadius: BorderRadius.circular(context.h(12)),
         // color: Colors.green,
         // ),
         child: Column(
@@ -245,7 +250,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: Dimension.height(20),
+              height: context.h(20),
             ),
           ],
         ),
@@ -253,9 +258,9 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SliverPadding _buildProductGrid() {
+  SliverPadding _buildProductGrid(BuildContext context) {
     return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+      padding: EdgeInsets.symmetric(horizontal: context.w(20)),
       sliver: Consumer(
         builder: (context, ref, child) {
           final responseAsyncValue = ref.watch(getPopularProductProvider);
@@ -264,8 +269,8 @@ class HomePage extends StatelessWidget {
                 ? const SliverToBoxAdapter(child: OopsNoData())
                 : SliverGrid.count(
                     crossAxisCount: 2,
-                    mainAxisSpacing: Dimension.width(20),
-                    crossAxisSpacing: Dimension.width(20),
+                    mainAxisSpacing: context.w(20),
+                    crossAxisSpacing: context.w(20),
                     childAspectRatio: .699,
                     children: List.generate(data.value.length, (index) {
                       final Product item = data.value[index];
@@ -313,13 +318,13 @@ class CustomSilverHeaderDelegate extends SliverPersistentHeaderDelegate {
           ),
         ),
         Positioned(
-            left: Dimension.width(16),
-            right: Dimension.width(16),
-            bottom: Dimension.height(16),
+            left: context.w(16),
+            right: context.w(16),
+            bottom: context.h(16),
             child: Text(
               'Lorem ipsome',
               style: TextStyle(
-                fontSize: Dimension.height(32),
+                fontSize: context.h(32),
                 color: Colors.white.withOpacity(
                   titleOpacity(shrinkOffset),
                 ),

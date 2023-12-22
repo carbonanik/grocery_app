@@ -1,25 +1,24 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
-import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
 
-import '../../../provider/auth/login_controller_provider.dart';
 import '../../../route/route_helper.dart';
 import '../../widget/auth_button.dart';
 import '../../widget/input_field.dart';
-import '../../widget/my_app_bar.dart';
 import '../../widget/social_button.dart';
 
-class SignInPage extends ConsumerWidget {
-  SignInPage({Key? key}) : super(key: key);
+@RoutePage()
+class LoginPage extends ConsumerWidget {
+  LoginPage({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final emailTextController = TextEditingController(text: 'u1@email.com');
@@ -37,7 +36,8 @@ class SignInPage extends ConsumerWidget {
             );
           },
           data: (value) {
-            Get.offAndToNamed(RouteHelper.getHomeTab());
+            // Get.offAndToNamed(RouteHelper.getHomeTab());
+            AutoRouter.of(context).push(const MainTabsRoute());
           },
         );
       },
@@ -61,16 +61,14 @@ class SignInPage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: Dimension.height(40)),
+              SizedBox(height: context.h(40)),
               Stack(
                 children: [
                   Center(
                     child: Container(
                       height: 100,
                       width: 100,
-                      decoration: BoxDecoration(
-                          color: accentColor,
-                          borderRadius: BorderRadius.circular(100)),
+                      decoration: BoxDecoration(color: accentColor, borderRadius: BorderRadius.circular(100)),
                     ),
                   ),
                   Positioned(
@@ -80,36 +78,36 @@ class SignInPage extends ConsumerWidget {
                     right: 0,
                     child: Icon(
                       Icons.person,
-                      size: Dimension.width(90),
+                      size: context.w(90),
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: Dimension.height(40)),
+              SizedBox(height: context.h(40)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: Text(
                   'Hi Mate!',
                   style: TextStyle(
-                    fontSize: Dimension.width(15),
+                    fontSize: context.w(15),
                     fontWeight: FontWeight.w500,
                     color: Colors.black54,
                   ),
                 ),
               ),
-              SizedBox(height: Dimension.height(5)),
+              SizedBox(height: context.h(5)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: Text(
                   'Sign in Now',
                   style: TextStyle(
-                    fontSize: Dimension.width(30),
+                    fontSize: context.w(30),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              SizedBox(height: Dimension.height(35)),
+              SizedBox(height: context.h(35)),
 
               /// phone number field
               InputField(
@@ -132,7 +130,7 @@ class SignInPage extends ConsumerWidget {
 
               // CountrySelectField(),
 
-              SizedBox(height: Dimension.height(35)),
+              SizedBox(height: context.h(30)),
 
               /// login button
               AuthButton(
@@ -146,9 +144,7 @@ class SignInPage extends ConsumerWidget {
                             identifier: emailTextController.text,
                             password: passwordTextController.text,
                           );
-                          ref
-                              .read(authControllerProvider.notifier)
-                              .login(loginUser);
+                          ref.read(authControllerProvider.notifier).login(loginUser);
                         }
                       },
                 text: loginState.isLoading
@@ -158,35 +154,61 @@ class SignInPage extends ConsumerWidget {
                         : 'Continue',
                 color: loginState.isLoading ? Colors.grey : null,
               ),
-
-              Container(
-                child: SizedBox(height: Dimension.height(50)),
+              SizedBox(height: context.h(4)),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        // Get.toNamed(RouteHelper.getSignUp());
+                        AutoRouter.of(context).push( SignUpRoute());
+                      },
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(fontSize: context.w(16), fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // Get.toNamed(RouteHelper.getSignUp());
+                        // AutoRouter.of(context).push(ForgotPasswordRoute());
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(fontSize: context.w(16), fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                ),
               ),
+
+              SizedBox(height: context.h(40)),
 
               // terms and condition
               Center(
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                   child: Text(
                     'Or Continue with',
                     style: TextStyle(
-                      fontSize: Dimension.width(16),
+                      fontSize: context.w(16),
                       fontWeight: FontWeight.w500,
                       color: Colors.black54,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: Dimension.height(30)),
+              SizedBox(height: context.h(30)),
 
               Container(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: Row(
                   children: [
                     /// google login
                     const SocialLoginButton(text: 'Google'),
-                    SizedBox(width: Dimension.width(20)),
+                    SizedBox(width: context.w(20)),
 
                     /// facebook login button
                     const SocialLoginButton(text: 'Facebook'),

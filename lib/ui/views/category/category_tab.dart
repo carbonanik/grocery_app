@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -7,11 +8,12 @@ import '../../widget/side_tab.dart';
 import 'category_product_list_page.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
-class CategoryTab extends StatelessWidget {
-  const CategoryTab({
+@RoutePage()
+class CategoryTabPage extends StatelessWidget {
+  const CategoryTabPage({
     Key? key,
     // this.preSelectedTab = 0,
-    this.selectedCategoryId,
+    @PathParam("category-id") this.selectedCategoryId,
   }) : super(key: key);
 
   // final int preSelectedTab;

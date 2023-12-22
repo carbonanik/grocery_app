@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/signup_controller_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
 import 'package:instant_grrocery_delivery/ui/widget/input_field.dart';
@@ -17,8 +19,9 @@ import '../../../route/route_helper.dart';
 import '../../widget/auth_button.dart';
 import '../../widget/my_app_bar.dart';
 
-class SignUp extends ConsumerWidget {
-  SignUp({Key? key}) : super(key: key);
+@RoutePage()
+class SignUpPage extends ConsumerWidget {
+  SignUpPage({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final nameTextController = TextEditingController();
@@ -33,7 +36,8 @@ class SignUp extends ConsumerWidget {
       (_, state) {
         state.whenOrNull(
           data: (value) {
-            Get.toNamed(RouteHelper.getHomeTab());
+            // Get.toNamed(RouteHelper.getHomeTab());
+            AutoRouter.of(context).push(const MainTabsRoute());
           },
           error: (error) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -55,30 +59,30 @@ class SignUp extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: Dimension.height(40)),
+                SizedBox(height: context.h(40)),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                   child: Text(
                     'Sign up Now',
                     style: TextStyle(
-                      fontSize: Dimension.width(30),
+                      fontSize: context.w(30),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                SizedBox(height: Dimension.height(10)),
+                SizedBox(height: context.h(10)),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                   child: Text(
                     'Looks like you are new here.',
                     style: TextStyle(
-                      fontSize: Dimension.width(15),
+                      fontSize: context.w(15),
                       fontWeight: FontWeight.w500,
                       color: Colors.black54,
                     ),
                   ),
                 ),
-                SizedBox(height: Dimension.height(20)),
+                SizedBox(height: context.h(20)),
 
                 /// name field
                 InputField(
@@ -115,7 +119,7 @@ class SignUp extends ConsumerWidget {
                   validator: validatePassword,
                 ),
 
-                SizedBox(height: Dimension.height(35)),
+                SizedBox(height: context.h(30)),
 
                 /// login button
                 AuthButton(
@@ -144,18 +148,18 @@ class SignUp extends ConsumerWidget {
                 ),
 
                 Container(
-                  child: SizedBox(height: Dimension.height(40)),
+                  child: SizedBox(height: context.h(40)),
                 ),
 
                 // terms and condition
                 Center(
                   child: Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                        EdgeInsets.symmetric(horizontal: context.w(20)),
                     child: Text(
                       'By signing up, you agree to our',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: context.w(16),
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
@@ -164,16 +168,16 @@ class SignUp extends ConsumerWidget {
                 ),
 
                 //space
-                SizedBox(height: Dimension.height(5)),
+                SizedBox(height: context.h(5)),
 
                 Center(
                   child: Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                        EdgeInsets.symmetric(horizontal: context.w(20)),
                     child: Text(
                       'Terms and Conditions',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: context.w(16),
                         fontWeight: FontWeight.w500,
                         color: accentColor,
                       ),

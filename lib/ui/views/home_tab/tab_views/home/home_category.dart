@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/category/category.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 import '../../../../../route/route_helper.dart';
@@ -22,9 +24,10 @@ class HomeCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(
-          RouteHelper.getCategoryTab(selectedCategoryId: category.id),
-        );
+        // Get.toNamed(
+        //   RouteHelper.getCategoryTab(selectedCategoryId: category.id),
+        // );
+        AutoRouter.of(context).push(CategoryTabRoute(selectedCategoryId: category.id));
       },
       child: Container(
         padding: const EdgeInsets.only(left: 2, right: 10, top: 3, bottom: 3),
@@ -36,22 +39,22 @@ class HomeCategory extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(Dimension.width(4)),
+              padding: EdgeInsets.all(context.w(4)),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(Dimension.height(5)),
+                borderRadius: BorderRadius.circular(context.h(5)),
                 child: Image.network(
                   '$baseImageUrl${category.image}',
                   fit: BoxFit.cover,
-                  height: Dimension.width(50),
-                  width: Dimension.width(50),
+                  height: context.w(50),
+                  width: context.w(50),
                   errorBuilder: (context, error, stackTrace) {
-                    return Icon(Icons.image);
+                    return const Icon(Icons.image);
                   },
                 ),
               ),
             ),
             SizedBox(
-              width: Dimension.width(5),
+              width: context.w(5),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

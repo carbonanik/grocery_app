@@ -20,7 +20,7 @@ class CreateShop extends StatelessWidget {
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(height: Dimension.height(60)),
+              SizedBox(height: context.h(60)),
               Stack(
                 children: [
                   Center(
@@ -39,36 +39,36 @@ class CreateShop extends StatelessWidget {
                     right: 0,
                     child: Icon(
                       Icons.shop,
-                      size: Dimension.width(70),
+                      size: context.w(70),
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: Dimension.height(40)),
+              SizedBox(height: context.h(40)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: Text(
                   'Starting a new business?',
                   style: TextStyle(
-                    fontSize: Dimension.width(15),
+                    fontSize: context.w(15),
                     fontWeight: FontWeight.w500,
                     color: Colors.black54,
                   ),
                 ),
               ),
-              SizedBox(height: Dimension.height(5)),
+              SizedBox(height: context.h(5)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: Text(
                   'Create Shop',
                   style: TextStyle(
-                    fontSize: Dimension.width(30),
+                    fontSize: context.w(30),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              SizedBox(height: Dimension.height(35)),
+              SizedBox(height: context.h(35)),
               InputField(
                 title: 'Enter a shop name',
                 hint: 'Shop name',
@@ -84,7 +84,7 @@ class CreateShop extends StatelessWidget {
                 // obscureText: true,
                 // validator: validatePassword,
               ),
-              SizedBox(height: Dimension.height(35)),
+              SizedBox(height: context.h(35)),
               AuthButton(
                 onPressed: () {
                   final isValid = _formKey.currentState?.validate() ?? false;

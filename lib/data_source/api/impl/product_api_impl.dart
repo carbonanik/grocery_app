@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:get/get_utils/get_utils.dart';
+// import 'package:get/get_utils/get_utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:instant_grrocery_delivery/data_source/api/product_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
