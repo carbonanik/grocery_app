@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
@@ -6,8 +7,9 @@ import '../../../util/dimension.dart';
 import '../../widget/coupon_item.dart';
 import '../../widget/my_app_bar.dart';
 
-class ApplyCoupon extends StatelessWidget {
-  const ApplyCoupon({Key? key}) : super(key: key);
+@RoutePage()
+class ApplyCouponPage extends StatelessWidget {
+  const ApplyCouponPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

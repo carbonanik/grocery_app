@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
@@ -18,9 +19,10 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(
-          RouteHelper.getCategoryTab(selectedCategoryId: category.id),
-        );
+        // Get.toNamed(
+        //   RouteHelper.getCategoryTab(selectedCategoryId: category.id),
+        // );
+        AppRouter().push(CategoryTabRoute(selectedCategoryId: category.id));
       },
       child: Container(
         height: 60,

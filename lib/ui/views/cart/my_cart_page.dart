@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
@@ -13,6 +15,7 @@ import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
 import 'package:instant_grrocery_delivery/ui/widget/cart_list_item.dart';
 import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
 
+@RoutePage()
 class MyCartPage extends StatelessWidget {
   const MyCartPage({Key? key}) : super(key: key);
 
@@ -85,7 +88,8 @@ class MyCartPage extends StatelessWidget {
   GestureDetector _addCouponCodeButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(RouteHelper.getApplyCoupon());
+        // Get.toNamed(RouteHelper.getApplyCoupon());
+        AutoRouter.of(context).push(const ApplyCouponRoute());
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: context.w(20), vertical: context.h(20)),
@@ -215,7 +219,10 @@ class MyCartPage extends StatelessWidget {
                     ),
                     const Spacer(),
                     InkWell(
-                      onTap: () => Get.toNamed(RouteHelper.getYourLocation()),
+                      onTap: () {
+                        // Get.toNamed(RouteHelper.getYourLocation());
+                        AutoRouter.of(context).push(const YourLocationRoute());
+                      },
                       child: Text(
                         'Change',
                         style: TextStyle(
@@ -261,7 +268,8 @@ class MyCartPage extends StatelessWidget {
                     ActionButton(
                       enabled: true,
                       onTap: () {
-                        Get.toNamed(RouteHelper.getPaymentMethod());
+                        // Get.toNamed(RouteHelper.getPaymentMethod());
+                        AutoRouter.of(context).push(const PaymentMethodRoute());
                       },
                       text: 'Continue Pay',
                       icon: Icons.payment,

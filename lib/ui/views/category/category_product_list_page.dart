@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
@@ -10,8 +11,12 @@ import '../../../util/dimension.dart';
 import '../../widget/category_item.dart';
 import '../../widget/product_item.dart';
 
+@RoutePage()
 class CategoryProductListPage extends StatelessWidget {
-  const CategoryProductListPage({Key? key, required this.selectedCategoryId}) : super(key: key);
+  const CategoryProductListPage({
+    Key? key,
+    @PathParam("category-id") required this.selectedCategoryId,
+  }) : super(key: key);
 
   final int selectedCategoryId;
 

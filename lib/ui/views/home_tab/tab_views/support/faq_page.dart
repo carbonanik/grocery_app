@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
+
+@RoutePage()
 class FaqsPage extends StatelessWidget {
   const FaqsPage({Key? key}) : super(key: key);
 

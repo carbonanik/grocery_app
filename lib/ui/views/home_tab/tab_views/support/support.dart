@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
@@ -11,6 +12,8 @@ import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import '../../../../../main.dart';
 import '../../../../widget/auth_button.dart';
 
+
+@RoutePage()
 class SupportPage extends StatelessWidget {
   SupportPage({Key? key}) : super(key: key);
 

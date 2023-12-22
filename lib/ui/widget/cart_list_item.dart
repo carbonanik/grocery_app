@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
@@ -36,7 +38,8 @@ class CartListItem extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Get.toNamed(RouteHelper.getProductDetail(item.product.id));
+              // Get.toNamed(RouteHelper.getProductDetail(item.product.id));
+              AutoRouter.of(context).push(ProductDetailRoute(productId: item.product.id));
             },
             child: Image.network(
               baseImageUrl + item.product.image,

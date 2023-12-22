@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/order/order.dart';
@@ -11,6 +12,7 @@ import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/ui/widget/payment_method_item.dart';
 
+@RoutePage()
 class PaymentMethodPage extends ConsumerWidget {
   const PaymentMethodPage({Key? key}) : super(key: key);
 

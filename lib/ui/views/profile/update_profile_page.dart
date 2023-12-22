@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
@@ -11,6 +12,7 @@ import 'package:instant_grrocery_delivery/ui/widget/auth_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/input_field.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
+@RoutePage()
 class UpdateProfilePage extends ConsumerWidget {
   UpdateProfilePage({Key? key}) : super(key: key);
 

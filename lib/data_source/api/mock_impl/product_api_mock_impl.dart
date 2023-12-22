@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:get/get_utils/get_utils.dart';
+// import 'package:get/get_utils/get_utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fetch.dart';
 import 'package:instant_grrocery_delivery/data_source/api/product_api.dart';

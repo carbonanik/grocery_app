@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
@@ -6,6 +7,7 @@ import '../../../util/dimension.dart';
 import '../../widget/auth_button.dart';
 import '../../widget/input_field.dart';
 
+@RoutePage()
 class VerificationPage extends StatelessWidget {
   const VerificationPage({Key? key}) : super(key: key);
 

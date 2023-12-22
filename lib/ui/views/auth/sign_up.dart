@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/signup_controller_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
 import 'package:instant_grrocery_delivery/ui/widget/input_field.dart';
@@ -17,8 +19,9 @@ import '../../../route/route_helper.dart';
 import '../../widget/auth_button.dart';
 import '../../widget/my_app_bar.dart';
 
-class SignUp extends ConsumerWidget {
-  SignUp({Key? key}) : super(key: key);
+@RoutePage()
+class SignUpPage extends ConsumerWidget {
+  SignUpPage({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final nameTextController = TextEditingController();
@@ -33,7 +36,8 @@ class SignUp extends ConsumerWidget {
       (_, state) {
         state.whenOrNull(
           data: (value) {
-            Get.toNamed(RouteHelper.getHomeTab());
+            // Get.toNamed(RouteHelper.getHomeTab());
+            AutoRouter.of(context).push(const MainTabsRoute());
           },
           error: (error) {
             ScaffoldMessenger.of(context).showSnackBar(

@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/model/order/order.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
@@ -18,7 +20,10 @@ class OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = context.h(150);
     return GestureDetector(
-      onTap: () => Get.toNamed(RouteHelper.getOrderDetail(order.id.toString())),
+      onTap: () {
+        // Get.toNamed(RouteHelper.getOrderDetail(order.id.toString()));
+        AutoRouter.of(context).push(OrderDetailsRoute(orderId: order.id));
+      },
       child: Stack(
         children: [
           Column(

@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/gen/assets.gen.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/labels.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
@@ -26,6 +28,7 @@ class OnBoardingItem {
   });
 }
 
+@RoutePage()
 class OnBoardingPage extends HookConsumerWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
 
@@ -58,12 +61,14 @@ class OnBoardingPage extends HookConsumerWidget {
 
     void done() async {
       await ref.read(doneBoardingProvider.future);
-      Get.offAndToNamed(RouteHelper.getSignUp());
+      // Get.offAndToNamed(RouteHelper.getSignUp());
+      AutoRouter.of(context).push(SignUpRoute());
     }
 
     void skip() async {
       await ref.read(doneBoardingProvider.future);
-      Get.offAndToNamed(RouteHelper.getHomeTab());
+      // Get.offAndToNamed(RouteHelper.getHomeTab());
+      AutoRouter.of(context).push(const MainTabsRoute());
     }
 
     return Scaffold(

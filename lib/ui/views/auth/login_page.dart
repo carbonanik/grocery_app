@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
@@ -14,6 +16,7 @@ import '../../widget/auth_button.dart';
 import '../../widget/input_field.dart';
 import '../../widget/social_button.dart';
 
+@RoutePage()
 class LoginPage extends ConsumerWidget {
   LoginPage({Key? key}) : super(key: key);
 
@@ -33,7 +36,8 @@ class LoginPage extends ConsumerWidget {
             );
           },
           data: (value) {
-            Get.offAndToNamed(RouteHelper.getHomeTab());
+            // Get.offAndToNamed(RouteHelper.getHomeTab());
+            AutoRouter.of(context).push(const MainTabsRoute());
           },
         );
       },
@@ -158,7 +162,8 @@ class LoginPage extends ConsumerWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getSignUp());
+                        // Get.toNamed(RouteHelper.getSignUp());
+                        AutoRouter.of(context).push( SignUpRoute());
                       },
                       child: Text(
                         "Forgot Password?",
@@ -167,7 +172,8 @@ class LoginPage extends ConsumerWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getSignUp());
+                        // Get.toNamed(RouteHelper.getSignUp());
+                        // AutoRouter.of(context).push(ForgotPasswordRoute());
                       },
                       child: Text(
                         "Sign Up",

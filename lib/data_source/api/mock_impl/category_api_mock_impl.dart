@@ -1,4 +1,4 @@
-import 'package:get/get_utils/get_utils.dart';
+// import 'package:get/get_utils/get_utils.dart';
 import 'package:instant_grrocery_delivery/data_source/api/category_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/product_api_mock_impl.dart';
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fetch.dart';

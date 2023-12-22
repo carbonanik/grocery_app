@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
@@ -22,9 +24,12 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(
-        RouteHelper.getProductDetail(product.id),
-      )?.then((value) => onReturn?.call()),
+      onTap: () {
+        AutoRouter.of(context).push(ProductDetailRoute(productId: product.id)).then((value) => onReturn?.call());
+      },
+      //     Get.toNamed(
+      //   RouteHelper.getProductDetail(product.id),
+      // )?.then((value) => onReturn?.call()),
       child: Container(
         width: context.w(150),
         decoration: BoxDecoration(

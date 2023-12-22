@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_category.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
@@ -181,7 +183,10 @@ class HomePage extends StatelessWidget {
         child: Row(
           children: [
             InkWell(
-              onTap: () => Get.toNamed(RouteHelper.getYourLocation()),
+              onTap: () {
+                // Get.toNamed(RouteHelper.getYourLocation());
+                AutoRouter.of(context).push(const YourLocationRoute());
+              },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -202,7 +207,10 @@ class HomePage extends StatelessWidget {
             ),
             const Spacer(),
             InkWell(
-              onTap: () => Get.toNamed(RouteHelper.getWallet()),
+              onTap: () {
+                // Get.toNamed(RouteHelper.getWallet());
+                AutoRouter.of(context).push(const WalletRoute());
+              },
               child: Icon(
                 Icons.wallet,
                 size: context.w(45),

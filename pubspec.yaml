@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  get: ^4.6.5
+#  get: ^4.6.5
   cupertino_icons: ^1.0.5
   dartz: ^0.10.1
   shared_preferences: ^2.0.15
@@ -32,8 +32,8 @@ dependencies:
   google_fonts: ^6.1.0
   freezed_annotation: ^2.4.1
   device_preview: ^1.1.0
-#  auto_route: ^7.8.4
-
+  auto_route: ^7.8.4
+  supercharged: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +43,7 @@ dev_dependencies:
   freezed: ^2.4.2
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
+  auto_route_generator: ^7.3.2
   flutter_gen_runner:
 
 flutter:
