@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
@@ -9,20 +8,20 @@ class YourLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locationItem = [
-      LocationItem(
+    final locationItems = [
+      locationItem(
         Icons.home,
         "Home",
         "Amazon Park, Terminal 3, Potter road, New York, United State",
         width: MediaQuery.of(context).size.width * 0.9,
       ),
-      LocationItem(
+      locationItem(
         Icons.local_post_office,
         "Home",
         "Amazon Park, Terminal 3, Potter road, New York, United State",
         width: MediaQuery.of(context).size.width * 0.9,
       ),
-      LocationItem(
+      locationItem(
         Icons.home,
         "Home",
         "Amazon Park, Terminal 3, Potter road, New York, United State",
@@ -35,7 +34,6 @@ class YourLocation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           const SizedBox(height: 20),
           Expanded(
             child: Container(
@@ -57,7 +55,7 @@ class YourLocation extends StatelessWidget {
                   TextField(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
-                        horizontal: Dimension.width(20),
+                        horizontal: context.w(20),
                       ),
                       hintText: "Search a new address",
                       hintStyle: const TextStyle(
@@ -96,7 +94,7 @@ class YourLocation extends StatelessWidget {
                     readOnly: true,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
-                        horizontal: Dimension.width(20),
+                        horizontal: context.w(20),
                       ),
                       hintText: "Your Current Location",
                       hintStyle: TextStyle(
@@ -143,9 +141,9 @@ class YourLocation extends StatelessWidget {
                   const SizedBox(height: 20),
                   Expanded(
                     child: ListView.separated(
-                      itemCount: locationItem.length,
+                      itemCount: locationItems.length,
                       itemBuilder: (context, index) {
-                        return locationItem[index];
+                        return locationItems[index];
                       },
                       separatorBuilder: (context, index) {
                         return const SizedBox(height: 20);
@@ -162,8 +160,12 @@ class YourLocation extends StatelessWidget {
   }
 }
 
-Widget LocationItem(IconData icon, String title, String subtitle,
-    {width = double.infinity}) {
+Widget locationItem(
+  IconData icon,
+  String title,
+  String subtitle, {
+  width = double.infinity,
+}) {
   return Container(
     width: width,
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -179,7 +181,7 @@ Widget LocationItem(IconData icon, String title, String subtitle,
           color: accentColor,
         ),
         const SizedBox(width: 20),
-        Container(
+        SizedBox(
           width: width != double.infinity ? width * 0.7 : width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

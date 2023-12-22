@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
@@ -54,7 +52,7 @@ class _SplashState extends ConsumerState<SplashPage> {
         //       TextStyle(color: accentColor, fontSize: 30, fontWeight: FontWeight.bold),
         // ),
         child: Padding(
-          padding: EdgeInsets.all(Dimension.width(80)),
+          padding: EdgeInsets.all(context.w(80)),
             child: Assets.images.logo.image()),
       ),
     );

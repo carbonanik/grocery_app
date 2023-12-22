@@ -28,25 +28,25 @@ class InputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding ?? EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+      padding: padding ?? EdgeInsets.symmetric(horizontal: context.w(20)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           title != null
-              ? SizedBox(height: Dimension.height(20))
+              ? SizedBox(height: context.h(20))
               : const SizedBox(),
           title != null
               ? Text(
                   title!,
                   style: TextStyle(
-                    fontSize: Dimension.width(16),
+                    fontSize: context.w(16),
                     fontWeight: FontWeight.w500,
                     color: Colors.black54,
                   ),
                 )
               : const SizedBox(),
           title != null
-              ? SizedBox(height: Dimension.height(10))
+              ? SizedBox(height: context.h(10))
               : const SizedBox(),
           TextFormField(
             controller: controller,
@@ -55,7 +55,7 @@ class InputField extends StatelessWidget {
             validator: validator,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
-                horizontal: Dimension.width(20),
+                horizontal: context.w(20),
               ),
               hintText: hint,
               hintStyle: const TextStyle(
@@ -63,14 +63,14 @@ class InputField extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimension.width(5)),
+                borderRadius: BorderRadius.circular(context.w(5)),
                 borderSide: const BorderSide(
                   color: Colors.black12,
                   width: 2,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimension.width(5)),
+                borderRadius: BorderRadius.circular(context.w(5)),
                 borderSide: BorderSide(
                   color: accentColor,
                   width: 2,

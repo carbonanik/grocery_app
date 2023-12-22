@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/util/countries.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:material_dialogs/material_dialogs.dart';
 import 'package:material_dialogs/shared/types.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
-
-import '../../../main.dart';
-import '../../../util/countries.dart';
 
 class CountrySelectField extends StatefulWidget {
   const CountrySelectField({
@@ -26,22 +24,22 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: Dimension.height(20)),
+        SizedBox(height: context.h(20)),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+          padding: EdgeInsets.symmetric(horizontal: context.w(20)),
           child: Text(
             'Country',
             style: TextStyle(
-              fontSize: Dimension.width(15),
+              fontSize: context.w(15),
               fontWeight: FontWeight.w500,
               color: Colors.black54,
             ),
           ),
         ),
-        SizedBox(height: Dimension.height(10)),
+        SizedBox(height: context.h(10)),
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: Dimension.width(20),
+            horizontal: context.w(20),
           ),
           child: TextFormField(
             readOnly: true,
@@ -70,15 +68,15 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
                                 .map(
                                   (country) => Container(
                                     padding: EdgeInsets.symmetric(
-                                      horizontal: Dimension.width(20),
-                                      vertical: Dimension.height(10),
+                                      horizontal: context.w(20),
+                                      vertical: context.h(10),
                                     ),
                                     child: Row(
                                       children: [
                                         Text(
                                           country.flag,
                                           style: TextStyle(
-                                            fontSize: Dimension.width(15),
+                                            fontSize: context.w(15),
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black54,
                                           ),
@@ -91,7 +89,7 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
                                           child: Text(
                                             country.name,
                                             style: TextStyle(
-                                              fontSize: Dimension.width(15),
+                                              fontSize: context.w(15),
                                               fontWeight: FontWeight.w500,
                                             ),
                                             overflow: TextOverflow.ellipsis,
@@ -122,7 +120,7 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
             },
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
-                horizontal: Dimension.width(20),
+                horizontal: context.w(20),
               ),
               hintText: 'Select your country',
               hintStyle: const TextStyle(
@@ -130,14 +128,14 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
                 fontWeight: FontWeight.w500,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimension.width(5)),
+                borderRadius: BorderRadius.circular(context.w(5)),
                 borderSide: const BorderSide(
                   color: Colors.black12,
                   width: 2,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimension.width(5)),
+                borderRadius: BorderRadius.circular(context.w(5)),
                 borderSide: BorderSide(
                   color: accentColor,
                   width: 2,

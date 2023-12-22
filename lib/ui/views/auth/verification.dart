@@ -24,33 +24,33 @@ class VerificationPage extends StatelessWidget {
                 child: Icon(Icons.arrow_back_ios_sharp),
               ),
               const SizedBox(height: 10),
-              SizedBox(height: Dimension.height(40)),
+              SizedBox(height: context.h(40)),
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: Text(
                   'Verification',
                   style: TextStyle(
-                    fontSize: Dimension.width(30),
+                    fontSize: context.w(30),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              SizedBox(height: Dimension.height(5)),
+              SizedBox(height: context.h(5)),
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: Text(
                   'Hi Mate!',
                   style: TextStyle(
-                    fontSize: Dimension.width(18),
+                    fontSize: context.w(18),
                     fontWeight: FontWeight.w500,
                     color: Colors.black54,
                   ),
                 ),
               ),
 
-              SizedBox(height: Dimension.height(35)),
+              SizedBox(height: context.h(35)),
 
               /// phone number field
               const InputField(
@@ -60,7 +60,7 @@ class VerificationPage extends StatelessWidget {
               ),
 
 
-              SizedBox(height: Dimension.height(35)),
+              SizedBox(height: context.h(35)),
 
               /// login button
               AuthButton(
@@ -68,7 +68,7 @@ class VerificationPage extends StatelessWidget {
                 text: 'Submit',
               ),
 
-              SizedBox(height: Dimension.height(50)),
+              SizedBox(height: context.h(50)),
 
               // terms and condition
               Padding(
@@ -79,7 +79,7 @@ class VerificationPage extends StatelessWidget {
                     Text(
                       '0:25 min left',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: context.w(16),
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
@@ -88,7 +88,7 @@ class VerificationPage extends StatelessWidget {
                     Text(
                       'RESEND',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: context.w(16),
                         fontWeight: FontWeight.w500,
                         color: accentColor,
                       ),
@@ -96,7 +96,7 @@ class VerificationPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: Dimension.height(30)),
+              SizedBox(height: context.h(30)),
             ],
           ),
         ),

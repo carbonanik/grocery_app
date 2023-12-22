@@ -15,10 +15,10 @@ class ProductItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimension.width(170),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(Dimension.height(13))),
-      margin: EdgeInsets.only(left: Dimension.width(20)),
-      padding: EdgeInsets.symmetric(horizontal: Dimension.width(15), vertical: Dimension.height(15)),
+      width: context.w(170),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(context.h(13))),
+      margin: EdgeInsets.only(left: context.w(20)),
+      padding: EdgeInsets.symmetric(horizontal: context.w(15), vertical: context.h(15)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +33,7 @@ class ProductItemCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 5.0),
             child: Image.asset(
               simPro.image,
-              height: Dimension.height(110),
+              height: context.h(110),
             ),
           )),
           // row under product image

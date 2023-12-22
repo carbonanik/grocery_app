@@ -26,16 +26,16 @@ class ProductItem extends StatelessWidget {
         RouteHelper.getProductDetail(product.id),
       )?.then((value) => onReturn?.call()),
       child: Container(
-        width: Dimension.width(150),
+        width: context.w(150),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(
-            Dimension.width(13),
+            context.w(13),
           ),
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: Dimension.width(15),
-          vertical: Dimension.width(15),
+          horizontal: context.w(15),
+          vertical: context.w(15),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +46,7 @@ class ProductItem extends StatelessWidget {
               product.name,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                fontSize: Dimension.width(15),
+                fontSize: context.w(15),
               ), // height
             ),
             // ==== product image ====
@@ -54,10 +54,10 @@ class ProductItem extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: Dimension.width(10)),
+                  padding: EdgeInsets.symmetric(vertical: context.w(10)),
                   child: Image.network(
                     "$baseImageUrl${product.image}",
-                    height: Dimension.width(110),
+                    height: context.w(110),
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(Icons.image);
                     },
@@ -66,14 +66,14 @@ class ProductItem extends StatelessWidget {
               ),
             ),
             // ==== bottom ====
-            buildBottomRow()
+            buildBottomRow(context),
           ],
         ),
       ),
     );
   }
 
-  Widget buildBottomRow() {
+  Widget buildBottomRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween, // todo fix this cost 31 ms
       children: [
@@ -86,7 +86,7 @@ class ProductItem extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.w300, color: Colors.grey),
             ),
             SizedBox(
-              height: Dimension.width(2),
+              height: context.w(2),
             ),
             // ==== price ====
             Text(

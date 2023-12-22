@@ -45,9 +45,9 @@ class MyOrdersPage extends StatelessWidget {
             final orderList = orderDataModel.orderList.values.toList().reversed.toList();
             return SliverPadding(
               padding: EdgeInsets.only(
-                left: Dimension.width(20),
-                right: Dimension.width(20),
-                top: Dimension.width(20),
+                left: context.w(20),
+                right: context.w(20),
+                top: context.w(20),
               ),
               sliver: orderList.isEmpty
                   ? SliverFillRemaining(

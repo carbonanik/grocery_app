@@ -33,14 +33,14 @@ class CategoryItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(Dimension.width(10)),
+              padding: EdgeInsets.all(context.w(10)),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(Dimension.width(8)),
+                borderRadius: BorderRadius.circular(context.w(8)),
                 child: Image.network(
                   baseImageUrl + category.image,
                   fit: BoxFit.cover,
-                  height: Dimension.width(40),
-                  width: Dimension.width(40),
+                  height: context.w(40),
+                  width: context.w(40),
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(Icons.image);
                   },

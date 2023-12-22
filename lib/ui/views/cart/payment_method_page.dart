@@ -31,16 +31,16 @@ class PaymentMethodPage extends ConsumerWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              SizedBox(height: Dimension.height(30)),
+              SizedBox(height: context.h(30)),
 
               /// pay amount
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(30)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(30)),
                 child: Row(
                   children: [
                     Text('Amount to pay',
                         style: TextStyle(
-                          fontSize: Dimension.width(16),
+                          fontSize: context.w(16),
                           fontWeight: FontWeight.w600,
                         )),
                     const Spacer(),
@@ -49,7 +49,7 @@ class PaymentMethodPage extends ConsumerWidget {
                       return Text(
                         '\$${cartDataModel.cartPrice()}',
                         style: TextStyle(
-                          fontSize: Dimension.width(16),
+                          fontSize: context.w(16),
                           fontWeight: FontWeight.w600,
                           color: accentColor,
                         ),
@@ -58,10 +58,10 @@ class PaymentMethodPage extends ConsumerWidget {
                   ],
                 ),
               ),
-              SizedBox(height: Dimension.height(20)),
+              SizedBox(height: context.h(20)),
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(30)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(30)),
                 child: ActionButton(
                   enabled: cartLength != 0 && orderState.isEmpty,
                   text: orderState.isLoading
@@ -76,66 +76,66 @@ class PaymentMethodPage extends ConsumerWidget {
                 ),
               ),
 
-              SizedBox(height: Dimension.height(20)),
+              SizedBox(height: context.h(20)),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(30)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(30)),
                 decoration: BoxDecoration(
                   color: backgroundColor,
-                  borderRadius: BorderRadius.circular(Dimension.width(30)),
+                  borderRadius: BorderRadius.circular(context.w(30)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     /// pay with wallet
-                    SizedBox(height: Dimension.height(20)),
+                    SizedBox(height: context.h(20)),
                     Text(
                       'Or Pay with',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: context.w(16),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    SizedBox(height: Dimension.height(15)),
+                    SizedBox(height: context.h(15)),
                     const PaymentMethodItem(
                       name: 'Paypal',
                       icon: Icons.paypal,
                     ),
-                    SizedBox(height: Dimension.height(5)),
+                    SizedBox(height: context.h(5)),
                     const PaymentMethodItem(
                       name: 'Stripe',
                       icon: Icons.double_arrow,
                     ),
 
                     /// pay with card
-                    SizedBox(height: Dimension.height(20)),
+                    SizedBox(height: context.h(20)),
                     Text(
                       'Cards',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: context.w(16),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    SizedBox(height: Dimension.height(15)),
+                    SizedBox(height: context.h(15)),
                     const PaymentMethodItem(
                       name: 'Visa',
                       icon: Icons.credit_card,
                     ),
 
                     /// pay on delivery
-                    SizedBox(height: Dimension.height(20)),
+                    SizedBox(height: context.h(20)),
                     Text(
                       'Cash',
                       style: TextStyle(
-                        fontSize: Dimension.width(16),
+                        fontSize: context.w(16),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    SizedBox(height: Dimension.height(15)),
+                    SizedBox(height: context.h(15)),
                     const PaymentMethodItem(
                       name: 'Cash on Delivery',
                       icon: Icons.local_atm,
                     ),
-                    SizedBox(height: Dimension.height(200)),
+                    SizedBox(height: context.h(200)),
                   ],
                 ),
               ),

@@ -14,25 +14,25 @@ class PaymentMethodItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: Dimension.width(20),
-        vertical: Dimension.height(15),
+        horizontal: context.w(20),
+        vertical: context.h(15),
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Dimension.width(6)),
+        borderRadius: BorderRadius.circular(context.w(6)),
       ),
       child: Row(
         children: [
-          SizedBox(width: Dimension.width(10)),
+          SizedBox(width: context.w(10)),
           Icon(
             icon,
             color: Colors.grey,
           ),
-          SizedBox(width: Dimension.width(20)),
+          SizedBox(width: context.w(20)),
           Text(
             name,
             style: TextStyle(
-              fontSize: Dimension.width(16),
+              fontSize: context.w(16),
               fontWeight: FontWeight.w600,
               color: Colors.black,
             ),

@@ -112,11 +112,12 @@ class ViewProfilePage extends StatelessWidget {
                       'Companies privacy policy',
                       onTap: () => Get.toNamed(RouteHelper.getPrivacyPolicy()),
                     ),
-                    _profileItem(
-                      Icons.logout,
-                      'Logout',
-                      'Sign out from account',
-                    ),
+                    Consumer(builder: (context, ref, child) {
+                      return _profileItem(Icons.logout, 'Logout', 'Sign out from account', onTap: () {
+                        ref.read(authLocalProvider).removeAuthUser();
+                        Get.offAllNamed(RouteHelper.getLogin());
+                      });
+                    }),
                   ],
                 ),
               ),

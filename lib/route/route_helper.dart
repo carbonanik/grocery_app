@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:instant_grrocery_delivery/ui/views/auth/sign_in_page.dart';
+import 'package:instant_grrocery_delivery/ui/views/auth/login_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/auth/verification.dart';
 import 'package:instant_grrocery_delivery/ui/views/cart/wallet.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/order/order_details_page.dart';
@@ -101,7 +101,7 @@ class RouteHelper {
     ),
     GetPage(
       name: _login,
-      page: () => SignInPage(),
+      page: () => LoginPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -116,7 +116,7 @@ class RouteHelper {
     ),
     GetPage(
       name: _homeTab,
-      page: () => MainTabs(),
+      page: () => const MainTabs(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -142,7 +142,7 @@ class RouteHelper {
     ),
     GetPage(
       name: _myCart,
-      page: () => MyCartPage(),
+      page: () => const MyCartPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(

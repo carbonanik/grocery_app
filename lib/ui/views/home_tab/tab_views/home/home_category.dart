@@ -36,22 +36,22 @@ class HomeCategory extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(Dimension.width(4)),
+              padding: EdgeInsets.all(context.w(4)),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(Dimension.height(5)),
+                borderRadius: BorderRadius.circular(context.h(5)),
                 child: Image.network(
                   '$baseImageUrl${category.image}',
                   fit: BoxFit.cover,
-                  height: Dimension.width(50),
-                  width: Dimension.width(50),
+                  height: context.w(50),
+                  width: context.w(50),
                   errorBuilder: (context, error, stackTrace) {
-                    return Icon(Icons.image);
+                    return const Icon(Icons.image);
                   },
                 ),
               ),
             ),
             SizedBox(
-              width: Dimension.width(5),
+              width: context.w(5),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -22,12 +22,12 @@ class ProductDetailPage extends ConsumerWidget {
   ProductDetailPage({Key? key, required this.productId}) : super(key: key);
 
   final int productId;
-  final bottomBarHeight = Dimension.height(100);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(getProductByIdProvider(productId));
     final cartDataModel = ref.watch(cartProvider);
+    final bottomBarHeight = context.h(100);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -40,6 +40,7 @@ class ProductDetailPage extends ConsumerWidget {
               context,
               data.value,
               cartDataModel.cartCount() > 0,
+              bottomBarHeight,
             ),
             error: (error) => Column(
               children: [
@@ -59,13 +60,13 @@ class ProductDetailPage extends ConsumerWidget {
           ),
           // _topBar(),
 
-          cartDataModel.cartCount() > 0 ? _bottomStatic() : const SizedBox(),
+          cartDataModel.cartCount() > 0 ? _bottomStatic(context, bottomBarHeight) : const SizedBox(),
         ],
       ),
     );
   }
 
-  Widget _scrollContent(BuildContext context, Product product, bool needFixedHeight) {
+  Widget _scrollContent(BuildContext context, Product product, bool needFixedHeight, double bottomBarHeight) {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
@@ -76,7 +77,7 @@ class ProductDetailPage extends ConsumerWidget {
             const SizedBox(
               height: kToolbarHeight,
             ),
-            _productDetail(product),
+            _productDetail(context, product),
             _similarProducts(),
             needFixedHeight
                 ? Container(
@@ -90,16 +91,16 @@ class ProductDetailPage extends ConsumerWidget {
     );
   }
 
-  Widget _productDetail(Product product) {
+  Widget _productDetail(BuildContext context, Product product) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+      padding: EdgeInsets.symmetric(horizontal: context.w(20)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // product image
           Center(
             child: SizedBox(
-              height: Dimension.height(320),
+              height: context.h(320),
               child: Image.network(
                 "$baseImageUrl${product.image}",
                 errorBuilder: (context, error, stackTrace) {
@@ -137,7 +138,7 @@ class ProductDetailPage extends ConsumerWidget {
           ),
 
           SizedBox(
-            height: Dimension.height(6),
+            height: context.h(6),
           ),
 
           // product weight
@@ -150,7 +151,7 @@ class ProductDetailPage extends ConsumerWidget {
             ),
           ),
           SizedBox(
-            height: Dimension.height(20),
+            height: context.h(20),
           ),
 
           // product price and add remove button
@@ -177,7 +178,7 @@ class ProductDetailPage extends ConsumerWidget {
             ],
           ),
           SizedBox(
-            height: Dimension.height(20),
+            height: context.h(20),
           ),
 
           // about product
@@ -189,7 +190,7 @@ class ProductDetailPage extends ConsumerWidget {
             ),
           ),
           SizedBox(
-            height: Dimension.height(15),
+            height: context.h(15),
           ),
 
           // description
@@ -201,7 +202,7 @@ class ProductDetailPage extends ConsumerWidget {
             ),
           ),
           SizedBox(
-            height: Dimension.height(20),
+            height: context.h(20),
           ),
         ],
       ),
@@ -213,13 +214,13 @@ class ProductDetailPage extends ConsumerWidget {
       final asyncValue = ref.watch(getSimilarProductProvider(productId));
       return asyncValue.map(
         data: (data) => Container(
-          padding: EdgeInsets.symmetric(vertical: Dimension.height(20)),
+          padding: EdgeInsets.symmetric(vertical: context.h(20)),
           decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(Dimension.height(30)),
+              topLeft: Radius.circular(context.h(30)),
               topRight: Radius.circular(
-                Dimension.height(30),
+                context.h(30),
               ),
             ),
           ),
@@ -227,7 +228,7 @@ class ProductDetailPage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: const Text(
                   'Similar Products',
                   style: TextStyle(
@@ -237,17 +238,17 @@ class ProductDetailPage extends ConsumerWidget {
                 ),
               ),
               SizedBox(
-                height: Dimension.height(20),
+                height: context.h(20),
               ),
               SizedBox(
-                height: Dimension.height(190),
+                height: context.h(190),
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: data.value.length,
                   itemBuilder: (context, index) {
                     final similarProduct = data.value[index];
                     return Container(
-                      margin: EdgeInsets.only(left: Dimension.width(20)),
+                      margin: EdgeInsets.only(left: context.w(20)),
                       child: ProductItem(
                         product: similarProduct,
                       ),
@@ -264,7 +265,7 @@ class ProductDetailPage extends ConsumerWidget {
     });
   }
 
-  Widget _bottomStatic() {
+  Widget _bottomStatic(BuildContext context, double bottomBarHeight) {
     return Positioned(
       bottom: 0,
       left: 0,
@@ -275,7 +276,7 @@ class ProductDetailPage extends ConsumerWidget {
           child: Container(
             height: bottomBarHeight,
             padding: EdgeInsets.symmetric(
-              horizontal: Dimension.width(20),
+              horizontal: context.w(20),
             ),
             decoration: BoxDecoration(
               color: foregroundColor.withAlpha(210),
@@ -297,7 +298,7 @@ class ProductDetailPage extends ConsumerWidget {
                   },
                 ),
                 SizedBox(
-                  width: Dimension.width(15),
+                  width: context.w(15),
                 ),
                 Container(
                   height: 35,
@@ -305,7 +306,7 @@ class ProductDetailPage extends ConsumerWidget {
                   color: accentColor,
                 ),
                 SizedBox(
-                  width: Dimension.width(15),
+                  width: context.w(15),
                 ),
                 Consumer(builder: (context, ref, child) {
                   final cartDataModel = ref.watch(cartProvider);

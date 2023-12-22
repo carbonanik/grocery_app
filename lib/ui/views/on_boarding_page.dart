@@ -8,6 +8,7 @@ import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/labels.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
+import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 class Constants {
   static const String seen = "seen";
@@ -132,8 +133,8 @@ class OnBoardingPage extends HookConsumerWidget {
                   children: [
                     const Spacer(),
                     Container(
-                      height: 400,
-                      width: 400,
+                      height: context.h(400),
+                      width: context.w(400),
                       decoration: BoxDecoration(
                         color: foregroundColor.withOpacity(.1),
                         borderRadius: BorderRadius.circular(50),

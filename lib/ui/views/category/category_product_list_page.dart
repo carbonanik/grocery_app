@@ -34,7 +34,7 @@ class CategoryProductListPage extends StatelessWidget {
             ),
 
             // SliverToBoxAdapter(
-            //   child: SizedBox(height: Dimension.height(10)),
+            //   child: SizedBox(height: context.h(10)),
             // ),
 
             /// popular list
@@ -44,11 +44,11 @@ class CategoryProductListPage extends StatelessWidget {
 
                 return asyncValue.map(
                   data: (data) => SliverPadding(
-                    padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                    padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                     sliver: SliverGrid.count(
                       crossAxisCount: 2,
-                      mainAxisSpacing: Dimension.height(10),
-                      crossAxisSpacing: Dimension.width(10),
+                      mainAxisSpacing: context.h(10),
+                      crossAxisSpacing: context.w(10),
                       childAspectRatio: .70,
                       children: List.generate(data.value.products?.length ?? 0, (index) {
                         final item = data.value.products![index];
@@ -73,7 +73,7 @@ class CategoryProductListPage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: Dimension.height(30),
+                height: context.h(30),
               ),
             )
           ],
@@ -110,11 +110,11 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                          padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                           child: Row(
                             children: [
                               SizedBox(
-                                width: Dimension.width(195),
+                                width: context.w(195),
                                 child: TextField(
                                   controller: textEditingController,
                                   decoration: const InputDecoration(
@@ -127,9 +127,9 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                               const Icon(Icons.clear, color: Colors.grey),
                               Container(
                                 margin: EdgeInsets.symmetric(
-                                  horizontal: Dimension.width(20),
+                                  horizontal: context.w(20),
                                 ),
-                                height: Dimension.height(30),
+                                height: context.h(30),
                                 width: 1,
                                 color: Colors.black12,
                               ),
@@ -146,7 +146,7 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                             return asyncValue.map(
                               data: (data) => Expanded(
                                 child: SizedBox(
-                                  height: Dimension.height(200),
+                                  height: context.h(200),
                                   child: ListView.builder(
                                     itemCount: data.value.length,
                                     itemBuilder: (context, index) {
@@ -171,10 +171,10 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
             ),
-            margin: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+            margin: EdgeInsets.symmetric(horizontal: context.w(20)),
             padding: EdgeInsets.symmetric(
-              horizontal: Dimension.height(16),
-              vertical: Dimension.width(5),
+              horizontal: context.h(16),
+              vertical: context.w(5),
             ),
             child: Row(
               children: [
@@ -190,7 +190,7 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                         color: Colors.grey,
                       ),
                     ),
-                    SizedBox(height: Dimension.height(2)),
+                    SizedBox(height: context.h(2)),
                     Consumer(builder: (context, ref, child) {
                       final asyncValue = ref.watch(
                         getCategoriesByIdWithProductProvider(
@@ -204,7 +204,7 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                           child: Text(
                             data.value.name,
                             style: TextStyle(
-                              fontSize: Dimension.height(16),
+                              fontSize: context.h(16),
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
@@ -238,8 +238,8 @@ class _CategorySilverHeaderDelegate extends SliverPersistentHeaderDelegate {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: Dimension.width(10)),
-                  height: Dimension.height(30),
+                  margin: EdgeInsets.symmetric(horizontal: context.w(10)),
+                  height: context.h(30),
                   width: 1,
                   color: Colors.black12,
                 ),

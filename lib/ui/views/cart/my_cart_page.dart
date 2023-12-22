@@ -18,7 +18,7 @@ class MyCartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bottomBarHeight = Dimension.height(140);
+    final bottomBarHeight = context.h(140);
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -42,7 +42,7 @@ class MyCartPage extends StatelessWidget {
       body: Stack(
         children: [
           _scrollArea(bottomBarHeight, context),
-          _bottomBar(bottomBarHeight, width),
+          _bottomBar(context, bottomBarHeight, width),
         ],
       ),
     );
@@ -58,18 +58,18 @@ class MyCartPage extends StatelessWidget {
           children: [
             ConstrainedBox(
               constraints: BoxConstraints(
-                minHeight: Dimension.height(230),
+                minHeight: context.h(230),
               ),
 
               /// cart item list
               child: _cartItemList(),
             ),
             SizedBox(
-              height: Dimension.height(10),
+              height: context.h(10),
             ),
-            _addCouponCodeButton(),
+            _addCouponCodeButton(context),
             SizedBox(
-              height: Dimension.height(10),
+              height: context.h(10),
             ),
             _similarProducts(),
             Container(
@@ -82,18 +82,18 @@ class MyCartPage extends StatelessWidget {
     );
   }
 
-  GestureDetector _addCouponCodeButton() {
+  GestureDetector _addCouponCodeButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Get.toNamed(RouteHelper.getApplyCoupon());
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20), vertical: Dimension.height(20)),
-        margin: EdgeInsets.symmetric(horizontal: Dimension.height(20)),
+        padding: EdgeInsets.symmetric(horizontal: context.w(20), vertical: context.h(20)),
+        margin: EdgeInsets.symmetric(horizontal: context.h(20)),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(
-            Dimension.height(10),
+            context.h(10),
           ),
         ),
         child: Row(
@@ -104,12 +104,12 @@ class MyCartPage extends StatelessWidget {
               size: 20,
             ),
             SizedBox(
-              width: Dimension.width(20),
+              width: context.w(20),
             ),
             Text(
               'Add coupon code',
               style: TextStyle(
-                fontSize: Dimension.height(16),
+                fontSize: context.h(16),
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
               ),
@@ -131,7 +131,7 @@ class MyCartPage extends StatelessWidget {
       final cartDataModel = ref.watch(cartProvider);
       final cartList = cartDataModel.cartList.values.toList();
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+        padding: EdgeInsets.symmetric(horizontal: context.w(20)),
         child: cartList.isNotEmpty ?  ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
@@ -147,7 +147,7 @@ class MyCartPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                    padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                     child: const Icon(
                       Icons.delete,
                       color: accentColor,
@@ -176,7 +176,7 @@ class MyCartPage extends StatelessWidget {
     });
   }
 
-  Positioned _bottomBar(double height, double width) {
+  Positioned _bottomBar(BuildContext context, double height, double width) {
     return Positioned(
       bottom: 0,
       child: ClipRect(
@@ -186,7 +186,7 @@ class MyCartPage extends StatelessWidget {
             height: height,
             width: width,
             padding: EdgeInsets.symmetric(
-              horizontal: Dimension.width(30),
+              horizontal: context.w(30),
             ),
             decoration: BoxDecoration(
               color: foregroundColor.withAlpha(210),
@@ -203,12 +203,12 @@ class MyCartPage extends StatelessWidget {
                       color: Colors.redAccent,
                     ),
                     SizedBox(
-                      width: Dimension.width(10),
+                      width: context.w(10),
                     ),
                     Text(
                       'Home - Uttar 18 - Dhaka',
                       style: TextStyle(
-                        fontSize: Dimension.height(16),
+                        fontSize: context.h(16),
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                       ),
@@ -219,7 +219,7 @@ class MyCartPage extends StatelessWidget {
                       child: Text(
                         'Change',
                         style: TextStyle(
-                          fontSize: Dimension.height(16),
+                          fontSize: context.h(16),
                           fontWeight: FontWeight.w500,
                           color: accentColor,
                         ),
@@ -228,7 +228,7 @@ class MyCartPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: Dimension.height(20),
+                  height: context.h(20),
                 ),
                 Row(
                   children: [
@@ -244,7 +244,7 @@ class MyCartPage extends StatelessWidget {
                               ));
                         }),
                         SizedBox(
-                          height: Dimension.height(5),
+                          height: context.h(5),
                         ),
                         const Text('View Bill',
                             style: TextStyle(
@@ -281,13 +281,13 @@ class MyCartPage extends StatelessWidget {
       final asyncValue = ref.watch(getFrequentlyBoughtTogetherProductProvider);
       return asyncValue.map(
         data: (data) => Container(
-          padding: EdgeInsets.symmetric(vertical: Dimension.height(20)),
+          padding: EdgeInsets.symmetric(vertical: context.h(20)),
           decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(Dimension.height(30)),
+              topLeft: Radius.circular(context.h(30)),
               topRight: Radius.circular(
-                Dimension.height(30),
+                context.h(30),
               ),
             ),
           ),
@@ -295,7 +295,7 @@ class MyCartPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                 child: const Text(
                   'Frequently Bought Together',
                   style: TextStyle(
@@ -305,17 +305,17 @@ class MyCartPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: Dimension.height(20),
+                height: context.h(20),
               ),
               SizedBox(
-                height: Dimension.height(190),
+                height: context.h(190),
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: data.value.length,
                   itemBuilder: (context, index) {
                     final similarProduct = data.value[index];
                     return Container(
-                      margin: EdgeInsets.only(left: Dimension.width(20)),
+                      margin: EdgeInsets.only(left: context.w(20)),
                       child: ProductItem(
                         product: similarProduct,
                       ),
