@@ -252,8 +252,6 @@ class SupportPage extends StatelessWidget {
                                 ),
                               )
                               .value;
-                          print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-                          print(success);
                           if (success == true) {
                             // create a snack
 

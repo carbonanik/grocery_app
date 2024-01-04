@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/update_user_controller_provider.dart';
 import 'package:instant_grrocery_delivery/route/app_router.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 
 class LoginToAccess extends StatelessWidget {

@@ -190,6 +190,5 @@ class SignUpPage extends ConsumerWidget {
         ),
       ),
     );
-    ;
   }
 }

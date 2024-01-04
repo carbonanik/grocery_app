@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'my_app_bar.dart';
 
 class Transactions extends StatelessWidget {
@@ -9,7 +7,7 @@ class Transactions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: const MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -9,7 +9,7 @@ import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_separetor.dart';
 
 class OrderCard extends StatelessWidget {
-  OrderCard({
+  const OrderCard({
     Key? key,
     required this.order,
   }) : super(key: key);

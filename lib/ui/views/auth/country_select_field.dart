@@ -84,7 +84,7 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           width: 220,
                                           child: Text(
                                             country.name,
@@ -113,7 +113,7 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
                       text: 'Ok',
                       iconData: Icons.done,
                       color: accentColor,
-                      textStyle: TextStyle(color: Colors.white),
+                      textStyle: const TextStyle(color: Colors.white),
                       iconColor: Colors.white,
                     ),
                   ]);
@@ -136,7 +136,7 @@ class _CountrySelectFieldState extends State<CountrySelectField> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(context.w(5)),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: accentColor,
                   width: 2,
                 ),

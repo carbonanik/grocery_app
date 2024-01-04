@@ -18,7 +18,7 @@ class WalletCard extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),
@@ -51,7 +51,7 @@ class WalletCard extends StatelessWidget {
                   color: Colors.white.withOpacity(0.5),
                 ),
               ),
-              Text(
+              const Text(
                 '\$180.00',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
@@ -74,7 +74,7 @@ class WalletCard extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10),
               ),
@@ -96,12 +96,12 @@ class WalletCard extends StatelessWidget {
                       type: MaterialType.transparency,
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: Column(
+                        child: const Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding: EdgeInsets.symmetric(horizontal: 20),
                               child: Text(
                                 'Enter amount to add to wallet',
                                 style: TextStyle(
@@ -110,13 +110,13 @@ class WalletCard extends StatelessWidget {
                                 )
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20),
                             InputField(
                               title: 'Amount',
                               hint: 'Enter amount',
                               keyboardType: TextInputType.text,
                             ),
-                            const SizedBox(height: 50),
+                            SizedBox(height: 50),
 
                             AuthButton(
                               text: 'Continue',
@@ -127,11 +127,11 @@ class WalletCard extends StatelessWidget {
                     )
                 );
               },
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.add, color: accentColor),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10),
                   Text(
                     'Add Money',
                     style: TextStyle(

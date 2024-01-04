@@ -15,7 +15,7 @@ class ApplyCouponPage extends StatelessWidget {
   Widget build(BuildContext context) {
     const title = 'Apply Coupon';
     return Scaffold(
-      appBar: MyAppBar(title: title),
+      appBar: const MyAppBar(title: title),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(

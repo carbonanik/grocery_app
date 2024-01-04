@@ -26,7 +26,6 @@ class DrawTriangleShape extends BoxPainter {
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     var path = Path();
 
-    double scale = 1.0;
     double width = configuration.size?.width ?? 0;
 
     path.moveTo((width / 2) + offset.dx, configuration.size!.height / 3);

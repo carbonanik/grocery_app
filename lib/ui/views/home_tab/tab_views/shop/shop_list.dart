@@ -45,9 +45,9 @@ class ShopListPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         'Shop name',
                         style: TextStyle(

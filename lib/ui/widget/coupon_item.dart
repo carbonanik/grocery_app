@@ -74,7 +74,7 @@ class CouponItem extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(backgroundColor),
                           foregroundColor: MaterialStateProperty.all(Colors.black54),
                             // shape: MaterialStateProperty.all(StadiumBorder()),
-                          side: MaterialStateProperty.all(BorderSide(
+                          side: MaterialStateProperty.all(const BorderSide(
                             color: Colors.black12,
                             width: 1,
                           )),
@@ -87,7 +87,7 @@ class CouponItem extends StatelessWidget {
                             )),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Padding(
                       padding: EdgeInsets.only(right: context.w(20), top: context.h(10)),
                       child: ElevatedButton(

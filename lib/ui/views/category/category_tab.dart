@@ -46,7 +46,7 @@ class CategoryTabPage extends StatelessWidget {
                         (category) => category.id == selectedCategoryId,
                       )
                     : 0,
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: accentColor,
                 ),
               ),

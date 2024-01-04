@@ -115,8 +115,10 @@ class _FaqState extends State<Faq> {
 }
 
 class AnimatedListViewItem extends StatefulWidget {
+  const AnimatedListViewItem({super.key});
+
   @override
-  _AnimatedListViewItemState createState() => _AnimatedListViewItemState();
+  State createState() => _AnimatedListViewItemState();
 }
 
 class _AnimatedListViewItemState extends State<AnimatedListViewItem> {

@@ -44,8 +44,8 @@ class YourLocationPage extends StatelessWidget {
                 right: 20,
                 top: 30,
               ),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
                 ),
