@@ -57,14 +57,14 @@ class FavoriteListPage extends StatelessWidget {
                       )
                     : SliverPadding(
                         padding: EdgeInsets.only(
-                          left: Dimension.width(20),
-                          right: Dimension.width(20),
-                          top: Dimension.width(20),
+                          left: context.w(20),
+                          right: context.w(20),
+                          top: context.w(20),
                         ),
                         sliver: SliverGrid.count(
                           crossAxisCount: 2,
-                          mainAxisSpacing: Dimension.height(10),
-                          crossAxisSpacing: Dimension.width(10),
+                          mainAxisSpacing: context.h(10),
+                          crossAxisSpacing: context.w(10),
                           childAspectRatio: .70,
                           children: List.generate(
                             data.value.length,

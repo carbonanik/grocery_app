@@ -58,7 +58,7 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: Dimension.height(40), bottom: Dimension.height(10)),
+                margin: EdgeInsets.only(top: context.h(40), bottom: context.h(10)),
                 child: widget.leading,
               ),
               Container(
@@ -70,13 +70,13 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
                     child: TabBar(
                       physics: const BouncingScrollPhysics(),
                       labelStyle: TextStyle(
-                        fontSize: Dimension.width(14),
+                        fontSize: context.w(14),
                         fontWeight: FontWeight.bold,
                       ),
                       labelColor: accentColor,
                       controller: tabController,
                       unselectedLabelColor: Colors.black54,
-                      padding: EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+                      padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                       isScrollable: true,
                       indicator: TriangleTabIndicator(color: widget.backgroundColor),
                       tabs: _tabs,

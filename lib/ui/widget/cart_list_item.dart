@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
@@ -24,49 +26,50 @@ class CartListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: Dimension.height(10),
-        horizontal: Dimension.width(10),
+        vertical: context.h(10),
+        horizontal: context.w(10),
       ),
-      // margin: EdgeInsets.only(bottom: Dimension.height(10)),
+      // margin: EdgeInsets.only(bottom: context.h(10)),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(Dimension.height(10)),
+        borderRadius: BorderRadius.circular(context.h(10)),
       ),
       child: Row(
         children: [
           InkWell(
             onTap: () {
-              Get.toNamed(RouteHelper.getProductDetail(item.product.id));
+              // Get.toNamed(RouteHelper.getProductDetail(item.product.id));
+              AutoRouter.of(context).push(ProductDetailRoute(productId: item.product.id));
             },
             child: Image.network(
               baseImageUrl + item.product.image,
-              height: Dimension.height(50),
+              height: context.h(50),
               errorBuilder: (context, error, stackTrace) {
                 return const Icon(Icons.image);
               },
             ),
           ),
           SizedBox(
-            width: Dimension.width(20),
+            width: context.w(20),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 item.product.name,
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimension.width(14)),
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: context.w(14)),
               ),
               SizedBox(
-                height: Dimension.height(10),
+                height: context.h(10),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: Dimension.width(100),
+                    width: context.w(100),
                     child: Text(
                       item.product.weight,
-                      style: TextStyle(fontWeight: FontWeight.w400, color: Colors.grey, fontSize: Dimension.width(13)),
+                      style: TextStyle(fontWeight: FontWeight.w400, color: Colors.grey, fontSize: context.w(13)),
                     ),
                   ),
                   CartAddRemove(
@@ -75,10 +78,10 @@ class CartListItem extends StatelessWidget {
                     onRemove: onRemove,
                   ),
                   SizedBox(
-                    width: Dimension.width(90),
+                    width: context.w(90),
                     child: Text(
                       '\$${(item.product.price * item.count).toStringAsFixed((item.product.price * item.count) % 1 == 0 ? 0 : 2)}',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: Dimension.width(16)),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: context.w(16)),
                       textAlign: TextAlign.right,
                     ),
                   ),

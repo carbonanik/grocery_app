@@ -14,7 +14,7 @@ class SocialLoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SizedBox(
-        height: Dimension.height(40),
+        height: context.h(40),
         child: ElevatedButton(
           style: ButtonStyle(
             elevation: MaterialStateProperty.all(0),
@@ -26,11 +26,11 @@ class SocialLoginButton extends StatelessWidget {
             )),
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Dimension.width(10)),
+                borderRadius: BorderRadius.circular(context.w(10)),
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: null,
           child: Text(
             text,
             style: const TextStyle(

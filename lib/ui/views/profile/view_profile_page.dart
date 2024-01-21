@@ -1,15 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/update_user_controller_provider.dart';
+import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/login_to_access.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
+@RoutePage()
 class ViewProfilePage extends StatelessWidget {
   const ViewProfilePage({Key? key}) : super(key: key);
 
@@ -59,7 +62,10 @@ class ViewProfilePage extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       InkWell(
-                        onTap: () => Get.toNamed(RouteHelper.getProfileEdit()),
+                        onTap: () {
+                          // Get.toNamed(RouteHelper.getProfileEdit());
+                          AutoRouter.of(context).push(UpdateProfileRoute());
+                        },
                         child: const Text(
                           'Edit Profile',
                           style: TextStyle(
@@ -98,25 +104,36 @@ class ViewProfilePage extends StatelessWidget {
                       Icons.question_mark,
                       'FAQs',
                       'Get your questions answered',
-                      onTap: () => Get.toNamed(RouteHelper.getFaqs()),
+                      onTap: () {
+                        // Get.toNamed(RouteHelper.getFaqs());
+                        AutoRouter.of(context).push(const FaqsRoute());
+                      },
                     ),
                     _profileItem(
                       Icons.note,
                       'Terms & Conditions',
                       'Know terms of use',
-                      onTap: () => Get.toNamed(RouteHelper.getTermsAndCondition()),
+                      onTap: () {
+                        // Get.toNamed(RouteHelper.getTermsAndCondition());
+                        AutoRouter.of(context).push(const TermsAndConditionsRoute());
+                      },
                     ),
                     _profileItem(
                       Icons.lock,
                       'Privacy Policy',
                       'Companies privacy policy',
-                      onTap: () => Get.toNamed(RouteHelper.getPrivacyPolicy()),
+                      onTap: () {
+                        // Get.toNamed(RouteHelper.getPrivacyPolicy());
+                        AutoRouter.of(context).push(const PrivacyPolicyRoute());
+                      },
                     ),
-                    _profileItem(
-                      Icons.logout,
-                      'Logout',
-                      'Sign out from account',
-                    ),
+                    Consumer(builder: (context, ref, child) {
+                      return _profileItem(Icons.logout, 'Logout', 'Sign out from account', onTap: () {
+                        ref.read(authLocalProvider).removeAuthUser();
+                        // Get.offAllNamed(RouteHelper.getLogin());
+                        AutoRouter.of(context).push( LoginRoute());
+                      });
+                    }),
                   ],
                 ),
               ),

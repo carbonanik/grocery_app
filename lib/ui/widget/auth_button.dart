@@ -21,9 +21,9 @@ class AuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? EdgeInsets.symmetric(horizontal: Dimension.width(20)),
+      padding: padding ?? EdgeInsets.symmetric(horizontal: context.w(20)),
       width: double.infinity,
-      height: Dimension.height(45),
+      height: context.h(40),
       child: ElevatedButton(
         style: ButtonStyle(
           elevation: MaterialStateProperty.all(0),
@@ -34,7 +34,7 @@ class AuthButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: Dimension.width(18),
+            fontSize: context.w(18),
             fontWeight: FontWeight.w500,
           ),
         ),

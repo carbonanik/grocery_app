@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
+// import 'package:get/get_utils/get_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/local/cart_local.dart';
 import 'package:instant_grrocery_delivery/data_source/local/impl/cart_local_impl.dart';

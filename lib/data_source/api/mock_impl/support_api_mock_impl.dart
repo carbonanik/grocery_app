@@ -1,9 +1,10 @@
-import 'package:get/get_utils/get_utils.dart';
+// import 'package:get/get_utils/get_utils.dart';
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fetch.dart';
 import 'package:instant_grrocery_delivery/data_source/api/support_api.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/support/dto/support_dto.dart';
 import 'package:instant_grrocery_delivery/model/support/support.dart';
+import 'package:instant_grrocery_delivery/util/extension/list/extension.dart';
 
 class SupportApiMockImpl extends SupportApi {
   @override

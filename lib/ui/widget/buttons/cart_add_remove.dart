@@ -19,7 +19,7 @@ class CartAddRemove extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Dimension.width(5), vertical: Dimension.height(5)),
+      padding: EdgeInsets.symmetric(horizontal: context.w(5), vertical: context.h(5)),
       decoration: BoxDecoration(color: accentColor, borderRadius: BorderRadius.circular(5)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
