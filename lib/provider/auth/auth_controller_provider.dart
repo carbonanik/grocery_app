@@ -6,17 +6,9 @@ import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
 
-abstract class AuthControllerBase {
-  void signUp(CreateUserRequest createUser);
 
-  void login(LoginRequest loginUser);
 
-  void logout();
-
-  void update(UpdateUserRequest updateUser);
-}
-
-class AuthController extends StateNotifier<ResultValue<AuthResponse>> implements AuthControllerBase {
+class AuthController extends StateNotifier<ResultValue<AuthResponse>>  {
   AuthController(this.ref) : super(const ResultValue.empty()) {
     ref.read(getAuthUserProvider.future).then((value) {
       if (value != null) {
@@ -27,7 +19,6 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> implements
 
   final Ref ref;
 
-  @override
   void signUp(CreateUserRequest createUser) async {
     try {
       // ? Loading state
@@ -43,7 +34,6 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> implements
     }
   }
 
-  @override
   void login(LoginRequest loginUser) async {
     try {
       state = const ResultValue.loading(); // ? Loading state
@@ -55,7 +45,6 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> implements
     }
   }
 
-  @override
   void update(UpdateUserRequest updateUser) async {
     try {
       state = const ResultValue.loading(); // ? Loading state
@@ -66,7 +55,7 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> implements
       }
 
       final user = await ref.read(authApiProvider).update(
-        authUser: savedAuthUser,
+        userId: savedAuthUser.user.id,
         updateUser: updateUser,
       );
 
@@ -79,7 +68,6 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> implements
     }
   }
 
-  @override
   void logout() async {
     try {
       state = const ResultValue.loading(); // ? Loading state

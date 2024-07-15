@@ -50,7 +50,7 @@ class OrderItemAdapter extends TypeAdapter<_$OrderItemImpl> {
 _$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
     _$OrderItemImpl(
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) =>

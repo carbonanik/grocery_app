@@ -8,11 +8,9 @@ abstract class AuthApi {
   Future<AuthResponse> register(CreateUserRequest createUser);
 
   Future<User> update({
-    required AuthResponse authUser,
+    required int userId,
     required UpdateUserRequest updateUser,
   });
-
-  Future<void> logout();
 
   Future<AuthResponse> getMe(AuthResponse token);
 }

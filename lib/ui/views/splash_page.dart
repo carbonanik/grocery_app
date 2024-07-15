@@ -31,18 +31,22 @@ class _SplashState extends ConsumerState<SplashPage> {
   }
 
   void init() async {
-    final previouslyBoarded = await ref.read(previouslyBoardedProvider.future);
+    // final previouslyBoarded = await ref.read(previouslyBoardedProvider.future);
     // googleFontsPending = GoogleFonts.pendingFonts([
     //   GoogleFonts.dmSans(),
       // GoogleFonts.poppins(),
       // GoogleFonts.montserrat(fontStyle: FontStyle.italic),
     // ]);
 
-    Timer(1.seconds, () {
+    // Timer(1.seconds, () {
       // Get.offAndToNamed(
       //   previouslyBoarded ? RouteHelper.getHomeTab() : RouteHelper.getOnBoarding(),
       // );
-      AutoRouter.of(context).push(previouslyBoarded ? const MainTabsRoute() : const OnBoardingRoute());
+      // AutoRouter.of(context).push(previouslyBoarded ? const MainTabsRoute() : const OnBoardingRoute());
+    // });
+
+    Timer(1.seconds, () {
+      AutoRouter.of(context).push(const MainTabsRoute());
     });
   }
 

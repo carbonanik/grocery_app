@@ -2,12 +2,10 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/local/init_hive.dart';
 import 'package:instant_grrocery_delivery/route/app_router.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 Future<void> main() async {
@@ -18,7 +16,7 @@ Future<void> main() async {
         isToolbarVisible: false,
         backgroundColor: Colors.grey[900],
         defaultDevice: Devices.android.mediumPhone,
-        enabled: !kReleaseMode,
+        enabled: false,
         builder: (context) {
           return MyApp();
         },

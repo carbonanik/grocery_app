@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
 // import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
@@ -92,7 +93,8 @@ class MyCartPage extends StatelessWidget {
         AutoRouter.of(context).push(const ApplyCouponRoute());
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: context.w(20), vertical: context.h(20)),
+        padding: EdgeInsets.symmetric(
+            horizontal: context.w(20), vertical: context.h(20)),
         margin: EdgeInsets.symmetric(horizontal: context.h(20)),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -131,53 +133,58 @@ class MyCartPage extends StatelessWidget {
   }
 
   Consumer _cartItemList() {
-    return Consumer(builder: (context, ref, child) {
-      final cartDataModel = ref.watch(cartProvider);
-      final cartList = cartDataModel.cartList.values.toList();
-      return Container(
-        padding: EdgeInsets.symmetric(horizontal: context.w(20)),
-        child: cartList.isNotEmpty ?  ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Dismissible(
-              direction: DismissDirection.endToStart,
-              key: Key(cartList[index].id.toString()),
-              onDismissed: (direction) async {
-                await cartDataModel.itemRemove(cartList[index].product);
-              },
-              background: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.w(20)),
-                    child: const Icon(
-                      Icons.delete,
-                      color: accentColor,
-                    ),
-                  ),
+    return Consumer(
+      builder: (context, ref, child) {
+        final cartDataModel = ref.watch(cartProvider);
+        final cartList = cartDataModel.cartList.values.toList();
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+          child: cartList.isNotEmpty
+              ? ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Dismissible(
+                      direction: DismissDirection.endToStart,
+                      key: Key(cartList[index].id.toString()),
+                      onDismissed: (direction) async {
+                        await cartDataModel.itemRemove(cartList[index].product);
+                      },
+                      background: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: context.w(20)),
+                            child: const Icon(
+                              Icons.delete,
+                              color: accentColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: CartListItem(
+                          item: cartList[index],
+                          onAdd: () async => await cartDataModel
+                              .itemIncrement(cartList[index].product),
+                          onRemove: () async => await cartDataModel
+                              .itemDecrement(cartList[index].product),
+                        ),
+                      ),
+                    );
+                  },
+                  itemCount: cartList.length,
+                )
+              : const Padding(
+                  padding: EdgeInsets.only(top: 100),
+                  child: Center(child: OopsNoData()),
                 ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: CartListItem(
-                  item: cartList[index],
-                  onAdd: () async => await cartDataModel.itemIncrement(cartList[index].product),
-                  onRemove: () async  => await cartDataModel.itemDecrement(cartList[index].product),
-                ),
-              ),
-            );
-          },
-          itemCount: cartList.length,
-        ) : const Padding(
-          padding: EdgeInsets.only(top: 100),
-          child: Center(
-            child: OopsNoData()
-          ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   Positioned _bottomBar(BuildContext context, double height, double width) {
@@ -285,58 +292,61 @@ class MyCartPage extends StatelessWidget {
   }
 
   Widget _similarProducts() {
-    return Consumer(builder: (context, ref, child) {
-      final asyncValue = ref.watch(getFrequentlyBoughtTogetherProductProvider);
-      return asyncValue.map(
-        data: (data) => Container(
-          padding: EdgeInsets.symmetric(vertical: context.h(20)),
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(context.h(30)),
-              topRight: Radius.circular(
-                context.h(30),
+    return Consumer(
+      builder: (context, ref, child) {
+        final asyncValue =
+            ref.watch(getFrequentlyBoughtTogetherProductProvider);
+        return asyncValue.map(
+          data: (data) => Container(
+            padding: EdgeInsets.symmetric(vertical: context.h(20)),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(context.h(30)),
+                topRight: Radius.circular(
+                  context.h(30),
+                ),
               ),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
-                child: const Text(
-                  'Frequently Bought Together',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                  child: const Text(
+                    'Frequently Bought Together',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: context.h(20),
-              ),
-              SizedBox(
-                height: context.h(190),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: data.value.length,
-                  itemBuilder: (context, index) {
-                    final similarProduct = data.value[index];
-                    return Container(
-                      margin: EdgeInsets.only(left: context.w(20)),
-                      child: ProductItem(
-                        product: similarProduct,
-                      ),
-                    );
-                  },
+                SizedBox(
+                  height: context.h(20),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: context.h(190),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: data.value.length,
+                    itemBuilder: (context, index) {
+                      final similarProduct = data.value[index];
+                      return Container(
+                        margin: EdgeInsets.only(left: context.w(20)),
+                        child: ProductItem(
+                          product: similarProduct,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        error: (error) => Container(),
-        loading: (loading) => Container(),
-      );
-    });
+          error: (error) => Container(),
+          loading: (loading) => Container(),
+        );
+      },
+    );
   }
 }

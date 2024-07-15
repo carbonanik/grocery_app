@@ -52,9 +52,9 @@ class CartItemAdapter extends TypeAdapter<_$CartItemImpl> {
 
 _$CartItemImpl _$$CartItemImplFromJson(Map<String, dynamic> json) =>
     _$CartItemImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$CartItemImplToJson(_$CartItemImpl instance) =>

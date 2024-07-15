@@ -8,7 +8,7 @@ part of 'order_dto.dart';
 
 _$OrderReadDtoImpl _$$OrderReadDtoImplFromJson(Map<String, dynamic> json) =>
     _$OrderReadDtoImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       attributes:
           OrderSubReadDto.fromJson(json['attributes'] as Map<String, dynamic>),
     );
@@ -22,7 +22,7 @@ Map<String, dynamic> _$$OrderReadDtoImplToJson(_$OrderReadDtoImpl instance) =>
 _$OrderSubReadDtoImpl _$$OrderSubReadDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderSubReadDtoImpl(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       totalPrice: json['totalPrice'] as String,
       orderDate: json['orderDate'] as String,
       orderStatus: json['orderStatus'] as String,
@@ -50,7 +50,7 @@ Map<String, dynamic> _$$OrderSubReadDtoImplToJson(
 _$OrderItemReadDtoImpl _$$OrderItemReadDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderItemReadDtoImpl(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       product: ProductDto.fromJson(json['product'] as Map<String, dynamic>),
     );
 
@@ -75,7 +75,7 @@ Map<String, dynamic> _$$UserInOrderReadDtoImplToJson(
 
 _$UserReadDtoImpl _$$UserReadDtoImplFromJson(Map<String, dynamic> json) =>
     _$UserReadDtoImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       attributes:
           UserSubReadDto.fromJson(json['attributes'] as Map<String, dynamic>),
     );

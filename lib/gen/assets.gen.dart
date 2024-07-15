@@ -22,63 +22,35 @@ class $AssetsImagesGen {
   AssetGenImage get deliveryMan =>
       const AssetGenImage('assets/images/delivery_man.png');
 
-  /// File path: assets/images/delivery_man.png.xmp
-  String get deliveryManPng => 'assets/images/delivery_man.png.xmp';
-
   /// File path: assets/images/delivery_man_masked.png
   AssetGenImage get deliveryManMasked =>
       const AssetGenImage('assets/images/delivery_man_masked.png');
-
-  /// File path: assets/images/delivery_man_masked.png.xmp
-  String get deliveryManMaskedPng =>
-      'assets/images/delivery_man_masked.png.xmp';
 
   $AssetsImagesFruitGen get fruit => const $AssetsImagesFruitGen();
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
-  /// File path: assets/images/logo.png.xmp
-  String get logoPng => 'assets/images/logo.png.xmp';
-
   /// File path: assets/images/undraw_On_the_way_re_swjt.png
   AssetGenImage get undrawOnTheWayReSwjt =>
       const AssetGenImage('assets/images/undraw_On_the_way_re_swjt.png');
-
-  /// File path: assets/images/undraw_On_the_way_re_swjt.png.xmp
-  String get undrawOnTheWayReSwjtPng =>
-      'assets/images/undraw_On_the_way_re_swjt.png.xmp';
 
   /// File path: assets/images/undraw_Online_payments_re_y8f2.png
   AssetGenImage get undrawOnlinePaymentsReY8f2 =>
       const AssetGenImage('assets/images/undraw_Online_payments_re_y8f2.png');
 
-  /// File path: assets/images/undraw_Online_payments_re_y8f2.png.xmp
-  String get undrawOnlinePaymentsReY8f2Png =>
-      'assets/images/undraw_Online_payments_re_y8f2.png.xmp';
-
   /// File path: assets/images/undraw_online_groceries_a02y.png
   AssetGenImage get undrawOnlineGroceriesA02y =>
       const AssetGenImage('assets/images/undraw_online_groceries_a02y.png');
 
-  /// File path: assets/images/undraw_online_groceries_a02y.png.xmp
-  String get undrawOnlineGroceriesA02yPng =>
-      'assets/images/undraw_online_groceries_a02y.png.xmp';
-
   /// List of all assets
-  List<dynamic> get values => [
+  List<AssetGenImage> get values => [
         deliveryMan,
-        deliveryManPng,
         deliveryManMasked,
-        deliveryManMaskedPng,
         logo,
-        logoPng,
         undrawOnTheWayReSwjt,
-        undrawOnTheWayReSwjtPng,
         undrawOnlinePaymentsReY8f2,
-        undrawOnlinePaymentsReY8f2Png,
-        undrawOnlineGroceriesA02y,
-        undrawOnlineGroceriesA02yPng
+        undrawOnlineGroceriesA02y
       ];
 }
 
@@ -422,93 +394,53 @@ class $AssetsImagesFruitGen {
   AssetGenImage get apple =>
       const AssetGenImage('assets/images/fruit/apple.png');
 
-  /// File path: assets/images/fruit/apple.png.xmp
-  String get applePng => 'assets/images/fruit/apple.png.xmp';
-
   /// File path: assets/images/fruit/banana.png
   AssetGenImage get banana =>
       const AssetGenImage('assets/images/fruit/banana.png');
-
-  /// File path: assets/images/fruit/banana.png.xmp
-  String get bananaPng => 'assets/images/fruit/banana.png.xmp';
 
   /// File path: assets/images/fruit/blueberries.png
   AssetGenImage get blueberries =>
       const AssetGenImage('assets/images/fruit/blueberries.png');
 
-  /// File path: assets/images/fruit/blueberries.png.xmp
-  String get blueberriesPng => 'assets/images/fruit/blueberries.png.xmp';
-
   /// File path: assets/images/fruit/guava.png
   AssetGenImage get guava =>
       const AssetGenImage('assets/images/fruit/guava.png');
-
-  /// File path: assets/images/fruit/guava.png.xmp
-  String get guavaPng => 'assets/images/fruit/guava.png.xmp';
 
   /// File path: assets/images/fruit/mango.png
   AssetGenImage get mango =>
       const AssetGenImage('assets/images/fruit/mango.png');
 
-  /// File path: assets/images/fruit/mango.png.xmp
-  String get mangoPng => 'assets/images/fruit/mango.png.xmp';
-
   /// File path: assets/images/fruit/orange.png
   AssetGenImage get orange =>
       const AssetGenImage('assets/images/fruit/orange.png');
 
-  /// File path: assets/images/fruit/orange.png.xmp
-  String get orangePng => 'assets/images/fruit/orange.png.xmp';
-
   /// File path: assets/images/fruit/pear.png
   AssetGenImage get pear => const AssetGenImage('assets/images/fruit/pear.png');
-
-  /// File path: assets/images/fruit/pear.png.xmp
-  String get pearPng => 'assets/images/fruit/pear.png.xmp';
 
   /// File path: assets/images/fruit/pineapple.png
   AssetGenImage get pineapple =>
       const AssetGenImage('assets/images/fruit/pineapple.png');
 
-  /// File path: assets/images/fruit/pineapple.png.xmp
-  String get pineapplePng => 'assets/images/fruit/pineapple.png.xmp';
-
   /// File path: assets/images/fruit/raspberries.png
   AssetGenImage get raspberries =>
       const AssetGenImage('assets/images/fruit/raspberries.png');
-
-  /// File path: assets/images/fruit/raspberries.png.xmp
-  String get raspberriesPng => 'assets/images/fruit/raspberries.png.xmp';
 
   /// File path: assets/images/fruit/watermelon.png
   AssetGenImage get watermelon =>
       const AssetGenImage('assets/images/fruit/watermelon.png');
 
-  /// File path: assets/images/fruit/watermelon.png.xmp
-  String get watermelonPng => 'assets/images/fruit/watermelon.png.xmp';
-
   /// List of all assets
-  List<dynamic> get values => [
+  List<AssetGenImage> get values => [
         apple,
-        applePng,
         banana,
-        bananaPng,
         blueberries,
-        blueberriesPng,
         guava,
-        guavaPng,
         mango,
-        mangoPng,
         orange,
-        orangePng,
         pear,
-        pearPng,
         pineapple,
-        pineapplePng,
         raspberries,
-        raspberriesPng,
-        watermelon,
-        watermelonPng
+        watermelon
       ];
 }
 

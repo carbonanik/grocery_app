@@ -8,7 +8,7 @@ part of 'category_dto.dart';
 
 _$CategoryDtoImpl _$$CategoryDtoImplFromJson(Map<String, dynamic> json) =>
     _$CategoryDtoImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       attributes:
           CategorySubDto.fromJson(json['attributes'] as Map<String, dynamic>),
     );

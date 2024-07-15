@@ -8,7 +8,7 @@ part of 'support.dart';
 
 _$SupportImpl _$$SupportImplFromJson(Map<String, dynamic> json) =>
     _$SupportImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       subject: json['subject'] as String,
       message: json['message'] as String,
     );

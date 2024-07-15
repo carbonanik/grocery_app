@@ -2,24 +2,13 @@ import 'dart:convert';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/api/impl/product_api_impl.dart';
-import 'package:instant_grrocery_delivery/data_source/api/mock_impl/product_api_mock_impl.dart';
 import 'package:instant_grrocery_delivery/data_source/api/product_api.dart';
-import 'package:instant_grrocery_delivery/data_source/api/util/using_api_impl_for.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
-import 'package:instant_grrocery_delivery/provider/api_server_provider.dart';
 import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
 import 'package:instant_grrocery_delivery/provider/favorite/favorite_hive_provider.dart';
 
 final productApiProvider = Provider<ProductApi>((ref) {
-  final usingApi = ref.read(apiServerProvider);
-  switch (usingApi) {
-    case UsingApiImplFor.fastApiServer:
-      throw UnimplementedError();
-    case UsingApiImplFor.strapiServer:
-      return ProductApiImpl();
-    case UsingApiImplFor.mockServer:
-      return ProductApiMockImpl();
-  }
+  return ProductApiImpl();
 });
 
 final getProductsProvider = FutureProvider<List<Product>>((ref) async {
@@ -27,7 +16,8 @@ final getProductsProvider = FutureProvider<List<Product>>((ref) async {
   return api.getProducts();
 });
 
-final getProductByIdProvider = FutureProvider.family<Product, int>((ref, productId) async {
+final getProductByIdProvider =
+    FutureProvider.family<Product, int>((ref, productId) async {
   final api = ref.read(productApiProvider);
   return api.getProductsById(productId);
 });
@@ -44,12 +34,14 @@ final getPopularProductProvider = FutureProvider<List<Product>>((ref) async {
   return api.getPopularProducts();
 });
 
-final getSimilarProductProvider = FutureProvider.family<List<Product>, int>((ref, productId) async {
+final getSimilarProductProvider =
+    FutureProvider.family<List<Product>, int>((ref, productId) async {
   final api = ref.read(productApiProvider);
   return api.getSimilarProducts(productId);
 });
 
-final getFrequentlyBoughtTogetherProductProvider = FutureProvider<List<Product>>((ref) async {
+final getFrequentlyBoughtTogetherProductProvider =
+    FutureProvider<List<Product>>((ref) async {
   final api = ref.read(productApiProvider);
   final ids = ref.read(cartProvider).cartList.keys.toList();
   return api.getFrequentlyBoughtTogether(ids);

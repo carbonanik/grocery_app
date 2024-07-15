@@ -105,7 +105,7 @@ Map<String, dynamic> _$$UpdateUserRequestImplToJson(
     };
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       username: json['username'] as String,
       email: json['email'] as String,
       provider: json['provider'] as String?,

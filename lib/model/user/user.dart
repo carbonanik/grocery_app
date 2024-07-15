@@ -16,7 +16,8 @@ class CreateUserRequest with _$CreateUserRequest {
     required String password,
   }) = _CreateUserRequest;
 
-  factory CreateUserRequest.fromJson(Map<String, dynamic> source) => _$CreateUserRequestFromJson(source);
+  factory CreateUserRequest.fromJson(Map<String, dynamic> source) =>
+      _$CreateUserRequestFromJson(source);
 }
 
 @freezed
@@ -27,12 +28,12 @@ class UpdateUserRequest with _$UpdateUserRequest {
     String? email,
   }) = _UpdateUserRequest;
 
-  factory UpdateUserRequest.fromJson(Map<String, dynamic> source) => _$UpdateUserRequestFromJson(source);
+  factory UpdateUserRequest.fromJson(Map<String, dynamic> source) =>
+      _$UpdateUserRequestFromJson(source);
 }
 
 @freezed
 class User extends HiveObject with _$User {
-
   User._();
 
   @HiveType(typeId: userHiveTypeId, adapterName: userAdapterName)

@@ -29,7 +29,7 @@ class OrderApiImpl extends OrderApi {
     final createOrderJson = {"data": createOrderDto.toJson()};
 
     final response = await http.post(
-      getUri(path: ApiPath.order),
+      getUri(path: Paths.order),
       headers: getHeader(token: authUser),
       body: json.encode(createOrderJson),
     );
@@ -46,7 +46,7 @@ class OrderApiImpl extends OrderApi {
   // Function to fetch all orders from the API
   @override
   Future<List<Order>> getOrders() async {
-    final response = await http.get(getUri(path: ApiPath.order));
+    final response = await http.get(getUri(path: Paths.order));
     if (response.statusCode == 200) {
       final Iterable data = json.decode(response.body);
       List<Order> orders =

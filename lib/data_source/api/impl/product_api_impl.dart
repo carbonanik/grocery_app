@@ -12,7 +12,7 @@ class ProductApiImpl extends ProductApi {
   @override
   Future<List<Product>> getProducts() async {
     // get all products form api
-    final response = await http.get(getUri(path: ApiPath.product));
+    final response = await http.get(getUri(path: Paths.product));
 
     // if success
     if (response.statusCode == 200) {
@@ -39,7 +39,7 @@ class ProductApiImpl extends ProductApi {
   @override
   Future<Product> getProductsById(int productId) async {
     final response = await http.get(
-      getUri(path: '${ApiPath.product}/$productId'),
+      getUri(path: '${Paths.product}/$productId'),
     );
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
@@ -62,7 +62,7 @@ class ProductApiImpl extends ProductApi {
 
   @override
   Future<bool> createProduct(Map<String, dynamic> productData) async {
-    final response = await http.post(getUri(path: ApiPath.product),
+    final response = await http.post(getUri(path: Paths.product),
         headers: {"Content-Type": "application/json"},
         body: json.encode(productData));
     if (response.statusCode == 201) {
@@ -76,7 +76,7 @@ class ProductApiImpl extends ProductApi {
   Future<bool> updateProduct(
       int productId, Map<String, dynamic> productData) async {
     final response = await http.put(
-      getUri(path: '${ApiPath.product}/$productId'),
+      getUri(path: '${Paths.product}/$productId'),
       headers: {"Content-Type": "application/json"},
       body: json.encode(productData),
     );
@@ -90,7 +90,7 @@ class ProductApiImpl extends ProductApi {
   @override
   Future<bool> deleteProduct(int productId) async {
     final response =
-        await http.delete(getUri(path: '${ApiPath.product}/$productId'));
+        await http.delete(getUri(path: '${Paths.product}/$productId'));
     if (response.statusCode == 204) {
       return true;
     } else {
@@ -112,7 +112,7 @@ class ProductApiImpl extends ProductApi {
     // parameters.addAll({'filters[id][\$in]': '5', 'filters[id][\$in]': '6'});
 
     final response = await http.get(
-        getUri(path: ApiPath.product, parameters: parameters),
+        getUri(path: Paths.product, parameters: parameters),
         headers: {"Content-Type": "application/json"});
 
     if (response.statusCode == 200) {

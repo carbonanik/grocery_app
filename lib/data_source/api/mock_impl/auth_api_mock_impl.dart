@@ -10,7 +10,8 @@ class AuthApiMockImpl extends AuthApi {
   @override
   Future<AuthResponse> login(LoginRequest loginUser) async {
     await simulateFetch();
-    final user = userJson.firstWhereOrNull((element) => element["email"] == loginUser.identifier);
+    final user = userJson.firstWhereOrNull(
+        (element) => element["email"] == loginUser.identifier);
     if (user == null) {
       throw Exception('User not found');
     }
@@ -27,12 +28,6 @@ class AuthApiMockImpl extends AuthApi {
   @override
   Future<AuthResponse> getMe(AuthResponse token) {
     // TODO: implement getMe
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> logout() {
-    // TODO: implement logout
     throw UnimplementedError();
   }
 
@@ -58,10 +53,13 @@ class AuthApiMockImpl extends AuthApi {
   }
 
   @override
-  Future<User> update({required AuthResponse authUser, required UpdateUserRequest updateUser}) async {
+  Future<User> update({
+    required int userId,
+    required UpdateUserRequest updateUser,
+  }) async {
     await simulateFetch();
 
-    final i = userJson.indexWhere((element) => element["id"] == authUser.user.id);
+    final i = userJson.indexWhere((element) => element["id"] == userId);
     final user = userJson[i];
     user["email"] = updateUser.email ?? user["email"] ?? "";
     user["phone"] = updateUser.phone ?? user["phone"] ?? "";
@@ -71,8 +69,6 @@ class AuthApiMockImpl extends AuthApi {
     return User.fromJson(user);
   }
 }
-
-
 
 final userJson = [
   {

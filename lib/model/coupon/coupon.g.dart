@@ -63,7 +63,7 @@ class CouponAdapter extends TypeAdapter<_$CouponImpl> {
 // **************************************************************************
 
 _$CouponImpl _$$CouponImplFromJson(Map<String, dynamic> json) => _$CouponImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       description: json['description'] as String,
       code: json['code'] as String,

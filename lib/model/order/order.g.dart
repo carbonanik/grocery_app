@@ -66,12 +66,12 @@ class OrderAdapter extends TypeAdapter<_$OrderImpl> {
 // **************************************************************************
 
 _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
-      id: json['id'] as int,
-      userId: json['userId'] as int?,
+      id: (json['id'] as num).toInt(),
+      userId: (json['userId'] as num?)?.toInt(),
       orderItems: (json['orderItems'] as List<dynamic>)
           .map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       totalPrice: json['totalPrice'] as String,
       orderDate: json['orderDate'] as String,
       orderStatus: json['orderStatus'] as String,

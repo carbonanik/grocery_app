@@ -8,8 +8,8 @@ part of 'order_create.dart';
 
 _$OrderCreateImpl _$$OrderCreateImplFromJson(Map<String, dynamic> json) =>
     _$OrderCreateImpl(
-      userId: json['userId'] as int,
-      count: json['count'] as int,
+      userId: (json['userId'] as num).toInt(),
+      count: (json['count'] as num).toInt(),
       totalPrice: json['totalPrice'] as String,
       orderDate: json['orderDate'] as String,
       orderItems: (json['orderItems'] as List<dynamic>)
@@ -32,7 +32,7 @@ Map<String, dynamic> _$$OrderCreateImplToJson(_$OrderCreateImpl instance) =>
 
 _$OrderCreateDtoImpl _$$OrderCreateDtoImplFromJson(Map<String, dynamic> json) =>
     _$OrderCreateDtoImpl(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       totalPrice: json['totalPrice'] as String,
       orderDate: json['orderDate'] as String,
       orderItems: (json['orderItems'] as List<dynamic>)
@@ -58,7 +58,7 @@ Map<String, dynamic> _$$OrderCreateDtoImplToJson(
 _$OrderItemCreateDtoImpl _$$OrderItemCreateDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderItemCreateDtoImpl(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
     );
 
@@ -72,7 +72,9 @@ Map<String, dynamic> _$$OrderItemCreateDtoImplToJson(
 _$UserInOrderCreateDtoImpl _$$UserInOrderCreateDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$UserInOrderCreateDtoImpl(
-      connect: (json['connect'] as List<dynamic>).map((e) => e as int).toList(),
+      connect: (json['connect'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
     );
 
 Map<String, dynamic> _$$UserInOrderCreateDtoImplToJson(

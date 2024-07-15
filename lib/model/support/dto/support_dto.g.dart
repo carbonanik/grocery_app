@@ -25,7 +25,9 @@ Map<String, dynamic> _$$CreateSupportDtoImplToJson(
 _$UserInSupportDtoImpl _$$UserInSupportDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$UserInSupportDtoImpl(
-      connect: (json['connect'] as List<dynamic>).map((e) => e as int).toList(),
+      connect: (json['connect'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
     );
 
 Map<String, dynamic> _$$UserInSupportDtoImplToJson(
@@ -36,7 +38,7 @@ Map<String, dynamic> _$$UserInSupportDtoImplToJson(
 
 _$ReadSupportDtoImpl _$$ReadSupportDtoImplFromJson(Map<String, dynamic> json) =>
     _$ReadSupportDtoImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       attributes: ReadSupportAttributeDto.fromJson(
           json['attributes'] as Map<String, dynamic>),
     );

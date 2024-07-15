@@ -4,12 +4,10 @@ class Country {
   final String nameCode;
   final String flag;
 
-  const Country(
-    this.nameCode,
-    this.phoneCode,
-    this.name,
-    this.flag,
-  );
+  const Country(this.nameCode,
+      this.phoneCode,
+      this.name,
+      this.flag,);
 
   static const Map<String, Country> countries = {
     "ad": Country("ad", "376", "Andorra", "🇦🇩"),

@@ -13,7 +13,7 @@ class CategoryApiImpl extends CategoryApi{
   Future<List<Category>> getCategories() async {
     // get all category from api
     final response = await http.get(
-      getUri(path: ApiPath.category),
+      getUri(path: Paths.category),
       headers: getHeader(),
     );
 
@@ -37,7 +37,7 @@ class CategoryApiImpl extends CategoryApi{
   Future<Category> getCategoriesByIdWithProduct(int categoryId) async {
     final response = await http.get(
       getUri(
-        path: '${ApiPath.category}/$categoryId',
+        path: '${Paths.category}/$categoryId',
         parameters: {'populate': '*'},
       ),
     );
@@ -52,7 +52,7 @@ class CategoryApiImpl extends CategoryApi{
 
   @override
   Future<bool> createCategory(Map<String, dynamic> categoryData) async {
-    final response = await http.post(getUri(path: ApiPath.category),
+    final response = await http.post(getUri(path: Paths.category),
         headers: {"Content-Type": "application/json"},
         body: json.encode(categoryData));
     if (response.statusCode == 201) {
@@ -66,7 +66,7 @@ class CategoryApiImpl extends CategoryApi{
   Future<bool> updateCategory(
       int categoryId, Map<String, dynamic> categoryData) async {
     final response = await http.put(
-        getUri(path: '${ApiPath.category}/$categoryId'),
+        getUri(path: '${Paths.category}/$categoryId'),
         headers: {"Content-Type": "application/json"},
         body: json.encode(categoryData));
     if (response.statusCode == 200) {
@@ -79,7 +79,7 @@ class CategoryApiImpl extends CategoryApi{
   @override
   Future<bool> deleteCategory(int categoryId) async {
     final response =
-        await http.delete(getUri(path: '${ApiPath.category}/$categoryId'));
+        await http.delete(getUri(path: '${Paths.category}/$categoryId'));
     if (response.statusCode == 204) {
       return true;
     } else {

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 // import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
@@ -136,10 +137,12 @@ class HomePage extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(context.h(10)),
-                  borderSide: const BorderSide(width: 1.0, color: Colors.green)),
+                  borderSide:
+                      const BorderSide(width: 1.0, color: Colors.green)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(context.h(10)),
-                  borderSide: const BorderSide(width: 1.0, color: Colors.white)),
+                  borderSide:
+                      const BorderSide(width: 1.0, color: Colors.white)),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(context.h(20)),
               )),
@@ -148,7 +151,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildImageGallery(BuildContext context, List<String> featuredImages) {
+  SliverToBoxAdapter _buildImageGallery(
+      BuildContext context, List<String> featuredImages) {
     return SliverToBoxAdapter(
       child: Container(
         height: context.h(150),
@@ -164,7 +168,9 @@ class HomePage extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: context.w(20)),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: index.isOdd ? Colors.lightGreen.shade200 : Colors.green.shade200,
+                  color: index.isOdd
+                      ? Colors.lightGreen.shade200
+                      : Colors.green.shade200,
                   image: DecorationImage(
                     image: NetworkImage(featuredImages[index]),
                     fit: BoxFit.cover,
@@ -179,7 +185,8 @@ class HomePage extends StatelessWidget {
   SliverToBoxAdapter _buildHeader(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.only(left: context.w(20), right: context.w(20), top: context.h(30)),
+        padding: EdgeInsets.only(
+            left: context.w(20), right: context.w(20), top: context.h(30)),
         child: Row(
           children: [
             InkWell(
@@ -194,14 +201,18 @@ class HomePage extends StatelessWidget {
                     children: [
                       Text(
                         'Amazon sparklers',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: context.w(20), color: Colors.black),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: context.w(20),
+                            color: Colors.black),
                       ),
                       const Icon(Icons.arrow_drop_down)
                     ],
                   ),
                   SizedBox(height: context.h(8)),
                   Text('Terminal 3 potter road new york',
-                      style: TextStyle(fontSize: context.w(16), color: Colors.grey)),
+                      style: TextStyle(
+                          fontSize: context.w(16), color: Colors.grey)),
                 ],
               ),
             ),
@@ -223,7 +234,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _sliverSpace({required BuildContext context, double height = 30}) {
+  SliverToBoxAdapter _sliverSpace(
+      {required BuildContext context, double height = 30}) {
     return SliverToBoxAdapter(
       child: SizedBox(
         height: context.h(height),
@@ -299,7 +311,8 @@ class CustomSilverHeaderDelegate extends SliverPersistentHeaderDelegate {
   CustomSilverHeaderDelegate(this.minExtent, this.maxExtent);
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Stack(
       fit: StackFit.expand,
       children: [
