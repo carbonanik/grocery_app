@@ -46,9 +46,6 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.dmSansTextTheme(),
       ),
       routerConfig: _router.config(),
-      // getPages: RouteHelper.routes,
-      // initialRoute: RouteHelper.getSplash(),
-      // home: const HomePage(),
     );
   }
 }
