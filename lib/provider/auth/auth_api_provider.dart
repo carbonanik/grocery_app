@@ -1,4 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instant_grrocery_delivery/core/dio_client.dart';
 import 'package:instant_grrocery_delivery/data_source/api/auth_api.dart';
 
