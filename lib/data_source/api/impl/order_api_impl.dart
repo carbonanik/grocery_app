@@ -5,7 +5,6 @@ import 'package:instant_grrocery_delivery/data_source/api/order_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/extensions.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
-import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/order/dtos/order_create.dart';
 import 'package:instant_grrocery_delivery/model/order/dtos/order_dto.dart';
@@ -15,13 +14,17 @@ import '../../../model/order/order.dart';
 class OrderApiImpl extends OrderApi {
   // Function to create a new order
   @override
-  Future<Order> createOrder(OrderCreate createOrder, AuthResponse authUser) async {
-
+  Future<Order> createOrder(
+    OrderCreate createOrder,
+    AuthResponse authUser,
+  ) async {
     OrderCreateDto createOrderDto = OrderCreateDto(
       count: createOrder.count,
       totalPrice: createOrder.totalPrice,
       orderDate: createOrder.orderDate,
-      orderItems: createOrder.orderItems.map((e) => OrderItemCreateDto(count: e.count, product: e.product)).toList(),
+      orderItems: createOrder.orderItems
+          .map((e) => OrderItemCreateDto(count: e.count, product: e.product))
+          .toList(),
       coupons: createOrder.coupons,
       user: UserInOrderCreateDto(connect: [createOrder.userId]),
     );
@@ -49,8 +52,9 @@ class OrderApiImpl extends OrderApi {
     final response = await http.get(getUri(path: Paths.order));
     if (response.statusCode == 200) {
       final Iterable data = json.decode(response.body);
-      List<Order> orders =
-      List<Order>.from(data.map((model) => Order.fromJson(model)));
+      List<Order> orders = List<Order>.from(
+        data.map((model) => Order.fromJson(model)),
+      );
       return orders;
     } else {
       throw Exception('Failed to fetch orders');

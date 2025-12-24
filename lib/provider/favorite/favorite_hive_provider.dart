@@ -3,7 +3,6 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
-import 'package:instant_grrocery_delivery/data_source/local/favorite_local.dart';
 import 'package:instant_grrocery_delivery/data_source/local/impl/favorite_local_impl.dart';
 
 final favoriteLocalProvider = Provider((ref) => FavoriteLocalImpl());
@@ -19,7 +18,8 @@ class FavoriteChangeNotifier extends ChangeNotifier {
 
   final Map<int, bool> _favoriteList = {};
 
-  UnmodifiableMapView<int, bool> get favoriteList => UnmodifiableMapView(_favoriteList);
+  UnmodifiableMapView<int, bool> get favoriteList =>
+      UnmodifiableMapView(_favoriteList);
 
   bool getIsFavorite(productId) {
     return favoriteList[productId] ?? false;

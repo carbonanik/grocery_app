@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/widget/auth_button.dart';
 import 'package:material_dialogs/material_dialogs.dart';
 
-import '../../../main.dart';
 import '../../widget/input_field.dart';
 
 class WalletCard extends StatelessWidget {
-  const WalletCard({
-    super.key,
-  });
+  const WalletCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +15,20 @@ class WalletCard extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+            color: accentColor,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: .5,
+                blurRadius: 2,
+                offset: const Offset(1, 3),
               ),
-              color: accentColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: .5,
-                  blurRadius: 2,
-                  offset: const Offset(1, 3),
-                )
-              ]),
+            ],
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -74,57 +72,56 @@ class WalletCard extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: .5,
+                blurRadius: 2,
+                offset: const Offset(1, 3),
               ),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: .5,
-                  blurRadius: 2,
-                  offset: const Offset(1, 3),
-                )
-              ]),
+            ],
+          ),
           child: Center(
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Dialogs.bottomMaterialDialog(
-                    context: context,
-                    customView: Material(
-                      type: MaterialType.transparency,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
-                              child: Text(
-                                'Enter amount to add to wallet',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
-                                )
+                  context: context,
+                  customView: Material(
+                    type: MaterialType.transparency,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              'Enter amount to add to wallet',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
                               ),
                             ),
-                            const SizedBox(height: 20),
-                            InputField(
-                              title: 'Amount',
-                              hint: 'Enter amount',
-                              keyboardType: TextInputType.text,
-                            ),
-                            const SizedBox(height: 50),
+                          ),
+                          const SizedBox(height: 20),
+                          InputField(
+                            title: 'Amount',
+                            hint: 'Enter amount',
+                            keyboardType: TextInputType.text,
+                          ),
+                          const SizedBox(height: 50),
 
-                            AuthButton(
-                              text: 'Continue',
-                            )
-                          ]
-                        )
-                      )
-                    )
+                          AuthButton(text: 'Continue'),
+                        ],
+                      ),
+                    ),
+                  ),
                 );
               },
               child: Row(

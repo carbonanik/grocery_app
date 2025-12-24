@@ -1,21 +1,13 @@
-import 'dart:developer';
-
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/category/category.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-import '../../../../../route/route_helper.dart';
-
 class HomeCategory extends StatelessWidget {
-  const HomeCategory({
-    Key? key,
-    required this.category,
-    required this.index,
-  }) : super(key: key);
+  const HomeCategory({Key? key, required this.category, required this.index})
+    : super(key: key);
 
   final Category category;
   final int index;
@@ -27,7 +19,7 @@ class HomeCategory extends StatelessWidget {
         // Get.toNamed(
         //   RouteHelper.getCategoryTab(selectedCategoryId: category.id),
         // );
-        AutoRouter.of(context).push(CategoryTabRoute(selectedCategoryId: category.id));
+        context.push('/category-tab/${category.id}');
       },
       child: Container(
         padding: const EdgeInsets.only(left: 2, right: 10, top: 3, bottom: 3),
@@ -53,9 +45,7 @@ class HomeCategory extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: context.w(5),
-            ),
+            SizedBox(width: context.w(5)),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -63,22 +53,22 @@ class HomeCategory extends StatelessWidget {
                 Text(
                   category.name.split(' ').first,
                   style: TextStyle(
-                      fontWeight:
-                          index.isOdd ? FontWeight.w800 : FontWeight.w400,
-                      fontSize: index.isOdd ? 13 : 14),
+                    fontWeight: index.isOdd ? FontWeight.w800 : FontWeight.w400,
+                    fontSize: index.isOdd ? 13 : 14,
+                  ),
                 ),
-                const SizedBox(
-                  height: 3,
-                ),
+                const SizedBox(height: 3),
                 Text(
                   category.name.split(' ').last,
                   style: TextStyle(
-                      fontWeight:
-                          index.isEven ? FontWeight.w800 : FontWeight.w400,
-                      fontSize: index.isEven ? 13 : 14),
+                    fontWeight: index.isEven
+                        ? FontWeight.w800
+                        : FontWeight.w400,
+                    fontSize: index.isEven ? 13 : 14,
+                  ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

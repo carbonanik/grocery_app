@@ -1,18 +1,15 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:instant_grrocery_delivery/main.dart';
-import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
+
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/update_user_controller_provider.dart';
+
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/auth_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/input_field.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
-@RoutePage()
 class UpdateProfilePage extends ConsumerWidget {
   UpdateProfilePage({Key? key}) : super(key: key);
 

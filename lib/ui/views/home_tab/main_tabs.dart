@@ -1,8 +1,7 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
 // import 'package:get/get.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
+
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/category_list_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/support/support.dart';
@@ -11,7 +10,6 @@ import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/favorite_l
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/home/home_page.dart';
 import 'package:instant_grrocery_delivery/ui/views/home_tab/tab_views/order/my_orders_page.dart';
 
-@RoutePage()
 class MainTabsPage extends StatelessWidget {
   const MainTabsPage({super.key});
 
@@ -43,7 +41,7 @@ class MainTabsPage extends StatelessWidget {
           leading: GestureDetector(
             onTap: () {
               // Get.toNamed(RouteHelper.getProfile());
-              AutoRouter.of(context).push(const ViewProfileRoute());
+              context.push('/profile');
             },
             child: const CircleAvatar(
               backgroundColor: backgroundColor,

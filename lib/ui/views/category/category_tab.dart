@@ -1,19 +1,16 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../main.dart';
 import '../../../provider/category/category_api_provider.dart';
 import '../../widget/side_tab.dart';
 import 'category_product_list_page.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
-@RoutePage()
 class CategoryTabPage extends StatelessWidget {
   const CategoryTabPage({
     Key? key,
     // this.preSelectedTab = 0,
-    @PathParam("category-id") this.selectedCategoryId,
+    this.selectedCategoryId,
   }) : super(key: key);
 
   // final int preSelectedTab;
@@ -46,9 +43,7 @@ class CategoryTabPage extends StatelessWidget {
                         (category) => category.id == selectedCategoryId,
                       )
                     : 0,
-                leading: CircleAvatar(
-                  backgroundColor: accentColor,
-                ),
+                leading: CircleAvatar(backgroundColor: accentColor),
               ),
               error: (error) => Text(error.error.toString()),
               loading: (loading) => const CircularProgressIndicator(),

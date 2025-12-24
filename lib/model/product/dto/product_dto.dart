@@ -6,8 +6,7 @@ part 'product_dto.g.dart';
 part 'product_dto.freezed.dart';
 
 @freezed
-class ProductDto with _$ProductDto {
-
+abstract class ProductDto with _$ProductDto {
   const factory ProductDto({
     required int id,
     required double price,
@@ -29,8 +28,7 @@ class ProductDto with _$ProductDto {
   // }
 
   factory ProductDto.fromJson(Map<String, dynamic> source) =>
-     _$ProductDtoFromJson(source);
-
+      _$ProductDtoFromJson(source);
 }
 
 extension ProductDtoX on ProductDto {
@@ -45,8 +43,7 @@ extension ProductDtoX on ProductDto {
 }
 
 @freezed
-class ProductDtoSub with _$ProductDtoSub {
-
+abstract class ProductDtoSub with _$ProductDtoSub {
   const factory ProductDtoSub({
     required double price,
     required String name,
@@ -56,6 +53,5 @@ class ProductDtoSub with _$ProductDtoSub {
   }) = _ProductDtoSub;
 
   factory ProductDtoSub.fromJson(Map<String, dynamic> source) =>
-   _$ProductDtoSubFromJson(source);
-
+      _$ProductDtoSubFromJson(source);
 }

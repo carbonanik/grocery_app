@@ -1,15 +1,13 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 import '../../main.dart';
 import '../../model/product/product.dart';
 import '../../provider/cart/cart_provider.dart';
-import '../../route/route_helper.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({Key? key, required this.product, this.onReturn})
@@ -22,8 +20,8 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AutoRouter.of(context)
-            .push(ProductDetailRoute(productId: product.id))
+        context
+            .push('/product-detail/${product.id}')
             .then((value) => onReturn?.call());
       },
       //     Get.toNamed(

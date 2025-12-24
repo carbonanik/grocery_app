@@ -9,13 +9,11 @@ part 'order.freezed.dart';
 part 'order.g.dart';
 
 @freezed
-class Order extends HiveObject with _$Order {
-
+abstract class Order extends HiveObject with _$Order {
   Order._();
 
   @HiveType(typeId: orderHiveTypeId, adapterName: orderAdapterName)
   factory Order({
-
     @HiveField(0) required int id,
     @HiveField(1) int? userId,
     @HiveField(2) required List<OrderItem> orderItems,
@@ -44,4 +42,3 @@ class Order extends HiveObject with _$Order {
 //   get isData => this is _OrderProcessData;
 //   get isLoading => this is _OrderProcessLoading;
 // }
-

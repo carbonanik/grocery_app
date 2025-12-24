@@ -7,8 +7,7 @@ part 'product.g.dart';
 part 'product.freezed.dart';
 
 @freezed
-class Product extends HiveObject with _$Product {
-
+abstract class Product extends HiveObject with _$Product {
   Product._();
 
   @HiveType(typeId: productHiveTypeId, adapterName: productAdapterName)

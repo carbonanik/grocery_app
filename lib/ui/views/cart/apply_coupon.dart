@@ -1,13 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
-import '../../../main.dart';
 import '../../../util/dimension.dart';
 import '../../widget/coupon_item.dart';
 import '../../widget/my_app_bar.dart';
 
-@RoutePage()
 class ApplyCouponPage extends StatelessWidget {
   const ApplyCouponPage({Key? key}) : super(key: key);
 
@@ -65,11 +62,13 @@ class ApplyCouponPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: context.h(20)),
-                  Text('Available Coupons',
-                      style: TextStyle(
-                        fontSize: context.w(20),
-                        fontWeight: FontWeight.w600,
-                      )),
+                  Text(
+                    'Available Coupons',
+                    style: TextStyle(
+                      fontSize: context.w(20),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   SizedBox(height: context.h(20)),
                   ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),

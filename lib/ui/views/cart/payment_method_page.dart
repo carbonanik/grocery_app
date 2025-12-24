@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/order/order.dart';
@@ -12,7 +11,6 @@ import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/ui/widget/payment_method_item.dart';
 
-@RoutePage()
 class PaymentMethodPage extends ConsumerWidget {
   const PaymentMethodPage({Key? key}) : super(key: key);
 
@@ -40,23 +38,27 @@ class PaymentMethodPage extends ConsumerWidget {
                 padding: EdgeInsets.symmetric(horizontal: context.w(30)),
                 child: Row(
                   children: [
-                    Text('Amount to pay',
-                        style: TextStyle(
-                          fontSize: context.w(16),
-                          fontWeight: FontWeight.w600,
-                        )),
+                    Text(
+                      'Amount to pay',
+                      style: TextStyle(
+                        fontSize: context.w(16),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     const Spacer(),
-                    Consumer(builder: (context, ref, child) {
-                      final cartDataModel = ref.watch(cartProvider);
-                      return Text(
-                        '\$${cartDataModel.cartPrice()}',
-                        style: TextStyle(
-                          fontSize: context.w(16),
-                          fontWeight: FontWeight.w600,
-                          color: accentColor,
-                        ),
-                      );
-                    }),
+                    Consumer(
+                      builder: (context, ref, child) {
+                        final cartDataModel = ref.watch(cartProvider);
+                        return Text(
+                          '\$${cartDataModel.cartPrice()}',
+                          style: TextStyle(
+                            fontSize: context.w(16),
+                            fontWeight: FontWeight.w600,
+                            color: accentColor,
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -69,10 +71,12 @@ class PaymentMethodPage extends ConsumerWidget {
                   text: orderState.isLoading
                       ? 'Loading...'
                       : orderState.isData
-                          ? 'Payment Done'
-                          : 'Instant Pay',
+                      ? 'Payment Done'
+                      : 'Instant Pay',
                   onTap: () {
-                    ref.read(processOrderControllerProvider.notifier).processOrder();
+                    ref
+                        .read(processOrderControllerProvider.notifier)
+                        .processOrder();
                   },
                   icon: Icons.energy_savings_leaf,
                 ),
@@ -98,10 +102,7 @@ class PaymentMethodPage extends ConsumerWidget {
                       ),
                     ),
                     SizedBox(height: context.h(15)),
-                    const PaymentMethodItem(
-                      name: 'Paypal',
-                      icon: Icons.paypal,
-                    ),
+                    const PaymentMethodItem(name: 'Paypal', icon: Icons.paypal),
                     SizedBox(height: context.h(5)),
                     const PaymentMethodItem(
                       name: 'Stripe',

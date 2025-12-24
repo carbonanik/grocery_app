@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:instant_grrocery_delivery/data_source/api/support_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/extensions.dart';
 import 'package:instant_grrocery_delivery/data_source/api/util/header.dart';
-import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/support/dto/support_dto.dart';
 import 'package:instant_grrocery_delivery/model/support/support.dart';
@@ -26,9 +25,7 @@ class SupportApiImpl extends SupportApi {
 
       // from response to dto
       List<ReadSupportDto> supports = List<ReadSupportDto>.from(
-        data.map(
-          (model) => ReadSupportDto.fromJson(model),
-        ),
+        data.map((model) => ReadSupportDto.fromJson(model)),
       );
       return supports.map((e) => e.toSupport()).toList();
     } else {
@@ -37,7 +34,10 @@ class SupportApiImpl extends SupportApi {
   }
 
   @override
-  Future<bool> createSupport(CreateSupportDto createSupportDto, AuthResponse authUser) async {
+  Future<bool> createSupport(
+    CreateSupportDto createSupportDto,
+    AuthResponse authUser,
+  ) async {
     final response = await http.post(
       getUri(path: Paths.support),
       headers: getHeader(token: authUser),
@@ -52,9 +52,15 @@ class SupportApiImpl extends SupportApi {
   }
 
   @override
-  Future<bool> updateCategory(int categoryId, Map<String, dynamic> categoryData) async {
-    final response = await http.put(getUri(path: '${Paths.category}/$categoryId'),
-        headers: {"Content-Type": "application/json"}, body: json.encode(categoryData));
+  Future<bool> updateCategory(
+    int categoryId,
+    Map<String, dynamic> categoryData,
+  ) async {
+    final response = await http.put(
+      getUri(path: '${Paths.category}/$categoryId'),
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(categoryData),
+    );
     if (response.statusCode == 200) {
       return true;
     } else {
@@ -64,7 +70,9 @@ class SupportApiImpl extends SupportApi {
 
   @override
   Future<bool> deleteCategory(int categoryId) async {
-    final response = await http.delete(getUri(path: '${Paths.category}/$categoryId'));
+    final response = await http.delete(
+      getUri(path: '${Paths.category}/$categoryId'),
+    );
     if (response.statusCode == 204) {
       return true;
     } else {

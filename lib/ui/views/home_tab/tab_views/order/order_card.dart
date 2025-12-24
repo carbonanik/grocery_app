@@ -1,18 +1,14 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
 // import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/model/order/order.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
+
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_separetor.dart';
 
 class OrderCard extends StatelessWidget {
-  OrderCard({
-    Key? key,
-    required this.order,
-  }) : super(key: key);
+  OrderCard({Key? key, required this.order}) : super(key: key);
 
   final Order order;
 
@@ -22,7 +18,7 @@ class OrderCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // Get.toNamed(RouteHelper.getOrderDetail(order.id.toString()));
-        AutoRouter.of(context).push(OrderDetailsRoute(orderId: order.id));
+        context.push('/order-details/${order.id}');
       },
       child: Stack(
         children: [
@@ -82,9 +78,7 @@ class OrderCard extends StatelessWidget {
               ),
               Container(
                 color: Colors.white,
-                child: const MySeparator(
-                  color: Colors.black12,
-                ),
+                child: const MySeparator(color: Colors.black12),
               ),
               Container(
                 height: height / 2 - context.h(20),
@@ -134,8 +128,12 @@ class OrderCard extends StatelessWidget {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
-                          backgroundColor: MaterialStateProperty.all(Colors.green.shade50),
-                          foregroundColor: MaterialStateProperty.all(accentColor),
+                          backgroundColor: MaterialStateProperty.all(
+                            Colors.green.shade50,
+                          ),
+                          foregroundColor: MaterialStateProperty.all(
+                            accentColor,
+                          ),
                         ),
                         onPressed: () {},
                         child: Text(

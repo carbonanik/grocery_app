@@ -7,7 +7,7 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class CreateUserRequest with _$CreateUserRequest {
+abstract class CreateUserRequest with _$CreateUserRequest {
   const factory CreateUserRequest({
     required String email,
     required String username,
@@ -21,7 +21,7 @@ class CreateUserRequest with _$CreateUserRequest {
 }
 
 @freezed
-class UpdateUserRequest with _$UpdateUserRequest {
+abstract class UpdateUserRequest with _$UpdateUserRequest {
   const factory UpdateUserRequest({
     String? fullName,
     String? phone,
@@ -33,7 +33,7 @@ class UpdateUserRequest with _$UpdateUserRequest {
 }
 
 @freezed
-class User extends HiveObject with _$User {
+abstract class User extends HiveObject with _$User {
   User._();
 
   @HiveType(typeId: userHiveTypeId, adapterName: userAdapterName)

@@ -1,11 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 
-
-@RoutePage()
 class FaqsPage extends StatelessWidget {
   const FaqsPage({Key? key}) : super(key: key);
 
@@ -36,7 +33,8 @@ class FaqsPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return const Faq();
                 },
-                separatorBuilder: (context, index) => const SizedBox(height: 10),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10),
                 itemCount: 10,
               ),
             ],
@@ -48,9 +46,7 @@ class FaqsPage extends StatelessWidget {
 }
 
 class Faq extends StatefulWidget {
-  const Faq({
-    super.key,
-  });
+  const Faq({super.key});
 
   @override
   State<Faq> createState() => _FaqState();
@@ -82,8 +78,14 @@ class _FaqState extends State<Faq> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("How to loram ipsium dolor. ",
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black54)),
+                  const Text(
+                    "How to loram ipsium dolor. ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
+                  ),
                   expanded
                       ? const Icon(
                           Icons.keyboard_arrow_up,
@@ -103,11 +105,16 @@ class _FaqState extends State<Faq> {
             curve: Curves.easeInOut,
             height: expanded ? 80 : 0,
             child: const Text(
-                "Lorem ipsum dolor sit amet, "
-                "consectetur adipiscing elit. "
-                "Suspendisse varius enim in eros elementum tristique. ",
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black38)),
-          )
+              "Lorem ipsum dolor sit amet, "
+              "consectetur adipiscing elit. "
+              "Suspendisse varius enim in eros elementum tristique. ",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                color: Colors.black38,
+              ),
+            ),
+          ),
         ],
       ),
     );

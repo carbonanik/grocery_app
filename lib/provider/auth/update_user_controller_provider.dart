@@ -1,9 +1,3 @@
-import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
-import 'package:instant_grrocery_delivery/model/user/user.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
-import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
-
 // class UpdateUserController extends StateNotifier<AuthResult> {
 //   UpdateUserController(this.ref) : super(const AuthResult.initial()){
 //     ref.read(getAuthUserProvider).whenData((value) {

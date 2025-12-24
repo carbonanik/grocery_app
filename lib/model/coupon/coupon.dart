@@ -3,13 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 
-
 part 'coupon.g.dart';
 part 'coupon.freezed.dart';
 
 @freezed
-class Coupon extends HiveObject with _$Coupon {
-Coupon._();
+abstract class Coupon extends HiveObject with _$Coupon {
+  Coupon._();
 
   @HiveType(typeId: couponHiveTypeId, adapterName: couponAdapterName)
   factory Coupon({
@@ -21,7 +20,6 @@ Coupon._();
     @HiveField(5) required double fixed,
     @HiveField(6) required String status,
   }) = _Coupon;
-
 
   factory Coupon.fromJson(Map<String, Object?> json) => _$CouponFromJson(json);
 }

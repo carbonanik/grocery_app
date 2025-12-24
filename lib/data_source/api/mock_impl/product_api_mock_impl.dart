@@ -2,11 +2,8 @@ import 'dart:convert';
 import 'dart:math';
 
 // import 'package:get/get_utils/get_utils.dart';
-import 'package:http/http.dart' as http;
 import 'package:instant_grrocery_delivery/data_source/api/mock_impl/simulate_fetch.dart';
 import 'package:instant_grrocery_delivery/data_source/api/product_api.dart';
-import 'package:instant_grrocery_delivery/data_source/api/util/paths.dart';
-import 'package:instant_grrocery_delivery/model/product/dto/product_dto.dart';
 
 import '../../../model/product/product.dart';
 
@@ -40,9 +37,7 @@ class ProductApiMockImpl extends ProductApi {
     await simulateFetch();
     // throw Exception('Not implemented');
     final product = Product.fromJson(
-      productsJson.firstWhere(
-        (element) => element["id"] == productId,
-      ),
+      productsJson.firstWhere((element) => element["id"] == productId),
     );
     return product;
   }
@@ -64,7 +59,9 @@ class ProductApiMockImpl extends ProductApi {
 
   @override
   Future<bool> updateProduct(
-      int productId, Map<String, dynamic> productData) async {
+    int productId,
+    Map<String, dynamic> productData,
+  ) async {
     return false;
   }
 
@@ -95,7 +92,7 @@ final productsJson = [
         "The green apple is a hybrid fruit. It is developed by combining two different species of apple, namely, Malus slyvesterus and Malus domesticus.",
     "image": "apple-green.png",
     "weight": "1kg",
-    "id": 2
+    "id": 2,
   },
   {
     "name": "Banana",
@@ -104,7 +101,7 @@ final productsJson = [
         "A banana is an elongated, edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.",
     "image": "banana.png",
     "weight": "1kg",
-    "id": 1
+    "id": 1,
   },
   {
     "name": "Red Apple",
@@ -113,7 +110,7 @@ final productsJson = [
         "The red apple is a hybrid fruit. It is developed by combining two different species of apple, namely, Malus slyvesterus and Malus domesticus.",
     "image": "apple-red.png",
     "weight": "1kg",
-    "id": 3
+    "id": 3,
   },
   {
     "name": "Yellow Apple",
@@ -122,7 +119,7 @@ final productsJson = [
         "The yellow apple is a hybrid fruit. It is developed by combining two different species of apple, namely, Malus slyvesterus and Malus domesticus.",
     "image": "apple-yellow.png",
     "weight": "500g",
-    "id": 4
+    "id": 4,
   },
   {
     "name": "Blackberry",
@@ -131,7 +128,7 @@ final productsJson = [
         "The blackberry is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "blackberries.png",
     "weight": "500g",
-    "id": 5
+    "id": 5,
   },
   {
     "name": "Blueberries",
@@ -140,7 +137,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "blueberries.png",
     "weight": "500g",
-    "id": 6
+    "id": 6,
   },
   {
     "name": "Charries",
@@ -149,7 +146,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "charries.png",
     "weight": "500g",
-    "id": 7
+    "id": 7,
   },
   {
     "name": "Coconut",
@@ -158,7 +155,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "coconut.png",
     "weight": "500g",
-    "id": 8
+    "id": 8,
   },
   {
     "name": "Date Palm",
@@ -167,7 +164,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "date-palm.png",
     "weight": "500g",
-    "id": 9
+    "id": 9,
   },
   {
     "name": "Goji",
@@ -176,7 +173,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "goji.png",
     "weight": "500g",
-    "id": 10
+    "id": 10,
   },
   {
     "name": "Grape",
@@ -185,7 +182,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "grape.png",
     "weight": "500g",
-    "id": 11
+    "id": 11,
   },
   {
     "name": "Guava",
@@ -194,7 +191,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "guava.png",
     "weight": "500g",
-    "id": 12
+    "id": 12,
   },
   {
     "name": "Kiwis",
@@ -203,7 +200,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "kiwis.png",
     "weight": "500g",
-    "id": 13
+    "id": 13,
   },
   {
     "name": "Lemons",
@@ -212,7 +209,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "lemons.png",
     "weight": "500g",
-    "id": 14
+    "id": 14,
   },
   {
     "name": "Mango",
@@ -221,7 +218,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "mango.png",
     "weight": "500g",
-    "id": 15
+    "id": 15,
   },
   {
     "name": "Orange",
@@ -230,7 +227,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "orange.png",
     "weight": "500g",
-    "id": 16
+    "id": 16,
   },
   {
     "name": "Pear",
@@ -239,7 +236,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "pear.png",
     "weight": "500g",
-    "id": 17
+    "id": 17,
   },
   {
     "name": "Pineapple",
@@ -248,7 +245,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "pineapple.png",
     "weight": "500g",
-    "id": 18
+    "id": 18,
   },
   {
     "name": "Raspberries",
@@ -257,7 +254,7 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "raspberries.png",
     "weight": "500g",
-    "id": 19
+    "id": 19,
   },
   {
     "name": "Watermelon",
@@ -266,6 +263,6 @@ final productsJson = [
         "The blueberries is an edible fruit produced by many species in the genus Rubus in the family Rosaceae, hybrids among these species within the subgenus Rubus,",
     "image": "watermelon.png",
     "weight": "500g",
-    "id": 20
-  }
+    "id": 20,
+  },
 ];

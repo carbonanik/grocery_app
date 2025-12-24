@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-import '../../main.dart';
-
 class InputField extends StatelessWidget {
   const InputField({
     Key? key,
@@ -32,9 +30,7 @@ class InputField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          title != null
-              ? SizedBox(height: context.h(20))
-              : const SizedBox(),
+          title != null ? SizedBox(height: context.h(20)) : const SizedBox(),
           title != null
               ? Text(
                   title!,
@@ -45,18 +41,14 @@ class InputField extends StatelessWidget {
                   ),
                 )
               : const SizedBox(),
-          title != null
-              ? SizedBox(height: context.h(10))
-              : const SizedBox(),
+          title != null ? SizedBox(height: context.h(10)) : const SizedBox(),
           TextFormField(
             controller: controller,
             keyboardType: keyboardType,
             obscureText: obscureText,
             validator: validator,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: context.w(20),
-              ),
+              contentPadding: EdgeInsets.symmetric(horizontal: context.w(20)),
               hintText: hint,
               hintStyle: const TextStyle(
                 color: Colors.black12,
@@ -64,17 +56,11 @@ class InputField extends StatelessWidget {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(context.w(5)),
-                borderSide: const BorderSide(
-                  color: Colors.black12,
-                  width: 2,
-                ),
+                borderSide: const BorderSide(color: Colors.black12, width: 2),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(context.w(5)),
-                borderSide: BorderSide(
-                  color: accentColor,
-                  width: 2,
-                ),
+                borderSide: BorderSide(color: accentColor, width: 2),
               ),
             ),
           ),

@@ -1,10 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-@RoutePage()
 class YourLocationPage extends StatelessWidget {
   const YourLocationPage({Key? key}) : super(key: key);
 
@@ -39,11 +37,7 @@ class YourLocationPage extends StatelessWidget {
           const SizedBox(height: 20),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 30,
-              ),
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(40),
@@ -66,29 +60,20 @@ class YourLocationPage extends StatelessWidget {
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                        ),
+                        borderSide: const BorderSide(color: Colors.transparent),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                        ),
+                        borderSide: const BorderSide(color: Colors.transparent),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                        ),
+                        borderSide: const BorderSide(color: Colors.transparent),
                       ),
                       //
                       fillColor: Colors.white,
                       filled: true,
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.grey[400],
-                      ),
+                      prefixIcon: Icon(Icons.search, color: Colors.grey[400]),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -135,10 +120,7 @@ class YourLocationPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   const Text(
                     "Saved Locations",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   const SizedBox(height: 20),
                   Expanded(
@@ -151,7 +133,7 @@ class YourLocationPage extends StatelessWidget {
                         return const SizedBox(height: 20);
                       },
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -178,10 +160,7 @@ Widget locationItem(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          icon,
-          color: accentColor,
-        ),
+        Icon(icon, color: accentColor),
         const SizedBox(width: 20),
         SizedBox(
           width: width != double.infinity ? width * 0.7 : width,
@@ -206,7 +185,7 @@ Widget locationItem(
               ),
             ],
           ),
-        )
+        ),
       ],
     ),
   );

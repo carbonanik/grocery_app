@@ -1,17 +1,13 @@
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 import '../../model/category/category.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({
-    Key? key,
-    required this.category,
-  }) : super(key: key);
+  const CategoryItem({Key? key, required this.category}) : super(key: key);
 
   final Category category;
 
@@ -22,7 +18,7 @@ class CategoryItem extends StatelessWidget {
         // Get.toNamed(
         //   RouteHelper.getCategoryTab(selectedCategoryId: category.id),
         // );
-        AppRouter().push(CategoryTabRoute(selectedCategoryId: category.id));
+        context.push('/category-tab/${category.id}');
       },
       child: Container(
         height: 60,
@@ -49,13 +45,11 @@ class CategoryItem extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              width: 15,
-            ),
+            const SizedBox(width: 15),
             Text(
               category.name,
               style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
-            )
+            ),
           ],
         ),
       ),

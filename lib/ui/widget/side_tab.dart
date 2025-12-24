@@ -1,7 +1,6 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
 import '../theme/colors.dart';
@@ -38,18 +37,17 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
     _tabs = widget.tabList.asMap().entries.map((entity) {
       int ind = entity.key;
       Widget tab = entity.value;
-      return RotatedBox(
-        key: _tabKeys[ind],
-        quarterTurns: 2,
-        child: tab,
-      );
+      return RotatedBox(key: _tabKeys[ind], quarterTurns: 2, child: tab);
     }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController =
-        TabController(length: widget.tabList.length, vsync: this, initialIndex: widget.preSelectedTab);
+    TabController tabController = TabController(
+      length: widget.tabList.length,
+      vsync: this,
+      initialIndex: widget.preSelectedTab,
+    );
 
     return Row(
       children: [
@@ -58,7 +56,10 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: context.h(40), bottom: context.h(10)),
+                margin: EdgeInsets.only(
+                  top: context.h(40),
+                  bottom: context.h(10),
+                ),
                 child: widget.leading,
               ),
               Container(
@@ -78,7 +79,9 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
                       unselectedLabelColor: Colors.black54,
                       padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                       isScrollable: true,
-                      indicator: TriangleTabIndicator(color: widget.backgroundColor),
+                      indicator: TriangleTabIndicator(
+                        color: widget.backgroundColor,
+                      ),
                       tabs: _tabs,
                     ),
                   ),
@@ -88,8 +91,11 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
           ),
         ),
         Expanded(
-          child: TabBarView(controller: tabController, children: widget.tabViewList),
-        )
+          child: TabBarView(
+            controller: tabController,
+            children: widget.tabViewList,
+          ),
+        ),
       ],
     );
   }

@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:get/get.dart';
@@ -6,17 +6,15 @@ import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
 
-import '../../../route/route_helper.dart';
+// import 'package:quick_log/quick_log.dart';
 import '../../widget/auth_button.dart';
 import '../../widget/input_field.dart';
 import '../../widget/social_button.dart';
 
-@RoutePage()
 class LoginPage extends ConsumerWidget {
   LoginPage({Key? key}) : super(key: key);
 
@@ -26,22 +24,19 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ResultValue<AuthResponse>>(
-      authControllerProvider,
-      (_, state) {
-        state.whenOrNull(
-          error: (error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(error.toString())),
-            );
-          },
-          data: (value) {
-            // Get.offAndToNamed(RouteHelper.getHomeTab());
-            AutoRouter.of(context).push(const MainTabsRoute());
-          },
-        );
-      },
-    );
+    ref.listen<ResultValue<AuthResponse>>(authControllerProvider, (_, state) {
+      state.whenOrNull(
+        error: (error) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(error.toString())));
+        },
+        data: (value) {
+          // Get.offAndToNamed(RouteHelper.getHomeTab());
+          context.go('/home');
+        },
+      );
+    });
 
     final loginState = ref.watch(authControllerProvider);
     //
@@ -68,7 +63,10 @@ class LoginPage extends ConsumerWidget {
                     child: Container(
                       height: 100,
                       width: 100,
-                      decoration: BoxDecoration(color: accentColor, borderRadius: BorderRadius.circular(100)),
+                      decoration: BoxDecoration(
+                        color: accentColor,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
                     ),
                   ),
                   Positioned(
@@ -129,7 +127,6 @@ class LoginPage extends ConsumerWidget {
               ),
 
               // CountrySelectField(),
-
               SizedBox(height: context.h(30)),
 
               /// login button
@@ -144,14 +141,16 @@ class LoginPage extends ConsumerWidget {
                             identifier: emailTextController.text,
                             password: passwordTextController.text,
                           );
-                          ref.read(authControllerProvider.notifier).login(loginUser);
+                          ref
+                              .read(authControllerProvider.notifier)
+                              .login(loginUser);
                         }
                       },
                 text: loginState.isLoading
                     ? 'Please Wait'
                     : loginState.isData
-                        ? 'Successful'
-                        : 'Continue',
+                    ? 'Successful'
+                    : 'Continue',
                 color: loginState.isLoading ? Colors.grey : null,
               ),
               SizedBox(height: context.h(4)),
@@ -163,11 +162,14 @@ class LoginPage extends ConsumerWidget {
                     GestureDetector(
                       onTap: () {
                         // Get.toNamed(RouteHelper.getSignUp());
-                        AutoRouter.of(context).push( SignUpRoute());
+                        context.push('/sign-up');
                       },
                       child: Text(
                         "Forgot Password?",
-                        style: TextStyle(fontSize: context.w(16), fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                          fontSize: context.w(16),
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     GestureDetector(
@@ -177,7 +179,10 @@ class LoginPage extends ConsumerWidget {
                       },
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(fontSize: context.w(16), fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                          fontSize: context.w(16),
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],

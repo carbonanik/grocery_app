@@ -1,13 +1,12 @@
 import 'dart:ui';
 
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
+
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
@@ -16,7 +15,6 @@ import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
 import 'package:instant_grrocery_delivery/ui/widget/cart_list_item.dart';
 import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
 
-@RoutePage()
 class MyCartPage extends StatelessWidget {
   const MyCartPage({Key? key}) : super(key: key);
 
@@ -29,17 +27,13 @@ class MyCartPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text("My Cart"),
-        leading: const BackButton(
-          color: Colors.lightGreen,
-        ),
+        leading: const BackButton(color: Colors.lightGreen),
         backgroundColor: backgroundColor.withAlpha(100),
         elevation: 0,
         flexibleSpace: ClipRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              color: Colors.transparent,
-            ),
+            child: Container(color: Colors.transparent),
           ),
         ),
       ),
@@ -61,25 +55,16 @@ class MyCartPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: context.h(230),
-              ),
+              constraints: BoxConstraints(minHeight: context.h(230)),
 
               /// cart item list
               child: _cartItemList(),
             ),
-            SizedBox(
-              height: context.h(10),
-            ),
+            SizedBox(height: context.h(10)),
             _addCouponCodeButton(context),
-            SizedBox(
-              height: context.h(10),
-            ),
+            SizedBox(height: context.h(10)),
             _similarProducts(),
-            Container(
-              height: bottomBarHeight,
-              color: backgroundColor,
-            )
+            Container(height: bottomBarHeight, color: backgroundColor),
           ],
         ),
       ),
@@ -90,28 +75,22 @@ class MyCartPage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // Get.toNamed(RouteHelper.getApplyCoupon());
-        AutoRouter.of(context).push(const ApplyCouponRoute());
+        context.push('/apply-coupon');
       },
       child: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: context.w(20), vertical: context.h(20)),
+          horizontal: context.w(20),
+          vertical: context.h(20),
+        ),
         margin: EdgeInsets.symmetric(horizontal: context.h(20)),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(
-            context.h(10),
-          ),
+          borderRadius: BorderRadius.circular(context.h(10)),
         ),
         child: Row(
           children: [
-            const Icon(
-              Icons.label,
-              color: accentColor,
-              size: 20,
-            ),
-            SizedBox(
-              width: context.w(20),
-            ),
+            const Icon(Icons.label, color: accentColor, size: 20),
+            SizedBox(width: context.w(20)),
             Text(
               'Add coupon code',
               style: TextStyle(
@@ -121,11 +100,7 @@ class MyCartPage extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            const Icon(
-              Icons.arrow_forward_ios,
-              color: accentColor,
-              size: 18,
-            ),
+            const Icon(Icons.arrow_forward_ios, color: accentColor, size: 18),
           ],
         ),
       ),
@@ -155,12 +130,10 @@ class MyCartPage extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Padding(
-                            padding:
-                                EdgeInsets.symmetric(horizontal: context.w(20)),
-                            child: const Icon(
-                              Icons.delete,
-                              color: accentColor,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: context.w(20),
                             ),
+                            child: const Icon(Icons.delete, color: accentColor),
                           ),
                         ),
                       ),
@@ -168,8 +141,9 @@ class MyCartPage extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 10),
                         child: CartListItem(
                           item: cartList[index],
-                          onAdd: () async => await cartDataModel
-                              .itemIncrement(cartList[index].product),
+                          onAdd: () async => await cartDataModel.itemIncrement(
+                            cartList[index].product,
+                          ),
                           onRemove: () async => await cartDataModel
                               .itemDecrement(cartList[index].product),
                         ),
@@ -196,26 +170,15 @@ class MyCartPage extends StatelessWidget {
           child: Container(
             height: height,
             width: width,
-            padding: EdgeInsets.symmetric(
-              horizontal: context.w(30),
-            ),
-            decoration: BoxDecoration(
-              color: foregroundColor.withAlpha(210),
-            ),
+            padding: EdgeInsets.symmetric(horizontal: context.w(30)),
+            decoration: BoxDecoration(color: foregroundColor.withAlpha(210)),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 Row(
                   children: [
-                    const Icon(
-                      Icons.location_on,
-                      color: Colors.redAccent,
-                    ),
-                    SizedBox(
-                      width: context.w(10),
-                    ),
+                    const Icon(Icons.location_on, color: Colors.redAccent),
+                    SizedBox(width: context.w(10)),
                     Text(
                       'Home - Uttar 18 - Dhaka',
                       style: TextStyle(
@@ -228,7 +191,7 @@ class MyCartPage extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         // Get.toNamed(RouteHelper.getYourLocation());
-                        AutoRouter.of(context).push(const YourLocationRoute());
+                        context.push('/your-location');
                       },
                       child: Text(
                         'Change',
@@ -241,31 +204,33 @@ class MyCartPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: context.h(20),
-                ),
+                SizedBox(height: context.h(20)),
                 Row(
                   children: [
                     Column(
                       children: [
-                        Consumer(builder: (context, ref, child) {
-                          final cartDataModel = ref.watch(cartProvider);
-                          return Text('\$${cartDataModel.cartPrice()}',
+                        Consumer(
+                          builder: (context, ref, child) {
+                            final cartDataModel = ref.watch(cartProvider);
+                            return Text(
+                              '\$${cartDataModel.cartPrice()}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
                                 color: Colors.white,
-                              ));
-                        }),
-                        SizedBox(
-                          height: context.h(5),
+                              ),
+                            );
+                          },
                         ),
-                        const Text('View Bill',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 10,
-                              color: Colors.white,
-                            )),
+                        SizedBox(height: context.h(5)),
+                        const Text(
+                          'View Bill',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 10,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -276,7 +241,7 @@ class MyCartPage extends StatelessWidget {
                       enabled: true,
                       onTap: () {
                         // Get.toNamed(RouteHelper.getPaymentMethod());
-                        AutoRouter.of(context).push(const PaymentMethodRoute());
+                        context.push('/payment-method');
                       },
                       text: 'Continue Pay',
                       icon: Icons.payment,
@@ -294,8 +259,9 @@ class MyCartPage extends StatelessWidget {
   Widget _similarProducts() {
     return Consumer(
       builder: (context, ref, child) {
-        final asyncValue =
-            ref.watch(getFrequentlyBoughtTogetherProductProvider);
+        final asyncValue = ref.watch(
+          getFrequentlyBoughtTogetherProductProvider,
+        );
         return asyncValue.map(
           data: (data) => Container(
             padding: EdgeInsets.symmetric(vertical: context.h(20)),
@@ -303,9 +269,7 @@ class MyCartPage extends StatelessWidget {
               color: backgroundColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(context.h(30)),
-                topRight: Radius.circular(
-                  context.h(30),
-                ),
+                topRight: Radius.circular(context.h(30)),
               ),
             ),
             child: Column(
@@ -315,15 +279,10 @@ class MyCartPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                   child: const Text(
                     'Frequently Bought Together',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                 ),
-                SizedBox(
-                  height: context.h(20),
-                ),
+                SizedBox(height: context.h(20)),
                 SizedBox(
                   height: context.h(190),
                   child: ListView.builder(
@@ -333,9 +292,7 @@ class MyCartPage extends StatelessWidget {
                       final similarProduct = data.value[index];
                       return Container(
                         margin: EdgeInsets.only(left: context.w(20)),
-                        child: ProductItem(
-                          product: similarProduct,
-                        ),
+                        child: ProductItem(product: similarProduct),
                       );
                     },
                   ),

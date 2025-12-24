@@ -1,10 +1,3 @@
-import 'package:instant_grrocery_delivery/data_source/api/auth_api.dart';
-import 'package:instant_grrocery_delivery/model/auth/login.dart';
-import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
-import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
-
 // class LoginNotifier extends StateNotifier<AuthResult> {
 //   LoginNotifier(this.ref) : super(const AuthResult.initial());
 //

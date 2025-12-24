@@ -4,8 +4,7 @@ part 'login.g.dart';
 part 'login.freezed.dart';
 
 @freezed
-class LoginRequest with _$LoginRequest {
-
+abstract class LoginRequest with _$LoginRequest {
   const factory LoginRequest({
     required String identifier,
     required String password,

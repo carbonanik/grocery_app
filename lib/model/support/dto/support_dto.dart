@@ -5,8 +5,7 @@ part 'support_dto.g.dart';
 part 'support_dto.freezed.dart';
 
 @freezed
-class CreateSupportDto with _$CreateSupportDto {
-
+abstract class CreateSupportDto with _$CreateSupportDto {
   const factory CreateSupportDto({
     required String subject,
     required String message,
@@ -18,41 +17,32 @@ class CreateSupportDto with _$CreateSupportDto {
 }
 
 @freezed
-class UserInSupportDto with _$UserInSupportDto {
-
-  const factory UserInSupportDto({
-    required List<int> connect,
-  }) = _UserInSupportDto;
+abstract class UserInSupportDto with _$UserInSupportDto {
+  const factory UserInSupportDto({required List<int> connect}) =
+      _UserInSupportDto;
 
   factory UserInSupportDto.fromJson(Map<String, dynamic> source) =>
       _$UserInSupportDtoFromJson(source);
 }
 
 @freezed
-class ReadSupportDto with _$ReadSupportDto {
-
+abstract class ReadSupportDto with _$ReadSupportDto {
   const factory ReadSupportDto({
     required int id,
     required ReadSupportAttributeDto attributes,
   }) = _ReadSupportDto;
 
-
   factory ReadSupportDto.fromJson(Map<String, dynamic> source) =>
       _$ReadSupportDtoFromJson(source);
-
 }
 
 extension ReadSupportDtoX on ReadSupportDto {
-  Support toSupport() => Support(
-        id: id,
-        message: attributes.message,
-        subject: attributes.subject,
-      );
+  Support toSupport() =>
+      Support(id: id, message: attributes.message, subject: attributes.subject);
 }
 
 @freezed
-class ReadSupportAttributeDto with _$ReadSupportAttributeDto {
-
+abstract class ReadSupportAttributeDto with _$ReadSupportAttributeDto {
   const factory ReadSupportAttributeDto({
     required String subject,
     required String message,

@@ -8,8 +8,7 @@ part 'cart.g.dart';
 part 'cart.freezed.dart';
 
 @freezed
-class Cart with _$Cart {
-
+abstract class Cart with _$Cart {
   const factory Cart({
     int? id,
     required bool isActive,
@@ -21,7 +20,6 @@ class Cart with _$Cart {
     required String lastItemDate,
     List<Coupon>? coupon,
   }) = _Cart;
-
 
   factory Cart.fromJson(Map<String, dynamic> source) => _$CartFromJson(source);
 }

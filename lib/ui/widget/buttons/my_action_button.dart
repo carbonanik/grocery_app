@@ -1,14 +1,9 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
 // import 'package:get/get.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
 
 class MyActionButton extends StatelessWidget {
-  const MyActionButton({
-    Key? key,
-    required this.count,
-  }) : super(key: key);
+  const MyActionButton({Key? key, required this.count}) : super(key: key);
 
   final int count;
 
@@ -21,14 +16,10 @@ class MyActionButton extends StatelessWidget {
           FloatingActionButton(
             onPressed: () {
               // Get.toNamed(RouteHelper.getMyCart());
-              AutoRouter.of(context).push(const MyCartRoute());
-
+              context.push('/my-cart');
             },
             backgroundColor: Colors.green,
-            child: const Icon(
-              Icons.shopping_cart,
-              color: Colors.white,
-            ),
+            child: const Icon(Icons.shopping_cart, color: Colors.white),
           ),
           Positioned(
             right: -4,
@@ -54,7 +45,10 @@ class MyActionButton extends StatelessWidget {
                     child: Center(
                       child: Text(
                         count.toString(),
-                        style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

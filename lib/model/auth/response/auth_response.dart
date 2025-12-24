@@ -8,16 +8,20 @@ part 'auth_response.freezed.dart';
 part 'auth_response.g.dart';
 
 @freezed
-class AuthResponse extends HiveObject with _$AuthResponse {
+abstract class AuthResponse extends HiveObject with _$AuthResponse {
   AuthResponse._();
 
-  @HiveType(typeId: authResponseHiveTypeId, adapterName: authResponseAdapterName)
+  @HiveType(
+    typeId: authResponseHiveTypeId,
+    adapterName: authResponseAdapterName,
+  )
   factory AuthResponse({
     @HiveField(0) required String jwt,
     @HiveField(1) required User user,
   }) = _AuthResponse;
 
-  factory AuthResponse.fromJson(Map<String, dynamic> source) => _$AuthResponseFromJson(source);
+  factory AuthResponse.fromJson(Map<String, dynamic> source) =>
+      _$AuthResponseFromJson(source);
 }
 
 extension AuthToken on AuthResponse {

@@ -9,8 +9,7 @@ part 'order_item.freezed.dart';
 part 'order_item.g.dart';
 
 @freezed
-class OrderItem extends HiveObject with _$OrderItem {
-
+abstract class OrderItem extends HiveObject with _$OrderItem {
   OrderItem._();
 
   @HiveType(typeId: orderItemHiveTypeId, adapterName: orderItemAdapterName)
@@ -19,5 +18,6 @@ class OrderItem extends HiveObject with _$OrderItem {
     @HiveField(1) required int count,
   }) = _OrderItem;
 
-  factory OrderItem.fromJson(Map<String, Object?> json) => _$OrderItemFromJson(json);
+  factory OrderItem.fromJson(Map<String, Object?> json) =>
+      _$OrderItemFromJson(json);
 }

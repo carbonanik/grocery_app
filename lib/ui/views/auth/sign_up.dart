@@ -1,19 +1,16 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/auth_button.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
 import 'package:instant_grrocery_delivery/ui/widget/input_field.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
-
-@RoutePage()
 class SignUpPage extends ConsumerWidget {
   SignUpPage({Key? key}) : super(key: key);
 
@@ -25,22 +22,19 @@ class SignUpPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ResultValue<AuthResponse>>(
-      authControllerProvider,
-      (_, state) {
-        state.whenOrNull(
-          data: (value) {
-            // Get.toNamed(RouteHelper.getHomeTab());
-            AutoRouter.of(context).push(const MainTabsRoute());
-          },
-          error: (error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(error.toString())),
-            );
-          },
-        );
-      },
-    );
+    ref.listen<ResultValue<AuthResponse>>(authControllerProvider, (_, state) {
+      state.whenOrNull(
+        data: (value) {
+          // Get.toNamed(RouteHelper.getHomeTab());
+          context.go('/home');
+        },
+        error: (error) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(error.toString())));
+        },
+      );
+    });
 
     final signUpState = ref.watch(authControllerProvider);
 
@@ -136,20 +130,17 @@ class SignUpPage extends ConsumerWidget {
                   text: signUpState.isLoading
                       ? 'Please Wait'
                       : signUpState.isData
-                          ? 'Successful'
-                          : 'Continue',
+                      ? 'Successful'
+                      : 'Continue',
                   // 'Continue',
                 ),
 
-                Container(
-                  child: SizedBox(height: context.h(40)),
-                ),
+                Container(child: SizedBox(height: context.h(40))),
 
                 // terms and condition
                 Center(
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: context.w(20)),
+                    padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                     child: Text(
                       'By signing up, you agree to our',
                       style: TextStyle(
@@ -166,8 +157,7 @@ class SignUpPage extends ConsumerWidget {
 
                 Center(
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: context.w(20)),
+                    padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                     child: Text(
                       'Terms and Conditions',
                       style: TextStyle(
@@ -184,6 +174,5 @@ class SignUpPage extends ConsumerWidget {
         ),
       ),
     );
-    ;
   }
 }

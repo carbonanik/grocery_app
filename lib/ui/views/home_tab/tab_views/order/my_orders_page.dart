@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/order/order_hive_provider.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
-import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'order_card.dart';
 
@@ -22,10 +21,7 @@ class MyOrdersPage extends StatelessWidget {
                 children: [
                   Text(
                     'My Orders',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   // const Spacer(),
                   // Container(
@@ -40,41 +36,44 @@ class MyOrdersPage extends StatelessWidget {
               ),
             ),
           ),
-          Consumer(builder: (context, ref, child) {
-            final orderDataModel = ref.watch(ordersListProvider);
-            final orderList = orderDataModel.orderList.values.toList().reversed.toList();
-            return SliverPadding(
-              padding: EdgeInsets.only(
-                left: context.w(20),
-                right: context.w(20),
-                top: context.w(20),
-              ),
-              sliver: orderList.isEmpty
-                  ? SliverFillRemaining(
-                      child: Center(
-                        child: Text(
-                          "No Orders",
-                          style: TextStyle(
-                            color: Colors.grey[900],
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
+          Consumer(
+            builder: (context, ref, child) {
+              final orderDataModel = ref.watch(ordersListProvider);
+              final orderList = orderDataModel.orderList.values
+                  .toList()
+                  .reversed
+                  .toList();
+              return SliverPadding(
+                padding: EdgeInsets.only(
+                  left: context.w(20),
+                  right: context.w(20),
+                  top: context.w(20),
+                ),
+                sliver: orderList.isEmpty
+                    ? SliverFillRemaining(
+                        child: Center(
+                          child: Text(
+                            "No Orders",
+                            style: TextStyle(
+                              color: Colors.grey[900],
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
+                      )
+                    : SliverList.builder(
+                        itemCount: orderList.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: OrderCard(order: orderList[index]),
+                          );
+                        },
                       ),
-                    )
-                  : SliverList.builder(
-                      itemCount: orderList.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: OrderCard(
-                            order: orderList[index],
-                          ),
-                        );
-                      },
-                    ),
-            );
-          }),
+              );
+            },
+          ),
         ],
       ),
     );

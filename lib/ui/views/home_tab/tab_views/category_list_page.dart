@@ -1,9 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-// import 'package:get/get_utils/get_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 

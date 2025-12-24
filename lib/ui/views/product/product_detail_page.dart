@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:auto_route/auto_route.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,8 +9,7 @@ import 'package:instant_grrocery_delivery/model/product/product.dart';
 import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
 import 'package:instant_grrocery_delivery/provider/favorite/favorite_hive_provider.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
+
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/add_remove_button.dart';
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
@@ -20,9 +19,8 @@ import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
 
-@RoutePage()
 class ProductDetailPage extends ConsumerWidget {
-  const ProductDetailPage({Key? key, @PathParam("id") required this.productId})
+  const ProductDetailPage({Key? key, required this.productId})
     : super(key: key);
 
   final int productId;
@@ -300,7 +298,7 @@ class ProductDetailPage extends ConsumerWidget {
                   enabled: true,
                   onTap: () {
                     // Get.toNamed(RouteHelper.getMyCart());
-                    AutoRouter.of(context).push(const MyCartRoute());
+                    context.push('/my-cart');
                   },
                   text: 'View Cart',
                   icon: Icons.shopping_cart,

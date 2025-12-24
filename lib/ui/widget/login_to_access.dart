@@ -1,11 +1,10 @@
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/update_user_controller_provider.dart';
-import 'package:instant_grrocery_delivery/route/app_router.dart';
-import 'package:instant_grrocery_delivery/route/route_helper.dart';
+
 import 'package:instant_grrocery_delivery/ui/widget/buttons/action_button.dart';
 
 class LoginToAccess extends StatelessWidget {
@@ -22,9 +21,9 @@ class LoginToAccess extends StatelessWidget {
 
         return authUser.map(
           data: (data) => child,
-          error: (error) => notLoggedIn(),
-          loading: (loading) => notLoggedIn(),
-          empty: (value) => notLoggedIn(),
+          error: (error) => notLoggedIn(context),
+          loading: (loading) => notLoggedIn(context),
+          empty: (value) => notLoggedIn(context),
         );
       },
     );
@@ -32,7 +31,7 @@ class LoginToAccess extends StatelessWidget {
     // : child;
   }
 
-  Widget notLoggedIn() {
+  Widget notLoggedIn(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 20),
       child: Column(
@@ -59,7 +58,7 @@ class LoginToAccess extends StatelessWidget {
                 enabled: true,
                 onTap: () {
                   // return Get.toNamed(RouteHelper.getLogin());
-                  return AppRouter().push(LoginRoute());
+                  context.push('/login');
                 },
                 text: "Click to Login",
               ),

@@ -9,7 +9,7 @@ part 'cart_item.freezed.dart';
 part 'cart_item.g.dart';
 
 @freezed
-class CartItem extends HiveObject with _$CartItem {
+abstract class CartItem extends HiveObject with _$CartItem {
   CartItem._();
 
   @HiveType(typeId: cartItemHiveTypeId, adapterName: cartItemAdapterName)
@@ -19,5 +19,6 @@ class CartItem extends HiveObject with _$CartItem {
     @HiveField(2) required int count,
   }) = _CartItem;
 
-  factory CartItem.fromJson(Map<String, dynamic> source) => _$CartItemFromJson(source);
+  factory CartItem.fromJson(Map<String, dynamic> source) =>
+      _$CartItemFromJson(source);
 }

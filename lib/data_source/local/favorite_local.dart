@@ -1,5 +1,3 @@
-import 'constant/constant.dart';
-
 abstract class FavoriteLocal {
   Future<Map<int, bool>> getFavoriteIds();
 

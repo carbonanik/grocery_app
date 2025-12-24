@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
-import '../../../../../main.dart';
-
 class ShopListPage extends StatelessWidget {
   const ShopListPage({super.key});
 
@@ -12,9 +10,7 @@ class ShopListPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: accentColor,
-        child: const Icon(
-          Icons.add,
-        ),
+        child: const Icon(Icons.add),
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
@@ -22,10 +18,7 @@ class ShopListPage extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (context, index) {
             return Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 8,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 color: Colors.white,
@@ -56,10 +49,7 @@ class ShopListPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 4),
-                      Text(
-                        'Dhaka, Bangladesh',
-                        style: TextStyle(fontSize: 14),
-                      ),
+                      Text('Dhaka, Bangladesh', style: TextStyle(fontSize: 14)),
                     ],
                   ),
                 ],

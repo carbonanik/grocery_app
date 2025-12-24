@@ -7,27 +7,28 @@ part 'category_dto.freezed.dart';
 part 'category_dto.g.dart';
 
 @freezed
-class CategoryDto with _$CategoryDto {
+abstract class CategoryDto with _$CategoryDto {
   const factory CategoryDto({
     required int id,
     required CategorySubDto attributes,
   }) = _CategoryDto;
 
-  factory CategoryDto.fromJson(Map<String, dynamic> source) => _$CategoryDtoFromJson(source);
+  factory CategoryDto.fromJson(Map<String, dynamic> source) =>
+      _$CategoryDtoFromJson(source);
 }
 
 extension CategoryDtoX on CategoryDto {
   Category toCategory() => Category(
-        id: id,
-        name: attributes.name,
-        description: attributes.description,
-        image: attributes.image,
-        products: attributes.products?.data.map((e) => e.toProduct()).toList(),
-      );
+    id: id,
+    name: attributes.name,
+    description: attributes.description,
+    image: attributes.image,
+    products: attributes.products?.data.map((e) => e.toProduct()).toList(),
+  );
 }
 
 @freezed
-class CategorySubDto with _$CategorySubDto {
+abstract class CategorySubDto with _$CategorySubDto {
   const factory CategorySubDto({
     required String name,
     required String image,
@@ -35,14 +36,15 @@ class CategorySubDto with _$CategorySubDto {
     ProductsInCategoryDto? products,
   }) = _CategorySubDto;
 
-  factory CategorySubDto.fromJson(Map<String, dynamic> source) => _$CategorySubDtoFromJson(source);
+  factory CategorySubDto.fromJson(Map<String, dynamic> source) =>
+      _$CategorySubDtoFromJson(source);
 }
 
 @freezed
-class ProductsInCategoryDto with _$ProductsInCategoryDto {
-  const factory ProductsInCategoryDto({
-    required List<ProductDto> data,
-  }) = _ProductsInCategoryDto;
+abstract class ProductsInCategoryDto with _$ProductsInCategoryDto {
+  const factory ProductsInCategoryDto({required List<ProductDto> data}) =
+      _ProductsInCategoryDto;
 
-  factory ProductsInCategoryDto.fromJson(Map<String, dynamic> source) => _$ProductsInCategoryDtoFromJson(source);
+  factory ProductsInCategoryDto.fromJson(Map<String, dynamic> source) =>
+      _$ProductsInCategoryDtoFromJson(source);
 }

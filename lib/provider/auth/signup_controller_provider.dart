@@ -1,10 +1,3 @@
-import 'package:instant_grrocery_delivery/model/auth/login.dart';
-import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
-import 'package:instant_grrocery_delivery/model/user/user.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
-
-import 'auth_local_provider.dart';
-
 // class SignUpController extends StateNotifier<AuthResult> {
 //   SignUpController(this.read) : super(const AuthResult.initial());
 //   final Function(ProviderListenable) read;

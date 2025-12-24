@@ -5,13 +5,11 @@ import 'package:instant_grrocery_delivery/model/coupon/coupon.dart';
 import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
 
-
 part 'order_create.g.dart';
 part 'order_create.freezed.dart';
 
 @freezed
-class OrderCreate with _$OrderCreate {
-
+abstract class OrderCreate with _$OrderCreate {
   const factory OrderCreate({
     required int userId,
     required int count,
@@ -21,13 +19,12 @@ class OrderCreate with _$OrderCreate {
     required List<Coupon> coupons,
   }) = _OrderCreate;
 
-  factory OrderCreate.fromJson(Map<String, dynamic> source) => _$OrderCreateFromJson(source);
+  factory OrderCreate.fromJson(Map<String, dynamic> source) =>
+      _$OrderCreateFromJson(source);
 }
 
-
 @freezed
-class OrderCreateDto with _$OrderCreateDto {
-
+abstract class OrderCreateDto with _$OrderCreateDto {
   const factory OrderCreateDto({
     required int count,
     required String totalPrice,
@@ -37,26 +34,26 @@ class OrderCreateDto with _$OrderCreateDto {
     required UserInOrderCreateDto user,
   }) = _OrderCreateDto;
 
-  factory OrderCreateDto.fromJson(Map<String, dynamic> source) => _$OrderCreateDtoFromJson(source);
+  factory OrderCreateDto.fromJson(Map<String, dynamic> source) =>
+      _$OrderCreateDtoFromJson(source);
 }
 
 @freezed
-class OrderItemCreateDto with _$OrderItemCreateDto {
-
+abstract class OrderItemCreateDto with _$OrderItemCreateDto {
   const factory OrderItemCreateDto({
     required int count,
     required Product product,
   }) = _OrderItemCreateDto;
 
-  factory OrderItemCreateDto.fromJson(Map<String, Object?> json) => _$OrderItemCreateDtoFromJson(json);
+  factory OrderItemCreateDto.fromJson(Map<String, Object?> json) =>
+      _$OrderItemCreateDtoFromJson(json);
 }
 
 @freezed
-class UserInOrderCreateDto with _$UserInOrderCreateDto {
+abstract class UserInOrderCreateDto with _$UserInOrderCreateDto {
+  const factory UserInOrderCreateDto({required List<int> connect}) =
+      _UserInOrderCreateDto;
 
-  const factory UserInOrderCreateDto({
-    required List<int> connect,
-  }) = _UserInOrderCreateDto;
-
-  factory UserInOrderCreateDto.fromJson(Map<String, dynamic> source) => _$UserInOrderCreateDtoFromJson(source);
+  factory UserInOrderCreateDto.fromJson(Map<String, dynamic> source) =>
+      _$UserInOrderCreateDtoFromJson(source);
 }
