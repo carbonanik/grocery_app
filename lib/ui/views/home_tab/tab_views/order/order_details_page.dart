@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:instant_grrocery_delivery/ui/widget/my_app_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
 import 'package:instant_grrocery_delivery/provider/order/order_hive_provider.dart';
@@ -11,10 +11,7 @@ import 'package:instant_grrocery_delivery/provider/order/order_hive_provider.dar
 class OrderDetailsPage extends StatelessWidget {
   final int orderId;
 
-  const OrderDetailsPage({
-    @PathParam() required this.orderId,
-    super.key,
-  });
+  const OrderDetailsPage({@PathParam() required this.orderId, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,138 +19,167 @@ class OrderDetailsPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: const MyAppBar(title: "Order Details"),
       backgroundColor: backgroundColor,
-      body: Consumer(builder: (context, ref, child) {
-        final orderAsyncData = ref.watch(orderByIdProvider(orderId));
-        return orderAsyncData.map(
-          data: (data) {
-            final time = DateTime.parse(data.value!.orderDate);
-            final DateFormat formatter = DateFormat('d MMM hh:mm a');
-            final String formatted = formatter.format(time);
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(height: 300, color: accentColor),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: _estimatedTime(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "Ordered Items",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              // "12 Jan 12:35 pm",
-                              formatted,
-                              style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+      body: Consumer(
+        builder: (context, ref, child) {
+          final orderAsyncData = ref.watch(orderByIdProvider(orderId));
+          return orderAsyncData.map(
+            data: (data) {
+              final time = DateTime.parse(data.value!.orderDate);
+              final DateFormat formatter = DateFormat('d MMM hh:mm a');
+              final String formatted = formatter.format(time);
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(height: 300, color: accentColor),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: _estimatedTime(),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
                         children: [
-                          const SizedBox(height: 20),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Column(
-                              children: List.generate(
-                                data.value?.orderItems.length ?? 0,
-                                (index) => _item(data.value!.orderItems[index]),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                "Ordered Items",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
+                              Text(
+                                // "12 Jan 12:35 pm",
+                                formatted,
+                                style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                          const Divider(thickness: 3, color: backgroundColor),
-                          const SizedBox(height: 20),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      "Item Total",
-                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      "${data.value!.count}\$",
-                                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-                                const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Delivery Fee",
-                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      "100.0\$",
-                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          const Divider(thickness: 3, color: backgroundColor),
-                          const SizedBox(height: 20),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Paid Via GroWallet",
-                                  style: TextStyle(color: accentColor, fontSize: 18, fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  "100.0\$",
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 20),
                         ],
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              ),
-            );
-          },
-          error: (error) => const Text("error"),
-          loading: (loading) => const Text("Loading"),
-        );
-      }),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 20),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0,
+                              ),
+                              child: Column(
+                                children: List.generate(
+                                  data.value?.orderItems.length ?? 0,
+                                  (index) =>
+                                      _item(data.value!.orderItems[index]),
+                                ),
+                              ),
+                            ),
+                            const Divider(thickness: 3, color: backgroundColor),
+                            const SizedBox(height: 20),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0,
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        "Item Total",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${data.value!.count}\$",
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 20),
+                                  const Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Delivery Fee",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "100.0\$",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            const Divider(thickness: 3, color: backgroundColor),
+                            const SizedBox(height: 20),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Paid Via GroWallet",
+                                    style: TextStyle(
+                                      color: accentColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    "100.0\$",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              );
+            },
+            error: (error) => const Text("error"),
+            loading: (loading) => const Text("Loading"),
+          );
+        },
+      ),
     );
   }
 
@@ -185,15 +211,21 @@ class OrderDetailsPage extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       "08:30 min",
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ],
                 ),
                 Container(
                   padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: const Icon(Icons.person, size: 30),
-                )
+                ),
               ],
             ),
             const SizedBox(height: 20),
@@ -216,7 +248,7 @@ class OrderDetailsPage extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -249,7 +281,7 @@ class OrderDetailsPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 16)
+        const SizedBox(height: 16),
       ],
     );
   }

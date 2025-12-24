@@ -6,24 +6,21 @@ part of 'auth_response.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AuthResponseAdapter extends TypeAdapter<_$AuthResponseImpl> {
+class AuthResponseAdapter extends TypeAdapter<_AuthResponse> {
   @override
-  final int typeId = 1;
+  final typeId = 1;
 
   @override
-  _$AuthResponseImpl read(BinaryReader reader) {
+  _AuthResponse read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$AuthResponseImpl(
-      jwt: fields[0] as String,
-      user: fields[1] as User,
-    );
+    return _AuthResponse(jwt: fields[0] as String, user: fields[1] as User);
   }
 
   @override
-  void write(BinaryWriter writer, _$AuthResponseImpl obj) {
+  void write(BinaryWriter writer, _AuthResponse obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -47,14 +44,11 @@ class AuthResponseAdapter extends TypeAdapter<_$AuthResponseImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AuthResponseImpl _$$AuthResponseImplFromJson(Map<String, dynamic> json) =>
-    _$AuthResponseImpl(
+_AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) =>
+    _AuthResponse(
       jwt: json['jwt'] as String,
       user: User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$AuthResponseImplToJson(_$AuthResponseImpl instance) =>
-    <String, dynamic>{
-      'jwt': instance.jwt,
-      'user': instance.user,
-    };
+Map<String, dynamic> _$AuthResponseToJson(_AuthResponse instance) =>
+    <String, dynamic>{'jwt': instance.jwt, 'user': instance.user};

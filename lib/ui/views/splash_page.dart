@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
 import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/route/route_helper.dart';
@@ -34,15 +34,15 @@ class _SplashState extends ConsumerState<SplashPage> {
     // final previouslyBoarded = await ref.read(previouslyBoardedProvider.future);
     // googleFontsPending = GoogleFonts.pendingFonts([
     //   GoogleFonts.dmSans(),
-      // GoogleFonts.poppins(),
-      // GoogleFonts.montserrat(fontStyle: FontStyle.italic),
+    // GoogleFonts.poppins(),
+    // GoogleFonts.montserrat(fontStyle: FontStyle.italic),
     // ]);
 
     // Timer(1.seconds, () {
-      // Get.offAndToNamed(
-      //   previouslyBoarded ? RouteHelper.getHomeTab() : RouteHelper.getOnBoarding(),
-      // );
-      // AutoRouter.of(context).push(previouslyBoarded ? const MainTabsRoute() : const OnBoardingRoute());
+    // Get.offAndToNamed(
+    //   previouslyBoarded ? RouteHelper.getHomeTab() : RouteHelper.getOnBoarding(),
+    // );
+    // AutoRouter.of(context).push(previouslyBoarded ? const MainTabsRoute() : const OnBoardingRoute());
     // });
 
     Timer(1.seconds, () {
@@ -62,7 +62,8 @@ class _SplashState extends ConsumerState<SplashPage> {
         // ),
         child: Padding(
           padding: EdgeInsets.all(context.w(80)),
-            child: Assets.images.logo.image()),
+          child: Assets.images.logo.image(),
+        ),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
@@ -25,21 +25,20 @@ class FavoriteListPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: const Icon(Icons.search))
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Icon(Icons.search),
+                  ),
                 ],
               ),
             ),
           ),
           Consumer(
             builder: (context, ref, child) {
-              final asyncValue = ref.watch(
-                getFavoriteProductsProvider,
-              );
+              final asyncValue = ref.watch(getFavoriteProductsProvider);
 
               return asyncValue.map(
                 data: (data) => data.value.isEmpty
@@ -66,15 +65,10 @@ class FavoriteListPage extends StatelessWidget {
                           mainAxisSpacing: context.h(10),
                           crossAxisSpacing: context.w(10),
                           childAspectRatio: .70,
-                          children: List.generate(
-                            data.value.length,
-                            (index) {
-                              final item = data.value[index];
-                              return ProductItem(
-                                product: item,
-                              );
-                            },
-                          ),
+                          children: List.generate(data.value.length, (index) {
+                            final item = data.value[index];
+                            return ProductItem(product: item);
+                          }),
                         ),
                       ),
                 error: (error) {
@@ -94,13 +88,11 @@ class FavoriteListPage extends StatelessWidget {
                   );
                 },
                 loading: (loading) => const SliverFillRemaining(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                  child: Center(child: CircularProgressIndicator()),
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );

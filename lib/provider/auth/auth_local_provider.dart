@@ -1,7 +1,6 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/local/auth_local.dart';
 import 'package:instant_grrocery_delivery/data_source/local/impl/auth_local_impl.dart';
-import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 
 final authLocalProvider = Provider<AuthLocal>((ref) {

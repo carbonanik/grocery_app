@@ -6,60 +6,51 @@ part of 'support_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CreateSupportDtoImpl _$$CreateSupportDtoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CreateSupportDtoImpl(
+_CreateSupportDto _$CreateSupportDtoFromJson(Map<String, dynamic> json) =>
+    _CreateSupportDto(
       subject: json['subject'] as String,
       message: json['message'] as String,
       user: UserInSupportDto.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$CreateSupportDtoImplToJson(
-        _$CreateSupportDtoImpl instance) =>
+Map<String, dynamic> _$CreateSupportDtoToJson(_CreateSupportDto instance) =>
     <String, dynamic>{
       'subject': instance.subject,
       'message': instance.message,
       'user': instance.user,
     };
 
-_$UserInSupportDtoImpl _$$UserInSupportDtoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UserInSupportDtoImpl(
+_UserInSupportDto _$UserInSupportDtoFromJson(Map<String, dynamic> json) =>
+    _UserInSupportDto(
       connect: (json['connect'] as List<dynamic>)
           .map((e) => (e as num).toInt())
           .toList(),
     );
 
-Map<String, dynamic> _$$UserInSupportDtoImplToJson(
-        _$UserInSupportDtoImpl instance) =>
-    <String, dynamic>{
-      'connect': instance.connect,
-    };
+Map<String, dynamic> _$UserInSupportDtoToJson(_UserInSupportDto instance) =>
+    <String, dynamic>{'connect': instance.connect};
 
-_$ReadSupportDtoImpl _$$ReadSupportDtoImplFromJson(Map<String, dynamic> json) =>
-    _$ReadSupportDtoImpl(
+_ReadSupportDto _$ReadSupportDtoFromJson(Map<String, dynamic> json) =>
+    _ReadSupportDto(
       id: (json['id'] as num).toInt(),
       attributes: ReadSupportAttributeDto.fromJson(
-          json['attributes'] as Map<String, dynamic>),
+        json['attributes'] as Map<String, dynamic>,
+      ),
     );
 
-Map<String, dynamic> _$$ReadSupportDtoImplToJson(
-        _$ReadSupportDtoImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'attributes': instance.attributes,
-    };
+Map<String, dynamic> _$ReadSupportDtoToJson(_ReadSupportDto instance) =>
+    <String, dynamic>{'id': instance.id, 'attributes': instance.attributes};
 
-_$ReadSupportAttributeDtoImpl _$$ReadSupportAttributeDtoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ReadSupportAttributeDtoImpl(
-      subject: json['subject'] as String,
-      message: json['message'] as String,
-    );
+_ReadSupportAttributeDto _$ReadSupportAttributeDtoFromJson(
+  Map<String, dynamic> json,
+) => _ReadSupportAttributeDto(
+  subject: json['subject'] as String,
+  message: json['message'] as String,
+);
 
-Map<String, dynamic> _$$ReadSupportAttributeDtoImplToJson(
-        _$ReadSupportAttributeDtoImpl instance) =>
-    <String, dynamic>{
-      'subject': instance.subject,
-      'message': instance.message,
-    };
+Map<String, dynamic> _$ReadSupportAttributeDtoToJson(
+  _ReadSupportAttributeDto instance,
+) => <String, dynamic>{
+  'subject': instance.subject,
+  'message': instance.message,
+};

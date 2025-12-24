@@ -6,25 +6,25 @@ part of 'cart_item.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CartItemAdapter extends TypeAdapter<_$CartItemImpl> {
+class CartItemAdapter extends TypeAdapter<_CartItem> {
   @override
-  final int typeId = 3;
+  final typeId = 3;
 
   @override
-  _$CartItemImpl read(BinaryReader reader) {
+  _CartItem read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$CartItemImpl(
-      id: fields[0] as int,
+    return _CartItem(
+      id: (fields[0] as num).toInt(),
       product: fields[1] as Product,
-      count: fields[2] as int,
+      count: (fields[2] as num).toInt(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$CartItemImpl obj) {
+  void write(BinaryWriter writer, _CartItem obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
@@ -50,16 +50,14 @@ class CartItemAdapter extends TypeAdapter<_$CartItemImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CartItemImpl _$$CartItemImplFromJson(Map<String, dynamic> json) =>
-    _$CartItemImpl(
-      id: (json['id'] as num).toInt(),
-      product: Product.fromJson(json['product'] as Map<String, dynamic>),
-      count: (json['count'] as num).toInt(),
-    );
+_CartItem _$CartItemFromJson(Map<String, dynamic> json) => _CartItem(
+  id: (json['id'] as num).toInt(),
+  product: Product.fromJson(json['product'] as Map<String, dynamic>),
+  count: (json['count'] as num).toInt(),
+);
 
-Map<String, dynamic> _$$CartItemImplToJson(_$CartItemImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'product': instance.product,
-      'count': instance.count,
-    };
+Map<String, dynamic> _$CartItemToJson(_CartItem instance) => <String, dynamic>{
+  'id': instance.id,
+  'product': instance.product,
+  'count': instance.count,
+};

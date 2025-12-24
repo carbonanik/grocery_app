@@ -6,16 +6,14 @@ part of 'support.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SupportImpl _$$SupportImplFromJson(Map<String, dynamic> json) =>
-    _$SupportImpl(
-      id: (json['id'] as num).toInt(),
-      subject: json['subject'] as String,
-      message: json['message'] as String,
-    );
+_Support _$SupportFromJson(Map<String, dynamic> json) => _Support(
+  id: (json['id'] as num).toInt(),
+  subject: json['subject'] as String,
+  message: json['message'] as String,
+);
 
-Map<String, dynamic> _$$SupportImplToJson(_$SupportImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'subject': instance.subject,
-      'message': instance.message,
-    };
+Map<String, dynamic> _$SupportToJson(_Support instance) => <String, dynamic>{
+  'id': instance.id,
+  'subject': instance.subject,
+  'message': instance.message,
+};

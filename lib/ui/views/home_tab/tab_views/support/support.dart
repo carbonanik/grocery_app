@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/model/support/dto/support_dto.dart';
@@ -11,7 +11,6 @@ import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
 
 import '../../../../../main.dart';
 import '../../../../widget/auth_button.dart';
-
 
 @RoutePage()
 class SupportPage extends StatelessWidget {
@@ -36,18 +35,19 @@ class SupportPage extends StatelessWidget {
                 children: [
                   // intro
                   const SizedBox(height: 50),
-                  const Text("Support",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      )),
+                  const Text(
+                    "Support",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  ),
                   const SizedBox(height: 16),
-                  const Text("Let us know your \nfeedback & queries",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Colors.grey,
-                      )),
+                  const Text(
+                    "Let us know your \nfeedback & queries",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Colors.grey,
+                    ),
+                  ),
                   const SizedBox(height: 40),
 
                   // two fields
@@ -139,18 +139,19 @@ class SupportPage extends StatelessWidget {
                   const SizedBox(height: 50),
 
                   // second intro
-                  const Text("Write us",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      )),
+                  const Text(
+                    "Write us",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  ),
                   const SizedBox(height: 16),
-                  const Text("Enter your message",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Colors.grey,
-                      )),
+                  const Text(
+                    "Enter your message",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Colors.grey,
+                    ),
+                  ),
                   const SizedBox(height: 40),
 
                   // tow fields
@@ -234,37 +235,45 @@ class SupportPage extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // button
-                  Consumer(builder: (context, ref, child) {
-                    return AuthButton(
-                      text: "Submit",
-                      padding: EdgeInsets.zero,
-                      onPressed: () {
-                        final id = ref.read<ResultValue<AuthResponse>>(authControllerProvider).whenOrNull(data: (value) => value.user.id,);
-                        if (id != null) {
-                          final success = ref
-                              .read(
-                                createSupportProvider(
-                                  CreateSupportDto(
-                                    subject: subjectTextController.text,
-                                    message: messageTextController.text,
-                                    user: UserInSupportDto(connect: [id]),
-                                  ),
-                                ),
+                  Consumer(
+                    builder: (context, ref, child) {
+                      return AuthButton(
+                        text: "Submit",
+                        padding: EdgeInsets.zero,
+                        onPressed: () {
+                          final id = ref
+                              .read<ResultValue<AuthResponse>>(
+                                authControllerProvider,
                               )
-                              .value;
-                          print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-                          print(success);
-                          if (success == true) {
-                            // create a snack
+                              .whenOrNull(data: (value) => value.user.id);
+                          if (id != null) {
+                            final success = ref
+                                .read(
+                                  createSupportProvider(
+                                    CreateSupportDto(
+                                      subject: subjectTextController.text,
+                                      message: messageTextController.text,
+                                      user: UserInSupportDto(connect: [id]),
+                                    ),
+                                  ),
+                                )
+                                .value;
+                            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+                            print(success);
+                            if (success == true) {
+                              // create a snack
 
-                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                              content: Text("Successfully Submitted"),
-                            ));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Successfully Submitted"),
+                                ),
+                              );
+                            }
                           }
-                        }
-                      },
-                    );
-                  }),
+                        },
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

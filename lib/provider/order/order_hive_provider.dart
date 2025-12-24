@@ -1,7 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:instant_grrocery_delivery/data_source/local/impl/order_local_impl.dart';
 import 'package:instant_grrocery_delivery/data_source/local/orders_local.dart';
 import 'package:instant_grrocery_delivery/model/order/order.dart';

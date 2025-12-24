@@ -6,29 +6,29 @@ part of 'coupon.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CouponAdapter extends TypeAdapter<_$CouponImpl> {
+class CouponAdapter extends TypeAdapter<_Coupon> {
   @override
-  final int typeId = 5;
+  final typeId = 5;
 
   @override
-  _$CouponImpl read(BinaryReader reader) {
+  _Coupon read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$CouponImpl(
-      id: fields[0] as int,
+    return _Coupon(
+      id: (fields[0] as num).toInt(),
       title: fields[1] as String,
       description: fields[2] as String,
       code: fields[3] as String,
-      discount: fields[4] as double,
-      fixed: fields[5] as double,
+      discount: (fields[4] as num).toDouble(),
+      fixed: (fields[5] as num).toDouble(),
       status: fields[6] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$CouponImpl obj) {
+  void write(BinaryWriter writer, _Coupon obj) {
     writer
       ..writeByte(7)
       ..writeByte(0)
@@ -62,23 +62,22 @@ class CouponAdapter extends TypeAdapter<_$CouponImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CouponImpl _$$CouponImplFromJson(Map<String, dynamic> json) => _$CouponImpl(
-      id: (json['id'] as num).toInt(),
-      title: json['title'] as String,
-      description: json['description'] as String,
-      code: json['code'] as String,
-      discount: (json['discount'] as num).toDouble(),
-      fixed: (json['fixed'] as num).toDouble(),
-      status: json['status'] as String,
-    );
+_Coupon _$CouponFromJson(Map<String, dynamic> json) => _Coupon(
+  id: (json['id'] as num).toInt(),
+  title: json['title'] as String,
+  description: json['description'] as String,
+  code: json['code'] as String,
+  discount: (json['discount'] as num).toDouble(),
+  fixed: (json['fixed'] as num).toDouble(),
+  status: json['status'] as String,
+);
 
-Map<String, dynamic> _$$CouponImplToJson(_$CouponImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'code': instance.code,
-      'discount': instance.discount,
-      'fixed': instance.fixed,
-      'status': instance.status,
-    };
+Map<String, dynamic> _$CouponToJson(_Coupon instance) => <String, dynamic>{
+  'id': instance.id,
+  'title': instance.title,
+  'description': instance.description,
+  'code': instance.code,
+  'discount': instance.discount,
+  'fixed': instance.fixed,
+  'status': instance.status,
+};

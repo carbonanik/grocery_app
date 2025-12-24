@@ -6,19 +6,19 @@ part of 'product.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ProductAdapter extends TypeAdapter<_$ProductImpl> {
+class ProductAdapter extends TypeAdapter<_Product> {
   @override
-  final int typeId = 7;
+  final typeId = 7;
 
   @override
-  _$ProductImpl read(BinaryReader reader) {
+  _Product read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$ProductImpl(
-      id: fields[0] as int,
-      price: fields[1] as double,
+    return _Product(
+      id: (fields[0] as num).toInt(),
+      price: (fields[1] as num).toDouble(),
       name: fields[2] as String,
       description: fields[3] as String,
       image: fields[4] as String,
@@ -27,7 +27,7 @@ class ProductAdapter extends TypeAdapter<_$ProductImpl> {
   }
 
   @override
-  void write(BinaryWriter writer, _$ProductImpl obj) {
+  void write(BinaryWriter writer, _Product obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -59,22 +59,20 @@ class ProductAdapter extends TypeAdapter<_$ProductImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
-    _$ProductImpl(
-      id: (json['id'] as num).toInt(),
-      price: (json['price'] as num).toDouble(),
-      name: json['name'] as String,
-      description: json['description'] as String,
-      image: json['image'] as String,
-      weight: json['weight'] as String,
-    );
+_Product _$ProductFromJson(Map<String, dynamic> json) => _Product(
+  id: (json['id'] as num).toInt(),
+  price: (json['price'] as num).toDouble(),
+  name: json['name'] as String,
+  description: json['description'] as String,
+  image: json['image'] as String,
+  weight: json['weight'] as String,
+);
 
-Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'price': instance.price,
-      'name': instance.name,
-      'description': instance.description,
-      'image': instance.image,
-      'weight': instance.weight,
-    };
+Map<String, dynamic> _$ProductToJson(_Product instance) => <String, dynamic>{
+  'id': instance.id,
+  'price': instance.price,
+  'name': instance.name,
+  'description': instance.description,
+  'image': instance.image,
+  'weight': instance.weight,
+};

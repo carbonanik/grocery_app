@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1365 +9,1812 @@ part of 'order_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+/// @nodoc
+mixin _$OrderReadDto implements DiagnosticableTreeMixin {
 
-OrderReadDto _$OrderReadDtoFromJson(Map<String, dynamic> json) {
-  return _OrderReadDto.fromJson(json);
+ int get id; OrderSubReadDto get attributes;
+/// Create a copy of OrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OrderReadDtoCopyWith<OrderReadDto> get copyWith => _$OrderReadDtoCopyWithImpl<OrderReadDto>(this as OrderReadDto, _$identity);
+
+  /// Serializes this OrderReadDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OrderReadDto'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('attributes', attributes));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderReadDto&&(identical(other.id, id) || other.id == id)&&(identical(other.attributes, attributes) || other.attributes == attributes));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,attributes);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OrderReadDto(id: $id, attributes: $attributes)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$OrderReadDto {
-  int get id => throw _privateConstructorUsedError;
-  OrderSubReadDto get attributes => throw _privateConstructorUsedError;
+abstract mixin class $OrderReadDtoCopyWith<$Res>  {
+  factory $OrderReadDtoCopyWith(OrderReadDto value, $Res Function(OrderReadDto) _then) = _$OrderReadDtoCopyWithImpl;
+@useResult
+$Res call({
+ int id, OrderSubReadDto attributes
+});
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $OrderReadDtoCopyWith<OrderReadDto> get copyWith =>
-      throw _privateConstructorUsedError;
+
+$OrderSubReadDtoCopyWith<$Res> get attributes;
+
 }
-
 /// @nodoc
-abstract class $OrderReadDtoCopyWith<$Res> {
-  factory $OrderReadDtoCopyWith(
-          OrderReadDto value, $Res Function(OrderReadDto) then) =
-      _$OrderReadDtoCopyWithImpl<$Res, OrderReadDto>;
-  @useResult
-  $Res call({int id, OrderSubReadDto attributes});
-
-  $OrderSubReadDtoCopyWith<$Res> get attributes;
-}
-
-/// @nodoc
-class _$OrderReadDtoCopyWithImpl<$Res, $Val extends OrderReadDto>
+class _$OrderReadDtoCopyWithImpl<$Res>
     implements $OrderReadDtoCopyWith<$Res> {
-  _$OrderReadDtoCopyWithImpl(this._value, this._then);
+  _$OrderReadDtoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OrderReadDto _self;
+  final $Res Function(OrderReadDto) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? attributes = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      attributes: null == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as OrderSubReadDto,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderSubReadDtoCopyWith<$Res> get attributes {
-    return $OrderSubReadDtoCopyWith<$Res>(_value.attributes, (value) {
-      return _then(_value.copyWith(attributes: value) as $Val);
-    });
-  }
+/// Create a copy of OrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? attributes = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,attributes: null == attributes ? _self.attributes : attributes // ignore: cast_nullable_to_non_nullable
+as OrderSubReadDto,
+  ));
+}
+/// Create a copy of OrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OrderSubReadDtoCopyWith<$Res> get attributes {
+  
+  return $OrderSubReadDtoCopyWith<$Res>(_self.attributes, (value) {
+    return _then(_self.copyWith(attributes: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$OrderReadDtoImplCopyWith<$Res>
-    implements $OrderReadDtoCopyWith<$Res> {
-  factory _$$OrderReadDtoImplCopyWith(
-          _$OrderReadDtoImpl value, $Res Function(_$OrderReadDtoImpl) then) =
-      __$$OrderReadDtoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, OrderSubReadDto attributes});
 
-  @override
-  $OrderSubReadDtoCopyWith<$Res> get attributes;
+/// Adds pattern-matching-related methods to [OrderReadDto].
+extension OrderReadDtoPatterns on OrderReadDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OrderReadDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OrderReadDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OrderReadDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _OrderReadDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OrderReadDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OrderReadDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  OrderSubReadDto attributes)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OrderReadDto() when $default != null:
+return $default(_that.id,_that.attributes);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  OrderSubReadDto attributes)  $default,) {final _that = this;
+switch (_that) {
+case _OrderReadDto():
+return $default(_that.id,_that.attributes);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  OrderSubReadDto attributes)?  $default,) {final _that = this;
+switch (_that) {
+case _OrderReadDto() when $default != null:
+return $default(_that.id,_that.attributes);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$OrderReadDtoImplCopyWithImpl<$Res>
-    extends _$OrderReadDtoCopyWithImpl<$Res, _$OrderReadDtoImpl>
-    implements _$$OrderReadDtoImplCopyWith<$Res> {
-  __$$OrderReadDtoImplCopyWithImpl(
-      _$OrderReadDtoImpl _value, $Res Function(_$OrderReadDtoImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? attributes = null,
-  }) {
-    return _then(_$OrderReadDtoImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      attributes: null == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as OrderSubReadDto,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderReadDtoImpl with DiagnosticableTreeMixin implements _OrderReadDto {
-  const _$OrderReadDtoImpl({required this.id, required this.attributes});
 
-  factory _$OrderReadDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderReadDtoImplFromJson(json);
+class _OrderReadDto with DiagnosticableTreeMixin implements OrderReadDto {
+  const _OrderReadDto({required this.id, required this.attributes});
+  factory _OrderReadDto.fromJson(Map<String, dynamic> json) => _$OrderReadDtoFromJson(json);
 
-  @override
-  final int id;
-  @override
-  final OrderSubReadDto attributes;
+@override final  int id;
+@override final  OrderSubReadDto attributes;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderReadDto(id: $id, attributes: $attributes)';
-  }
+/// Create a copy of OrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OrderReadDtoCopyWith<_OrderReadDto> get copyWith => __$OrderReadDtoCopyWithImpl<_OrderReadDto>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OrderReadDto'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('attributes', attributes));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OrderReadDtoImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.attributes, attributes) ||
-                other.attributes == attributes));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, attributes);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrderReadDtoImplCopyWith<_$OrderReadDtoImpl> get copyWith =>
-      __$$OrderReadDtoImplCopyWithImpl<_$OrderReadDtoImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OrderReadDtoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$OrderReadDtoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OrderReadDto'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('attributes', attributes));
 }
 
-abstract class _OrderReadDto implements OrderReadDto {
-  const factory _OrderReadDto(
-      {required final int id,
-      required final OrderSubReadDto attributes}) = _$OrderReadDtoImpl;
-
-  factory _OrderReadDto.fromJson(Map<String, dynamic> json) =
-      _$OrderReadDtoImpl.fromJson;
-
-  @override
-  int get id;
-  @override
-  OrderSubReadDto get attributes;
-  @override
-  @JsonKey(ignore: true)
-  _$$OrderReadDtoImplCopyWith<_$OrderReadDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderReadDto&&(identical(other.id, id) || other.id == id)&&(identical(other.attributes, attributes) || other.attributes == attributes));
 }
 
-OrderSubReadDto _$OrderSubReadDtoFromJson(Map<String, dynamic> json) {
-  return _OrderSubReadDto.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,attributes);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OrderReadDto(id: $id, attributes: $attributes)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$OrderSubReadDto {
-  int get count => throw _privateConstructorUsedError;
-  String get totalPrice => throw _privateConstructorUsedError;
-  String get orderDate => throw _privateConstructorUsedError;
-  String get orderStatus => throw _privateConstructorUsedError;
-  List<OrderItemReadDto> get orderItems => throw _privateConstructorUsedError;
-  List<Coupon> get coupons => throw _privateConstructorUsedError;
-  UserInOrderReadDto get user => throw _privateConstructorUsedError;
+abstract mixin class _$OrderReadDtoCopyWith<$Res> implements $OrderReadDtoCopyWith<$Res> {
+  factory _$OrderReadDtoCopyWith(_OrderReadDto value, $Res Function(_OrderReadDto) _then) = __$OrderReadDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, OrderSubReadDto attributes
+});
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $OrderSubReadDtoCopyWith<OrderSubReadDto> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override $OrderSubReadDtoCopyWith<$Res> get attributes;
+
+}
+/// @nodoc
+class __$OrderReadDtoCopyWithImpl<$Res>
+    implements _$OrderReadDtoCopyWith<$Res> {
+  __$OrderReadDtoCopyWithImpl(this._self, this._then);
+
+  final _OrderReadDto _self;
+  final $Res Function(_OrderReadDto) _then;
+
+/// Create a copy of OrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? attributes = null,}) {
+  return _then(_OrderReadDto(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,attributes: null == attributes ? _self.attributes : attributes // ignore: cast_nullable_to_non_nullable
+as OrderSubReadDto,
+  ));
+}
+
+/// Create a copy of OrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OrderSubReadDtoCopyWith<$Res> get attributes {
+  
+  return $OrderSubReadDtoCopyWith<$Res>(_self.attributes, (value) {
+    return _then(_self.copyWith(attributes: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$OrderSubReadDto implements DiagnosticableTreeMixin {
+
+ int get count; String get totalPrice; String get orderDate; String get orderStatus; List<OrderItemReadDto> get orderItems; List<Coupon> get coupons; UserInOrderReadDto get user;
+/// Create a copy of OrderSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OrderSubReadDtoCopyWith<OrderSubReadDto> get copyWith => _$OrderSubReadDtoCopyWithImpl<OrderSubReadDto>(this as OrderSubReadDto, _$identity);
+
+  /// Serializes this OrderSubReadDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OrderSubReadDto'))
+    ..add(DiagnosticsProperty('count', count))..add(DiagnosticsProperty('totalPrice', totalPrice))..add(DiagnosticsProperty('orderDate', orderDate))..add(DiagnosticsProperty('orderStatus', orderStatus))..add(DiagnosticsProperty('orderItems', orderItems))..add(DiagnosticsProperty('coupons', coupons))..add(DiagnosticsProperty('user', user));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderSubReadDto&&(identical(other.count, count) || other.count == count)&&(identical(other.totalPrice, totalPrice) || other.totalPrice == totalPrice)&&(identical(other.orderDate, orderDate) || other.orderDate == orderDate)&&(identical(other.orderStatus, orderStatus) || other.orderStatus == orderStatus)&&const DeepCollectionEquality().equals(other.orderItems, orderItems)&&const DeepCollectionEquality().equals(other.coupons, coupons)&&(identical(other.user, user) || other.user == user));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count,totalPrice,orderDate,orderStatus,const DeepCollectionEquality().hash(orderItems),const DeepCollectionEquality().hash(coupons),user);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OrderSubReadDto(count: $count, totalPrice: $totalPrice, orderDate: $orderDate, orderStatus: $orderStatus, orderItems: $orderItems, coupons: $coupons, user: $user)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $OrderSubReadDtoCopyWith<$Res> {
-  factory $OrderSubReadDtoCopyWith(
-          OrderSubReadDto value, $Res Function(OrderSubReadDto) then) =
-      _$OrderSubReadDtoCopyWithImpl<$Res, OrderSubReadDto>;
-  @useResult
-  $Res call(
-      {int count,
-      String totalPrice,
-      String orderDate,
-      String orderStatus,
-      List<OrderItemReadDto> orderItems,
-      List<Coupon> coupons,
-      UserInOrderReadDto user});
+abstract mixin class $OrderSubReadDtoCopyWith<$Res>  {
+  factory $OrderSubReadDtoCopyWith(OrderSubReadDto value, $Res Function(OrderSubReadDto) _then) = _$OrderSubReadDtoCopyWithImpl;
+@useResult
+$Res call({
+ int count, String totalPrice, String orderDate, String orderStatus, List<OrderItemReadDto> orderItems, List<Coupon> coupons, UserInOrderReadDto user
+});
 
-  $UserInOrderReadDtoCopyWith<$Res> get user;
+
+$UserInOrderReadDtoCopyWith<$Res> get user;
+
 }
-
 /// @nodoc
-class _$OrderSubReadDtoCopyWithImpl<$Res, $Val extends OrderSubReadDto>
+class _$OrderSubReadDtoCopyWithImpl<$Res>
     implements $OrderSubReadDtoCopyWith<$Res> {
-  _$OrderSubReadDtoCopyWithImpl(this._value, this._then);
+  _$OrderSubReadDtoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OrderSubReadDto _self;
+  final $Res Function(OrderSubReadDto) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? count = null,
-    Object? totalPrice = null,
-    Object? orderDate = null,
-    Object? orderStatus = null,
-    Object? orderItems = null,
-    Object? coupons = null,
-    Object? user = null,
-  }) {
-    return _then(_value.copyWith(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPrice: null == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderDate: null == orderDate
-          ? _value.orderDate
-          : orderDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderStatus: null == orderStatus
-          ? _value.orderStatus
-          : orderStatus // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderItems: null == orderItems
-          ? _value.orderItems
-          : orderItems // ignore: cast_nullable_to_non_nullable
-              as List<OrderItemReadDto>,
-      coupons: null == coupons
-          ? _value.coupons
-          : coupons // ignore: cast_nullable_to_non_nullable
-              as List<Coupon>,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserInOrderReadDto,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserInOrderReadDtoCopyWith<$Res> get user {
-    return $UserInOrderReadDtoCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
+/// Create a copy of OrderSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? count = null,Object? totalPrice = null,Object? orderDate = null,Object? orderStatus = null,Object? orderItems = null,Object? coupons = null,Object? user = null,}) {
+  return _then(_self.copyWith(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,totalPrice: null == totalPrice ? _self.totalPrice : totalPrice // ignore: cast_nullable_to_non_nullable
+as String,orderDate: null == orderDate ? _self.orderDate : orderDate // ignore: cast_nullable_to_non_nullable
+as String,orderStatus: null == orderStatus ? _self.orderStatus : orderStatus // ignore: cast_nullable_to_non_nullable
+as String,orderItems: null == orderItems ? _self.orderItems : orderItems // ignore: cast_nullable_to_non_nullable
+as List<OrderItemReadDto>,coupons: null == coupons ? _self.coupons : coupons // ignore: cast_nullable_to_non_nullable
+as List<Coupon>,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserInOrderReadDto,
+  ));
+}
+/// Create a copy of OrderSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserInOrderReadDtoCopyWith<$Res> get user {
+  
+  return $UserInOrderReadDtoCopyWith<$Res>(_self.user, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$OrderSubReadDtoImplCopyWith<$Res>
-    implements $OrderSubReadDtoCopyWith<$Res> {
-  factory _$$OrderSubReadDtoImplCopyWith(_$OrderSubReadDtoImpl value,
-          $Res Function(_$OrderSubReadDtoImpl) then) =
-      __$$OrderSubReadDtoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int count,
-      String totalPrice,
-      String orderDate,
-      String orderStatus,
-      List<OrderItemReadDto> orderItems,
-      List<Coupon> coupons,
-      UserInOrderReadDto user});
 
-  @override
-  $UserInOrderReadDtoCopyWith<$Res> get user;
+/// Adds pattern-matching-related methods to [OrderSubReadDto].
+extension OrderSubReadDtoPatterns on OrderSubReadDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OrderSubReadDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OrderSubReadDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OrderSubReadDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _OrderSubReadDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OrderSubReadDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OrderSubReadDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int count,  String totalPrice,  String orderDate,  String orderStatus,  List<OrderItemReadDto> orderItems,  List<Coupon> coupons,  UserInOrderReadDto user)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OrderSubReadDto() when $default != null:
+return $default(_that.count,_that.totalPrice,_that.orderDate,_that.orderStatus,_that.orderItems,_that.coupons,_that.user);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int count,  String totalPrice,  String orderDate,  String orderStatus,  List<OrderItemReadDto> orderItems,  List<Coupon> coupons,  UserInOrderReadDto user)  $default,) {final _that = this;
+switch (_that) {
+case _OrderSubReadDto():
+return $default(_that.count,_that.totalPrice,_that.orderDate,_that.orderStatus,_that.orderItems,_that.coupons,_that.user);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int count,  String totalPrice,  String orderDate,  String orderStatus,  List<OrderItemReadDto> orderItems,  List<Coupon> coupons,  UserInOrderReadDto user)?  $default,) {final _that = this;
+switch (_that) {
+case _OrderSubReadDto() when $default != null:
+return $default(_that.count,_that.totalPrice,_that.orderDate,_that.orderStatus,_that.orderItems,_that.coupons,_that.user);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$OrderSubReadDtoImplCopyWithImpl<$Res>
-    extends _$OrderSubReadDtoCopyWithImpl<$Res, _$OrderSubReadDtoImpl>
-    implements _$$OrderSubReadDtoImplCopyWith<$Res> {
-  __$$OrderSubReadDtoImplCopyWithImpl(
-      _$OrderSubReadDtoImpl _value, $Res Function(_$OrderSubReadDtoImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? count = null,
-    Object? totalPrice = null,
-    Object? orderDate = null,
-    Object? orderStatus = null,
-    Object? orderItems = null,
-    Object? coupons = null,
-    Object? user = null,
-  }) {
-    return _then(_$OrderSubReadDtoImpl(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPrice: null == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderDate: null == orderDate
-          ? _value.orderDate
-          : orderDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderStatus: null == orderStatus
-          ? _value.orderStatus
-          : orderStatus // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderItems: null == orderItems
-          ? _value._orderItems
-          : orderItems // ignore: cast_nullable_to_non_nullable
-              as List<OrderItemReadDto>,
-      coupons: null == coupons
-          ? _value._coupons
-          : coupons // ignore: cast_nullable_to_non_nullable
-              as List<Coupon>,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserInOrderReadDto,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderSubReadDtoImpl
-    with DiagnosticableTreeMixin
-    implements _OrderSubReadDto {
-  const _$OrderSubReadDtoImpl(
-      {required this.count,
-      required this.totalPrice,
-      required this.orderDate,
-      required this.orderStatus,
-      required final List<OrderItemReadDto> orderItems,
-      required final List<Coupon> coupons,
-      required this.user})
-      : _orderItems = orderItems,
-        _coupons = coupons;
 
-  factory _$OrderSubReadDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderSubReadDtoImplFromJson(json);
+class _OrderSubReadDto with DiagnosticableTreeMixin implements OrderSubReadDto {
+  const _OrderSubReadDto({required this.count, required this.totalPrice, required this.orderDate, required this.orderStatus, required final  List<OrderItemReadDto> orderItems, required final  List<Coupon> coupons, required this.user}): _orderItems = orderItems,_coupons = coupons;
+  factory _OrderSubReadDto.fromJson(Map<String, dynamic> json) => _$OrderSubReadDtoFromJson(json);
 
-  @override
-  final int count;
-  @override
-  final String totalPrice;
-  @override
-  final String orderDate;
-  @override
-  final String orderStatus;
-  final List<OrderItemReadDto> _orderItems;
-  @override
-  List<OrderItemReadDto> get orderItems {
-    if (_orderItems is EqualUnmodifiableListView) return _orderItems;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orderItems);
-  }
-
-  final List<Coupon> _coupons;
-  @override
-  List<Coupon> get coupons {
-    if (_coupons is EqualUnmodifiableListView) return _coupons;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_coupons);
-  }
-
-  @override
-  final UserInOrderReadDto user;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderSubReadDto(count: $count, totalPrice: $totalPrice, orderDate: $orderDate, orderStatus: $orderStatus, orderItems: $orderItems, coupons: $coupons, user: $user)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OrderSubReadDto'))
-      ..add(DiagnosticsProperty('count', count))
-      ..add(DiagnosticsProperty('totalPrice', totalPrice))
-      ..add(DiagnosticsProperty('orderDate', orderDate))
-      ..add(DiagnosticsProperty('orderStatus', orderStatus))
-      ..add(DiagnosticsProperty('orderItems', orderItems))
-      ..add(DiagnosticsProperty('coupons', coupons))
-      ..add(DiagnosticsProperty('user', user));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OrderSubReadDtoImpl &&
-            (identical(other.count, count) || other.count == count) &&
-            (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice) &&
-            (identical(other.orderDate, orderDate) ||
-                other.orderDate == orderDate) &&
-            (identical(other.orderStatus, orderStatus) ||
-                other.orderStatus == orderStatus) &&
-            const DeepCollectionEquality()
-                .equals(other._orderItems, _orderItems) &&
-            const DeepCollectionEquality().equals(other._coupons, _coupons) &&
-            (identical(other.user, user) || other.user == user));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      count,
-      totalPrice,
-      orderDate,
-      orderStatus,
-      const DeepCollectionEquality().hash(_orderItems),
-      const DeepCollectionEquality().hash(_coupons),
-      user);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrderSubReadDtoImplCopyWith<_$OrderSubReadDtoImpl> get copyWith =>
-      __$$OrderSubReadDtoImplCopyWithImpl<_$OrderSubReadDtoImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OrderSubReadDtoImplToJson(
-      this,
-    );
-  }
+@override final  int count;
+@override final  String totalPrice;
+@override final  String orderDate;
+@override final  String orderStatus;
+ final  List<OrderItemReadDto> _orderItems;
+@override List<OrderItemReadDto> get orderItems {
+  if (_orderItems is EqualUnmodifiableListView) return _orderItems;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_orderItems);
 }
 
-abstract class _OrderSubReadDto implements OrderSubReadDto {
-  const factory _OrderSubReadDto(
-      {required final int count,
-      required final String totalPrice,
-      required final String orderDate,
-      required final String orderStatus,
-      required final List<OrderItemReadDto> orderItems,
-      required final List<Coupon> coupons,
-      required final UserInOrderReadDto user}) = _$OrderSubReadDtoImpl;
-
-  factory _OrderSubReadDto.fromJson(Map<String, dynamic> json) =
-      _$OrderSubReadDtoImpl.fromJson;
-
-  @override
-  int get count;
-  @override
-  String get totalPrice;
-  @override
-  String get orderDate;
-  @override
-  String get orderStatus;
-  @override
-  List<OrderItemReadDto> get orderItems;
-  @override
-  List<Coupon> get coupons;
-  @override
-  UserInOrderReadDto get user;
-  @override
-  @JsonKey(ignore: true)
-  _$$OrderSubReadDtoImplCopyWith<_$OrderSubReadDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+ final  List<Coupon> _coupons;
+@override List<Coupon> get coupons {
+  if (_coupons is EqualUnmodifiableListView) return _coupons;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_coupons);
 }
 
-OrderItemReadDto _$OrderItemReadDtoFromJson(Map<String, dynamic> json) {
-  return _OrderItemReadDto.fromJson(json);
+@override final  UserInOrderReadDto user;
+
+/// Create a copy of OrderSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OrderSubReadDtoCopyWith<_OrderSubReadDto> get copyWith => __$OrderSubReadDtoCopyWithImpl<_OrderSubReadDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$OrderSubReadDtoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OrderSubReadDto'))
+    ..add(DiagnosticsProperty('count', count))..add(DiagnosticsProperty('totalPrice', totalPrice))..add(DiagnosticsProperty('orderDate', orderDate))..add(DiagnosticsProperty('orderStatus', orderStatus))..add(DiagnosticsProperty('orderItems', orderItems))..add(DiagnosticsProperty('coupons', coupons))..add(DiagnosticsProperty('user', user));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderSubReadDto&&(identical(other.count, count) || other.count == count)&&(identical(other.totalPrice, totalPrice) || other.totalPrice == totalPrice)&&(identical(other.orderDate, orderDate) || other.orderDate == orderDate)&&(identical(other.orderStatus, orderStatus) || other.orderStatus == orderStatus)&&const DeepCollectionEquality().equals(other._orderItems, _orderItems)&&const DeepCollectionEquality().equals(other._coupons, _coupons)&&(identical(other.user, user) || other.user == user));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count,totalPrice,orderDate,orderStatus,const DeepCollectionEquality().hash(_orderItems),const DeepCollectionEquality().hash(_coupons),user);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OrderSubReadDto(count: $count, totalPrice: $totalPrice, orderDate: $orderDate, orderStatus: $orderStatus, orderItems: $orderItems, coupons: $coupons, user: $user)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$OrderItemReadDto {
-  int get count => throw _privateConstructorUsedError;
-  ProductDto get product => throw _privateConstructorUsedError;
+abstract mixin class _$OrderSubReadDtoCopyWith<$Res> implements $OrderSubReadDtoCopyWith<$Res> {
+  factory _$OrderSubReadDtoCopyWith(_OrderSubReadDto value, $Res Function(_OrderSubReadDto) _then) = __$OrderSubReadDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ int count, String totalPrice, String orderDate, String orderStatus, List<OrderItemReadDto> orderItems, List<Coupon> coupons, UserInOrderReadDto user
+});
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $OrderItemReadDtoCopyWith<OrderItemReadDto> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override $UserInOrderReadDtoCopyWith<$Res> get user;
+
+}
+/// @nodoc
+class __$OrderSubReadDtoCopyWithImpl<$Res>
+    implements _$OrderSubReadDtoCopyWith<$Res> {
+  __$OrderSubReadDtoCopyWithImpl(this._self, this._then);
+
+  final _OrderSubReadDto _self;
+  final $Res Function(_OrderSubReadDto) _then;
+
+/// Create a copy of OrderSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? count = null,Object? totalPrice = null,Object? orderDate = null,Object? orderStatus = null,Object? orderItems = null,Object? coupons = null,Object? user = null,}) {
+  return _then(_OrderSubReadDto(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,totalPrice: null == totalPrice ? _self.totalPrice : totalPrice // ignore: cast_nullable_to_non_nullable
+as String,orderDate: null == orderDate ? _self.orderDate : orderDate // ignore: cast_nullable_to_non_nullable
+as String,orderStatus: null == orderStatus ? _self.orderStatus : orderStatus // ignore: cast_nullable_to_non_nullable
+as String,orderItems: null == orderItems ? _self._orderItems : orderItems // ignore: cast_nullable_to_non_nullable
+as List<OrderItemReadDto>,coupons: null == coupons ? _self._coupons : coupons // ignore: cast_nullable_to_non_nullable
+as List<Coupon>,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserInOrderReadDto,
+  ));
+}
+
+/// Create a copy of OrderSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserInOrderReadDtoCopyWith<$Res> get user {
+  
+  return $UserInOrderReadDtoCopyWith<$Res>(_self.user, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$OrderItemReadDto implements DiagnosticableTreeMixin {
+
+ int get count; ProductDto get product;
+/// Create a copy of OrderItemReadDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OrderItemReadDtoCopyWith<OrderItemReadDto> get copyWith => _$OrderItemReadDtoCopyWithImpl<OrderItemReadDto>(this as OrderItemReadDto, _$identity);
+
+  /// Serializes this OrderItemReadDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OrderItemReadDto'))
+    ..add(DiagnosticsProperty('count', count))..add(DiagnosticsProperty('product', product));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderItemReadDto&&(identical(other.count, count) || other.count == count)&&(identical(other.product, product) || other.product == product));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count,product);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OrderItemReadDto(count: $count, product: $product)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $OrderItemReadDtoCopyWith<$Res> {
-  factory $OrderItemReadDtoCopyWith(
-          OrderItemReadDto value, $Res Function(OrderItemReadDto) then) =
-      _$OrderItemReadDtoCopyWithImpl<$Res, OrderItemReadDto>;
-  @useResult
-  $Res call({int count, ProductDto product});
+abstract mixin class $OrderItemReadDtoCopyWith<$Res>  {
+  factory $OrderItemReadDtoCopyWith(OrderItemReadDto value, $Res Function(OrderItemReadDto) _then) = _$OrderItemReadDtoCopyWithImpl;
+@useResult
+$Res call({
+ int count, ProductDto product
+});
 
-  $ProductDtoCopyWith<$Res> get product;
+
+$ProductDtoCopyWith<$Res> get product;
+
 }
-
 /// @nodoc
-class _$OrderItemReadDtoCopyWithImpl<$Res, $Val extends OrderItemReadDto>
+class _$OrderItemReadDtoCopyWithImpl<$Res>
     implements $OrderItemReadDtoCopyWith<$Res> {
-  _$OrderItemReadDtoCopyWithImpl(this._value, this._then);
+  _$OrderItemReadDtoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OrderItemReadDto _self;
+  final $Res Function(OrderItemReadDto) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? count = null,
-    Object? product = null,
-  }) {
-    return _then(_value.copyWith(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as ProductDto,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductDtoCopyWith<$Res> get product {
-    return $ProductDtoCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value) as $Val);
-    });
-  }
+/// Create a copy of OrderItemReadDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? count = null,Object? product = null,}) {
+  return _then(_self.copyWith(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,product: null == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
+as ProductDto,
+  ));
+}
+/// Create a copy of OrderItemReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductDtoCopyWith<$Res> get product {
+  
+  return $ProductDtoCopyWith<$Res>(_self.product, (value) {
+    return _then(_self.copyWith(product: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$OrderItemReadDtoImplCopyWith<$Res>
-    implements $OrderItemReadDtoCopyWith<$Res> {
-  factory _$$OrderItemReadDtoImplCopyWith(_$OrderItemReadDtoImpl value,
-          $Res Function(_$OrderItemReadDtoImpl) then) =
-      __$$OrderItemReadDtoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int count, ProductDto product});
 
-  @override
-  $ProductDtoCopyWith<$Res> get product;
+/// Adds pattern-matching-related methods to [OrderItemReadDto].
+extension OrderItemReadDtoPatterns on OrderItemReadDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OrderItemReadDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OrderItemReadDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OrderItemReadDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _OrderItemReadDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OrderItemReadDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OrderItemReadDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int count,  ProductDto product)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OrderItemReadDto() when $default != null:
+return $default(_that.count,_that.product);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int count,  ProductDto product)  $default,) {final _that = this;
+switch (_that) {
+case _OrderItemReadDto():
+return $default(_that.count,_that.product);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int count,  ProductDto product)?  $default,) {final _that = this;
+switch (_that) {
+case _OrderItemReadDto() when $default != null:
+return $default(_that.count,_that.product);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$OrderItemReadDtoImplCopyWithImpl<$Res>
-    extends _$OrderItemReadDtoCopyWithImpl<$Res, _$OrderItemReadDtoImpl>
-    implements _$$OrderItemReadDtoImplCopyWith<$Res> {
-  __$$OrderItemReadDtoImplCopyWithImpl(_$OrderItemReadDtoImpl _value,
-      $Res Function(_$OrderItemReadDtoImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? count = null,
-    Object? product = null,
-  }) {
-    return _then(_$OrderItemReadDtoImpl(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as ProductDto,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderItemReadDtoImpl
-    with DiagnosticableTreeMixin
-    implements _OrderItemReadDto {
-  const _$OrderItemReadDtoImpl({required this.count, required this.product});
 
-  factory _$OrderItemReadDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderItemReadDtoImplFromJson(json);
+class _OrderItemReadDto with DiagnosticableTreeMixin implements OrderItemReadDto {
+  const _OrderItemReadDto({required this.count, required this.product});
+  factory _OrderItemReadDto.fromJson(Map<String, dynamic> json) => _$OrderItemReadDtoFromJson(json);
 
-  @override
-  final int count;
-  @override
-  final ProductDto product;
+@override final  int count;
+@override final  ProductDto product;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItemReadDto(count: $count, product: $product)';
-  }
+/// Create a copy of OrderItemReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OrderItemReadDtoCopyWith<_OrderItemReadDto> get copyWith => __$OrderItemReadDtoCopyWithImpl<_OrderItemReadDto>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OrderItemReadDto'))
-      ..add(DiagnosticsProperty('count', count))
-      ..add(DiagnosticsProperty('product', product));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OrderItemReadDtoImpl &&
-            (identical(other.count, count) || other.count == count) &&
-            (identical(other.product, product) || other.product == product));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, count, product);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrderItemReadDtoImplCopyWith<_$OrderItemReadDtoImpl> get copyWith =>
-      __$$OrderItemReadDtoImplCopyWithImpl<_$OrderItemReadDtoImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OrderItemReadDtoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$OrderItemReadDtoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OrderItemReadDto'))
+    ..add(DiagnosticsProperty('count', count))..add(DiagnosticsProperty('product', product));
 }
 
-abstract class _OrderItemReadDto implements OrderItemReadDto {
-  const factory _OrderItemReadDto(
-      {required final int count,
-      required final ProductDto product}) = _$OrderItemReadDtoImpl;
-
-  factory _OrderItemReadDto.fromJson(Map<String, dynamic> json) =
-      _$OrderItemReadDtoImpl.fromJson;
-
-  @override
-  int get count;
-  @override
-  ProductDto get product;
-  @override
-  @JsonKey(ignore: true)
-  _$$OrderItemReadDtoImplCopyWith<_$OrderItemReadDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderItemReadDto&&(identical(other.count, count) || other.count == count)&&(identical(other.product, product) || other.product == product));
 }
 
-UserInOrderReadDto _$UserInOrderReadDtoFromJson(Map<String, dynamic> json) {
-  return _UserInOrderReadDto.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count,product);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OrderItemReadDto(count: $count, product: $product)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$UserInOrderReadDto {
-  UserReadDto get data => throw _privateConstructorUsedError;
+abstract mixin class _$OrderItemReadDtoCopyWith<$Res> implements $OrderItemReadDtoCopyWith<$Res> {
+  factory _$OrderItemReadDtoCopyWith(_OrderItemReadDto value, $Res Function(_OrderItemReadDto) _then) = __$OrderItemReadDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ int count, ProductDto product
+});
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UserInOrderReadDtoCopyWith<UserInOrderReadDto> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override $ProductDtoCopyWith<$Res> get product;
+
+}
+/// @nodoc
+class __$OrderItemReadDtoCopyWithImpl<$Res>
+    implements _$OrderItemReadDtoCopyWith<$Res> {
+  __$OrderItemReadDtoCopyWithImpl(this._self, this._then);
+
+  final _OrderItemReadDto _self;
+  final $Res Function(_OrderItemReadDto) _then;
+
+/// Create a copy of OrderItemReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? count = null,Object? product = null,}) {
+  return _then(_OrderItemReadDto(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,product: null == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
+as ProductDto,
+  ));
+}
+
+/// Create a copy of OrderItemReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductDtoCopyWith<$Res> get product {
+  
+  return $ProductDtoCopyWith<$Res>(_self.product, (value) {
+    return _then(_self.copyWith(product: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$UserInOrderReadDto implements DiagnosticableTreeMixin {
+
+ UserReadDto get data;
+/// Create a copy of UserInOrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UserInOrderReadDtoCopyWith<UserInOrderReadDto> get copyWith => _$UserInOrderReadDtoCopyWithImpl<UserInOrderReadDto>(this as UserInOrderReadDto, _$identity);
+
+  /// Serializes this UserInOrderReadDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'UserInOrderReadDto'))
+    ..add(DiagnosticsProperty('data', data));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserInOrderReadDto&&(identical(other.data, data) || other.data == data));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,data);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'UserInOrderReadDto(data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $UserInOrderReadDtoCopyWith<$Res> {
-  factory $UserInOrderReadDtoCopyWith(
-          UserInOrderReadDto value, $Res Function(UserInOrderReadDto) then) =
-      _$UserInOrderReadDtoCopyWithImpl<$Res, UserInOrderReadDto>;
-  @useResult
-  $Res call({UserReadDto data});
+abstract mixin class $UserInOrderReadDtoCopyWith<$Res>  {
+  factory $UserInOrderReadDtoCopyWith(UserInOrderReadDto value, $Res Function(UserInOrderReadDto) _then) = _$UserInOrderReadDtoCopyWithImpl;
+@useResult
+$Res call({
+ UserReadDto data
+});
 
-  $UserReadDtoCopyWith<$Res> get data;
+
+$UserReadDtoCopyWith<$Res> get data;
+
 }
-
 /// @nodoc
-class _$UserInOrderReadDtoCopyWithImpl<$Res, $Val extends UserInOrderReadDto>
+class _$UserInOrderReadDtoCopyWithImpl<$Res>
     implements $UserInOrderReadDtoCopyWith<$Res> {
-  _$UserInOrderReadDtoCopyWithImpl(this._value, this._then);
+  _$UserInOrderReadDtoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final UserInOrderReadDto _self;
+  final $Res Function(UserInOrderReadDto) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as UserReadDto,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserReadDtoCopyWith<$Res> get data {
-    return $UserReadDtoCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
-  }
+/// Create a copy of UserInOrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? data = null,}) {
+  return _then(_self.copyWith(
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as UserReadDto,
+  ));
+}
+/// Create a copy of UserInOrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserReadDtoCopyWith<$Res> get data {
+  
+  return $UserReadDtoCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$UserInOrderReadDtoImplCopyWith<$Res>
-    implements $UserInOrderReadDtoCopyWith<$Res> {
-  factory _$$UserInOrderReadDtoImplCopyWith(_$UserInOrderReadDtoImpl value,
-          $Res Function(_$UserInOrderReadDtoImpl) then) =
-      __$$UserInOrderReadDtoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({UserReadDto data});
 
-  @override
-  $UserReadDtoCopyWith<$Res> get data;
+/// Adds pattern-matching-related methods to [UserInOrderReadDto].
+extension UserInOrderReadDtoPatterns on UserInOrderReadDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UserInOrderReadDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UserInOrderReadDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UserInOrderReadDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _UserInOrderReadDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UserInOrderReadDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UserInOrderReadDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserReadDto data)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UserInOrderReadDto() when $default != null:
+return $default(_that.data);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserReadDto data)  $default,) {final _that = this;
+switch (_that) {
+case _UserInOrderReadDto():
+return $default(_that.data);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserReadDto data)?  $default,) {final _that = this;
+switch (_that) {
+case _UserInOrderReadDto() when $default != null:
+return $default(_that.data);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$UserInOrderReadDtoImplCopyWithImpl<$Res>
-    extends _$UserInOrderReadDtoCopyWithImpl<$Res, _$UserInOrderReadDtoImpl>
-    implements _$$UserInOrderReadDtoImplCopyWith<$Res> {
-  __$$UserInOrderReadDtoImplCopyWithImpl(_$UserInOrderReadDtoImpl _value,
-      $Res Function(_$UserInOrderReadDtoImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$UserInOrderReadDtoImpl(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as UserReadDto,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$UserInOrderReadDtoImpl
-    with DiagnosticableTreeMixin
-    implements _UserInOrderReadDto {
-  const _$UserInOrderReadDtoImpl({required this.data});
 
-  factory _$UserInOrderReadDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserInOrderReadDtoImplFromJson(json);
+class _UserInOrderReadDto with DiagnosticableTreeMixin implements UserInOrderReadDto {
+  const _UserInOrderReadDto({required this.data});
+  factory _UserInOrderReadDto.fromJson(Map<String, dynamic> json) => _$UserInOrderReadDtoFromJson(json);
 
-  @override
-  final UserReadDto data;
+@override final  UserReadDto data;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserInOrderReadDto(data: $data)';
-  }
+/// Create a copy of UserInOrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UserInOrderReadDtoCopyWith<_UserInOrderReadDto> get copyWith => __$UserInOrderReadDtoCopyWithImpl<_UserInOrderReadDto>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UserInOrderReadDto'))
-      ..add(DiagnosticsProperty('data', data));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UserInOrderReadDtoImpl &&
-            (identical(other.data, data) || other.data == data));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UserInOrderReadDtoImplCopyWith<_$UserInOrderReadDtoImpl> get copyWith =>
-      __$$UserInOrderReadDtoImplCopyWithImpl<_$UserInOrderReadDtoImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UserInOrderReadDtoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$UserInOrderReadDtoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'UserInOrderReadDto'))
+    ..add(DiagnosticsProperty('data', data));
 }
 
-abstract class _UserInOrderReadDto implements UserInOrderReadDto {
-  const factory _UserInOrderReadDto({required final UserReadDto data}) =
-      _$UserInOrderReadDtoImpl;
-
-  factory _UserInOrderReadDto.fromJson(Map<String, dynamic> json) =
-      _$UserInOrderReadDtoImpl.fromJson;
-
-  @override
-  UserReadDto get data;
-  @override
-  @JsonKey(ignore: true)
-  _$$UserInOrderReadDtoImplCopyWith<_$UserInOrderReadDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserInOrderReadDto&&(identical(other.data, data) || other.data == data));
 }
 
-UserReadDto _$UserReadDtoFromJson(Map<String, dynamic> json) {
-  return _UserReadDto.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,data);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'UserInOrderReadDto(data: $data)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$UserReadDto {
-  int get id => throw _privateConstructorUsedError;
-  UserSubReadDto get attributes => throw _privateConstructorUsedError;
+abstract mixin class _$UserInOrderReadDtoCopyWith<$Res> implements $UserInOrderReadDtoCopyWith<$Res> {
+  factory _$UserInOrderReadDtoCopyWith(_UserInOrderReadDto value, $Res Function(_UserInOrderReadDto) _then) = __$UserInOrderReadDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ UserReadDto data
+});
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UserReadDtoCopyWith<UserReadDto> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override $UserReadDtoCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class __$UserInOrderReadDtoCopyWithImpl<$Res>
+    implements _$UserInOrderReadDtoCopyWith<$Res> {
+  __$UserInOrderReadDtoCopyWithImpl(this._self, this._then);
+
+  final _UserInOrderReadDto _self;
+  final $Res Function(_UserInOrderReadDto) _then;
+
+/// Create a copy of UserInOrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
+  return _then(_UserInOrderReadDto(
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as UserReadDto,
+  ));
+}
+
+/// Create a copy of UserInOrderReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserReadDtoCopyWith<$Res> get data {
+  
+  return $UserReadDtoCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$UserReadDto implements DiagnosticableTreeMixin {
+
+ int get id; UserSubReadDto get attributes;
+/// Create a copy of UserReadDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UserReadDtoCopyWith<UserReadDto> get copyWith => _$UserReadDtoCopyWithImpl<UserReadDto>(this as UserReadDto, _$identity);
+
+  /// Serializes this UserReadDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'UserReadDto'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('attributes', attributes));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserReadDto&&(identical(other.id, id) || other.id == id)&&(identical(other.attributes, attributes) || other.attributes == attributes));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,attributes);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'UserReadDto(id: $id, attributes: $attributes)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $UserReadDtoCopyWith<$Res> {
-  factory $UserReadDtoCopyWith(
-          UserReadDto value, $Res Function(UserReadDto) then) =
-      _$UserReadDtoCopyWithImpl<$Res, UserReadDto>;
-  @useResult
-  $Res call({int id, UserSubReadDto attributes});
+abstract mixin class $UserReadDtoCopyWith<$Res>  {
+  factory $UserReadDtoCopyWith(UserReadDto value, $Res Function(UserReadDto) _then) = _$UserReadDtoCopyWithImpl;
+@useResult
+$Res call({
+ int id, UserSubReadDto attributes
+});
 
-  $UserSubReadDtoCopyWith<$Res> get attributes;
+
+$UserSubReadDtoCopyWith<$Res> get attributes;
+
 }
-
 /// @nodoc
-class _$UserReadDtoCopyWithImpl<$Res, $Val extends UserReadDto>
+class _$UserReadDtoCopyWithImpl<$Res>
     implements $UserReadDtoCopyWith<$Res> {
-  _$UserReadDtoCopyWithImpl(this._value, this._then);
+  _$UserReadDtoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final UserReadDto _self;
+  final $Res Function(UserReadDto) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? attributes = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      attributes: null == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as UserSubReadDto,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserSubReadDtoCopyWith<$Res> get attributes {
-    return $UserSubReadDtoCopyWith<$Res>(_value.attributes, (value) {
-      return _then(_value.copyWith(attributes: value) as $Val);
-    });
-  }
+/// Create a copy of UserReadDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? attributes = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,attributes: null == attributes ? _self.attributes : attributes // ignore: cast_nullable_to_non_nullable
+as UserSubReadDto,
+  ));
+}
+/// Create a copy of UserReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserSubReadDtoCopyWith<$Res> get attributes {
+  
+  return $UserSubReadDtoCopyWith<$Res>(_self.attributes, (value) {
+    return _then(_self.copyWith(attributes: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$UserReadDtoImplCopyWith<$Res>
-    implements $UserReadDtoCopyWith<$Res> {
-  factory _$$UserReadDtoImplCopyWith(
-          _$UserReadDtoImpl value, $Res Function(_$UserReadDtoImpl) then) =
-      __$$UserReadDtoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, UserSubReadDto attributes});
 
-  @override
-  $UserSubReadDtoCopyWith<$Res> get attributes;
+/// Adds pattern-matching-related methods to [UserReadDto].
+extension UserReadDtoPatterns on UserReadDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UserReadDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UserReadDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UserReadDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _UserReadDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UserReadDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UserReadDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  UserSubReadDto attributes)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UserReadDto() when $default != null:
+return $default(_that.id,_that.attributes);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  UserSubReadDto attributes)  $default,) {final _that = this;
+switch (_that) {
+case _UserReadDto():
+return $default(_that.id,_that.attributes);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  UserSubReadDto attributes)?  $default,) {final _that = this;
+switch (_that) {
+case _UserReadDto() when $default != null:
+return $default(_that.id,_that.attributes);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$UserReadDtoImplCopyWithImpl<$Res>
-    extends _$UserReadDtoCopyWithImpl<$Res, _$UserReadDtoImpl>
-    implements _$$UserReadDtoImplCopyWith<$Res> {
-  __$$UserReadDtoImplCopyWithImpl(
-      _$UserReadDtoImpl _value, $Res Function(_$UserReadDtoImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? attributes = null,
-  }) {
-    return _then(_$UserReadDtoImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      attributes: null == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as UserSubReadDto,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$UserReadDtoImpl with DiagnosticableTreeMixin implements _UserReadDto {
-  const _$UserReadDtoImpl({required this.id, required this.attributes});
-
-  factory _$UserReadDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserReadDtoImplFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final UserSubReadDto attributes;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserReadDto(id: $id, attributes: $attributes)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UserReadDto'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('attributes', attributes));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UserReadDtoImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.attributes, attributes) ||
-                other.attributes == attributes));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, attributes);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UserReadDtoImplCopyWith<_$UserReadDtoImpl> get copyWith =>
-      __$$UserReadDtoImplCopyWithImpl<_$UserReadDtoImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UserReadDtoImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _UserReadDto implements UserReadDto {
-  const factory _UserReadDto(
-      {required final int id,
-      required final UserSubReadDto attributes}) = _$UserReadDtoImpl;
-
-  factory _UserReadDto.fromJson(Map<String, dynamic> json) =
-      _$UserReadDtoImpl.fromJson;
-
-  @override
-  int get id;
-  @override
-  UserSubReadDto get attributes;
-  @override
-  @JsonKey(ignore: true)
-  _$$UserReadDtoImplCopyWith<_$UserReadDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-UserSubReadDto _$UserSubReadDtoFromJson(Map<String, dynamic> json) {
-  return _UserSubReadDto.fromJson(json);
-}
-
-/// @nodoc
-mixin _$UserSubReadDto {
-  String get username => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get provider => throw _privateConstructorUsedError;
-  String get confirmed => throw _privateConstructorUsedError;
-  String get blocked => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
-  bool get isActive => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UserSubReadDtoCopyWith<UserSubReadDto> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserSubReadDtoCopyWith<$Res> {
-  factory $UserSubReadDtoCopyWith(
-          UserSubReadDto value, $Res Function(UserSubReadDto) then) =
-      _$UserSubReadDtoCopyWithImpl<$Res, UserSubReadDto>;
-  @useResult
-  $Res call(
-      {String username,
-      String email,
-      String provider,
-      String confirmed,
-      String blocked,
-      DateTime createdAt,
-      DateTime updatedAt,
-      String fullName,
-      String phone,
-      bool isActive});
-}
-
-/// @nodoc
-class _$UserSubReadDtoCopyWithImpl<$Res, $Val extends UserSubReadDto>
-    implements $UserSubReadDtoCopyWith<$Res> {
-  _$UserSubReadDtoCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? username = null,
-    Object? email = null,
-    Object? provider = null,
-    Object? confirmed = null,
-    Object? blocked = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
-    Object? fullName = null,
-    Object? phone = null,
-    Object? isActive = null,
-  }) {
-    return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provider: null == provider
-          ? _value.provider
-          : provider // ignore: cast_nullable_to_non_nullable
-              as String,
-      confirmed: null == confirmed
-          ? _value.confirmed
-          : confirmed // ignore: cast_nullable_to_non_nullable
-              as String,
-      blocked: null == blocked
-          ? _value.blocked
-          : blocked // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$UserSubReadDtoImplCopyWith<$Res>
-    implements $UserSubReadDtoCopyWith<$Res> {
-  factory _$$UserSubReadDtoImplCopyWith(_$UserSubReadDtoImpl value,
-          $Res Function(_$UserSubReadDtoImpl) then) =
-      __$$UserSubReadDtoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String username,
-      String email,
-      String provider,
-      String confirmed,
-      String blocked,
-      DateTime createdAt,
-      DateTime updatedAt,
-      String fullName,
-      String phone,
-      bool isActive});
-}
-
-/// @nodoc
-class __$$UserSubReadDtoImplCopyWithImpl<$Res>
-    extends _$UserSubReadDtoCopyWithImpl<$Res, _$UserSubReadDtoImpl>
-    implements _$$UserSubReadDtoImplCopyWith<$Res> {
-  __$$UserSubReadDtoImplCopyWithImpl(
-      _$UserSubReadDtoImpl _value, $Res Function(_$UserSubReadDtoImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? username = null,
-    Object? email = null,
-    Object? provider = null,
-    Object? confirmed = null,
-    Object? blocked = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
-    Object? fullName = null,
-    Object? phone = null,
-    Object? isActive = null,
-  }) {
-    return _then(_$UserSubReadDtoImpl(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provider: null == provider
-          ? _value.provider
-          : provider // ignore: cast_nullable_to_non_nullable
-              as String,
-      confirmed: null == confirmed
-          ? _value.confirmed
-          : confirmed // ignore: cast_nullable_to_non_nullable
-              as String,
-      blocked: null == blocked
-          ? _value.blocked
-          : blocked // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$UserSubReadDtoImpl
-    with DiagnosticableTreeMixin
-    implements _UserSubReadDto {
-  const _$UserSubReadDtoImpl(
-      {required this.username,
-      required this.email,
-      required this.provider,
-      required this.confirmed,
-      required this.blocked,
-      required this.createdAt,
-      required this.updatedAt,
-      required this.fullName,
-      required this.phone,
-      required this.isActive});
 
-  factory _$UserSubReadDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserSubReadDtoImplFromJson(json);
+class _UserReadDto with DiagnosticableTreeMixin implements UserReadDto {
+  const _UserReadDto({required this.id, required this.attributes});
+  factory _UserReadDto.fromJson(Map<String, dynamic> json) => _$UserReadDtoFromJson(json);
 
-  @override
-  final String username;
-  @override
-  final String email;
-  @override
-  final String provider;
-  @override
-  final String confirmed;
-  @override
-  final String blocked;
-  @override
-  final DateTime createdAt;
-  @override
-  final DateTime updatedAt;
-  @override
-  final String fullName;
-  @override
-  final String phone;
-  @override
-  final bool isActive;
+@override final  int id;
+@override final  UserSubReadDto attributes;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserSubReadDto(username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, fullName: $fullName, phone: $phone, isActive: $isActive)';
-  }
+/// Create a copy of UserReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UserReadDtoCopyWith<_UserReadDto> get copyWith => __$UserReadDtoCopyWithImpl<_UserReadDto>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UserSubReadDto'))
-      ..add(DiagnosticsProperty('username', username))
-      ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('provider', provider))
-      ..add(DiagnosticsProperty('confirmed', confirmed))
-      ..add(DiagnosticsProperty('blocked', blocked))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('updatedAt', updatedAt))
-      ..add(DiagnosticsProperty('fullName', fullName))
-      ..add(DiagnosticsProperty('phone', phone))
-      ..add(DiagnosticsProperty('isActive', isActive));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UserSubReadDtoImpl &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.provider, provider) ||
-                other.provider == provider) &&
-            (identical(other.confirmed, confirmed) ||
-                other.confirmed == confirmed) &&
-            (identical(other.blocked, blocked) || other.blocked == blocked) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.isActive, isActive) ||
-                other.isActive == isActive));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, username, email, provider,
-      confirmed, blocked, createdAt, updatedAt, fullName, phone, isActive);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UserSubReadDtoImplCopyWith<_$UserSubReadDtoImpl> get copyWith =>
-      __$$UserSubReadDtoImplCopyWithImpl<_$UserSubReadDtoImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UserSubReadDtoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$UserReadDtoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'UserReadDto'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('attributes', attributes));
 }
 
-abstract class _UserSubReadDto implements UserSubReadDto {
-  const factory _UserSubReadDto(
-      {required final String username,
-      required final String email,
-      required final String provider,
-      required final String confirmed,
-      required final String blocked,
-      required final DateTime createdAt,
-      required final DateTime updatedAt,
-      required final String fullName,
-      required final String phone,
-      required final bool isActive}) = _$UserSubReadDtoImpl;
-
-  factory _UserSubReadDto.fromJson(Map<String, dynamic> json) =
-      _$UserSubReadDtoImpl.fromJson;
-
-  @override
-  String get username;
-  @override
-  String get email;
-  @override
-  String get provider;
-  @override
-  String get confirmed;
-  @override
-  String get blocked;
-  @override
-  DateTime get createdAt;
-  @override
-  DateTime get updatedAt;
-  @override
-  String get fullName;
-  @override
-  String get phone;
-  @override
-  bool get isActive;
-  @override
-  @JsonKey(ignore: true)
-  _$$UserSubReadDtoImplCopyWith<_$UserSubReadDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserReadDto&&(identical(other.id, id) || other.id == id)&&(identical(other.attributes, attributes) || other.attributes == attributes));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,attributes);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'UserReadDto(id: $id, attributes: $attributes)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UserReadDtoCopyWith<$Res> implements $UserReadDtoCopyWith<$Res> {
+  factory _$UserReadDtoCopyWith(_UserReadDto value, $Res Function(_UserReadDto) _then) = __$UserReadDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, UserSubReadDto attributes
+});
+
+
+@override $UserSubReadDtoCopyWith<$Res> get attributes;
+
+}
+/// @nodoc
+class __$UserReadDtoCopyWithImpl<$Res>
+    implements _$UserReadDtoCopyWith<$Res> {
+  __$UserReadDtoCopyWithImpl(this._self, this._then);
+
+  final _UserReadDto _self;
+  final $Res Function(_UserReadDto) _then;
+
+/// Create a copy of UserReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? attributes = null,}) {
+  return _then(_UserReadDto(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,attributes: null == attributes ? _self.attributes : attributes // ignore: cast_nullable_to_non_nullable
+as UserSubReadDto,
+  ));
+}
+
+/// Create a copy of UserReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserSubReadDtoCopyWith<$Res> get attributes {
+  
+  return $UserSubReadDtoCopyWith<$Res>(_self.attributes, (value) {
+    return _then(_self.copyWith(attributes: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$UserSubReadDto implements DiagnosticableTreeMixin {
+
+ String get username; String get email; String get provider; String get confirmed; String get blocked; DateTime get createdAt; DateTime get updatedAt; String get fullName; String get phone; bool get isActive;
+/// Create a copy of UserSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UserSubReadDtoCopyWith<UserSubReadDto> get copyWith => _$UserSubReadDtoCopyWithImpl<UserSubReadDto>(this as UserSubReadDto, _$identity);
+
+  /// Serializes this UserSubReadDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'UserSubReadDto'))
+    ..add(DiagnosticsProperty('username', username))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('provider', provider))..add(DiagnosticsProperty('confirmed', confirmed))..add(DiagnosticsProperty('blocked', blocked))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('updatedAt', updatedAt))..add(DiagnosticsProperty('fullName', fullName))..add(DiagnosticsProperty('phone', phone))..add(DiagnosticsProperty('isActive', isActive));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserSubReadDto&&(identical(other.username, username) || other.username == username)&&(identical(other.email, email) || other.email == email)&&(identical(other.provider, provider) || other.provider == provider)&&(identical(other.confirmed, confirmed) || other.confirmed == confirmed)&&(identical(other.blocked, blocked) || other.blocked == blocked)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.isActive, isActive) || other.isActive == isActive));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,username,email,provider,confirmed,blocked,createdAt,updatedAt,fullName,phone,isActive);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'UserSubReadDto(username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, fullName: $fullName, phone: $phone, isActive: $isActive)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UserSubReadDtoCopyWith<$Res>  {
+  factory $UserSubReadDtoCopyWith(UserSubReadDto value, $Res Function(UserSubReadDto) _then) = _$UserSubReadDtoCopyWithImpl;
+@useResult
+$Res call({
+ String username, String email, String provider, String confirmed, String blocked, DateTime createdAt, DateTime updatedAt, String fullName, String phone, bool isActive
+});
+
+
+
+
+}
+/// @nodoc
+class _$UserSubReadDtoCopyWithImpl<$Res>
+    implements $UserSubReadDtoCopyWith<$Res> {
+  _$UserSubReadDtoCopyWithImpl(this._self, this._then);
+
+  final UserSubReadDto _self;
+  final $Res Function(UserSubReadDto) _then;
+
+/// Create a copy of UserSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? username = null,Object? email = null,Object? provider = null,Object? confirmed = null,Object? blocked = null,Object? createdAt = null,Object? updatedAt = null,Object? fullName = null,Object? phone = null,Object? isActive = null,}) {
+  return _then(_self.copyWith(
+username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,provider: null == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as String,confirmed: null == confirmed ? _self.confirmed : confirmed // ignore: cast_nullable_to_non_nullable
+as String,blocked: null == blocked ? _self.blocked : blocked // ignore: cast_nullable_to_non_nullable
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [UserSubReadDto].
+extension UserSubReadDtoPatterns on UserSubReadDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UserSubReadDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UserSubReadDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UserSubReadDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _UserSubReadDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UserSubReadDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UserSubReadDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String username,  String email,  String provider,  String confirmed,  String blocked,  DateTime createdAt,  DateTime updatedAt,  String fullName,  String phone,  bool isActive)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UserSubReadDto() when $default != null:
+return $default(_that.username,_that.email,_that.provider,_that.confirmed,_that.blocked,_that.createdAt,_that.updatedAt,_that.fullName,_that.phone,_that.isActive);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String username,  String email,  String provider,  String confirmed,  String blocked,  DateTime createdAt,  DateTime updatedAt,  String fullName,  String phone,  bool isActive)  $default,) {final _that = this;
+switch (_that) {
+case _UserSubReadDto():
+return $default(_that.username,_that.email,_that.provider,_that.confirmed,_that.blocked,_that.createdAt,_that.updatedAt,_that.fullName,_that.phone,_that.isActive);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String username,  String email,  String provider,  String confirmed,  String blocked,  DateTime createdAt,  DateTime updatedAt,  String fullName,  String phone,  bool isActive)?  $default,) {final _that = this;
+switch (_that) {
+case _UserSubReadDto() when $default != null:
+return $default(_that.username,_that.email,_that.provider,_that.confirmed,_that.blocked,_that.createdAt,_that.updatedAt,_that.fullName,_that.phone,_that.isActive);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _UserSubReadDto with DiagnosticableTreeMixin implements UserSubReadDto {
+  const _UserSubReadDto({required this.username, required this.email, required this.provider, required this.confirmed, required this.blocked, required this.createdAt, required this.updatedAt, required this.fullName, required this.phone, required this.isActive});
+  factory _UserSubReadDto.fromJson(Map<String, dynamic> json) => _$UserSubReadDtoFromJson(json);
+
+@override final  String username;
+@override final  String email;
+@override final  String provider;
+@override final  String confirmed;
+@override final  String blocked;
+@override final  DateTime createdAt;
+@override final  DateTime updatedAt;
+@override final  String fullName;
+@override final  String phone;
+@override final  bool isActive;
+
+/// Create a copy of UserSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UserSubReadDtoCopyWith<_UserSubReadDto> get copyWith => __$UserSubReadDtoCopyWithImpl<_UserSubReadDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$UserSubReadDtoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'UserSubReadDto'))
+    ..add(DiagnosticsProperty('username', username))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('provider', provider))..add(DiagnosticsProperty('confirmed', confirmed))..add(DiagnosticsProperty('blocked', blocked))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('updatedAt', updatedAt))..add(DiagnosticsProperty('fullName', fullName))..add(DiagnosticsProperty('phone', phone))..add(DiagnosticsProperty('isActive', isActive));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserSubReadDto&&(identical(other.username, username) || other.username == username)&&(identical(other.email, email) || other.email == email)&&(identical(other.provider, provider) || other.provider == provider)&&(identical(other.confirmed, confirmed) || other.confirmed == confirmed)&&(identical(other.blocked, blocked) || other.blocked == blocked)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.isActive, isActive) || other.isActive == isActive));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,username,email,provider,confirmed,blocked,createdAt,updatedAt,fullName,phone,isActive);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'UserSubReadDto(username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, fullName: $fullName, phone: $phone, isActive: $isActive)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UserSubReadDtoCopyWith<$Res> implements $UserSubReadDtoCopyWith<$Res> {
+  factory _$UserSubReadDtoCopyWith(_UserSubReadDto value, $Res Function(_UserSubReadDto) _then) = __$UserSubReadDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ String username, String email, String provider, String confirmed, String blocked, DateTime createdAt, DateTime updatedAt, String fullName, String phone, bool isActive
+});
+
+
+
+
+}
+/// @nodoc
+class __$UserSubReadDtoCopyWithImpl<$Res>
+    implements _$UserSubReadDtoCopyWith<$Res> {
+  __$UserSubReadDtoCopyWithImpl(this._self, this._then);
+
+  final _UserSubReadDto _self;
+  final $Res Function(_UserSubReadDto) _then;
+
+/// Create a copy of UserSubReadDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? username = null,Object? email = null,Object? provider = null,Object? confirmed = null,Object? blocked = null,Object? createdAt = null,Object? updatedAt = null,Object? fullName = null,Object? phone = null,Object? isActive = null,}) {
+  return _then(_UserSubReadDto(
+username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,provider: null == provider ? _self.provider : provider // ignore: cast_nullable_to_non_nullable
+as String,confirmed: null == confirmed ? _self.confirmed : confirmed // ignore: cast_nullable_to_non_nullable
+as String,blocked: null == blocked ? _self.blocked : blocked // ignore: cast_nullable_to_non_nullable
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on

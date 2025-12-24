@@ -1,4 +1,3 @@
-import 'package:hive/hive.dart';
 import 'constant/constant.dart';
 
 abstract class FavoriteLocal {

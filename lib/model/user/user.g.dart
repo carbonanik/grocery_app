@@ -6,18 +6,18 @@ part of 'user.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<_$UserImpl> {
+class UserAdapter extends TypeAdapter<_User> {
   @override
-  final int typeId = 2;
+  final typeId = 2;
 
   @override
-  _$UserImpl read(BinaryReader reader) {
+  _User read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$UserImpl(
-      id: fields[0] as int,
+    return _User(
+      id: (fields[0] as num).toInt(),
       username: fields[1] as String,
       email: fields[2] as String,
       provider: fields[3] as String?,
@@ -30,7 +30,7 @@ class UserAdapter extends TypeAdapter<_$UserImpl> {
   }
 
   @override
-  void write(BinaryWriter writer, _$UserImpl obj) {
+  void write(BinaryWriter writer, _User obj) {
     writer
       ..writeByte(9)
       ..writeByte(0)
@@ -68,9 +68,8 @@ class UserAdapter extends TypeAdapter<_$UserImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CreateUserRequestImpl _$$CreateUserRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CreateUserRequestImpl(
+_CreateUserRequest _$CreateUserRequestFromJson(Map<String, dynamic> json) =>
+    _CreateUserRequest(
       email: json['email'] as String,
       username: json['username'] as String,
       fullName: json['fullName'] as String?,
@@ -78,8 +77,7 @@ _$CreateUserRequestImpl _$$CreateUserRequestImplFromJson(
       password: json['password'] as String,
     );
 
-Map<String, dynamic> _$$CreateUserRequestImplToJson(
-        _$CreateUserRequestImpl instance) =>
+Map<String, dynamic> _$CreateUserRequestToJson(_CreateUserRequest instance) =>
     <String, dynamic>{
       'email': instance.email,
       'username': instance.username,
@@ -88,43 +86,40 @@ Map<String, dynamic> _$$CreateUserRequestImplToJson(
       'password': instance.password,
     };
 
-_$UpdateUserRequestImpl _$$UpdateUserRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UpdateUserRequestImpl(
+_UpdateUserRequest _$UpdateUserRequestFromJson(Map<String, dynamic> json) =>
+    _UpdateUserRequest(
       fullName: json['fullName'] as String?,
       phone: json['phone'] as String?,
       email: json['email'] as String?,
     );
 
-Map<String, dynamic> _$$UpdateUserRequestImplToJson(
-        _$UpdateUserRequestImpl instance) =>
+Map<String, dynamic> _$UpdateUserRequestToJson(_UpdateUserRequest instance) =>
     <String, dynamic>{
       'fullName': instance.fullName,
       'phone': instance.phone,
       'email': instance.email,
     };
 
-_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      id: (json['id'] as num).toInt(),
-      username: json['username'] as String,
-      email: json['email'] as String,
-      provider: json['provider'] as String?,
-      confirmed: json['confirmed'] as bool?,
-      blocked: json['blocked'] as bool?,
-      fullName: json['fullName'] as String?,
-      phone: json['phone'] as String?,
-      isActive: json['isActive'] as bool?,
-    );
+_User _$UserFromJson(Map<String, dynamic> json) => _User(
+  id: (json['id'] as num).toInt(),
+  username: json['username'] as String,
+  email: json['email'] as String,
+  provider: json['provider'] as String?,
+  confirmed: json['confirmed'] as bool?,
+  blocked: json['blocked'] as bool?,
+  fullName: json['fullName'] as String?,
+  phone: json['phone'] as String?,
+  isActive: json['isActive'] as bool?,
+);
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'username': instance.username,
-      'email': instance.email,
-      'provider': instance.provider,
-      'confirmed': instance.confirmed,
-      'blocked': instance.blocked,
-      'fullName': instance.fullName,
-      'phone': instance.phone,
-      'isActive': instance.isActive,
-    };
+Map<String, dynamic> _$UserToJson(_User instance) => <String, dynamic>{
+  'id': instance.id,
+  'username': instance.username,
+  'email': instance.email,
+  'provider': instance.provider,
+  'confirmed': instance.confirmed,
+  'blocked': instance.blocked,
+  'fullName': instance.fullName,
+  'phone': instance.phone,
+  'isActive': instance.isActive,
+};

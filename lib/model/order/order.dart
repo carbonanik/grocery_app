@@ -1,7 +1,7 @@
+import 'package:hive_ce/hive.dart';
 import 'package:instant_grrocery_delivery/data_source/local/constant/constant.dart';
 import 'package:instant_grrocery_delivery/model/coupon/coupon.dart';
 import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
-import 'package:hive/hive.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order.freezed.dart';

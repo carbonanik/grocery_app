@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,175 +9,275 @@ part of 'support.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-Support _$SupportFromJson(Map<String, dynamic> json) {
-  return _Support.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Support {
-  int get id => throw _privateConstructorUsedError;
-  String get subject => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SupportCopyWith<Support> get copyWith => throw _privateConstructorUsedError;
+ int get id; String get subject; String get message;
+/// Create a copy of Support
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SupportCopyWith<Support> get copyWith => _$SupportCopyWithImpl<Support>(this as Support, _$identity);
+
+  /// Serializes this Support to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Support&&(identical(other.id, id) || other.id == id)&&(identical(other.subject, subject) || other.subject == subject)&&(identical(other.message, message) || other.message == message));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,subject,message);
+
+@override
+String toString() {
+  return 'Support(id: $id, subject: $subject, message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SupportCopyWith<$Res> {
-  factory $SupportCopyWith(Support value, $Res Function(Support) then) =
-      _$SupportCopyWithImpl<$Res, Support>;
-  @useResult
-  $Res call({int id, String subject, String message});
-}
+abstract mixin class $SupportCopyWith<$Res>  {
+  factory $SupportCopyWith(Support value, $Res Function(Support) _then) = _$SupportCopyWithImpl;
+@useResult
+$Res call({
+ int id, String subject, String message
+});
 
+
+
+
+}
 /// @nodoc
-class _$SupportCopyWithImpl<$Res, $Val extends Support>
+class _$SupportCopyWithImpl<$Res>
     implements $SupportCopyWith<$Res> {
-  _$SupportCopyWithImpl(this._value, this._then);
+  _$SupportCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Support _self;
+  final $Res Function(Support) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? subject = null,
-    Object? message = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of Support
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? subject = null,Object? message = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,subject: null == subject ? _self.subject : subject // ignore: cast_nullable_to_non_nullable
+as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SupportImplCopyWith<$Res> implements $SupportCopyWith<$Res> {
-  factory _$$SupportImplCopyWith(
-          _$SupportImpl value, $Res Function(_$SupportImpl) then) =
-      __$$SupportImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, String subject, String message});
 }
 
-/// @nodoc
-class __$$SupportImplCopyWithImpl<$Res>
-    extends _$SupportCopyWithImpl<$Res, _$SupportImpl>
-    implements _$$SupportImplCopyWith<$Res> {
-  __$$SupportImplCopyWithImpl(
-      _$SupportImpl _value, $Res Function(_$SupportImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? subject = null,
-    Object? message = null,
-  }) {
-    return _then(_$SupportImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Support].
+extension SupportPatterns on Support {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Support value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Support() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Support value)  $default,){
+final _that = this;
+switch (_that) {
+case _Support():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Support value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Support() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String subject,  String message)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Support() when $default != null:
+return $default(_that.id,_that.subject,_that.message);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String subject,  String message)  $default,) {final _that = this;
+switch (_that) {
+case _Support():
+return $default(_that.id,_that.subject,_that.message);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String subject,  String message)?  $default,) {final _that = this;
+switch (_that) {
+case _Support() when $default != null:
+return $default(_that.id,_that.subject,_that.message);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SupportImpl implements _Support {
-  const _$SupportImpl(
-      {required this.id, required this.subject, required this.message});
 
-  factory _$SupportImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SupportImplFromJson(json);
+class _Support implements Support {
+  const _Support({required this.id, required this.subject, required this.message});
+  factory _Support.fromJson(Map<String, dynamic> json) => _$SupportFromJson(json);
 
-  @override
-  final int id;
-  @override
-  final String subject;
-  @override
-  final String message;
+@override final  int id;
+@override final  String subject;
+@override final  String message;
 
-  @override
-  String toString() {
-    return 'Support(id: $id, subject: $subject, message: $message)';
-  }
+/// Create a copy of Support
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SupportCopyWith<_Support> get copyWith => __$SupportCopyWithImpl<_Support>(this, _$identity);
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SupportImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.subject, subject) || other.subject == subject) &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, subject, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SupportImplCopyWith<_$SupportImpl> get copyWith =>
-      __$$SupportImplCopyWithImpl<_$SupportImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SupportImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SupportToJson(this, );
 }
 
-abstract class _Support implements Support {
-  const factory _Support(
-      {required final int id,
-      required final String subject,
-      required final String message}) = _$SupportImpl;
-
-  factory _Support.fromJson(Map<String, dynamic> json) = _$SupportImpl.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get subject;
-  @override
-  String get message;
-  @override
-  @JsonKey(ignore: true)
-  _$$SupportImplCopyWith<_$SupportImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Support&&(identical(other.id, id) || other.id == id)&&(identical(other.subject, subject) || other.subject == subject)&&(identical(other.message, message) || other.message == message));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,subject,message);
+
+@override
+String toString() {
+  return 'Support(id: $id, subject: $subject, message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SupportCopyWith<$Res> implements $SupportCopyWith<$Res> {
+  factory _$SupportCopyWith(_Support value, $Res Function(_Support) _then) = __$SupportCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, String subject, String message
+});
+
+
+
+
+}
+/// @nodoc
+class __$SupportCopyWithImpl<$Res>
+    implements _$SupportCopyWith<$Res> {
+  __$SupportCopyWithImpl(this._self, this._then);
+
+  final _Support _self;
+  final $Res Function(_Support) _then;
+
+/// Create a copy of Support
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? subject = null,Object? message = null,}) {
+  return _then(_Support(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,subject: null == subject ? _self.subject : subject // ignore: cast_nullable_to_non_nullable
+as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

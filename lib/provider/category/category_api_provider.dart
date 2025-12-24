@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/data_source/api/category_api.dart';
 import 'package:instant_grrocery_delivery/data_source/api/impl/category_api_impl.dart';
 import 'package:instant_grrocery_delivery/model/category/category.dart';

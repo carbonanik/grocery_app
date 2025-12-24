@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
@@ -56,7 +56,8 @@ class ViewProfilePage extends StatelessWidget {
                               ),
                             ),
                             error: (error) => const Text('Unknown x'),
-                            loading: (loading) => const CircularProgressIndicator(),
+                            loading: (loading) =>
+                                const CircularProgressIndicator(),
                           );
                         },
                       ),
@@ -81,17 +82,18 @@ class ViewProfilePage extends StatelessWidget {
                   const SizedBox(
                     height: 80,
                     width: 80,
-                    child: CircleAvatar(
-                      backgroundColor: accentColor,
-                    ),
-                  )
+                    child: CircleAvatar(backgroundColor: accentColor),
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 40),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
                 child: Column(
                   children: [
                     _profileItem(
@@ -115,7 +117,9 @@ class ViewProfilePage extends StatelessWidget {
                       'Know terms of use',
                       onTap: () {
                         // Get.toNamed(RouteHelper.getTermsAndCondition());
-                        AutoRouter.of(context).push(const TermsAndConditionsRoute());
+                        AutoRouter.of(
+                          context,
+                        ).push(const TermsAndConditionsRoute());
                       },
                     ),
                     _profileItem(
@@ -127,13 +131,20 @@ class ViewProfilePage extends StatelessWidget {
                         AutoRouter.of(context).push(const PrivacyPolicyRoute());
                       },
                     ),
-                    Consumer(builder: (context, ref, child) {
-                      return _profileItem(Icons.logout, 'Logout', 'Sign out from account', onTap: () {
-                        ref.read(authLocalProvider).removeAuthUser();
-                        // Get.offAllNamed(RouteHelper.getLogin());
-                        AutoRouter.of(context).push( LoginRoute());
-                      });
-                    }),
+                    Consumer(
+                      builder: (context, ref, child) {
+                        return _profileItem(
+                          Icons.logout,
+                          'Logout',
+                          'Sign out from account',
+                          onTap: () {
+                            ref.read(authLocalProvider).removeAuthUser();
+                            // Get.offAllNamed(RouteHelper.getLogin());
+                            AutoRouter.of(context).push(LoginRoute());
+                          },
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -157,10 +168,7 @@ class ViewProfilePage extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              icon,
-              color: accentColor,
-            ),
+            Icon(icon, color: accentColor),
             const SizedBox(width: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +190,7 @@ class ViewProfilePage extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

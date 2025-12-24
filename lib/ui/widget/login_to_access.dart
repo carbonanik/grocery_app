@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/update_user_controller_provider.dart';
@@ -46,7 +46,11 @@ class LoginToAccess extends StatelessWidget {
           ),
           const Text(
             "You are not logged in. Please login to access this page.",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.grey),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.grey,
+            ),
           ),
           const SizedBox(height: 100),
           Row(

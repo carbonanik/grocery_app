@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/model/product/product.dart';
 import 'package:instant_grrocery_delivery/provider/cart/cart_provider.dart';
@@ -22,7 +22,8 @@ import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
 
 @RoutePage()
 class ProductDetailPage extends ConsumerWidget {
-  const ProductDetailPage({Key? key, @PathParam("id") required this.productId}) : super(key: key);
+  const ProductDetailPage({Key? key, @PathParam("id") required this.productId})
+    : super(key: key);
 
   final int productId;
 
@@ -47,29 +48,32 @@ class ProductDetailPage extends ConsumerWidget {
             ),
             error: (error) => Column(
               children: [
-                const Expanded(
-                  child: OopsNoData(),
-                ),
+                const Expanded(child: OopsNoData()),
                 _similarProducts(),
                 cartDataModel.cartCount() > 0
-                    ? Container(
-                        height: bottomBarHeight,
-                        color: backgroundColor,
-                      )
+                    ? Container(height: bottomBarHeight, color: backgroundColor)
                     : const SizedBox(),
               ],
             ),
-            loading: (loading) => const Center(child: CircularProgressIndicator()),
+            loading: (loading) =>
+                const Center(child: CircularProgressIndicator()),
           ),
-          // _topBar(),
 
-          cartDataModel.cartCount() > 0 ? _bottomStatic(context, bottomBarHeight) : const SizedBox(),
+          // _topBar(),
+          cartDataModel.cartCount() > 0
+              ? _bottomStatic(context, bottomBarHeight)
+              : const SizedBox(),
         ],
       ),
     );
   }
 
-  Widget _scrollContent(BuildContext context, Product product, bool needFixedHeight, double bottomBarHeight) {
+  Widget _scrollContent(
+    BuildContext context,
+    Product product,
+    bool needFixedHeight,
+    double bottomBarHeight,
+  ) {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
@@ -77,16 +81,11 @@ class ProductDetailPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(
-              height: kToolbarHeight,
-            ),
+            const SizedBox(height: kToolbarHeight),
             _productDetail(context, product),
             _similarProducts(),
             needFixedHeight
-                ? Container(
-                    height: bottomBarHeight,
-                    color: backgroundColor,
-                  )
+                ? Container(height: bottomBarHeight, color: backgroundColor)
                 : const SizedBox(),
           ],
         ),
@@ -140,9 +139,7 @@ class ProductDetailPage extends ConsumerWidget {
             ],
           ),
 
-          SizedBox(
-            height: context.h(6),
-          ),
+          SizedBox(height: context.h(6)),
 
           // product weight
           Text(
@@ -153,9 +150,7 @@ class ProductDetailPage extends ConsumerWidget {
               color: Colors.grey,
             ),
           ),
-          SizedBox(
-            height: context.h(20),
-          ),
+          SizedBox(height: context.h(20)),
 
           // product price and add remove button
           Row(
@@ -170,102 +165,87 @@ class ProductDetailPage extends ConsumerWidget {
               const Spacer(),
 
               /// cart add remove button
-              Consumer(builder: (context, ref, child) {
-                final cartDataModel = ref.watch(cartProvider);
-                return AddRemoveButton(
-                  quantity: cartDataModel.itemCount(productId),
-                  onAdd: () async => await cartDataModel.itemIncrement(product),
-                  onRemove: () async => await cartDataModel.itemDecrement(product),
-                );
-              }),
+              Consumer(
+                builder: (context, ref, child) {
+                  final cartDataModel = ref.watch(cartProvider);
+                  return AddRemoveButton(
+                    quantity: cartDataModel.itemCount(productId),
+                    onAdd: () async =>
+                        await cartDataModel.itemIncrement(product),
+                    onRemove: () async =>
+                        await cartDataModel.itemDecrement(product),
+                  );
+                },
+              ),
             ],
           ),
-          SizedBox(
-            height: context.h(20),
-          ),
+          SizedBox(height: context.h(20)),
 
           // about product
           const Text(
             'About Product',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-            ),
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
           ),
-          SizedBox(
-            height: context.h(15),
-          ),
+          SizedBox(height: context.h(15)),
 
           // description
           Text(
             product.description,
-            style: const TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 15,
-            ),
+            style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
           ),
-          SizedBox(
-            height: context.h(20),
-          ),
+          SizedBox(height: context.h(20)),
         ],
       ),
     );
   }
 
   Widget _similarProducts() {
-    return Consumer(builder: (context, ref, child) {
-      final asyncValue = ref.watch(getSimilarProductProvider(productId));
-      return asyncValue.map(
-        data: (data) => Container(
-          padding: EdgeInsets.symmetric(vertical: context.h(20)),
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(context.h(30)),
-              topRight: Radius.circular(
-                context.h(30),
+    return Consumer(
+      builder: (context, ref, child) {
+        final asyncValue = ref.watch(getSimilarProductProvider(productId));
+        return asyncValue.map(
+          data: (data) => Container(
+            padding: EdgeInsets.symmetric(vertical: context.h(20)),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(context.h(30)),
+                topRight: Radius.circular(context.h(30)),
               ),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
-                child: const Text(
-                  'Similar Products',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                  child: const Text(
+                    'Similar Products',
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: context.h(20),
-              ),
-              SizedBox(
-                height: context.h(190),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: data.value.length,
-                  itemBuilder: (context, index) {
-                    final similarProduct = data.value[index];
-                    return Container(
-                      margin: EdgeInsets.only(left: context.w(20)),
-                      child: ProductItem(
-                        product: similarProduct,
-                      ),
-                    );
-                  },
+                SizedBox(height: context.h(20)),
+                SizedBox(
+                  height: context.h(190),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: data.value.length,
+                    itemBuilder: (context, index) {
+                      final similarProduct = data.value[index];
+                      return Container(
+                        margin: EdgeInsets.only(left: context.w(20)),
+                        child: ProductItem(product: similarProduct),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        error: (error) => Container(),
-        loading: (loading) => Container(),
-      );
-    });
+          error: (error) => Container(),
+          loading: (loading) => Container(),
+        );
+      },
+    );
   }
 
   Widget _bottomStatic(BuildContext context, double bottomBarHeight) {
@@ -278,12 +258,8 @@ class ProductDetailPage extends ConsumerWidget {
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: Container(
             height: bottomBarHeight,
-            padding: EdgeInsets.symmetric(
-              horizontal: context.w(20),
-            ),
-            decoration: BoxDecoration(
-              color: foregroundColor.withAlpha(210),
-            ),
+            padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+            decoration: BoxDecoration(color: foregroundColor.withAlpha(210)),
             child: Row(
               children: [
                 Consumer(
@@ -300,29 +276,23 @@ class ProductDetailPage extends ConsumerWidget {
                     );
                   },
                 ),
-                SizedBox(
-                  width: context.w(15),
-                ),
-                Container(
-                  height: 35,
-                  width: 1,
-                  color: accentColor,
-                ),
-                SizedBox(
-                  width: context.w(15),
-                ),
-                Consumer(builder: (context, ref, child) {
-                  final cartDataModel = ref.watch(cartProvider);
+                SizedBox(width: context.w(15)),
+                Container(height: 35, width: 1, color: accentColor),
+                SizedBox(width: context.w(15)),
+                Consumer(
+                  builder: (context, ref, child) {
+                    final cartDataModel = ref.watch(cartProvider);
 
-                  return Text(
-                    '\$${(cartDataModel.cartPrice()).toStringAsFixed(2)}', //todo
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  );
-                }),
+                    return Text(
+                      '\$${(cartDataModel.cartPrice()).toStringAsFixed(2)}', //todo
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    );
+                  },
+                ),
                 const Spacer(),
 
                 /// view cart button

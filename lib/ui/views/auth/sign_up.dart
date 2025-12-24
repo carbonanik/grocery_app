@@ -1,23 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_controller_provider.dart';
-import 'package:instant_grrocery_delivery/provider/auth/signup_controller_provider.dart';
 import 'package:instant_grrocery_delivery/route/app_router.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/ui/widget/auth_button.dart';
 import 'package:instant_grrocery_delivery/util/validation/validator.dart';
 import 'package:instant_grrocery_delivery/ui/widget/input_field.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
-import 'package:instant_grrocery_delivery/util/extension/async_value.dart';
 
-import '../../../main.dart';
-import '../../../route/route_helper.dart';
-import '../../widget/auth_button.dart';
-import '../../widget/my_app_bar.dart';
 
 @RoutePage()
 class SignUpPage extends ConsumerWidget {

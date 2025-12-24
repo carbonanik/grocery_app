@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 // import 'package:get/get.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/gen/assets.gen.dart';
 import 'package:instant_grrocery_delivery/provider/boarding_provider.dart';
 import 'package:instant_grrocery_delivery/route/app_router.dart';
@@ -29,35 +28,61 @@ class OnBoardingItem {
 }
 
 @RoutePage()
-class OnBoardingPage extends HookConsumerWidget {
+class OnBoardingPage extends ConsumerStatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
 
   static final List<OnBoardingItem> _items = [
-    OnBoardingItem(image: Assets.images.undrawOnTheWayReSwjt.path, title: Labels.find, description: Labels.findYour),
     OnBoardingItem(
-        image: Assets.images.undrawOnlineGroceriesA02y.path,
-        title: Labels.productDelivery,
-        description: Labels.yourProductIsDelivered),
+      image: Assets.images.undrawOnTheWayReSwjt.path,
+      title: Labels.find,
+      description: Labels.findYour,
+    ),
     OnBoardingItem(
-        image: Assets.images.undrawOnlinePaymentsReY8f2.path,
-        title: Labels.easyAndSafePayment,
-        description: Labels.payForThe),
+      image: Assets.images.undrawOnlineGroceriesA02y.path,
+      title: Labels.productDelivery,
+      description: Labels.yourProductIsDelivered,
+    ),
+    OnBoardingItem(
+      image: Assets.images.undrawOnlinePaymentsReY8f2.path,
+      title: Labels.easyAndSafePayment,
+      description: Labels.payForThe,
+    ),
   ];
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<OnBoardingPage> createState() => _OnBoardingPageState();
+}
+
+class _OnBoardingPageState extends ConsumerState<OnBoardingPage>
+    with SingleTickerProviderStateMixin {
+  late final TabController controller;
+  int index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(
+      length: OnBoardingPage._items.length,
+      vsync: this,
+    );
+    controller.addListener(() {
+      if (index != controller.index) {
+        setState(() => index = controller.index);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     final style = theme.textTheme;
-    final controller = useTabController(initialLength: _items.length);
-
-    final index = useState(0);
-
-    controller.addListener(() {
-      if (index.value != controller.index) {
-        index.value = controller.index;
-      }
-    });
 
     void done() async {
       await ref.read(doneBoardingProvider.future);
@@ -80,20 +105,22 @@ class OnBoardingPage extends HookConsumerWidget {
             ActionButton(
               enabled: true,
               onTap: skip,
-              text: index.value == 2 ? "HOME" : "SKIP",
+              text: index == OnBoardingPage._items.length - 1 ? "HOME" : "SKIP",
             ),
             ActionButton(
               enabled: true,
               // color: scheme.primary,
               onTap: () {
-                if (controller.index < 2) {
-                  index.value = index.value + 1;
+                if (controller.index < OnBoardingPage._items.length - 1) {
+                  setState(() => index = index + 1);
                   controller.animateTo(controller.index + 1);
                 } else {
                   done();
                 }
               },
-              text: index.value == 2 ? "SIGN UP" : "NEXT",
+              text: index == OnBoardingPage._items.length - 1
+                  ? "SIGN UP"
+                  : "NEXT",
               color: backgroundColor,
               textColor: accentColor,
             ),
@@ -106,21 +133,20 @@ class OnBoardingPage extends HookConsumerWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              _items.length,
+              OnBoardingPage._items.length,
               (i) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Container(
                   decoration: ShapeDecoration(
                     shape: const StadiumBorder(),
-                    color: index.value == i ? scheme.tertiary : scheme.tertiaryContainer,
+                    color: index == i
+                        ? scheme.tertiary
+                        : scheme.tertiaryContainer,
                   ),
                   child: AnimatedSize(
                     duration: const Duration(milliseconds: 500),
                     reverseDuration: const Duration(milliseconds: 500),
-                    child: SizedBox(
-                      height: 16,
-                      width: index.value == i ? 32 : 16,
-                    ),
+                    child: SizedBox(height: 16, width: index == i ? 32 : 16),
                   ),
                 ),
               ),
@@ -130,7 +156,7 @@ class OnBoardingPage extends HookConsumerWidget {
       ),
       body: TabBarView(
         controller: controller,
-        children: _items
+        children: OnBoardingPage._items
             .map(
               (e) => Padding(
                 padding: const EdgeInsets.all(24),
@@ -149,7 +175,9 @@ class OnBoardingPage extends HookConsumerWidget {
                     const Spacer(),
                     Text(
                       e.title,
-                      style: style.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+                      style: style.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 8),
