@@ -7,9 +7,7 @@ import 'package:instant_grrocery_delivery/model/user/user.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
 import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
 
-
-
-class AuthController extends StateNotifier<ResultValue<AuthResponse>>  {
+class AuthController extends StateNotifier<ResultValue<AuthResponse>> {
   AuthController(this.ref) : super(const ResultValue.empty()) {
     ref.read(getAuthUserProvider.future).then((value) {
       if (value != null) {
@@ -25,20 +23,24 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>>  {
       // ? Loading state
       state = const ResultValue.loading();
 
-      final authUser = await ref.read(authApiProvider).register(createUser);
+      final authUser = await ref
+          .read(authRepositoryProvider)
+          .register(createUser);
       await ref.read(saveAuthUserProvider(authUser).future);
 
       // ? Success state
       state = ResultValue.data(authUser);
     } catch (_) {
-      state = ResultValue.error(Exception("Failed to sign up")); // ? Error state
+      state = ResultValue.error(
+        Exception("Failed to sign up"),
+      ); // ? Error state
     }
   }
 
   void login(LoginRequest loginUser) async {
     try {
       state = const ResultValue.loading(); // ? Loading state
-      final authUser = await ref.read(authApiProvider).login(loginUser);
+      final authUser = await ref.read(authRepositoryProvider).login(loginUser);
       await ref.read(saveAuthUserProvider(authUser).future);
       state = ResultValue.data(authUser); // ? Success state
     } catch (_) {
@@ -55,17 +57,18 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>>  {
         throw Exception('Failed to get auth user');
       }
 
-      final user = await ref.read(authApiProvider).update(
-        userId: savedAuthUser.user.id,
-        updateUser: updateUser,
-      );
+      final user = await ref
+          .read(authRepositoryProvider)
+          .update(userId: savedAuthUser.user.id, updateUser: updateUser);
 
       final newAuthUser = AuthResponse(jwt: savedAuthUser.jwt, user: user);
 
       await ref.read(saveAuthUserProvider(newAuthUser).future);
       state = ResultValue.data(newAuthUser); // ? Success state
     } catch (_) {
-      state = ResultValue.error(Exception("Failed to update user")); // ? Error state
+      state = ResultValue.error(
+        Exception("Failed to update user"),
+      ); // ? Error state
     }
   }
 
@@ -75,11 +78,14 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>>  {
       await ref.read(authLocalProvider).removeAuthUser();
       state = const ResultValue.empty(); // ? Success state
     } catch (_) {
-      state = ResultValue.error(Exception("Failed to update user")); // ? Error state
+      state = ResultValue.error(
+        Exception("Failed to update user"),
+      ); // ? Error state
     }
   }
 }
 
-final authControllerProvider = StateNotifierProvider<AuthController, ResultValue<AuthResponse>>(
+final authControllerProvider =
+    StateNotifierProvider<AuthController, ResultValue<AuthResponse>>(
       (ref) => AuthController(ref),
-);
+    );

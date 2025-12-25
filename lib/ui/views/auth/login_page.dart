@@ -39,16 +39,8 @@ class LoginPage extends ConsumerWidget {
     });
 
     final loginState = ref.watch(authControllerProvider);
-    //
-    // loginState.mapOrNull(
-    //   error: (error) => ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text(error.toString())),
-    //   )
-    // );
 
     return Scaffold(
-      // extendBodyBehindAppBar: true,
-      // appBar: const MyAppBar(title: 'Login'),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,

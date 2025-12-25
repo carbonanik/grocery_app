@@ -33,20 +33,18 @@ class MainTabsPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: SafeArea(
-        child: SideTab(
-          backgroundColor: backgroundColor,
-          tabList: tabs,
-          tabViewList: pages,
-          leading: GestureDetector(
-            onTap: () {
-              // Get.toNamed(RouteHelper.getProfile());
-              context.push('/profile');
-            },
-            child: const CircleAvatar(
-              backgroundColor: backgroundColor,
-              child: Icon(Icons.person, color: foregroundColor),
-            ),
+      body: SideTab(
+        backgroundColor: backgroundColor,
+        tabList: tabs,
+        tabViewList: pages,
+        leading: GestureDetector(
+          onTap: () {
+            // Get.toNamed(RouteHelper.getProfile());
+            context.push('/profile');
+          },
+          child: const CircleAvatar(
+            backgroundColor: backgroundColor,
+            child: Icon(Icons.person, color: foregroundColor),
           ),
         ),
       ),

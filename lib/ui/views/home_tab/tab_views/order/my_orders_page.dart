@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/order/order_hive_provider.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/ui/widget/home_app_bar.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 import 'order_card.dart';
 
@@ -12,30 +13,9 @@ class MyOrdersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      appBar: const HomeAppBar(title: 'My Orders', showSearch: false),
       body: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 30),
-              child: Row(
-                children: [
-                  Text(
-                    'My Orders',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  // const Spacer(),
-                  // Container(
-                  //   padding: const EdgeInsets.all(10),
-                  //   decoration: BoxDecoration(
-                  //     color: Colors.white,
-                  //     borderRadius: BorderRadius.circular(50),
-                  //   ),
-                  //   child: const Icon(Icons.search),
-                  // )
-                ],
-              ),
-            ),
-          ),
           Consumer(
             builder: (context, ref, child) {
               final orderDataModel = ref.watch(ordersListProvider);

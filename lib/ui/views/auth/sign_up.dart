@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,8 +40,8 @@ class SignUpPage extends ConsumerWidget {
     final signUpState = ref.watch(authControllerProvider);
 
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+      child: CupertinoPageScaffold(
+        child: SingleChildScrollView(
           child: Form(
             key: _formKey,
             child: Column(

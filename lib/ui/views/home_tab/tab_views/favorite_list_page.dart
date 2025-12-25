@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/provider/product/product_api_provider.dart';
 import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/ui/widget/home_app_bar.dart';
 import 'package:instant_grrocery_delivery/ui/widget/product_item.dart';
 import 'package:instant_grrocery_delivery/util/dimension.dart';
 
@@ -12,30 +13,9 @@ class FavoriteListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      appBar: const HomeAppBar(title: 'Favorites'),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-              child: Row(
-                children: [
-                  const Text(
-                    'Favorites',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  const Spacer(),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: const Icon(Icons.search),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Consumer(
             builder: (context, ref, child) {
               final asyncValue = ref.watch(getFavoriteProductsProvider);

@@ -16,17 +16,6 @@ abstract class ProductDto with _$ProductDto {
     required String weight,
   }) = _ProductDto;
 
-  // Product getProduct() {
-  //   return Product(
-  //     id: id,
-  //     price: attributes.price,
-  //     name: attributes.name,
-  //     description: attributes.description,
-  //     image: attributes.image,
-  //     weight: attributes.weight,
-  //   );
-  // }
-
   factory ProductDto.fromJson(Map<String, dynamic> source) =>
       _$ProductDtoFromJson(source);
 }

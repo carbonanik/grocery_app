@@ -5,64 +5,40 @@ import 'package:instant_grrocery_delivery/ui/widget/opps_no_data.dart';
 
 import '../../../../provider/category/category_api_provider.dart';
 import '../../../widget/category_item.dart';
+import '../../../widget/home_app_bar.dart';
 
 class CategoryListPage extends StatelessWidget {
   const CategoryListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: backgroundColor,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            child: Row(
-              children: [
-                const Text(
-                  'Categories',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50),
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      appBar: const HomeAppBar(title: 'Categories'),
+      body: Consumer(
+        builder: (context, ref, child) {
+          final asyncValue = ref.watch(getCategoriesProvider);
+
+          if (asyncValue is AsyncError ||
+              (asyncValue is AsyncData && asyncValue.value == [])) {
+            ref.invalidate(getCategoriesProvider);
+          }
+
+          return asyncValue.map(
+            data: (data) => data.value.isEmpty
+                ? const Center(child: OopsNoData())
+                : ListView.builder(
+                    itemCount: data.value.length,
+                    itemBuilder: (context, index) {
+                      final category = data.value[index];
+                      return CategoryItem(category: category);
+                    },
                   ),
-                  child: const Icon(Icons.search),
-                ),
-              ],
-            ),
-          ),
-          Consumer(
-            builder: (context, ref, child) {
-              final asyncValue = ref.watch(getCategoriesProvider);
-
-              if (asyncValue is AsyncError ||
-                  (asyncValue is AsyncData && asyncValue.value == [])) {
-                ref.invalidate(getCategoriesProvider);
-              }
-
-              return asyncValue.map(
-                data: (data) => data.value.isEmpty
-                    ? const Expanded(child: Center(child: OopsNoData()))
-                    : Expanded(
-                        child: ListView.builder(
-                          itemCount: data.value.length,
-                          itemBuilder: (context, index) {
-                            final category = data.value[index];
-                            return CategoryItem(category: category);
-                          },
-                        ),
-                      ),
-                error: (error) =>
-                    const Expanded(child: Center(child: OopsNoData())),
-                loading: (loading) => const CircularProgressIndicator(),
-              );
-            },
-          ),
-        ],
+            error: (error) => const Center(child: OopsNoData()),
+            loading: (loading) =>
+                const Center(child: CircularProgressIndicator()),
+          );
+        },
       ),
     );
   }
