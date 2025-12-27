@@ -40,7 +40,13 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Grocery Shop',
       theme: ThemeData(
-        primarySwatch: swatchColor,
+        useMaterial3: true,
+        scaffoldBackgroundColor: backgroundColor,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: accentColor,
+          surface: backgroundColor,
+          onSurface: foregroundColor,
+        ),
         textTheme: GoogleFonts.dmSansTextTheme(),
       ),
       routerConfig: routerConfig,
@@ -56,28 +62,3 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
     PointerDeviceKind.mouse,
   };
 }
-
-// final a = {'name': 'anik', 'age': 22};
-
-// // a['name'];
-// _func() {
-//   final ({int id, String name, double price}) x = (
-//     id: 1,
-//     name: 'anik',
-//     price: 22.0,
-//   );
-
-//   x.id;
-//   x.name;
-//   x.price;
-
-//   return (123, 'asdf');
-// }
-
-// ({int add, int sub}) _func2(int a, int b) {
-//   return (add: a + b, sub: a - b);
-// }
-
-// final x = _func2(1, 2);
-
-// mixin AddRemoveButton {}

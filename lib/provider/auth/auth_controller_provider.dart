@@ -4,8 +4,9 @@ import 'package:instant_grrocery_delivery/model/auth/login.dart';
 import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/model/result_value.dart';
 import 'package:instant_grrocery_delivery/model/user/user.dart';
-import 'package:instant_grrocery_delivery/provider/auth/auth_api_provider.dart';
+
 import 'package:instant_grrocery_delivery/provider/auth/auth_local_provider.dart';
+import 'package:instant_grrocery_delivery/provider/service/service_provider.dart';
 
 class AuthController extends StateNotifier<ResultValue<AuthResponse>> {
   AuthController(this.ref) : super(const ResultValue.empty()) {
@@ -20,67 +21,54 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> {
 
   void signUp(CreateUserRequest createUser) async {
     try {
-      // ? Loading state
       state = const ResultValue.loading();
-
-      final authUser = await ref
-          .read(authRepositoryProvider)
-          .register(createUser);
-      await ref.read(saveAuthUserProvider(authUser).future);
-
-      // ? Success state
+      final authUser = await ref.read(authServiceProvider).signUp(createUser);
       state = ResultValue.data(authUser);
     } catch (_) {
-      state = ResultValue.error(
-        Exception("Failed to sign up"),
-      ); // ? Error state
+      state = ResultValue.error(Exception("Failed to sign up"));
     }
   }
 
   void login(LoginRequest loginUser) async {
     try {
-      state = const ResultValue.loading(); // ? Loading state
-      final authUser = await ref.read(authRepositoryProvider).login(loginUser);
-      await ref.read(saveAuthUserProvider(authUser).future);
-      state = ResultValue.data(authUser); // ? Success state
+      state = const ResultValue.loading();
+      final authUser = await ref.read(authServiceProvider).login(loginUser);
+      state = ResultValue.data(authUser);
     } catch (_) {
-      state = ResultValue.error(Exception("Failed to login")); // ? Error state
+      state = ResultValue.error(Exception("Failed to login"));
     }
   }
 
   void update(UpdateUserRequest updateUser) async {
     try {
-      state = const ResultValue.loading(); // ? Loading state
+      state = const ResultValue.loading();
       final savedAuthUser = await ref.read(getAuthUserProvider.future);
 
       if (savedAuthUser == null) {
         throw Exception('Failed to get auth user');
       }
 
-      final user = await ref
-          .read(authRepositoryProvider)
-          .update(userId: savedAuthUser.user.id, updateUser: updateUser);
+      final newAuthUser = await ref
+          .read(authServiceProvider)
+          .update(
+            userId: savedAuthUser.user.id,
+            updateUser: updateUser,
+            currentJwt: savedAuthUser.jwt,
+          );
 
-      final newAuthUser = AuthResponse(jwt: savedAuthUser.jwt, user: user);
-
-      await ref.read(saveAuthUserProvider(newAuthUser).future);
-      state = ResultValue.data(newAuthUser); // ? Success state
+      state = ResultValue.data(newAuthUser);
     } catch (_) {
-      state = ResultValue.error(
-        Exception("Failed to update user"),
-      ); // ? Error state
+      state = ResultValue.error(Exception("Failed to update user"));
     }
   }
 
   void logout() async {
     try {
-      state = const ResultValue.loading(); // ? Loading state
-      await ref.read(authLocalProvider).removeAuthUser();
-      state = const ResultValue.empty(); // ? Success state
+      state = const ResultValue.loading();
+      await ref.read(authServiceProvider).logout();
+      state = const ResultValue.empty();
     } catch (_) {
-      state = ResultValue.error(
-        Exception("Failed to update user"),
-      ); // ? Error state
+      state = ResultValue.error(Exception("Failed to logout"));
     }
   }
 }

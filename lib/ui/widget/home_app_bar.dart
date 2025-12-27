@@ -25,7 +25,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 4.0),
         child: Text(
           title,
-          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+            fontSize:
+                22, // Keep size if critical, or remove to align with scale
+          ),
         ),
       ),
       actions: [
