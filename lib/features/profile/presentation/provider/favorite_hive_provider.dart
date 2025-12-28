@@ -1,0 +1,54 @@
+import 'dart:collection';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
+import 'package:instant_grrocery_delivery/features/profile/data/source/favorite_local_impl.dart';
+
+final favoriteLocalProvider = Provider((ref) => FavoriteLocalImpl());
+
+// =================== DataModel =====================
+
+class FavoriteChangeNotifier extends ChangeNotifier {
+  FavoriteChangeNotifier(this.ref) {
+    updateFavoriteList();
+  }
+
+  Ref ref;
+
+  final Map<int, bool> _favoriteList = {};
+
+  UnmodifiableMapView<int, bool> get favoriteList =>
+      UnmodifiableMapView(_favoriteList);
+
+  bool getIsFavorite(productId) {
+    return favoriteList[productId] ?? false;
+  }
+
+  Future<void> setIsFavorite(int productId, bool isFavorite) async {
+    await ref.read(favoriteLocalProvider).setIsFavorite(productId, isFavorite);
+    await updateFavoriteList();
+  }
+
+  Future<void> updateFavoriteList() async {
+    final ids = await ref.read(favoriteLocalProvider).getFavoriteIds();
+    _favoriteList.clear();
+    _favoriteList.addAll(ids);
+    notifyListeners();
+  }
+
+  List<int> getFavoriteIdList() {
+    List<int> favIds = [];
+    for (var key in favoriteList.keys) {
+      if (favoriteList[key] == true) {
+        favIds.add(key);
+      }
+    }
+    return favIds;
+  }
+}
+
+final favoriteProvider = ChangeNotifierProvider(
+  (ref) => FavoriteChangeNotifier(ref),
+);
+

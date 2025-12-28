@@ -3,9 +3,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:instant_grrocery_delivery/data_source/local/init_hive.dart';
-import 'package:instant_grrocery_delivery/route/router_config.dart';
-import 'package:instant_grrocery_delivery/ui/theme/colors.dart';
+import 'package:instant_grrocery_delivery/core/init_hive.dart';
+import 'package:instant_grrocery_delivery/core/route/router_config.dart';
+import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 
 Future<void> main() async {
   await initHiveDriver();
@@ -62,3 +62,4 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
     PointerDeviceKind.mouse,
   };
 }
+

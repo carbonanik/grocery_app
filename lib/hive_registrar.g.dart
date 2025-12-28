@@ -3,13 +3,13 @@
 // Check in to version control
 
 import 'package:hive_ce/hive.dart';
-import 'package:instant_grrocery_delivery/model/auth/response/auth_response.dart';
-import 'package:instant_grrocery_delivery/model/cart/cart_item/cart_item.dart';
-import 'package:instant_grrocery_delivery/model/coupon/coupon.dart';
-import 'package:instant_grrocery_delivery/model/order/order.dart';
-import 'package:instant_grrocery_delivery/model/order/order_item/order_item.dart';
-import 'package:instant_grrocery_delivery/model/product/product.dart';
-import 'package:instant_grrocery_delivery/model/user/user.dart';
+import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/cart/data/model/cart_item/cart_item.dart';
+import 'package:instant_grrocery_delivery/features/coupon/data/model/coupon.dart';
+import 'package:instant_grrocery_delivery/features/order/data/model/order.dart';
+import 'package:instant_grrocery_delivery/features/order/data/model/order_item/order_item.dart';
+import 'package:instant_grrocery_delivery/features/product/data/model/product.dart';
+import 'package:instant_grrocery_delivery/features/profile/data/model/user.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
@@ -34,3 +34,4 @@ extension IsolatedHiveRegistrar on IsolatedHiveInterface {
     registerAdapter(UserAdapter());
   }
 }
+
