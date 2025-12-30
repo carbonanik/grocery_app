@@ -1,71 +1,45 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/login.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:state_notifier/state_notifier.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/core/result_value.dart';
-import 'package:instant_grrocery_delivery/features/profile/data/model/user.dart';
+import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_api_provider.dart';
 
-import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_local_provider.dart';
-import 'package:instant_grrocery_delivery/features/service/presentation/provider/service_provider.dart';
-
-class AuthController extends StateNotifier<ResultValue<AuthResponse>> {
-  AuthController(this.ref) : super(const ResultValue.empty()) {
-    ref.read(getAuthUserProvider.future).then((value) {
-      if (value != null) {
-        state = ResultValue.data(value);
-      }
-    });
-  }
+class AuthController extends StateNotifier<ResultValue<AppUser?>> {
+  AuthController(this.ref) : super(const ResultValue.empty());
 
   final Ref ref;
 
-  void signUp(CreateUserRequest createUser) async {
+  void signUp(String email, String password) async {
     try {
       state = const ResultValue.loading();
-      final authUser = await ref.read(authServiceProvider).signUp(createUser);
-      state = ResultValue.data(authUser);
+      await ref
+          .read(authRepositoryProvider)
+          .createUserWithEmailAndPassword(email, password);
+      final user = ref.read(authRepositoryProvider).currentUser;
+      state = ResultValue.data(user);
     } catch (_) {
       state = ResultValue.error(Exception("Failed to sign up"));
     }
   }
 
-  void login(LoginRequest loginUser) async {
+  void login(String email, String password) async {
     try {
       state = const ResultValue.loading();
-      final authUser = await ref.read(authServiceProvider).login(loginUser);
-      state = ResultValue.data(authUser);
+      await ref
+          .read(authRepositoryProvider)
+          .signInWithEmailAndPassword(email, password);
+      final user = ref.read(authRepositoryProvider).currentUser;
+      state = ResultValue.data(user);
     } catch (_) {
       state = ResultValue.error(Exception("Failed to login"));
-    }
-  }
-
-  void update(UpdateUserRequest updateUser) async {
-    try {
-      state = const ResultValue.loading();
-      final savedAuthUser = await ref.read(getAuthUserProvider.future);
-
-      if (savedAuthUser == null) {
-        throw Exception('Failed to get auth user');
-      }
-
-      final newAuthUser = await ref
-          .read(authServiceProvider)
-          .update(
-            userId: savedAuthUser.user.id,
-            updateUser: updateUser,
-            currentJwt: savedAuthUser.jwt,
-          );
-
-      state = ResultValue.data(newAuthUser);
-    } catch (_) {
-      state = ResultValue.error(Exception("Failed to update user"));
     }
   }
 
   void logout() async {
     try {
       state = const ResultValue.loading();
-      await ref.read(authServiceProvider).logout();
+      await ref.read(authRepositoryProvider).signOut();
       state = const ResultValue.empty();
     } catch (_) {
       state = ResultValue.error(Exception("Failed to logout"));
@@ -74,7 +48,6 @@ class AuthController extends StateNotifier<ResultValue<AuthResponse>> {
 }
 
 final authControllerProvider =
-    StateNotifierProvider<AuthController, ResultValue<AuthResponse>>(
+    StateNotifierProvider<AuthController, ResultValue<AppUser?>>(
       (ref) => AuthController(ref),
     );
-

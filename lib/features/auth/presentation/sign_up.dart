@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/core/result_value.dart';
-import 'package:instant_grrocery_delivery/features/profile/data/model/user.dart';
 import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'package:instant_grrocery_delivery/core/widgets/auth_button.dart';
@@ -23,7 +22,7 @@ class SignUpPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ResultValue<AuthResponse>>(authControllerProvider, (_, state) {
+    ref.listen<ResultValue<AppUser?>>(authControllerProvider, (_, state) {
       state.whenOrNull(
         data: (value) {
           // Get.toNamed(RouteHelper.getHomeTab());
@@ -116,16 +115,12 @@ class SignUpPage extends ConsumerWidget {
                     final isValid = _formKey.currentState?.validate() ?? false;
 
                     if (isValid) {
-                      final createUser = CreateUserRequest(
-                        fullName: nameTextController.text,
-                        username: emailTextController.text.split('@')[0],
-                        email: emailTextController.text,
-                        password: passwordTextController.text,
-                        phone: phoneTextController.text,
-                      );
                       ref
                           .read(authControllerProvider.notifier)
-                          .signUp(createUser);
+                          .signUp(
+                            emailTextController.text,
+                            passwordTextController.text,
+                          );
                     }
                   },
                   text: signUpState.isLoading
@@ -177,4 +172,3 @@ class SignUpPage extends ConsumerWidget {
     );
   }
 }
-

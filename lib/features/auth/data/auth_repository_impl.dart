@@ -1,29 +1,40 @@
-import 'package:instant_grrocery_delivery/features/auth/data/source/auth_api.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/features/auth/domain/auth_repository.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/login.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
-import 'package:instant_grrocery_delivery/features/profile/data/model/user.dart';
+import 'package:instant_grrocery_delivery/features/auth/data/source/auth_api.dart';
+import 'package:instant_grrocery_delivery/features/auth/data/source/auth_local.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthApi _authApi;
+  final AuthLocal _authLocal;
 
-  AuthRepositoryImpl(this._authApi);
-
-  @override
-  Future<AuthResponse> login(LoginRequest loginUser) =>
-      _authApi.login(loginUser);
+  AuthRepositoryImpl(this._authApi, this._authLocal);
 
   @override
-  Future<AuthResponse> register(CreateUserRequest createUser) =>
-      _authApi.register(createUser);
+  Stream<AppUser?> authStateChanges() => throw UnimplementedError();
 
   @override
-  Future<User> update({
-    required int userId,
-    required UpdateUserRequest updateUser,
-  }) => _authApi.update(userId: userId, updateUser: updateUser);
+  AppUser? get currentUser => throw UnimplementedError();
 
   @override
-  Future<AuthResponse> getMe(AuthResponse token) => _authApi.getMe(token);
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> createUserWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _authLocal.removeAuthUser();
+  }
+
+  @override
+  void dispose() {
+    // No-op for now
+  }
 }
-

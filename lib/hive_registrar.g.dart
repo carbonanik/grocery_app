@@ -34,4 +34,3 @@ extension IsolatedHiveRegistrar on IsolatedHiveInterface {
     registerAdapter(UserAdapter());
   }
 }
-

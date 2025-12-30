@@ -1,10 +1,10 @@
-import '../../../core/dio_client.dart';
-import '../../../core/method_types.dart';
-import '../../../model/auth/login.dart';
-import '../../../model/auth/response/auth_response.dart';
-import '../../../model/user/user.dart';
-import '../auth_api.dart';
-import 'package:instant_grrocery_delivery/core/util/paths.dart';
+import 'package:instant_grrocery_delivery/core/api/paths.dart';
+import 'package:instant_grrocery_delivery/core/dio_client.dart';
+import 'package:instant_grrocery_delivery/core/method_types.dart';
+import 'package:instant_grrocery_delivery/features/auth/data/model/login.dart';
+import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/data/source/auth_api.dart';
+import 'package:instant_grrocery_delivery/features/profile/data/model/user.dart';
 
 class AuthApiImpl extends AuthApi {
   final DioClient client;
@@ -54,4 +54,3 @@ class AuthApiImpl extends AuthApi {
     );
   }
 }
-

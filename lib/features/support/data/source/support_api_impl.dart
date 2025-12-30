@@ -5,7 +5,7 @@ import 'package:instant_grrocery_delivery/core/api/paths.dart';
 import 'package:instant_grrocery_delivery/features/support/data/source/support_api.dart';
 import 'package:instant_grrocery_delivery/core/api/extensions.dart';
 import 'package:instant_grrocery_delivery/core/api/header.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/features/support/data/model/dto/support_dto.dart';
 import 'package:instant_grrocery_delivery/features/support/data/model/support.dart';
 
@@ -35,11 +35,11 @@ class SupportApiImpl extends SupportApi {
   @override
   Future<bool> createSupport(
     CreateSupportDto createSupportDto,
-    AuthResponse authUser,
+    AppUser authUser,
   ) async {
     final response = await http.post(
       getUri(path: Paths.support),
-      headers: getHeader(token: authUser),
+      headers: getHeader(token: authUser.uid),
       body: json.encode({"data": createSupportDto.toJson()}),
     );
     print(response.body);

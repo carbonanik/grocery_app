@@ -1,17 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/features/auth/data/source/auth_local.dart';
 import 'package:instant_grrocery_delivery/features/auth/data/source/auth_local_impl.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 
 final authLocalProvider = Provider<AuthLocal>((ref) {
   return AuthLocalImpl();
 });
 
-final getAuthUserProvider = FutureProvider.autoDispose<AuthResponse?>((ref) async {
+final getAuthUserProvider = FutureProvider.autoDispose<AppUser?>((ref) async {
   return await ref.read(authLocalProvider).getAuthUser();
 });
 
-final saveAuthUserProvider = FutureProvider.family<bool, AuthResponse>((ref, arg) async {
+final saveAuthUserProvider = FutureProvider.family<void, AppUser>((
+  ref,
+  arg,
+) async {
   return await ref.read(authLocalProvider).putAuthUser(arg);
 });
 

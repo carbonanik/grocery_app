@@ -1,13 +1,7 @@
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
-
-Map<String, String> getHeader({AuthResponse? token}) {
-  Map<String, String> headers = {
-    "Content-Type": "application/json",
-    // 'Accept': '*/*',
-  };
+Map<String, String> getHeader({String? token}) {
+  Map<String, String> headers = {"Content-Type": "application/json"};
   if (token != null) {
-    headers['Authorization'] = token.authorizationToken();
+    headers['Authorization'] = 'Bearer $token';
   }
   return headers;
 }
-

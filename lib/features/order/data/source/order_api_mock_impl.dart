@@ -1,17 +1,14 @@
 import 'package:instant_grrocery_delivery/core/simulate_fetch.dart';
 import 'package:instant_grrocery_delivery/features/order/data/model/order.dart';
 import 'package:instant_grrocery_delivery/features/order/data/source/order_api.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/features/order/data/model/dtos/order_create.dart';
 import 'package:instant_grrocery_delivery/features/order/data/model/order_item/order_item.dart';
 
 class OrderApiMockImpl extends OrderApi {
   // Function to create a new order
   @override
-  Future<Order> createOrder(
-    OrderCreate createOrder,
-    AuthResponse authUser,
-  ) async {
+  Future<Order> createOrder(OrderCreate createOrder, AppUser authUser) async {
     await simulateFetch();
     final order = Order(
       id: orderJson.length + 1,

@@ -1,23 +1,19 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:instant_grrocery_delivery/features/order/data/model/order.dart';
 import 'package:instant_grrocery_delivery/features/order/data/source/order_api.dart';
 import 'package:instant_grrocery_delivery/core/api/extensions.dart';
 import 'package:instant_grrocery_delivery/core/api/header.dart';
 import 'package:instant_grrocery_delivery/core/api/paths.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/features/order/data/model/dtos/order_create.dart';
 import 'package:instant_grrocery_delivery/features/order/data/model/dtos/order_dto.dart';
-
-import '../../../model/order/order.dart';
 
 class OrderApiImpl extends OrderApi {
   // Function to create a new order
   @override
-  Future<Order> createOrder(
-    OrderCreate createOrder,
-    AuthResponse authUser,
-  ) async {
+  Future<Order> createOrder(OrderCreate createOrder, AppUser authUser) async {
     OrderCreateDto createOrderDto = OrderCreateDto(
       count: createOrder.count,
       totalPrice: createOrder.totalPrice,
@@ -33,7 +29,7 @@ class OrderApiImpl extends OrderApi {
 
     final response = await http.post(
       getUri(path: Paths.order),
-      headers: getHeader(token: authUser),
+      headers: getHeader(token: authUser.uid),
       body: json.encode(createOrderJson),
     );
 
@@ -61,4 +57,3 @@ class OrderApiImpl extends OrderApi {
     }
   }
 }
-

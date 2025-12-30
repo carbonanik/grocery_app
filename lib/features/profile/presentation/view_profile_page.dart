@@ -193,4 +193,3 @@ class ViewProfilePage extends StatelessWidget {
     );
   }
 }
-

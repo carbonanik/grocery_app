@@ -6,7 +6,6 @@ import 'package:instant_grrocery_delivery/features/product/domain/product_reposi
 import 'package:instant_grrocery_delivery/features/product/data/model/product.dart';
 import 'package:instant_grrocery_delivery/features/cart/presentation/provider/cart_provider.dart';
 import 'package:instant_grrocery_delivery/features/profile/presentation/provider/favorite_hive_provider.dart';
-import 'package:instant_grrocery_delivery/features/service/presentation/provider/service_provider.dart';
 
 // Toggle this to switch between Mock and Real data
 const bool USE_MOCK_DATA = true;
@@ -20,40 +19,37 @@ final productRepositoryProvider = Provider<ProductRepository>((ref) {
   }
 });
 
-// Deprecated: Kept for backward compatibility if needed, but aliased to repository
-// final productApiProvider = ... // Removed to force usage of repository
-
 final getProductsProvider = FutureProvider<List<Product>>((ref) async {
-  final service = ref.read(productServiceProvider);
-  return service.getProducts();
+  final repository = ref.read(productRepositoryProvider);
+  return repository.getProducts();
 });
 
 final getProductByIdProvider = FutureProvider.family<Product, int>((
   ref,
   productId,
 ) async {
-  final service = ref.read(productServiceProvider);
-  return service.getProductById(productId);
+  final repository = ref.read(productRepositoryProvider);
+  return repository.getProductById(productId);
 });
 
 final getFavoriteProductsProvider = FutureProvider<List<Product>>((ref) async {
-  final service = ref.read(productServiceProvider);
+  final repository = ref.read(productRepositoryProvider);
   final favoriteDataModel = ref.watch(favoriteProvider);
   final ids = favoriteDataModel.getFavoriteIdList();
-  return service.getFavoriteProducts(ids);
+  return repository.getFavoriteProducts(ids);
 });
 
 final getPopularProductProvider = FutureProvider<List<Product>>((ref) async {
-  final service = ref.read(productServiceProvider);
-  return service.getPopularProducts();
+  final repository = ref.read(productRepositoryProvider);
+  return repository.getPopularProducts();
 });
 
 final getSimilarProductProvider = FutureProvider.family<List<Product>, int>((
   ref,
   productId,
 ) async {
-  final service = ref.read(productServiceProvider);
-  return service.getSimilarProducts(productId);
+  final repository = ref.read(productRepositoryProvider);
+  return repository.getSimilarProducts(productId);
 });
 
 final getFrequentlyBoughtTogetherProductProvider =
@@ -62,4 +58,3 @@ final getFrequentlyBoughtTogetherProductProvider =
       final ids = ref.read(cartProvider).cartList.keys.toList();
       return repository.getFrequentlyBoughtTogether(ids);
     });
-

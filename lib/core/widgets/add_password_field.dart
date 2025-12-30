@@ -49,9 +49,7 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
       fillColor: widget.fillColor,
       textColor: widget.textColor,
       suffixIcon: IconButton(
-        icon: Icon(
-          showPassword ? Icons.visibility : Icons.visibility_off,
-        ),
+        icon: Icon(showPassword ? Icons.visibility : Icons.visibility_off),
         onPressed: togglePasswordView,
       ),
     );

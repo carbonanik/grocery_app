@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/core/widgets/auth_button.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/core/result_value.dart';
 import 'package:instant_grrocery_delivery/features/support/data/model/dto/support_dto.dart';
 import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_controller_provider.dart';
@@ -29,7 +29,7 @@ class SupportPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // intro
+                  // ... (keep previous intro code)
                   const SizedBox(height: 50),
                   const Text(
                     "Support",
@@ -237,19 +237,21 @@ class SupportPage extends StatelessWidget {
                         text: "Submit",
                         padding: EdgeInsets.zero,
                         onPressed: () {
-                          final id = ref
-                              .read<ResultValue<AuthResponse>>(
+                          final user = ref
+                              .read<ResultValue<AppUser?>>(
                                 authControllerProvider,
                               )
-                              .whenOrNull(data: (value) => value.user.id);
-                          if (id != null) {
+                              .whenOrNull(data: (user) => user);
+                          if (user != null) {
                             final success = ref
                                 .read(
                                   createSupportProvider(
                                     CreateSupportDto(
                                       subject: subjectTextController.text,
                                       message: messageTextController.text,
-                                      user: UserInSupportDto(connect: [id]),
+                                      user: const UserInSupportDto(
+                                        connect: [0],
+                                      ),
                                     ),
                                   ),
                                 )

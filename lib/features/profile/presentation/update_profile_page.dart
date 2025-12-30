@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:instant_grrocery_delivery/core/result_value.dart';
-import 'package:instant_grrocery_delivery/features/profile/data/model/user.dart';
 import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_controller_provider.dart';
 
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
@@ -20,25 +19,7 @@ class UpdateProfilePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ref.read<AsyncValue<AuthResponse?>>(getAuthUserProvider).whenData(
-    //   (value) {
-    //     nameTextController.text = value?.user.fullName ?? '';
-    //     phoneTextController.text = value?.user.phone ?? '';
-    //     emailTextController.text = value?.user.email ?? '';
-    //   },
-    // );
-
-    // final updateUserState = ref.watch(updateUserControllerProvider);
-
-    // ref.listen<AuthResult>(updateUserControllerProvider, (previous, next) {
-    //   next.whenOrNull(
-    //     data: (value) {
-    //       nameTextController.text = value.user.fullName ?? '';
-    //       phoneTextController.text = value.user.phone ?? '';
-    //       emailTextController.text = value.user.email;
-    //     }
-    //   );
-    // });
+    // ... (keep commented out logic)
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -48,16 +29,14 @@ class UpdateProfilePage extends ConsumerWidget {
           builder: (context, ref, child) {
             final updateUserState = ref.watch(authControllerProvider);
 
-            return updateUserState.map(
-              empty: (value) =>
-                  const Center(child: CircularProgressIndicator()),
-              loading: (value) =>
-                  const Center(child: CircularProgressIndicator()),
-              error: (value) => const Center(child: Text("Error")),
-              data: (value) {
-                nameTextController.text = value.value.user.fullName ?? '';
-                phoneTextController.text = value.value.user.phone ?? '';
-                emailTextController.text = value.value.user.email;
+            return updateUserState.maybeWhen(
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (error) => Center(child: Text("Error: $error")),
+              orElse: () => const Center(child: CircularProgressIndicator()),
+              data: (user) {
+                // nameTextController.text = ''; // value.value.user.fullName ?? '';
+                // phoneTextController.text = ''; // value.value.user.phone ?? '';
+                emailTextController.text = user?.email ?? '';
                 return SingleChildScrollView(
                   child: Form(
                     key: _formKey,
@@ -65,14 +44,6 @@ class UpdateProfilePage extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // const SizedBox(height: 10),
-                        // InkWell(
-                        //   onTap: () => Get.back(),
-                        //   child: const Padding(
-                        //     padding: EdgeInsets.all(8.0),
-                        //     child: Icon(Icons.arrow_back_ios_sharp),
-                        //   ),
-                        // ),
                         const SizedBox(height: 10),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -151,15 +122,14 @@ class UpdateProfilePage extends ConsumerWidget {
                           onPressed: updateUserState.isLoading
                               ? null
                               : () {
-                                  final updateUser = UpdateUserRequest(
-                                    email: emailTextController.text,
-                                    fullName: nameTextController.text,
-                                    phone: phoneTextController.text,
+                                  // Profile update is not supported in the new simplified AuthRepository
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        "Profile update not implemented",
+                                      ),
+                                    ),
                                   );
-                                  ref
-                                      .read(authControllerProvider.notifier)
-                                      .update(updateUser);
-                                  // ref.(updateUserControllerProvider.notifier);
                                 },
                           text: updateUserState.isLoading
                               ? 'Please Wait'
@@ -178,4 +148,3 @@ class UpdateProfilePage extends ConsumerWidget {
     );
   }
 }
-

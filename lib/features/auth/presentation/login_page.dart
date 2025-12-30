@@ -2,8 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:get/get.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/login.dart';
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/core/result_value.dart';
 import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
@@ -24,7 +23,7 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ResultValue<AuthResponse>>(authControllerProvider, (_, state) {
+    ref.listen<ResultValue<AppUser?>>(authControllerProvider, (_, state) {
       state.whenOrNull(
         error: (error) {
           ScaffoldMessenger.of(
@@ -129,13 +128,12 @@ class LoginPage extends ConsumerWidget {
                         final isValid = _formKey.currentState?.validate();
 
                         if (isValid == true) {
-                          final loginUser = LoginRequest(
-                            identifier: emailTextController.text,
-                            password: passwordTextController.text,
-                          );
                           ref
                               .read(authControllerProvider.notifier)
-                              .login(loginUser);
+                              .login(
+                                emailTextController.text,
+                                passwordTextController.text,
+                              );
                         }
                       },
                 text: loginState.isLoading
@@ -219,5 +217,3 @@ class LoginPage extends ConsumerWidget {
     );
   }
 }
-
-

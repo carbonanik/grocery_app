@@ -1,4 +1,4 @@
-import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
+import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/features/support/data/model/dto/support_dto.dart';
 import 'package:instant_grrocery_delivery/features/support/data/model/support.dart';
 
@@ -7,7 +7,7 @@ abstract class SupportApi {
 
   Future<bool> createSupport(
     CreateSupportDto createSupportDto,
-    AuthResponse authUser,
+    AppUser authUser,
   );
 
   Future<bool> updateCategory(
@@ -17,4 +17,3 @@ abstract class SupportApi {
 
   Future<bool> deleteCategory(int categoryId);
 }
-
