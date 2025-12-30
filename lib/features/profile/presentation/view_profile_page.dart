@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/core/result_value.dart';
 
@@ -47,7 +46,8 @@ class ViewProfilePage extends StatelessWidget {
                           return authUser.map(
                             empty: (value) => const CircularProgressIndicator(),
                             data: (asyncValue) => Text(
-                              asyncValue.value.user.fullName ?? "Unknown",
+                              // asyncValue.value.user.fullName ?? "Unknown",
+                              'Anik',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 22,
@@ -62,7 +62,6 @@ class ViewProfilePage extends StatelessWidget {
                       const SizedBox(height: 5),
                       InkWell(
                         onTap: () {
-                          // Get.toNamed(RouteHelper.getProfileEdit());
                           context.push('/update-profile');
                         },
                         child: const Text(
@@ -105,7 +104,6 @@ class ViewProfilePage extends StatelessWidget {
                       'FAQs',
                       'Get your questions answered',
                       onTap: () {
-                        // Get.toNamed(RouteHelper.getFaqs());
                         context.push('/faqs');
                       },
                     ),
@@ -114,7 +112,6 @@ class ViewProfilePage extends StatelessWidget {
                       'Terms & Conditions',
                       'Know terms of use',
                       onTap: () {
-                        // Get.toNamed(RouteHelper.getTermsAndCondition());
                         context.push('/terms');
                       },
                     ),
@@ -123,7 +120,6 @@ class ViewProfilePage extends StatelessWidget {
                       'Privacy Policy',
                       'Companies privacy policy',
                       onTap: () {
-                        // Get.toNamed(RouteHelper.getPrivacyPolicy());
                         context.push('/privacy');
                       },
                     ),
@@ -135,7 +131,6 @@ class ViewProfilePage extends StatelessWidget {
                           'Sign out from account',
                           onTap: () {
                             ref.read(authLocalProvider).removeAuthUser();
-                            // Get.offAllNamed(RouteHelper.getLogin());
                             context.go('/login');
                           },
                         );

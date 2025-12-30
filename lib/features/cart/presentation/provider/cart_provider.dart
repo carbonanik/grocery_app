@@ -28,7 +28,8 @@ class CartChangeNotifier extends ChangeNotifier {
     _dataChanged();
   }
 
-  UnmodifiableMapView<int, CartItem> get cartList => UnmodifiableMapView(_cartList);
+  UnmodifiableMapView<int, CartItem> get cartList =>
+      UnmodifiableMapView(_cartList);
 
   Future<void> itemIncrement(Product product) async {
     final prevCount = _cartList[product.id]?.count ?? 0;
@@ -106,7 +107,8 @@ class CartChangeNotifier extends ChangeNotifier {
   double cartPrice() {
     return _cartList.entries.fold<double>(
       0,
-      (previousValue, element) => (element.value.count * element.value.product.price) + previousValue,
+      (previousValue, element) =>
+          (element.value.count * element.value.product.price) + previousValue,
     );
   }
 
@@ -117,29 +119,24 @@ class CartChangeNotifier extends ChangeNotifier {
 
     final authUser = ref.read(authControllerProvider);
 
-    return authUser.whenOrNull(
-      data: (value) => OrderCreate(
-        orderItems: _orderItems(),
-        count: cartCount(),
-        totalPrice: cartPrice().toString(),
-        orderDate: DateTime.now().toIso8601String(),
-        coupons: [],
-        userId: value.user.id,
-      ),
-    );
+    return null;
+    // return authUser.whenOrNull(
+    //   data: (value) => OrderCreate(
+    //     orderItems: _orderItems(),
+    //     count: cartCount(),
+    //     totalPrice: cartPrice().toString(),
+    //     orderDate: DateTime.now().toIso8601String(),
+    //     coupons: [],
+    //     userId: value.id,
+    //   ),
+    // );
   }
 
   List<OrderItem> _orderItems() {
     return _cartList.values
-        .map(
-          (e) => OrderItem(
-            product: e.product,
-            count: e.count,
-          ),
-        )
+        .map((e) => OrderItem(product: e.product, count: e.count))
         .toList();
   }
 }
 
 final cartProvider = ChangeNotifierProvider((ref) => CartChangeNotifier(ref));
-
