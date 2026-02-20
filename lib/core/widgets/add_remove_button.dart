@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class AddRemoveButton extends StatelessWidget {
   const AddRemoveButton({
@@ -52,4 +52,3 @@ class AddRemoveButton extends StatelessWidget {
     );
   }
 }
-

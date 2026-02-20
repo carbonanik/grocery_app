@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'package:instant_grrocery_delivery/features/order/data/model/order.dart';
 
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'package:instant_grrocery_delivery/core/widgets/my_separetor.dart';
 
 class OrderCard extends StatelessWidget {
@@ -131,9 +131,7 @@ class OrderCard extends StatelessWidget {
                           backgroundColor: WidgetStateProperty.all(
                             Colors.green.shade50,
                           ),
-                          foregroundColor: WidgetStateProperty.all(
-                            accentColor,
-                          ),
+                          foregroundColor: WidgetStateProperty.all(accentColor),
                         ),
                         onPressed: () {},
                         child: Text(
@@ -179,4 +177,3 @@ class OrderCard extends StatelessWidget {
     );
   }
 }
-

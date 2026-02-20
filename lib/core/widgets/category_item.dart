@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/features/category/data/model/category.dart';
 import 'package:instant_grrocery_delivery/main.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({Key? key, required this.category}) : super(key: key);

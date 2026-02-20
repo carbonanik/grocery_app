@@ -8,7 +8,7 @@ import 'package:instant_grrocery_delivery/features/onboarding/presentation/provi
 import 'package:instant_grrocery_delivery/core/widgets/labels.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'package:instant_grrocery_delivery/core/widgets/buttons/action_button.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class Constants {
   static const String seen = "seen";
@@ -194,4 +194,3 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage>
     );
   }
 }
-

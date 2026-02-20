@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/features/order/presentation/provider/order_hive_provider.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'package:instant_grrocery_delivery/core/widgets/home_app_bar.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'order_card.dart';
 
 class MyOrdersPage extends StatelessWidget {
@@ -59,4 +59,3 @@ class MyOrdersPage extends StatelessWidget {
     );
   }
 }
-

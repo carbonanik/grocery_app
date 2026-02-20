@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'package:instant_grrocery_delivery/core/widgets/coupon_item.dart';
 import 'package:instant_grrocery_delivery/core/widgets/my_app_bar.dart';
 
@@ -87,5 +87,3 @@ class ApplyCouponPage extends StatelessWidget {
     );
   }
 }
-
-

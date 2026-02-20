@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class PaymentMethodItem extends StatelessWidget {
-  const PaymentMethodItem({
-    Key? key, required this.name, required this.icon,
-  }) : super(key: key);
+  const PaymentMethodItem({Key? key, required this.name, required this.icon})
+    : super(key: key);
 
   final String name;
   final IconData icon;
@@ -23,10 +22,7 @@ class PaymentMethodItem extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(width: context.w(10)),
-          Icon(
-            icon,
-            color: Colors.grey,
-          ),
+          Icon(icon, color: Colors.grey),
           SizedBox(width: context.w(20)),
           Text(
             name,
@@ -41,4 +37,3 @@ class PaymentMethodItem extends StatelessWidget {
     );
   }
 }
-

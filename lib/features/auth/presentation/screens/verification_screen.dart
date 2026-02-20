@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/constants/app_sizes.dart';
 import 'package:instant_grrocery_delivery/core/widgets/auth_button.dart';
 import 'package:instant_grrocery_delivery/core/widgets/input_field.dart';
 
-class VerificationPage extends StatelessWidget {
-  const VerificationPage({Key? key}) : super(key: key);
+class VerificationScreen extends StatelessWidget {
+  const VerificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,33 +23,33 @@ class VerificationPage extends StatelessWidget {
                 child: Icon(Icons.arrow_back_ios_sharp),
               ),
               const SizedBox(height: 10),
-              SizedBox(height: context.h(40)),
+              gapH48,
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                 child: Text(
                   'Verification',
                   style: TextStyle(
-                    fontSize: context.w(30),
+                    fontSize: Sizes.p32,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              SizedBox(height: context.h(5)),
+              gapH4,
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                 child: Text(
                   'Hi Mate!',
                   style: TextStyle(
-                    fontSize: context.w(18),
+                    fontSize: Sizes.p20,
                     fontWeight: FontWeight.w500,
                     color: Colors.black54,
                   ),
                 ),
               ),
 
-              SizedBox(height: context.h(35)),
+              gapH32,
 
               /// phone number field
               const InputField(
@@ -58,23 +58,23 @@ class VerificationPage extends StatelessWidget {
                 keyboardType: TextInputType.text,
               ),
 
-              SizedBox(height: context.h(35)),
+              gapH32,
 
               /// login button
               AuthButton(onPressed: () {}, text: 'Submit'),
 
-              SizedBox(height: context.h(50)),
+              gapH48,
 
               // terms and condition
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       '0:25 min left',
                       style: TextStyle(
-                        fontSize: context.w(16),
+                        fontSize: Sizes.p16,
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
@@ -83,7 +83,7 @@ class VerificationPage extends StatelessWidget {
                     Text(
                       'RESEND',
                       style: TextStyle(
-                        fontSize: context.w(16),
+                        fontSize: Sizes.p16,
                         fontWeight: FontWeight.w500,
                         color: accentColor,
                       ),
@@ -91,7 +91,7 @@ class VerificationPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: context.h(30)),
+              gapH32,
             ],
           ),
         ),
@@ -99,5 +99,3 @@ class VerificationPage extends StatelessWidget {
     );
   }
 }
-
-

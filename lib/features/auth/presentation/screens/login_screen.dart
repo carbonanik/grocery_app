@@ -1,21 +1,18 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:get/get.dart';
+import 'package:instant_grrocery_delivery/core/utils/validator.dart';
 import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/core/result_value.dart';
 import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
-import 'package:instant_grrocery_delivery/core/util/validation/validator.dart';
-
-// import 'package:quick_log/quick_log.dart';
+import 'package:instant_grrocery_delivery/core/constants/app_sizes.dart';
 import 'package:instant_grrocery_delivery/core/widgets/auth_button.dart';
 import 'package:instant_grrocery_delivery/core/widgets/input_field.dart';
 import 'package:instant_grrocery_delivery/core/widgets/social_button.dart';
 
-class LoginPage extends ConsumerWidget {
-  LoginPage({Key? key}) : super(key: key);
+class LoginScreen extends ConsumerWidget {
+  LoginScreen({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final emailTextController = TextEditingController(text: 'u1@email.com');
@@ -47,7 +44,7 @@ class LoginPage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: context.h(40)),
+              gapH48,
               Stack(
                 children: [
                   Center(
@@ -67,36 +64,36 @@ class LoginPage extends ConsumerWidget {
                     right: 0,
                     child: Icon(
                       Icons.person,
-                      size: context.w(90),
+                      size: Sizes.p100,
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: context.h(40)),
+              gapH32,
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                 child: Text(
                   'Hi Mate!',
                   style: TextStyle(
-                    fontSize: context.w(15),
+                    fontSize: Sizes.p16,
                     fontWeight: FontWeight.w500,
                     color: Colors.black54,
                   ),
                 ),
               ),
-              SizedBox(height: context.h(5)),
+              gapH4,
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                 child: Text(
                   'Sign in Now',
                   style: TextStyle(
-                    fontSize: context.w(30),
+                    fontSize: Sizes.p32,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              SizedBox(height: context.h(35)),
+              gapH32,
 
               /// phone number field
               InputField(
@@ -104,7 +101,7 @@ class LoginPage extends ConsumerWidget {
                 hint: 'Email',
                 controller: emailTextController,
                 keyboardType: TextInputType.text,
-                validator: validateEmail,
+                validator: Validator().isEmail().validate,
               ),
 
               ///password field
@@ -114,11 +111,13 @@ class LoginPage extends ConsumerWidget {
                 controller: passwordTextController,
                 keyboardType: TextInputType.text,
                 obscureText: true,
-                validator: validatePassword,
+                validator: Validator(
+                  subjectName: 'Password',
+                ).require().minLength(6).validate,
               ),
 
               // CountrySelectField(),
-              SizedBox(height: context.h(30)),
+              gapH32,
 
               /// login button
               AuthButton(
@@ -143,9 +142,9 @@ class LoginPage extends ConsumerWidget {
                     : 'Continue',
                 color: loginState.isLoading ? Colors.grey : null,
               ),
-              SizedBox(height: context.h(4)),
+              gapH4,
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -157,7 +156,7 @@ class LoginPage extends ConsumerWidget {
                       child: Text(
                         "Forgot Password?",
                         style: TextStyle(
-                          fontSize: context.w(16),
+                          fontSize: Sizes.p16,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -170,7 +169,7 @@ class LoginPage extends ConsumerWidget {
                       child: Text(
                         "Sign Up",
                         style: TextStyle(
-                          fontSize: context.w(16),
+                          fontSize: Sizes.p16,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -179,31 +178,31 @@ class LoginPage extends ConsumerWidget {
                 ),
               ),
 
-              SizedBox(height: context.h(40)),
+              gapH32,
 
               // terms and condition
               Center(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                  padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                   child: Text(
                     'Or Continue with',
                     style: TextStyle(
-                      fontSize: context.w(16),
+                      fontSize: Sizes.p16,
                       fontWeight: FontWeight.w500,
                       color: Colors.black54,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: context.h(30)),
+              gapH32,
 
               Container(
-                padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                 child: Row(
                   children: [
                     /// google login
                     const SocialLoginButton(text: 'Google'),
-                    SizedBox(width: context.w(20)),
+                    gapW20,
 
                     /// facebook login button
                     const SocialLoginButton(text: 'Facebook'),

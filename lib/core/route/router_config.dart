@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:instant_grrocery_delivery/features/auth/presentation/login_page.dart';
-import 'package:instant_grrocery_delivery/features/auth/presentation/sign_up.dart';
-import 'package:instant_grrocery_delivery/features/auth/presentation/verification.dart';
+import 'package:instant_grrocery_delivery/features/auth/presentation/screens/login_screen.dart';
+import 'package:instant_grrocery_delivery/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:instant_grrocery_delivery/features/auth/presentation/screens/verification_screen.dart';
 import 'package:instant_grrocery_delivery/features/cart/presentation/apply_coupon.dart';
 import 'package:instant_grrocery_delivery/features/cart/presentation/my_cart_page.dart';
 import 'package:instant_grrocery_delivery/features/cart/presentation/payment_method_page.dart';
@@ -29,11 +29,11 @@ final routerConfig = GoRouter(
       path: '/on-boarding',
       builder: (context, state) => const OnBoardingPage(),
     ),
-    GoRoute(path: '/login', builder: (context, state) => LoginPage()),
-    GoRoute(path: '/sign-up', builder: (context, state) => SignUpPage()),
+    GoRoute(path: '/login', builder: (context, state) => LoginScreen()),
+    GoRoute(path: '/sign-up', builder: (context, state) => SignUpScreen()),
     GoRoute(
       path: '/verification',
-      builder: (context, state) => const VerificationPage(),
+      builder: (context, state) => const VerificationScreen(),
     ),
     GoRoute(path: '/home', builder: (context, state) => const MainTabsPage()),
     GoRoute(
@@ -102,4 +102,3 @@ final routerConfig = GoRouter(
     ),
   ],
 );
-

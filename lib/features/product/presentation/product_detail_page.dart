@@ -16,7 +16,7 @@ import 'package:instant_grrocery_delivery/core/widgets/buttons/action_button.dar
 import 'package:instant_grrocery_delivery/core/widgets/favorite_button.dart';
 import 'package:instant_grrocery_delivery/core/widgets/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/core/widgets/opps_no_data.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'package:instant_grrocery_delivery/core/widgets/product_item.dart';
 
 class ProductDetailPage extends ConsumerWidget {
@@ -311,4 +311,3 @@ class ProductDetailPage extends ConsumerWidget {
     );
   }
 }
-

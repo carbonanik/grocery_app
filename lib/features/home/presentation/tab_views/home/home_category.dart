@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/features/category/data/model/category.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class HomeCategory extends StatelessWidget {
   const HomeCategory({Key? key, required this.category, required this.index})
@@ -75,4 +75,3 @@ class HomeCategory extends StatelessWidget {
     );
   }
 }
-

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'package:instant_grrocery_delivery/core/widgets/auth_button.dart';
 import 'package:instant_grrocery_delivery/core/widgets/input_field.dart';
 

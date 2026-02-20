@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class InputField extends StatelessWidget {
   const InputField({
@@ -69,4 +69,3 @@ class InputField extends StatelessWidget {
     );
   }
 }
-

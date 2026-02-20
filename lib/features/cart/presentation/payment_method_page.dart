@@ -7,7 +7,7 @@ import 'package:instant_grrocery_delivery/core/widgets/buttons/action_button.dar
 import 'package:instant_grrocery_delivery/core/widgets/login_to_access.dart';
 import 'package:instant_grrocery_delivery/features/cart/presentation/provider/cart_provider.dart';
 import 'package:instant_grrocery_delivery/features/order/presentation/provider/process_order_provider.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'package:instant_grrocery_delivery/core/widgets/my_app_bar.dart';
 import 'package:instant_grrocery_delivery/core/widgets/payment_method_item.dart';
 
@@ -149,4 +149,3 @@ class PaymentMethodPage extends ConsumerWidget {
     );
   }
 }
-

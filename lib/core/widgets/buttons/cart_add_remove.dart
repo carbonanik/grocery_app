@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class CartAddRemove extends StatelessWidget {
   const CartAddRemove({
@@ -18,22 +18,22 @@ class CartAddRemove extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: context.w(5), vertical: context.h(5)),
-      decoration: BoxDecoration(color: accentColor, borderRadius: BorderRadius.circular(5)),
+      padding: EdgeInsets.symmetric(
+        horizontal: context.w(5),
+        vertical: context.h(5),
+      ),
+      decoration: BoxDecoration(
+        color: accentColor,
+        borderRadius: BorderRadius.circular(5),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           InkWell(
             onTap: onRemove,
-            child: const Icon(
-              Icons.remove,
-              color: Colors.white,
-              size: 15,
-            ),
+            child: const Icon(Icons.remove, color: Colors.white, size: 15),
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          const SizedBox(width: 10),
           Text(
             quantity.toString(),
             style: GoogleFonts.ibmPlexMono(
@@ -42,20 +42,13 @@ class CartAddRemove extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          const SizedBox(width: 10),
           InkWell(
             onTap: onAdd,
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-              size: 15,
-            ),
+            child: const Icon(Icons.add, color: Colors.white, size: 15),
           ),
         ],
       ),
     );
   }
 }
-

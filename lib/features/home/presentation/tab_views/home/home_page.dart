@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/features/cart/presentation/provider/cart_provider.dart';
 import 'package:instant_grrocery_delivery/features/home/presentation/tab_views/home/home_category.dart';
 import 'package:instant_grrocery_delivery/core/widgets/opps_no_data.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'package:instant_grrocery_delivery/features/product/data/model/product.dart';
 import 'package:instant_grrocery_delivery/features/category/presentation/provider/category_api_provider.dart';
@@ -340,4 +340,3 @@ class CustomSilverHeaderDelegate extends SliverPersistentHeaderDelegate {
     return true;
   }
 }
-

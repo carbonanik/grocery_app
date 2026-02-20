@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class SocialLoginButton extends StatelessWidget {
   final String text;
 
-  const SocialLoginButton({
-    required this.text,
-    super.key,
-  });
+  const SocialLoginButton({required this.text, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +17,9 @@ class SocialLoginButton extends StatelessWidget {
             elevation: WidgetStateProperty.all(0),
             backgroundColor: WidgetStateProperty.all(Colors.white),
             foregroundColor: WidgetStateProperty.all(Colors.black),
-            side: WidgetStateProperty.all(const BorderSide(
-              color: Colors.black12,
-              width: 2,
-            )),
+            side: WidgetStateProperty.all(
+              const BorderSide(color: Colors.black12, width: 2),
+            ),
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(context.w(10)),
@@ -33,14 +29,10 @@ class SocialLoginButton extends StatelessWidget {
           onPressed: null,
           child: Text(
             text,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-            ),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
         ),
       ),
     );
   }
 }
-

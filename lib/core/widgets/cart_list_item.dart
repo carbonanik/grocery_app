@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/main.dart';
 import 'package:instant_grrocery_delivery/features/cart/data/model/cart_item/cart_item.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 import 'buttons/cart_add_remove.dart';
 
@@ -98,4 +98,3 @@ class CartListItem extends StatelessWidget {
     );
   }
 }
-

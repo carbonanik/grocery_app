@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 import 'package:instant_grrocery_delivery/core/widgets/category_item.dart';
 import 'package:instant_grrocery_delivery/core/widgets/product_item.dart';
 import 'package:instant_grrocery_delivery/features/category/presentation/provider/category_api_provider.dart';

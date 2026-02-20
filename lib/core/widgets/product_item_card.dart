@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/features/product/data/model/product.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class ProductItemCard extends StatelessWidget {
   const ProductItemCard({Key? key, required this.simPro}) : super(key: key);
@@ -84,4 +84,3 @@ class ProductItemCard extends StatelessWidget {
     );
   }
 }
-

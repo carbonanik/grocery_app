@@ -1,6 +1,6 @@
 import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/features/auth/domain/auth_repository.dart';
-import 'package:instant_grrocery_delivery/src/utils/in_memory_store.dart';
+import 'package:instant_grrocery_delivery/core/utils/in_memory_store.dart';
 
 class MockAuthRepository implements AuthRepository {
   final _authState = InMemoryStore<AppUser?>(null);

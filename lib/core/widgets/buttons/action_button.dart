@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class ActionButton extends StatelessWidget {
   const ActionButton({
@@ -26,7 +26,7 @@ class ActionButton extends StatelessWidget {
       onPressed: enabled ? onTap : null,
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
-        disabledBackgroundColor: Colors.grey[400]
+        disabledBackgroundColor: Colors.grey[400],
       ),
       child: Container(
         padding: EdgeInsets.symmetric(
@@ -55,4 +55,3 @@ class ActionButton extends StatelessWidget {
     );
   }
 }
-

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class TransparentTopBar extends StatelessWidget {
   const TransparentTopBar({
@@ -42,4 +42,3 @@ class TransparentTopBar extends StatelessWidget {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:instant_grrocery_delivery/features/support/data/source/support_a
 import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/features/support/data/model/dto/support_dto.dart';
 import 'package:instant_grrocery_delivery/features/support/data/model/support.dart';
-import 'package:instant_grrocery_delivery/core/util/extension/list/extension.dart';
+import 'package:instant_grrocery_delivery/core/utils/extension/list/extension.dart';
 
 class SupportApiMockImpl extends SupportApi {
   @override

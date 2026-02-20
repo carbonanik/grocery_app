@@ -1,7 +1,7 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'side_tab_item.dart';
@@ -100,5 +100,3 @@ class _SideTabState extends State<SideTab> with TickerProviderStateMixin {
     );
   }
 }
-
-

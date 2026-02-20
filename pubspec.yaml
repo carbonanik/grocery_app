@@ -20,28 +20,11 @@ dependencies:
   freezed_annotation: ^3.1.0
   google_fonts: ^6.3.3
   device_preview: ^1.3.1
-  # cupertino_icons: ^1.0.5
-  # dartz: ^0.10.1
-  # shared_preferences: ^2.0.15
-  # http: ^1.0.0
-  # intl: ^0.20.2
-  # json_annotation: ^4.8.0 # annotation for 'json_serializable'
-  # http_status_code: ^0.0.2
-  # number_paginator: ^1.1.1
-  # pin_code_fields: ^8.0.1
-  # flutter_svg: ^2.0.5
-  # csc_picker: ^0.2.7
   material_dialogs: ^1.1.5
-  # flutter_gen: ^5.3.2
   flutter_hooks: ^0.21.3+1
-  # google_fonts: ^6.1.0
-  # freezed_annotation: ^2.4.1
-  # device_preview: ^1.2.0
   go_router: ^12.0.0
   supercharged: ^2.1.1
-  # flutter_hooks: ^0.21.3+1
-  # firebase_core: ^4.3.0
-  # dio: ^5.4.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -52,11 +35,6 @@ dev_dependencies:
   retrofit_generator: 10.1.0
   json_serializable: ^6.10.0
   freezed: ^3.1.0
-  # flutter_lints: ^6.0.0
-  # json_serializable: ^6.7.1
-  # build_runner: ^2.4.6
-  # auto_route_generator: ^10.4.0
-  # flutter_gen_runner:
 
 flutter:
   uses-material-design: true

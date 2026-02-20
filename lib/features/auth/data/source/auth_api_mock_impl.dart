@@ -4,14 +4,15 @@ import 'package:instant_grrocery_delivery/core/simulate_fetch.dart';
 import 'package:instant_grrocery_delivery/features/auth/data/model/login.dart';
 import 'package:instant_grrocery_delivery/features/auth/data/model/response/auth_response.dart';
 import 'package:instant_grrocery_delivery/features/profile/data/model/user.dart';
-import 'package:instant_grrocery_delivery/core/util/extension/list/extension.dart';
+import 'package:instant_grrocery_delivery/core/utils/extension/list/extension.dart';
 
 class AuthApiMockImpl extends AuthApi {
   @override
   Future<AuthResponse> login(LoginRequest loginUser) async {
     await simulateFetch();
     final user = userJson.firstWhereOrNull(
-        (element) => element["email"] == loginUser.identifier);
+      (element) => element["email"] == loginUser.identifier,
+    );
     if (user == null) {
       throw Exception('User not found');
     }
@@ -46,10 +47,7 @@ class AuthApiMockImpl extends AuthApi {
     });
 
     final user = userJson.firstWhere((element) => element["id"] == id);
-    return AuthResponse(
-      jwt: 'token:${user["id"]}',
-      user: User.fromJson(user),
-    );
+    return AuthResponse(jwt: 'token:${user["id"]}', user: User.fromJson(user));
   }
 
   @override
@@ -86,6 +84,5 @@ final userJson = [
     "password": "123456",
     "fullName": "User 2",
     "phone": "123456",
-  }
+  },
 ];
-

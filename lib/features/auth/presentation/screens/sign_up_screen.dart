@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:instant_grrocery_delivery/core/utils/validator.dart';
 import 'package:instant_grrocery_delivery/features/auth/domain/app_user.dart';
 import 'package:instant_grrocery_delivery/core/result_value.dart';
 import 'package:instant_grrocery_delivery/features/auth/presentation/provider/auth_controller_provider.dart';
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'package:instant_grrocery_delivery/core/widgets/auth_button.dart';
-import 'package:instant_grrocery_delivery/core/util/validation/validator.dart';
 import 'package:instant_grrocery_delivery/core/widgets/input_field.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/constants/app_sizes.dart';
 
-class SignUpPage extends ConsumerWidget {
-  SignUpPage({Key? key}) : super(key: key);
+class SignUpScreen extends ConsumerWidget {
+  SignUpScreen({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final nameTextController = TextEditingController();
@@ -47,30 +47,30 @@ class SignUpPage extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: context.h(40)),
+                gapH48,
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                  padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                   child: Text(
                     'Sign up Now',
                     style: TextStyle(
-                      fontSize: context.w(30),
+                      fontSize: Sizes.p32,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                SizedBox(height: context.h(10)),
+                gapH4,
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                  padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                   child: Text(
                     'Looks like you are new here.',
                     style: TextStyle(
-                      fontSize: context.w(15),
+                      fontSize: Sizes.p16,
                       fontWeight: FontWeight.w500,
                       color: Colors.black54,
                     ),
                   ),
                 ),
-                SizedBox(height: context.h(20)),
+                gapH20,
 
                 /// name field
                 InputField(
@@ -78,7 +78,9 @@ class SignUpPage extends ConsumerWidget {
                   hint: 'Name',
                   controller: nameTextController,
                   keyboardType: TextInputType.text,
-                  validator: validateName,
+                  validator: Validator(
+                    subjectName: 'Name',
+                  ).require().minLength(3).maxLength(255).validate,
                 ),
 
                 /// email field
@@ -87,7 +89,7 @@ class SignUpPage extends ConsumerWidget {
                   hint: 'Email',
                   controller: emailTextController,
                   keyboardType: TextInputType.emailAddress,
-                  validator: validateEmail,
+                  validator: Validator(subjectName: 'Email').isEmail().validate,
                 ),
 
                 /// phone number field
@@ -96,6 +98,12 @@ class SignUpPage extends ConsumerWidget {
                   hint: 'Phone Number',
                   controller: phoneTextController,
                   keyboardType: TextInputType.phone,
+                  validator: Validator(subjectName: 'Phone Number')
+                      .require()
+                      .exactLength(11)
+                      .isNumber()
+                      .startsWith('01')
+                      .validate,
                 ),
 
                 InputField(
@@ -104,10 +112,12 @@ class SignUpPage extends ConsumerWidget {
                   controller: passwordTextController,
                   keyboardType: TextInputType.text,
                   obscureText: true,
-                  validator: validatePassword,
+                  validator: Validator(
+                    subjectName: 'Password',
+                  ).require().minLength(6).validate,
                 ),
 
-                SizedBox(height: context.h(30)),
+                gapH32,
 
                 /// login button
                 AuthButton(
@@ -131,16 +141,16 @@ class SignUpPage extends ConsumerWidget {
                   // 'Continue',
                 ),
 
-                Container(child: SizedBox(height: context.h(40))),
+                gapH32,
 
                 // terms and condition
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                    padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                     child: Text(
                       'By signing up, you agree to our',
                       style: TextStyle(
-                        fontSize: context.w(16),
+                        fontSize: Sizes.p16,
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
@@ -149,15 +159,15 @@ class SignUpPage extends ConsumerWidget {
                 ),
 
                 //space
-                SizedBox(height: context.h(5)),
+                gapH4,
 
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.w(20)),
+                    padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
                     child: Text(
                       'Terms and Conditions',
                       style: TextStyle(
-                        fontSize: context.w(16),
+                        fontSize: Sizes.p16,
                         fontWeight: FontWeight.w500,
                         color: accentColor,
                       ),

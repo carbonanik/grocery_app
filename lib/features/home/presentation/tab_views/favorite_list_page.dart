@@ -4,7 +4,7 @@ import 'package:instant_grrocery_delivery/features/product/presentation/provider
 import 'package:instant_grrocery_delivery/core/theme/colors.dart';
 import 'package:instant_grrocery_delivery/core/widgets/home_app_bar.dart';
 import 'package:instant_grrocery_delivery/core/widgets/product_item.dart';
-import 'package:instant_grrocery_delivery/core/util/dimension.dart';
+import 'package:instant_grrocery_delivery/core/utils/dimension.dart';
 
 class FavoriteListPage extends StatelessWidget {
   const FavoriteListPage({Key? key}) : super(key: key);
@@ -78,4 +78,3 @@ class FavoriteListPage extends StatelessWidget {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:instant_grrocery_delivery/features/order/data/source/order_local_impl.dart';
 import 'package:instant_grrocery_delivery/features/order/data/source/orders_local.dart';
 import 'package:instant_grrocery_delivery/features/order/data/model/order.dart';
-import 'package:instant_grrocery_delivery/core/util/extension/log.dart';
+import 'package:instant_grrocery_delivery/core/utils/extension/log.dart';
 
 final orderLocalProvider = Provider<OrderLocal>((ref) => OrderLocalImpl());
 
@@ -21,7 +21,8 @@ class OrdersChangeNotifier extends ChangeNotifier {
 
   Ref ref;
 
-  UnmodifiableMapView<int, Order> get orderList => UnmodifiableMapView(_orderList);
+  UnmodifiableMapView<int, Order> get orderList =>
+      UnmodifiableMapView(_orderList);
 
   void init() async {
     await _dataChanged();
@@ -44,9 +45,13 @@ class OrdersChangeNotifier extends ChangeNotifier {
   }
 }
 
-final ordersListProvider = ChangeNotifierProvider((ref) => OrdersChangeNotifier(ref));
+final ordersListProvider = ChangeNotifierProvider(
+  (ref) => OrdersChangeNotifier(ref),
+);
 
-final orderByIdProvider = FutureProvider.family<Order?, int>((ref, orderId) async {
+final orderByIdProvider = FutureProvider.family<Order?, int>((
+  ref,
+  orderId,
+) async {
   return await ref.read(orderLocalProvider).getSingleOrder(orderId);
 });
-

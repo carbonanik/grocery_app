@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +16,7 @@ Future<void> main() async {
         isToolbarVisible: false,
         backgroundColor: Colors.grey[900],
         defaultDevice: Devices.android.mediumPhone,
-        enabled: false,
+        enabled: kIsWeb,
         builder: (context) {
           return const MyApp();
         },
@@ -62,4 +63,3 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
     PointerDeviceKind.mouse,
   };
 }
-
